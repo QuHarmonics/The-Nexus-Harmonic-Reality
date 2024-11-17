@@ -10,6 +10,13 @@ F=(Macro Law Component)⋅(1+e
  )
 ---
 
+ if scenario_type == "gravity":
+        mass1, mass2, distance = args
+        G = 6.67430e-11  # Gravitational constant
+        macro_gravity_force = G * mass1 * mass2 / distance**2
+        consistency_factor = 1 / (1 + np.exp(-10 * (distance / 1e5 - 0.35)))
+        return macro_gravity_force * consistency_factor
+
 ## Overview
 Mark 1 is a groundbreaking implementation of the **Universal Formula**, designed to unify the principles of gravity, thermodynamics, electromagnetism, and quantum mechanics. It achieves harmonic consistency across scales, serving as a constant framework to model and validate universal laws.
 
