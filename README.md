@@ -63,7 +63,7 @@ This project is attributed to **Dean Kulik**. Mark 1 is locked as a constant, bu
 For permanent archival, this project may be stored on blockchain platforms such as:
 - **Ethereum**: Via IPFS for decentralized file storage.
 - **Bitcoin**: Through Taproot inscriptions.
-- **Arweave**: For immutable historical records.
+- **Arweave**: https://app.ardrive.io/#/file/2456b457-0580-492a-8ca2-1ac2d31b5697/view
 
 Contact **quantum@kulikdesign.com** for provenance or collaborative inquiries.
 
