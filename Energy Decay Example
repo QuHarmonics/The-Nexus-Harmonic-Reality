@@ -1,0 +1,27 @@
+using System;
+
+namespace KulikFormulaExample
+{
+    class EnergyDecay
+    {
+        public static void Main(string[] args)
+        {
+            double initialEnergy = 100.0; // Joules
+            double decayFactor = 0.85; // Harmonic decay per time unit
+            int timeUnits = 10;
+
+            Console.WriteLine("Energy over time:");
+            for (int t = 0; t <= timeUnits; t++)
+            {
+                double energy = CalculateEnergy(initialEnergy, decayFactor, t);
+                Console.WriteLine($"Time {t}: {energy} J");
+            }
+        }
+
+        private static double CalculateEnergy(double energy, double decayFactor, int time)
+        {
+            // Harmonic decay modeled using Kulik's approach
+            return energy * Math.Pow(decayFactor, time);
+        }
+    }
+}
