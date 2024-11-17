@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+
+namespace KulikFormula.DarkMatterDetection
+{
+    public class SamsonLaw
+    {
+        // Properties for defining the environment
+        public double GravitationalConstant { get; set; } = 6.67430e-11; // in m^3⋅kg^−1⋅s^−2
+        public double DetectionThreshold { get; set; } = 0.0001; // Arbitrary threshold for harmonic detection
+
+        // Method to detect harmonic densities
+        public List<HarmonicDensity> DetectHarmonics(List<GravitationalBody> bodies)
+        {
+            var detectedDensities = new List<HarmonicDensity>();
+
+            foreach (var body in bodies)
+            {
+                double density = CalculateHarmonicDensity(body);
+
+                if (density >= DetectionThreshold)
+                {
+                    detectedDensities.Add(new HarmonicDensity
+                    {
+                        Body = body,
+                        Density = density
+                    });
+                }
+            }
+
+            return detectedDensities;
+        }
+
+        // Private method to calculate harmonic density
+        private double CalculateHarmonicDensity(GravitationalBody body)
+        {
+            // Example harmonic density calculation using mass and distance
+            return body.Mass / (body.Distance * body.Distance);
+        }
+    }
+
+    // Supporting classes for the model
+    public class GravitationalBody
+    {
+        public string Name { get; set; }
+        public double Mass { get; set; } // in kg
+        public double Distance { get; set; } // in meters from the reference point
+    }
+
+    public class HarmonicDensity
+    {
+        public GravitationalBody Body { get; set; }
+        public double Density { get; set; }
+    }
+
+    // Example usage
+    public class Program
+    {
+        static void Main()
+        {
+            // Create a list of gravitational bodies
+            var bodies = new List<GravitationalBody>
+            {
+                new GravitationalBody { Name = "Object1", Mass = 5.972e24, Distance = 1.0e7 }, // Earth-like
+                new GravitationalBody { Name = "Object2", Mass = 1.989e30, Distance = 1.5e11 }, // Sun-like
+                new GravitationalBody { Name = "Object3", Mass = 7.348e22, Distance = 3.844e8 } // Moon-like
+            };
+
+            // Apply Samson's Law
+            var samsonLaw = new SamsonLaw();
+            var detectedHarmonics = samsonLaw.DetectHarmonics(bodies);
+
+            // Display results
+            Console.WriteLine("Detected Harmonic Densities:");
+            foreach (var density in detectedHarmonics)
+            {
+                Console.WriteLine($"Body: {density.Body.Name}, Harmonic Density: {density.Density}");
+            }
+        }
+    }
+}
