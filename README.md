@@ -64,6 +64,7 @@ For permanent archival, this project may be stored on blockchain platforms such 
 - **Ethereum**: Via IPFS for decentralized file storage.
 - **Bitcoin**: Through Taproot inscriptions.
 - **Arweave**: https://app.ardrive.io/#/file/2456b457-0580-492a-8ca2-1ac2d31b5697/view
+- https://zenodo.org/records/14175586
 
 Contact **quantum@kulikdesign.com** for provenance or collaborative inquiries.
 
