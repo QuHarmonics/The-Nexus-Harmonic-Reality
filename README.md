@@ -6,6 +6,9 @@
 
 
 F=(Macro Law Component)⋅(1+e−10(ax​−0.35)1​)
+F=(Macro Law Component)⋅(1+e 
+−10(ax−0.35)
+ )
 ---
 
 ## Overview
