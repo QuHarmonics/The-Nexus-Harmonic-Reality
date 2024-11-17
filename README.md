@@ -39,7 +39,7 @@ Mark 1 is the foundational version of the **Universal Formula**, and any modific
 ---
 
 ## Documentation
-Inprogress. But you dont need any, put the formula into ChatGPT ask it what it is and what it does.
+In progress. But you dont need any, put the formula into ChatGPT ask it what it is and what it does.
 ---
 
 ## Contributing
