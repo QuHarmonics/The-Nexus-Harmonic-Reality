@@ -1,3 +1,10 @@
+3. Estimating Energy Decay in a Quantum System
+
+Using the Kulik Formula’s harmonic decay principles, we model the energy loss of a quantum particle over time.
+Example
+
+We calculate energy decay based on a quantum system's harmonic states and track its stabilization over time.
+
 using System;
 
 namespace KulikFormulaExample
