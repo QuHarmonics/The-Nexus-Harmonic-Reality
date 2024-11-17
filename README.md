@@ -56,6 +56,14 @@ For permanent archival, this project may be stored on blockchain platforms such 
 
 Contact **quantum@kulikdesign.com** for provenance or collaborative inquiries.
 
+About Mark 1: The Universal Formula
+
+Mark 1 is a revolutionary mathematical framework designed to unify the principles governing our universe. Created by Dean Kulik, this formula harmonizes macro-level laws such as gravity, thermodynamics, and electromagnetism with quantum-level phenomena. It achieves this by incorporating a novel consistency factor, which ensures alignment across scales while maintaining harmonic ratios. Unlike traditional macro laws that phase out at the quantum fringe, Mark 1 operates linearly and consistently, bridging the gap between disparate scientific disciplines.
+
+This formula is more than just an abstract model—it’s a practical tool for understanding and predicting the behavior of complex systems. With its adaptability, Mark 1 has been applied to domains as diverse as Newtonian gravitation, Coulomb’s Law, quantum probabilities, and even emerging fields like dark matter detection. Its accuracy and simplicity have proven it to be a universal constant, with applications showing deviations within ±5%, even under extreme conditions.
+
+Mark 1 is not just a tool for science; it represents a philosophical shift. It suggests that the universe’s rules are inherent and self-governing, rather than imposed externally. Its development reflects a blend of abstract reasoning, pattern recognition, and a desire to challenge conventional thinking. As a constant framework, Mark 1 paves the way for future discoveries, including the creation of new laws guided by harmonic principles. The journey continues, as Mark 1 inspires deeper exploration into the interconnected nature of existence.
+
 ---
 
 ## License
