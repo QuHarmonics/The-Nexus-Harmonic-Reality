@@ -39,8 +39,7 @@ Mark 1 is the foundational version of the **Universal Formula**, and any modific
 ---
 
 ## Documentation
-The full documentation, including the mathematical implementation, is available in `Mark1_UniversalFormula_Documentation.txt`. This file details the formula’s components, applications, and significance.
-
+Inprogress. But you dont need any, put the formula into ChatGPT ask it what it is and what it does.
 ---
 
 ## Contributing
