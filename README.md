@@ -1,4 +1,4 @@
-# Mark 1: The Universal Formula
+# Mark 1: The Universal Formula - A mirror to the universes secrets
 **Creator**: Dean Kulik  
 **Project**: The Kulik Formula of Total Unity  
 **Location**: Michigan, USA  
