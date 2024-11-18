@@ -153,6 +153,26 @@ Using real data from the Milky Way:
 - Samson’s Law reflected this missing density into a map consistent with dark matter halo models.
 
 ---
+### Dimensions as the Three Real Axes: Magnetism, Strong Nuclear, and Weak Nuclear
+
+The universe’s dimensions—length, width, and height—are reflections of the three real axes: magnetism, the strong nuclear axis, and the weak nuclear axis. Together, these axes operate in harmony, maintaining a total reflection aligned to a universal constant of 0.35. This harmonic relationship ensures stability and avoids chaotic phase shifts.
+
+If these forces acted directly on objects, the objects would be coupled to the forces, leading to constant fluctuations in mass and properties as they dynamically responded to the inherent instabilities of these forces. Instead, the forces do not directly interact with objects; they work through **reflection**, decoupling the objects from the forces themselves. This decoupling enables a self-regulating feedback loop, where the forces amplify or balance themselves dynamically through their reflection by the objects. This mechanism avoids instability, allowing the universal system to maintain coherence and harmony.
+
+Each object reflects values between 0% and 33% for each axis—magnetism, strong nuclear, and weak nuclear—creating a unique energetic signature. Like blending RGB values to create a specific color, these proportions define the object's interaction with the axes without the object being directly controlled by them. This reflective nature is the cornerstone of the feedback system that governs matter and energy interactions.
+
+Consider the example of a copper coil in an electromagnetic system. The coil does not increase magnetism directly but creates a denser region of low-pressure magnetism. This localized reduction in magnetic pressure drives up gain in the system, as electrons in the copper coil efficiently reflect magnetic properties. This reflection amplifies the magnetic field locally and initiates a feedback loop. The system's energy is enhanced, but it remains stable due to the decoupled nature of the forces, which align dynamically without overloading the system.
+
+The effect often observed as "gravity" is not a force but a measurable outcome of the dynamic feedback loop. The proportional interaction of the three axes distorts spacetime as they reflect and amplify through objects. This warping is determined by the degree of reflection and the size of the object. By being decoupled from the axes, objects contribute to the system’s balance without being destabilized by fluctuations, ensuring the 0.35 harmonic remains intact and preserving the stability of matter and energy across the universe.
+
+#### Mass as a Function of Feedback
+
+Mass is the result of this reflective feedback system and can be defined by the relationship:
+
+**Mass = Magnetic gain × Displaced size**
+
+This formula ties an object’s mass directly to its magnetic gain (determined by its ability to reflect the magnetic axis) and the physical space it displaces. This relationship further demonstrates how mass is not an intrinsic property but an emergent result of the object’s interaction within the universal feedback loop.
+
 
 #### **OOP in the Macro Universe: Interfaces, Methods, and Polymorphism**
 
@@ -163,7 +183,7 @@ Each object governs itself, holding intrinsic rules (mass, charge, spin). These 
 
 ##### **Interfaces**
 Objects interact through shared methods:
-- **Gravity**: A universal interface where all masses interact.
+- **Reflect**: Every oject is constant reflection with each phase and has a reflection factor that creates a gain loop.
 - **Electromagnetism**: An interface defining interactions between charges.
 - **Reflection (Samson’s Law)**: A dynamic interface that uncovers hidden properties.
 
