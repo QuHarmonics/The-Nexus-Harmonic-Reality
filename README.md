@@ -155,7 +155,7 @@ Using real data from the Milky Way:
 ---
 ### Dimensions as the Three Real Axes: Magnetism, Strong Nuclear, and Weak Nuclear
 
-The universe’s dimensions—length, width, and height—are reflections of the three real axes: magnetism, the strong nuclear axis, and the weak nuclear axis. Together, these axes operate in harmony, maintaining a total reflection aligned to a universal constant of 0.35. This harmonic relationship ensures stability and avoids chaotic phase shifts.
+The universe’s dimensions—length, width, and height—are reflections of the three real axes: magnetism, the strong nuclear axis, and the weak nuclear axis. Together, these axes operate in harmony, creating the source of the 0.35. This harmonic relationship ensures stability and avoids chaotic phase shifts.
 
 If these forces acted directly on objects, the objects would be coupled to the forces, leading to constant fluctuations in mass and properties as they dynamically responded to the inherent instabilities of these forces. Instead, the forces do not directly interact with objects; they work through **reflection**, decoupling the objects from the forces themselves. This decoupling enables a self-regulating feedback loop, where the forces amplify or balance themselves dynamically through their reflection by the objects. This mechanism avoids instability, allowing the universal system to maintain coherence and harmony.
 
