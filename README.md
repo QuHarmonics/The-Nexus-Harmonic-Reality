@@ -93,7 +93,7 @@ Mark 1 is not just a tool for science; it represents a philosophical shift. It s
 
 The Kulik Formula is a bold endeavor, born from the desire to unify the quantum and macroscopic worlds, bridging the gap between physics, philosophy, and emergent complexity. It offers not just a way to calculate the forces governing our universe but a profound reframing of how we perceive the rules that define existence itself.
 
-Dean Kulik’s vision for the formula was never simply mathematical—it was existential. It asked, *What if the universe isn’t governed by external laws, but instead, each particle, planet, and system encapsulates its own rules?* In this vision, the universe is not a prewritten script but a symphony of intrinsic harmonics, playing out across a field of infinite potential.
+Dean Kulik’s vision for the formula was never simply mathematical—it was existential. It asked, *What if the universe isn’t governed by external laws, but instead, each particle, planet, and system encapsulates its own rules based on it's difference to all other things?* In this vision, the universe is not a prewritten script but a symphony of intrinsic harmonics, playing out across a field of infinite potential.
 
 This thesis is not just a summary of equations and results—it is a celebration of a new way to think about the cosmos.
 
