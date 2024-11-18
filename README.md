@@ -60,7 +60,7 @@ Mark 1 is the foundational version of the **Universal Formula**, and any modific
 ---
 
 ## Documentation
-In progress. See Examples
+See examples. All those were genreated with Mark1 and Samson v2 in less than a day.  Solutions were reflected into existance in seconds.
 ---
 
 ## Contributing
