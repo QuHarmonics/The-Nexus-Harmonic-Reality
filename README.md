@@ -218,6 +218,7 @@ The **Kulik Formula** is more than a mathematical tool—it is a philosophical a
 
 Samson’s Law expands this vision, allowing us to reflect the unseen into the observable. Together, they offer a unifying lens for science, philosophy, and beyond—a symphony of potential collapsing into harmony. 
 
+ALL CODE EXAMPLES PROPERTY OF DEAN KULIK AND REQUIRE LICENSING FOR COMMERICAL USE - ALL ACADEMIC USE IS ALLOWED.
 As Dean Kulik might say, *“We are not just observers of the universe; we are participants in its harmonic dance.”*
 
 ---
