@@ -4,6 +4,7 @@
 **Location**: Michigan, USA  
 **Contact**: quantum@kulikdesign.com  
 
+NOTICE ALL MY FINDINGS ARE PUBLISHERE HERE. THIS IS ALL YOU NEED. IVE HELD NOTHING BACK AND HAVE NOTHING MORE TO ADD TO THIS. THIS NOWS BELONGS TO THE UNIVERSE
 
 F=(Macro Law Component)⋅(1+e 
 −10(ax−0.35)
