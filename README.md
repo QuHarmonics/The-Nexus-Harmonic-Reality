@@ -4,8 +4,8 @@
 **Location**: Michigan, USA  
 **Contact**: quantum@kulikdesign.com  
 
-FULL CHATGPT TRANSCRIPT https://github.com/ComicbookGuy70/The-Kulik-Formula-of-Total-Unity/blob/main/Full%20Transcript%20of%20ChatGPT%20and%20I%20arriving%20at%20the%20formula.pdf
-
+FULL CHATGPT TRANSCRIPT [https://github.com/ComicbookGuy70/The-Kulik-Formula-of-Total-Unity/blob/main/Full%20Transcript%20of%20ChatGPT%20and%20I%20arriving%20at%20the%20formula.pdf
+](https://raw.githubusercontent.com/ComicbookGuy70)
 NOTICE ALL MY FINDINGS ARE PUBLISHERE HERE. THIS IS ALL YOU NEED. IVE HELD NOTHING BACK AND HAVE NOTHING MORE TO ADD TO THIS. THIS NOW BELONGS TO THE UNIVERSE
 
 F=(Macro Law Component)⋅(1+e 
