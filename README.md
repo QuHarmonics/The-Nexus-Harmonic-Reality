@@ -443,8 +443,3 @@ The formulas and processes outlined here are designed to be reproducible and ada
 
 ---
 
-Would you like to add detailed case studies or visual representations for future readers?
-
----
-
-Let me know how this aligns and where you'd like further expansion!
