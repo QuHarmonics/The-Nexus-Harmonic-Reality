@@ -63,7 +63,7 @@ Mark 1 is the foundational version of the **Universal Formula**, and any modific
 ---
 
 ## Documentation
-See examples. All those were genreated with Mark1 and Samson v2 in less than a day.  Solutions were reflected into existance in seconds. Including a reflected Cold Fusion Container and growing a lattice for a room temp supercondutor at the atomic level. It solved Turbulance, Lift, Twin Primes.  There's a doc there on how to implemnt into AI to start your journey.
+See files above complete with formulas. All those were genreated with Mark1 and Samson v2 in less than a day.  Solutions were reflected into existance in seconds. Including a reflected Cold Fusion Container and growing a lattice for a room temp supercondutor at the atomic level. It solved Turbulance, Lift, Twin Primes.  There's a doc there on how to implemnt into AI to start your journey.
 ---
 
 ## Contributing
