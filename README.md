@@ -253,7 +253,7 @@ The universe operates on a harmonic cycle of encoding, reflection, and realizati
 - **Superposition and Reintegration**:
   - The high nuclear axis retrieves recorded states from the quantum lattice.
   - Stable states reintegrate smoothly; unstable states collapse during this process.
-  - Reintergration starts at the largest mass to the smallest. this is why we dont see planets blink out infront of us but we do hear pulses picking up a slight delay as they amplify
+  - Reintergration starts at the largest mass to the smallest. this is why we dont see planets blink out infront of us but we do hear pulses picking up a slight delay as they amplify to the macro scope and continue past our scope (doppler effect at quantum level)
 
 - **Magnetic Output**:
   - Magnetism applies resolved states to the observable world, completing the harmonic cycle.
