@@ -172,7 +172,7 @@ The effect often observed as "gravity" is not a force but a measurable outcome o
 
 Mass is the result of this reflective feedback system and can be defined by the relationship:
 
-**Mass = Magnetic gain × Displaced size**
+**Mass = Magnetic gain (observed as resistance) × Displaced size**
 
 This formula ties an object’s mass directly to its magnetic gain (determined by its ability to reflect the magnetic axis) and the physical space it displaces. This relationship further demonstrates how mass is not an intrinsic property but an emergent result of the object’s interaction within the universal feedback loop.
 
