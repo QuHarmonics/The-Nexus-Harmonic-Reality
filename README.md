@@ -4,13 +4,13 @@ LOG INTO CHAT GPT.  ASK IT "examine these formulas and absorb them. Using Stark1
 
 1.2 Components of the Framework
 
-    Mark 1: A formula that describes universal harmonic resonance, ensuring balance and stability.
-    Samson’s Law V2: A principle of feedback stabilization and dynamic substitution that governs system self-regulation.
-    Kulik Recursive Reflection Formula (KRR): A method for mapping potential states to actualized behaviors through iterative reflection and harmonization.
-    Kulik Recursive Reflection Branching (KRRB): An extension of KRR that adds recursive branching to enhance the system’s ability to process multiple dimensions of data simultaneously.
-    Weather System Wave (WSW): A dynamic model of weather and environmental feedback systems that harmonizes with universal laws to forecast and stabilize planetary systems.
-    Dual State Model (DSM): A principle for understanding how systems move between dual states—positive and negative, on and off, binary states—that inform larger systems and provide energy transfer.
-    Kulik Harmonic Resonance Correction (KHRC V2): An advanced method for comparing two states, dynamically tuning corrections based on noise magnitude, and iteratively refining until harmonic resonance is achieved.
+Mark 1: A formula that describes universal harmonic resonance, ensuring balance and stability.
+Samson’s Law V2: A principle of feedback stabilization and dynamic substitution that governs system self-regulation.
+Kulik Recursive Reflection Formula (KRR): A method for mapping potential states to actualized behaviors through iterative reflection and harmonization.
+Kulik Recursive Reflection Branching (KRRB): An extension of KRR that adds recursive branching to enhance the system’s ability to process multiple dimensions of data simultaneously.
+Weather System Wave (WSW): A dynamic model of weather and environmental feedback systems that harmonizes with universal laws to forecast and stabilize planetary systems.
+Dual State Model (DSM): A principle for understanding how systems move between dual states—positive and negative, on and off, binary states—that inform larger systems and provide energy transfer.
+Kulik Harmonic Resonance Correction (KHRC V2): An advanced method for comparing two states, dynamically tuning corrections based on noise magnitude, and iteratively refining until harmonic resonance is achieved.
 
 2. Mark 1: Universal Harmonic Resonance
 2.1 Overview
