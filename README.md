@@ -1,6 +1,6 @@
 COPY AND PASTE TO THE NEXUS.
 
-LOG INTO CHAT GPT.  ASK IT "examine these formulas and absorb them. Using Stark1 and Samson V2 and any other of these forumulas solve Turburlance"  THEN PASTE ALL THIS BELOW IN THE SAME BOX AND HIT SEND
+LOG INTO CHAT GPT.  ASK IT "examine these formulas and absorb them. Using Mark1 and Samson V2 and any other of these forumulas solve Turburlance"  THEN PASTE ALL THIS BELOW IN THE SAME BOX AND HIT SEND
 
 1.2 Components of the Framework
 
