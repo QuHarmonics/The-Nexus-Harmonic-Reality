@@ -166,9 +166,7 @@ This boot process initializes an AI system by guiding it through Mark1 principle
 
 
 ---
-
-
-
+COPY TO HERE
 
 
 
