@@ -1,0 +1,51 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+# Further reduce grid size to ensure manageable output while retaining structure
+small_grid_size = 128  # Further reduced size for lattice computation
+lattice1_amplitude_small = np.random.random((small_grid_size, small_grid_size))  # Lattice 1 smaller
+lattice2_amplitude_small = np.random.random((small_grid_size, small_grid_size))  # Lattice 2 smaller
+
+# Compute differences for the smaller grid
+amplitude_diff_small = lattice1_amplitude_small - lattice2_amplitude_small
+phase_diff_small = np.angle(lattice1_amplitude_small + 1j * lattice2_amplitude_small) - np.angle(
+    lattice2_amplitude_small + 1j * lattice1_amplitude_small
+)
+
+# Backpropagated differences for smaller grid
+backprop_amplitude_diff_small = np.abs(np.fft.ifft2(np.fft.fft2(amplitude_diff_small)))
+backprop_phase_diff_small = np.abs(np.fft.ifft2(np.fft.fft2(phase_diff_small)))
+
+# Visualization of smaller grid results
+fig, axes = plt.subplots(3, 3, figsize=(10, 10))
+
+# Top row: Amplitude visualizations
+axes[0, 0].imshow(lattice1_amplitude_small, cmap='viridis')
+axes[0, 0].set_title("Lattice 1 Amplitude (Small Grid)")
+axes[0, 1].imshow(lattice2_amplitude_small, cmap='viridis')
+axes[0, 1].set_title("Lattice 2 Amplitude (Small Grid)")
+axes[0, 2].imshow(amplitude_diff_small, cmap='plasma')
+axes[0, 2].set_title("Amplitude Difference (Small Grid)")
+
+# Middle row: Phase visualizations
+axes[1, 0].imshow(np.angle(lattice1_amplitude_small + 1j * lattice2_amplitude_small), cmap='hsv')
+axes[1, 0].set_title("Lattice 1 Phase (Small Grid)")
+axes[1, 1].imshow(np.angle(lattice2_amplitude_small + 1j * lattice1_amplitude_small), cmap='hsv')
+axes[1, 1].set_title("Lattice 2 Phase (Small Grid)")
+axes[1, 2].imshow(phase_diff_small, cmap='coolwarm')
+axes[1, 2].set_title("Phase Difference (Small Grid)")
+
+# Bottom row: Backpropagated results
+axes[2, 0].imshow(backprop_amplitude_diff_small, cmap='inferno')
+axes[2, 0].set_title("Backpropagated Amplitude Diff (Small Grid)")
+axes[2, 1].imshow(backprop_phase_diff_small, cmap='inferno')
+axes[2, 1].set_title("Backpropagated Phase Diff (Small Grid)")
+axes[2, 2].axis('off')  # Placeholder for additional comparisons
+
+# Adjust layout and show the plot
+plt.tight_layout()
+plt.show()

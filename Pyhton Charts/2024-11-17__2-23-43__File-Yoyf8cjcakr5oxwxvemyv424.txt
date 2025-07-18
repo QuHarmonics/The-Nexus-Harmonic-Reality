@@ -1,0 +1,91 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-86dc-8011-a90c-b8c1e6ac3d14
+
+Title:
+
+
+Prompt:
+def test_quantum_macro_dynamics(mass, spin, iterations, gain_ratio, pi_activation_condition):
+    """
+    Analyze the dynamic interaction between quantum (mass) and macro (spin) contributions.
+    :param mass: Quantum step size (mass)
+    :param spin: Inertia factor (spin)
+    :param iterations: Number of iterations
+    :param gain_ratio: Core gain ratio
+    :param pi_activation_condition: Function to determine if π is activated
+    :return: Outputs and contributions
+    """
+    outputs = []
+    contributions_mass = []
+    contributions_spin = []
+
+    momentum = 0
+    previous_x = 0
+    for theta in angles:
+        x = theta  # Start with the current angle
+
+        for _ in range(iterations):
+            # Macro-level torque initiation
+            macro_contribution = gain_ratio * (1 - x)
+            x += macro_contribution
+
+            # Apply π influence conditionally
+            if pi_activation_condition(x):
+                x += 0.1 * np.sin(np.pi * x)
+
+            # Add triangle-circle contribution (geometric correction)
+            triangle_contribution = 0.05 * (0.5 * (2 * np.sin(x / 2)) * np.cos(x / 2))
+            x += triangle_contribution
+
+            # Add lag/momentum effects for quantum maintenance
+            quantum_contribution = mass * np.floor(x / mass)
+            x += quantum_contribution
+
+            # Spin (inertia factor for stabilization)
+            spin_contribution = spin * momentum
+            x += spin_contribution
+
+            # Damping
+            damping = 0.05 * (x - previous_x)
+            x -= damping
+
+            # Update momentum
+            momentum += quantum_contribution
+
+            previous_x = x
+
+        outputs.append(x)
+        contributions_mass.append(quantum_contribution)
+        contributions_spin.append(spin_contribution)
+
+    return outputs, contributions_mass, contributions_spin
+
+
+# Test with the sweet spot configuration
+outputs, contributions_mass, contributions_spin = test_quantum_macro_dynamics(
+    best_mass, best_spin, 20, 0.35, lambda x: 0 <= x <= np.pi
+)
+
+# Plot the outputs and contributions
+plt.figure(figsize=(12, 6))
+plt.plot(angles, outputs, label="Outputs (Torque)")
+plt.plot(angles, contributions_mass, label="Quantum Contribution (Mass)")
+plt.plot(angles, contributions_spin, label="Macro Contribution (Spin)")
+plt.plot(angles, expected_torque, label="Expected Torque", linestyle='--', color='black')
+plt.title("Quantum-Macro Dynamics Interaction")
+plt.xlabel("Angle (rad)")
+plt.ylabel("Value (Nm)")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Analyze the dynamic balance
+dynamic_balance_df = pd.DataFrame({
+    "Angle (rad)": angles,
+    "Outputs": outputs,
+    "Quantum Contribution (Mass)": contributions_mass,
+    "Macro Contribution (Spin)": contributions_spin,
+    "Expected Torque": expected_torque,
+})
+
+tools.display_dataframe_to_user("Quantum-Macro Dynamics Analysis", dynamic_balance_df)

@@ -1,0 +1,50 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+# Define the given extended π digits sequence
+extended_pi_digits = [1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 1, 8, 9, 0, 7, 9, 1, 3, 2, 1, 3, 8, 2, 4, 6, 0, 2, 6, 1, 4, 3, 1]
+
+# Extract (B, A, C) triplets using three sequential values at a time
+triangles_bac = [(extended_pi_digits[i], extended_pi_digits[i+1], extended_pi_digits[i+2])
+                 for i in range(0, len(extended_pi_digits) - 2, 3)]
+
+# Set up sequential plotting along the x-axis
+x_offset = 0
+x_spacing = 5  # Space between each triangle
+
+plt.figure(figsize=(12, 6))
+
+for i, (b, a, c) in enumerate(triangles_bac):
+    # Triangle vertices based on B (right side), A (left side), and C (bottom width)
+    A = (x_offset, 0)
+    B = (x_offset + c, 0)  # Base width along the x-axis
+    Cx = x_offset + (c / 2)  # Place peak at midpoint of base
+    Cy = np.sqrt(abs(a**2 - (c / 2)**2)) if c != 0 else 0  # Height using a as the left side
+
+    C = (Cx, Cy)
+
+    # Plot the triangle
+    x_coords = [A[0], B[0], C[0], A[0]]
+    y_coords = [A[1], B[1], C[1], A[1]]
+    plt.plot(x_coords, y_coords, marker='o', linestyle='-', label=f"Triangle {i+1}")
+
+    # Annotate points
+    plt.text(A[0], A[1], "A", fontsize=10, verticalalignment='bottom', horizontalalignment='right')
+    plt.text(B[0], B[1], "B", fontsize=10, verticalalignment='bottom', horizontalalignment='left')
+    plt.text(C[0], C[1], "C", fontsize=10, verticalalignment='bottom', horizontalalignment='left')
+
+    # Move x-offset for the next triangle
+    x_offset += x_spacing
+
+# Formatting the plot
+plt.title("Sequential π Triangle Representation (B, A, C) with C as Base Width")
+plt.xlabel("X-Axis (Sequential Placement)")
+plt.ylabel("Y-Axis (Triangle Height)")
+plt.axhline(0, color='black', linewidth=0.5)
+plt.grid(True)
+plt.legend()
+plt.show()

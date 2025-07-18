@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Extract distances and relations
+distances = [r['Distance'] for r in results if r['Distance'] is not None]
+relations = [r['Relation'] for r in results if r['Relation'] is not None]
+
+# Plot distances and relations
+plt.figure(figsize=(12, 6))
+
+# Distances
+plt.subplot(2, 1, 1)
+plt.plot(range(1, len(distances) + 1), distances, label='Distances', color='blue')
+plt.title('Distances Between Constants')
+plt.xlabel('Index')
+plt.ylabel('Distance')
+plt.grid(True)
+plt.legend()
+
+# Relations
+plt.subplot(2, 1, 2)
+plt.plot(range(1, len(relations) + 1), relations, label='Relations', color='green')
+plt.title('Relations Between Constants')
+plt.xlabel('Index')
+plt.ylabel('Relation')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,35 @@
+Conversation URL:
+https://chatgpt.com/c/67da37bf-f3e4-8011-aa66-4d6ef4f2ac88
+
+Title:
+
+
+Prompt:
+# Define base values (1 to 9) and exponents (1 to 18)
+bases = np.arange(1, 10)
+exponents = np.arange(1, 19)
+
+# Store results
+hex_lengths = {base: [] for base in bases}
+
+# Iterate through each base and exponent
+for base in bases:
+    for exp in exponents:
+        value = base ** exp
+        hex_value = hex(value)[2:]  # Convert to hex and remove '0x' prefix
+        hex_length = len(hex_value)  # Get length of hex representation
+        hex_lengths[base].append(hex_length)
+
+# Plot results
+plt.figure(figsize=(12, 6))
+
+for base in bases:
+    plt.plot(exponents, hex_lengths[base], marker='o', linestyle='-', label=f'Base {base}')
+
+plt.xlabel('Exponent')
+plt.ylabel('Hex Length')
+plt.title('Hex Lengths for Base 1 to 9 with Exponents 1 to 18')
+plt.xticks(exponents)
+plt.legend(title="Base Values")
+plt.grid(True)
+plt.show()

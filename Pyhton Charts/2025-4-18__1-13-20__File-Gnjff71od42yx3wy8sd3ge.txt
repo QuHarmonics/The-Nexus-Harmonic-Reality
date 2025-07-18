@@ -1,0 +1,60 @@
+Conversation URL:
+https://chatgpt.com/c/680141c8-f3cc-8011-8a38-859887970f31
+
+Title:
+
+
+Prompt:
+import hashlib
+import matplotlib.pyplot as plt
+
+# === BBP π Digit Extractor (Base-16) ===
+def bbp_pi_digits(n):
+    """Return the nth hexadecimal digit of π (after the decimal) using the BBP formula."""
+    pi_hex_digits = []
+    for d in range(n):
+        x = 0
+        for k in range(d + 1):
+            x += (1 / (16 ** (d - k))) * (
+                4 / (8 * k + 1) -
+                2 / (8 * k + 4) -
+                1 / (8 * k + 5) -
+                1 / (8 * k + 6)
+            )
+        x -= int(x)
+        digit = int(16 * x)
+        pi_hex_digits.append(hex(digit)[2:])
+    return ''.join(pi_hex_digits)
+
+# === SHA Drift Vector Computation ===
+def sha256_drift(hex_string):
+    hash_bytes = hashlib.sha256(bytes.fromhex(hex_string)).digest()
+    words = [int.from_bytes(hash_bytes[i:i+4], 'big') for i in range(0, 32, 4)]
+    drift_vector = [2**32 - w if w < 2**31 else -(2**32 - w) for w in words]
+    return drift_vector
+
+# === Run BBP → SHA Drift Test ===
+def run_bbp_sha_test(samples=64):
+    digits = bbp_pi_digits(samples)
+    drift_vectors = []
+
+    for i in range(0, len(digits) - 64, 8):  # 8 hex chars = 32 bits
+        segment = digits[i:i+64]
+        drift = sha256_drift(segment)
+        drift_vectors.append(drift)
+
+    return drift_vectors
+
+# Run the test
+drift_vectors = run_bbp_sha_test(128)
+
+# Visualize
+plt.figure(figsize=(12, 6))
+for i, vec in enumerate(drift_vectors):
+    plt.plot(vec, label=f'Segment {i}', alpha=0.5)
+plt.title("SHA256 Drift Vectors of BBP-Generated π Segments")
+plt.xlabel("Word Index (0–7)")
+plt.ylabel("Signed Drift from 2^32")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

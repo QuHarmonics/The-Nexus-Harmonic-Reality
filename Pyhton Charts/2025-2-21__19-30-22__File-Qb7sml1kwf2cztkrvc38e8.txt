@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+# SHA-256 Output Analysis for "hello"
+
+# SHA-256 hash of "hello"
+sha256_hello_hash = "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+
+# Convert the SHA-256 hex string into bytes
+sha256_hello_bytes = bytes.fromhex(sha256_hello_hash)
+
+# Frequency analysis of byte values (0-255 range)
+byte_frequencies_hello = Counter(sha256_hello_bytes)
+
+# Sort byte frequencies for visualization
+sorted_bytes_hello = sorted(byte_frequencies_hello.keys())
+sorted_frequencies_hello = [byte_frequencies_hello[b] for b in sorted_bytes_hello]
+
+# Plot the byte frequency distribution for "hello" SHA-256
+plt.figure(figsize=(12, 6))
+plt.bar(sorted_bytes_hello, sorted_frequencies_hello, color='red', alpha=0.7)
+plt.title("Byte Frequency Analysis of SHA-256 Output ('hello')")
+plt.xlabel("Byte Value (0-255)")
+plt.ylabel("Frequency")
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+
+# Calculate entropy of SHA-256 hash output for "hello"
+entropy_hello = -sum((freq / len(sha256_hello_bytes)) * np.log2(freq / len(sha256_hello_bytes))
+                     for freq in byte_frequencies_hello.values())
+
+entropy_hello

@@ -1,0 +1,50 @@
+Conversation URL:
+https://chatgpt.com/c/67efdd1a-c980-8011-a27b-addc30749a3e
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+steps = 200               # number of time steps
+angle = 0.0               # initial angle of movement
+velocity = 1.0            # base speed
+deviation_strength = 0.05 # magnitude of random unknown deviation
+correction_strength = 0.2 # how much correction applies from past
+
+# Initialize trajectory
+x = [0]
+y = [0]
+angles = [angle]
+
+for t in range(1, steps):
+    # Unknown disturbance – the "birth ignorance"
+    deviation = np.random.uniform(-deviation_strength, deviation_strength)
+    
+    # Feedback correction from previous angles (recursive memory)
+    if t > 1:
+        past_trend = angles[-1] - angles[-2]
+    else:
+        past_trend = 0
+
+    # Adjust angle by deviation and correction toward past stability
+    new_angle = angles[-1] + deviation - correction_strength * past_trend
+    angles.append(new_angle)
+    
+    # Move in the new direction
+    x.append(x[-1] + velocity * np.cos(new_angle))
+    y.append(y[-1] + velocity * np.sin(new_angle))
+
+# Plot trajectory
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, marker='o', markersize=2, linewidth=1.5, color='blue')
+plt.title("Recursive Agent: Moving Without a Goal (Born from the Unknown)")
+plt.xlabel("X Position")
+plt.ylabel("Y Position")
+plt.grid(True)
+plt.axis('equal')
+plt.tight_layout()
+plt.show()

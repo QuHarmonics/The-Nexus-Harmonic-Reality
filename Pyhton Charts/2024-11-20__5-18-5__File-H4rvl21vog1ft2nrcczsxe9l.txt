@@ -1,0 +1,52 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-b7f0-8011-9962-4f2abd03c397
+
+Title:
+
+
+Prompt:
+# Adjust KHRC by introducing a reference tuning mechanism
+# The reference will dynamically scale the resonance factor (R) based on the current noise magnitude
+
+def dynamic_resonance_factor(noise_magnitude, base_R=1.0, scaling_factor=0.1):
+    """
+    Dynamically adjust the resonance factor based on the magnitude of the noise.
+    :param noise_magnitude: Magnitude of the current noise (np.linalg.norm).
+    :param base_R: Base resonance factor.
+    :param scaling_factor: Factor to tune the adjustment.
+    :return: Adjusted resonance factor.
+    """
+    return base_R / (1 + scaling_factor * noise_magnitude)
+
+# KHRC Correction Process with dynamic tuning
+current_state = unhealthy_state.copy()
+history_dynamic = [current_state]
+
+for _ in range(max_iterations):
+    noise_signal = healthy_state - current_state  # Calculate the noise
+    noise_magnitude = np.linalg.norm(noise_signal)  # Calculate noise magnitude
+    R_tuned = dynamic_resonance_factor(noise_magnitude)  # Dynamically adjust resonance factor
+    corrective_signal = -noise_signal * R_tuned  # Generate corrective signal
+    current_state += corrective_signal  # Apply correction
+    history_dynamic.append(current_state.copy())
+
+    # Check if the system is in harmony
+    if noise_magnitude < epsilon:
+        break
+
+# Plot results for the dynamically tuned KHRC
+plt.figure(figsize=(12, 6))
+plt.plot(x, healthy_state, label="Healthy State (Ideal)", linewidth=2)
+plt.plot(x, unhealthy_state, label="Unhealthy State (Initial)", linestyle="--", alpha=0.7)
+plt.plot(x, current_state, label="Corrected State (Final, Tuned)", linewidth=2, linestyle=":")
+plt.title("KHRC with Dynamic Resonance Tuning (Distorted Sine Wave)")
+plt.xlabel("Time / Space")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Return the number of iterations and final noise for the tuned approach
+iterations_tuned = len(history_dynamic) - 1
+final_noise_tuned = np.linalg.norm(healthy_state - current_state)
+iterations_tuned, final_noise_tuned

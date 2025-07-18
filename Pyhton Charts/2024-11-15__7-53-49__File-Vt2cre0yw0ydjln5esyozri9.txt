@@ -1,0 +1,31 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Filter data for the sweet spot range
+sweet_spot_df = weighted_planck_df[(weighted_planck_df["Size Scale"] >= 0.35) & 
+                                   (weighted_planck_df["Size Scale"] <= upper_threshold)]
+
+# Calculate mean and standard deviation of deviations in the sweet spot
+sweet_spot_stats = sweet_spot_df[["Original Deviation (%)", "Reweighted Deviation (%)"]].describe()
+
+# Visualize deviations in the sweet spot
+plt.figure(figsize=(10, 6))
+for mass in np.unique(sweet_spot_df["Mass (kg)"]):
+    subset = sweet_spot_df[sweet_spot_df["Mass (kg)"] == mass]
+    plt.plot(subset["Size Scale"], subset["Reweighted Deviation (%)"], label=f"Mass = {mass:.1e} kg")
+
+plt.axvline(0.35, color='green', linestyle='--', label="Lower Sweet Spot = 0.35")
+plt.axvline(upper_threshold, color='red', linestyle='--', label="Upper Sweet Spot Threshold")
+plt.xlabel("Size Scale")
+plt.ylabel("Reweighted Deviation (%)")
+plt.title("Refined Formula Accuracy in the Sweet Spot")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Display statistical summary of deviations in the sweet spot
+import ace_tools as tools; tools.display_dataframe_to_user(name="Sweet Spot Deviation Statistics", dataframe=sweet_spot_stats)

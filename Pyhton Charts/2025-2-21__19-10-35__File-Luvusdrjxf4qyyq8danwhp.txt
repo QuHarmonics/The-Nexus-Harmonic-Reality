@@ -1,0 +1,52 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+# Re-import necessary libraries after execution state reset
+import numpy as np
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# Re-extract the provided data
+pi_decimal = "141592653589793238462643383279502884197169399375105820974944592307816406286208998"
+pi_hex = "4B70C2C8ABBE254213ED9951A847E68C4E49BF55576C1FBA804185C03FA27723CFA64D398C8F652A"
+pi_hex_as_text_to_hex = "3442373043324338414242532433534323133445344935314138343745363843434424346353531"
+
+# Function to count digit frequencies
+def count_frequencies(data, base=16):
+    counter = Counter(data)
+    sorted_keys = sorted(counter.keys(), key=lambda x: int(x, base))
+    return {k: counter[k] for k in sorted_keys}
+
+# Convert all to numeric form
+pi_decimal_freq = count_frequencies(pi_decimal, base=10)
+pi_hex_freq = count_frequencies(pi_hex, base=16)
+pi_hex_as_text_to_hex_freq = count_frequencies(pi_hex_as_text_to_hex, base=16)
+
+# Plot Frequency Distributions
+fig, axes = plt.subplots(3, 1, figsize=(10, 15))
+
+# Plot Decimal π Frequencies
+axes[0].bar(pi_decimal_freq.keys(), pi_decimal_freq.values())
+axes[0].set_title("Digit Frequency in π Decimal")
+axes[0].set_xlabel("Digit")
+axes[0].set_ylabel("Frequency")
+
+# Plot π Hex Frequencies
+axes[1].bar(pi_hex_freq.keys(), pi_hex_freq.values(), color='orange')
+axes[1].set_title("Digit Frequency in π Hex")
+axes[1].set_xlabel("Hex Digit")
+axes[1].set_ylabel("Frequency")
+
+# Plot π Hex as Text to Hex Frequencies
+axes[2].bar(pi_hex_as_text_to_hex_freq.keys(), pi_hex_as_text_to_hex_freq.values(), color='green')
+axes[2].set_title("Digit Frequency in π Hex Treated as Text to Hex")
+axes[2].set_xlabel("Hex Digit (ASCII Encoded)")
+axes[2].set_ylabel("Frequency")
+
+# Show Plots
+plt.tight_layout()
+plt.show()

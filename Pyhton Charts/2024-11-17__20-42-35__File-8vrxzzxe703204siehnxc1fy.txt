@@ -1,0 +1,84 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-8fc8-8011-b56c-e5877bac1766
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define known traits for human evolution (example: cranial capacity, tool complexity, social behavior)
+species = ["Australopithecus", "Homo habilis", "Homo erectus", "Homo heidelbergensis", "Homo sapiens"]
+cranial_capacity = [450, 600, 1000, 1200, 1400]  # In cubic centimeters (cc)
+tool_complexity = [1, 2, 4, 6, 8]  # Arbitrary scale for tool use complexity
+social_behavior = [1, 2, 3, 5, 7]  # Arbitrary scale for social behavior development
+
+# Define Mark 1 (idealized traits for Homo sapiens)
+mark1_traits = {
+    "cranial_capacity": 1400,
+    "tool_complexity": 8,
+    "social_behavior": 7
+}
+
+# Calculate deviations from Mark 1
+def calculate_deviations(traits, ideal):
+    deviations = [ideal - t for t in traits]
+    return deviations
+
+cranial_deviations = calculate_deviations(cranial_capacity, mark1_traits["cranial_capacity"])
+tool_deviations = calculate_deviations(tool_complexity, mark1_traits["tool_complexity"])
+social_deviations = calculate_deviations(social_behavior, mark1_traits["social_behavior"])
+
+# Reflect deviations to hypothesize missing intermediate states
+def reflect_deviation(traits, deviations, factor=0.5):
+    reflected = [t + d * factor for t, d in zip(traits, deviations)]
+    return reflected
+
+# Simulate missing traits
+simulated_cranial = reflect_deviation(cranial_capacity, cranial_deviations)
+simulated_tool = reflect_deviation(tool_complexity, tool_deviations)
+simulated_social = reflect_deviation(social_behavior, social_deviations)
+
+# Visualize the simulation
+plt.figure(figsize=(15, 5))
+
+# Cranial Capacity
+plt.subplot(1, 3, 1)
+plt.plot(species, cranial_capacity, label="Observed Cranial Capacity", marker='o', color='blue')
+plt.plot(species, simulated_cranial, label="Simulated Cranial Capacity", linestyle='--', marker='x', color='red')
+plt.title("Cranial Capacity Over Time")
+plt.xlabel("Species")
+plt.ylabel("Cranial Capacity (cc)")
+plt.legend()
+plt.grid(True)
+
+# Tool Complexity
+plt.subplot(1, 3, 2)
+plt.plot(species, tool_complexity, label="Observed Tool Complexity", marker='o', color='green')
+plt.plot(species, simulated_tool, label="Simulated Tool Complexity", linestyle='--', marker='x', color='orange')
+plt.title("Tool Complexity Over Time")
+plt.xlabel("Species")
+plt.ylabel("Tool Complexity")
+plt.legend()
+plt.grid(True)
+
+# Social Behavior
+plt.subplot(1, 3, 3)
+plt.plot(species, social_behavior, label="Observed Social Behavior", marker='o', color='purple')
+plt.plot(species, simulated_social, label="Simulated Social Behavior", linestyle='--', marker='x', color='brown')
+plt.title("Social Behavior Over Time")
+plt.xlabel("Species")
+plt.ylabel("Social Behavior")
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+# Return the simulated intermediate states
+{
+    "simulated_cranial_capacity": simulated_cranial,
+    "simulated_tool_complexity": simulated_tool,
+    "simulated_social_behavior": simulated_social
+}

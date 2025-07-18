@@ -1,0 +1,42 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+# Adjust the code to rotate the blue grid (Z_interaction) 90 degrees to the left
+
+# Rotate the Z_interaction grid 90 degrees along the Y-axis
+Z_interaction_rotated = np.rot90(Z_interaction, k=1)  # Rotate 90 degrees counterclockwise
+
+# Ensure X and Y dimensions match the rotated Z_interaction
+X_rotated = np.linspace(0, Z_interaction_rotated.shape[1] - 1, Z_interaction_rotated.shape[1])
+Y_rotated = np.linspace(0, Z_interaction_rotated.shape[0] - 1, Z_interaction_rotated.shape[0])
+X_rotated, Y_rotated = np.meshgrid(X_rotated, Y_rotated)
+
+# Plot the rotated grid alongside the original for comparison
+fig = plt.figure(figsize=(12, 8))
+
+# Original diagonal view
+ax1 = fig.add_subplot(121, projection="3d")
+ax1.plot_surface(X, Y, Z_interaction, cmap="plasma", edgecolor="none", alpha=0.6)
+ax1.plot_wireframe(X, Y, Z_extended, color="cyan", alpha=0.4)
+ax1.view_init(elev=45, azim=45)
+ax1.set_title("Original Diagonal View with Extended Interactions")
+ax1.set_xlabel("X Axis (Index)")
+ax1.set_ylabel("Y Axis (Index)")
+ax1.set_zlabel("Amplitude")
+
+# Rotated grid view
+ax2 = fig.add_subplot(122, projection="3d")
+ax2.plot_surface(X_rotated, Y_rotated, Z_interaction_rotated, cmap="plasma", edgecolor="none", alpha=0.6)
+ax2.plot_wireframe(X_rotated, Y_rotated, Z_extended, color="cyan", alpha=0.4)
+ax2.view_init(elev=45, azim=45)
+ax2.set_title("Rotated Grid (90° Counterclockwise)")
+ax2.set_xlabel("X Axis (Index)")
+ax2.set_ylabel("Y Axis (Index)")
+ax2.set_zlabel("Amplitude")
+
+plt.tight_layout()
+plt.show()

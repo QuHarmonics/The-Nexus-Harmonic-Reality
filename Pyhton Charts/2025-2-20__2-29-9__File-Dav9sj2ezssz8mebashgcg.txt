@@ -1,0 +1,69 @@
+Conversation URL:
+https://chatgpt.com/c/67b6cf81-3b6c-8011-b1de-b90805b612a3
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpmath import mp, pi, e, phi, ln, sqrt
+
+# Set high precision for calculations
+mp.dps = 1000  # 1000 decimal places
+
+# Define functions for computing first 1000 iterations
+def compute_pi(n):
+    return [mp.nstr(pi, d)[:d+2] for d in range(1, n+1)]
+
+def compute_e(n):
+    return [mp.nstr(e, d)[:d+2] for d in range(1, n+1)]
+
+def compute_phi(n):
+    return [mp.nstr(phi, d)[:d+2] for d in range(1, n+1)]
+
+def compute_ln2(n):
+    return [mp.nstr(ln(2), d)[:d+2] for d in range(1, n+1)]
+
+def compute_sqrt2(n):
+    return [mp.nstr(sqrt(2), d)[:d+2] for d in range(1, n+1)]
+
+# Number of iterations (digits computed step-by-step)
+n_iterations = 1000
+
+# Compute sequences
+pi_digits = compute_pi(n_iterations)
+e_digits = compute_e(n_iterations)
+phi_digits = compute_phi(n_iterations)
+ln2_digits = compute_ln2(n_iterations)
+sqrt2_digits = compute_sqrt2(n_iterations)
+
+# Convert digit sequences into numerical kinetic motion (difference between consecutive steps)
+def compute_kinetic_motion(seq):
+    return [abs(float(seq[i]) - float(seq[i-1])) for i in range(1, len(seq))]
+
+# Compute kinetic motion for each
+pi_motion = compute_kinetic_motion(pi_digits)
+e_motion = compute_kinetic_motion(e_digits)
+phi_motion = compute_kinetic_motion(phi_digits)
+ln2_motion = compute_kinetic_motion(ln2_digits)
+sqrt2_motion = compute_kinetic_motion(sqrt2_digits)
+
+# Plot kinetic motion of the major irrational numbers
+plt.figure(figsize=(12, 6))
+plt.plot(pi_motion, label=r'$\pi$', alpha=0.8)
+plt.plot(e_motion, label=r'$e$', alpha=0.8)
+plt.plot(phi_motion, label=r'$\phi$', alpha=0.8)
+plt.plot(ln2_motion, label=r'$\ln(2)$', alpha=0.8)
+plt.plot(sqrt2_motion, label=r'$\sqrt{2}$', alpha=0.8)
+
+# Formatting plot
+plt.yscale('log')  # Log scale to see fluctuations
+plt.xlabel("Iterations (Digits Computed)")
+plt.ylabel("Change in Computed Value (Kinetic Motion)")
+plt.title("Kinetic Motion of Irrational Numbers Over 1000 Iterations")
+plt.legend()
+plt.grid(True)
+
+# Show plot
+plt.show()

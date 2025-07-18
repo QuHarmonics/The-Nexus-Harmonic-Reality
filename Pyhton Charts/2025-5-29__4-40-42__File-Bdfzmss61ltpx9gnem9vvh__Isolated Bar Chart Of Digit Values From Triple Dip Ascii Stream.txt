@@ -1,0 +1,15 @@
+Conversation URL:
+https://chatgpt.com/c/68380ccf-e2b0-8011-8c8e-2a813d434243
+
+Title:
+Isolated Bar Chart of Digit Values from Triple Dip ASCII Stream
+
+Prompt:
+# Plotting a bar chart where each digit is shown as its own bar (no connected progression)
+plt.figure(figsize=(14, 5))
+plt.bar(range(len(digit_sequence)), digit_sequence, color='darkorange', width=1.0)
+plt.title('Isolated Bar Chart of Digit Values from Triple Dip ASCII Stream')
+plt.xlabel('Digit Index')
+plt.ylabel('Digit Value')
+plt.tight_layout()
+plt.show()

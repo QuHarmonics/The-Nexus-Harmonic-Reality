@@ -1,0 +1,41 @@
+Conversation URL:
+https://chatgpt.com/c/680df8d1-c038-8011-b644-837635a78eee
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+k = 0.35
+steps = 50
+tol_plot = 0.2  # tolerance for contour
+grid_size = 100
+
+betas = np.linspace(0, 2, grid_size)
+gammas = np.linspace(0, 2, grid_size)
+error_map = np.zeros((grid_size, grid_size))
+
+for i, beta in enumerate(betas):
+    for j, gamma in enumerate(gammas):
+        H, S = 0.5, 1.0
+        for _ in range(steps):
+            delta = S - H
+            S -= beta * delta
+            H += gamma * delta
+            delta = S - H
+            S -= k * delta
+        error_map[j, i] = abs(S - k)
+
+plt.figure(figsize=(6, 5))
+plt.title(f"Convergence Error with contour at error={tol_plot}")
+plt.xlabel("β")
+plt.ylabel("γ")
+im = plt.imshow(error_map, origin='lower', extent=(0, 2, 0, 2), aspect='auto')
+contour = plt.contour(betas, gammas, error_map, levels=[tol_plot], colors='white', linewidths=1.5)
+plt.clabel(contour, fmt={tol_plot: f"error={tol_plot}"}, inline=True)
+plt.colorbar(im, label="|S_final - k|")
+plt.tight_layout()
+plt.show()

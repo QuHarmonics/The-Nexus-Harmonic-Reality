@@ -1,0 +1,54 @@
+Conversation URL:
+https://chatgpt.com/c/68030da1-8898-8011-bcac-6c40d5dff28b
+
+Title:
+Disruptor-3 vs. ICP0
+
+Prompt:
+# Time vector (shared for all)
+t = np.linspace(0, 10, 500)
+
+# Common decay and frequency values
+theta = 1.0
+delta_t = 0.2
+H_true = 1.0
+
+# ΔR_feedback for all peptides (adjusted for uniqueness)
+drift_disruptor = H_true * (1 - (delta_t / theta)) * np.exp(-t) * np.sin(2 * np.pi * t)
+drift_adapter = H_true * (1 - (delta_t / theta)) * np.exp(-0.8 * t) * np.sin(2.5 * np.pi * t)
+drift_stabilizer = H_true * (1 - (delta_t / theta)) * np.exp(-0.5 * t) * np.sin(1.5 * np.pi * t)
+
+# Target recursion folds for comparison
+stability_icp0 = np.exp(-0.3 * t) * np.cos(2 * np.pi * t)
+stability_gp41 = np.exp(-0.4 * t) * np.cos(2.5 * np.pi * t)
+stability_host = np.exp(-0.2 * t) * np.cos(1.5 * np.pi * t)
+
+# Plot
+plt.figure(figsize=(14, 8))
+
+# Subplot 1: Disruptor-3 vs ICP0
+plt.subplot(3, 1, 1)
+plt.plot(t, drift_disruptor, label='ΔR_feedback: Disruptor-3', linewidth=2)
+plt.plot(t, stability_icp0, '--', label='Viral Recursion: ICP0')
+plt.title("Disruptor-3 vs. ICP0")
+plt.legend()
+plt.grid(True)
+
+# Subplot 2: Adapter-1 vs gp41
+plt.subplot(3, 1, 2)
+plt.plot(t, drift_adapter, label='ΔR_feedback: Adapter-1', linewidth=2)
+plt.plot(t, stability_gp41, '--', label='Viral Recursion: gp41')
+plt.title("Adapter-1 vs. HIV gp41")
+plt.legend()
+plt.grid(True)
+
+# Subplot 3: Stabilizer-2 vs Host Fold
+plt.subplot(3, 1, 3)
+plt.plot(t, drift_stabilizer, label='ΔR_feedback: Stabilizer-2 (Zn/Mg)', linewidth=2)
+plt.plot(t, stability_host, '--', label='Cellular Fold Resonance')
+plt.title("Stabilizer-2 vs. Host Recursion Integrity")
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()

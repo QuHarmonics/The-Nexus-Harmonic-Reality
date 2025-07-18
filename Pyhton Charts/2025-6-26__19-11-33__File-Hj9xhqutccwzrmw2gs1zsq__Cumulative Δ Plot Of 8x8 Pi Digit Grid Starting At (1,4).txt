@@ -1,0 +1,40 @@
+Conversation URL:
+https://chatgpt.com/c/685cb99b-20cc-8011-8953-371c464096df
+
+Title:
+Cumulative Δ Plot of 8x8 Pi Digit Grid Starting at (1,4)
+
+Prompt:
+import numpy as np
+
+# Use the first 64 digits of π after the decimal (excluding 3)
+pi_digits_str = "1415926535897932384626433832795028841971693993751058209749445923078164"
+pi_digits = [int(d) for d in pi_digits_str[:64]]
+
+# Reshape into 8x8 grid
+pi_grid = np.array(pi_digits).reshape(8, 8)
+
+# Compute cumulative Δ changes per row, starting at (1,4)
+delta_rows = []
+for row in pi_grid:
+    cumulative = [1]  # Start from 1
+    for i in range(1, len(row)):
+        delta = row[i] - row[i - 1]
+        next_val = cumulative[-1] + delta
+        cumulative.append(next_val)
+    delta_rows.append(cumulative)
+
+# Plotting
+plt.figure(figsize=(12, 7))
+x_vals = [i + 1 for i in range(8)]  # Time steps
+
+for idx, row in enumerate(delta_rows):
+    plt.plot(x_vals, row, marker='o', label=f"Row {idx+1}")
+
+plt.title("Cumulative Δ Plot of 8x8 Pi Digit Grid Starting at (1,4)")
+plt.xlabel("Time Step")
+plt.ylabel("Cumulative Δ State")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

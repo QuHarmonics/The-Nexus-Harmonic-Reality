@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/68152044-f56c-8011-af5e-c3e63d870612
+
+Title:
+Nexus Byte Waveform with Offsets
+
+Prompt:
+# Re-import required modules after environment reset
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define byte sequences
+byte1 = [1, 4, 1, 5, 9, 2, 6, 5]
+byte2 = [3, 5, 8, 9, 7, 9, 3, 2]
+byte3 = [3, 8, 4, 6, 2, 6, 4, 3]
+
+# Define bit positions for plotting
+bits = np.arange(1, 9)
+bits_byte2 = bits + 2  # Offset by 2 bits
+bits_byte3 = bits + 3  # Offset by 3 bits
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.step(bits, byte1, where='mid', label='Byte 1', linewidth=2, color='red')
+plt.step(bits_byte2, byte2, where='mid', label='Byte 2 (offset +2)', linewidth=2, color='green')
+plt.step(bits_byte3, byte3, where='mid', label='Byte 3 (offset +3)', linewidth=2, color='blue')
+
+# Labeling and display
+plt.xticks(np.arange(1, 18), [f'Bit {i}' for i in range(1, 18)])
+plt.xlabel('Bit Position')
+plt.ylabel('Digit Value (0–9)')
+plt.title('Nexus Byte Waveform with Offsets')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

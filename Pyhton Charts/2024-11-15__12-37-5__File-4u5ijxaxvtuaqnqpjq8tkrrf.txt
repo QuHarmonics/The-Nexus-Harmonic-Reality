@@ -1,0 +1,75 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Adjust the model to dynamically compress or expand extreme values for consistency
+
+def extreme_biasing_model(pressure, wind_speed, rainfall, size_scale):
+    """
+    Adjusted model to compress or expand extreme values dynamically,
+    ensuring consistency at the extremes based on deviation magnitude.
+    """
+    # Calculate Decay Energy: Reflects how wrong the macro law is
+    decay_energy = np.exp(-10 * (size_scale - 0.35)**2)  # High decay near extremes
+
+    # Quantum Influence - Increased with decay energy
+    quantum_pressure_pull = np.exp(-pressure / 900) * (1 + decay_energy)
+    quantum_wind_energy = (wind_speed**1.5) / (1 + size_scale) * (1 + decay_energy)
+    quantum_rainfall_contribution = (rainfall / (1 + quantum_pressure_pull)) * (1 + decay_energy)
+
+    # Macro Influence - Decreased with decay energy
+    macro_pressure_pull = np.exp(-pressure / 920) * (1 - decay_energy)
+    macro_wind_energy = (wind_speed**1.8) / (1 + size_scale**1.3) * (1 - decay_energy)
+    macro_rainfall_contribution = (rainfall**1.2) / (1 + macro_pressure_pull) * (1 - decay_energy)
+
+    # Combine quantum and macro components with decay correction
+    corrected_pressure_pull = quantum_pressure_pull + macro_pressure_pull
+    corrected_wind_energy = quantum_wind_energy + macro_wind_energy
+    corrected_rainfall_contribution = quantum_rainfall_contribution + macro_rainfall_contribution
+
+    # Adjust size factor using decay as a stabilizing weight
+    size_factor = size_scale**(1.3 + 0.1 * decay_energy) / (1 + corrected_wind_energy**(0.8 + 0.2 * decay_energy))
+
+    # Combined intensity estimate before biasing
+    raw_intensity = corrected_pressure_pull * corrected_wind_energy * corrected_rainfall_contribution * size_factor
+
+    # Bias extreme values
+    if size_scale > 2.0:  # High-end extreme
+        intensity = raw_intensity / (1 + decay_energy)  # Compress
+    elif size_scale < 0.5:  # Low-end extreme
+        intensity = raw_intensity * (1 + decay_energy)  # Expand
+    else:
+        intensity = raw_intensity  # Sweet spot remains untouched
+
+    return intensity
+
+# Apply the extreme biasing model to extreme cases
+extreme_cases["Extreme Biasing Predicted Intensity"] = extreme_cases.apply(
+    lambda row: extreme_biasing_model(
+        row["Pressure (hPa)"], row["Wind Speed (m/s)"], row["Rainfall (mm/h)"], row["Size Scale"]
+    ),
+    axis=1
+)
+
+# Calculate deviations with the extreme biasing model
+extreme_cases["Extreme Biasing Intensity Deviation"] = (
+    extreme_cases["Extreme Biasing Predicted Intensity"] - extreme_cases["Expected Intensity"]
+)
+
+# Display the results for extreme cases with dynamic biasing applied
+import ace_tools as tools; tools.display_dataframe_to_user(name="Extreme Case Predictions with Extreme Biasing Model", dataframe=extreme_cases)
+
+# Visualize deviations for extreme cases after applying biasing
+plt.figure(figsize=(14, 8))
+plt.bar(extreme_cases["Name"], extreme_cases["Extreme Biasing Intensity Deviation"], color="green")
+plt.axhline(15, color="red", linestyle="--", label="Positive Threshold")
+plt.axhline(-15, color="blue", linestyle="--", label="Negative Threshold")
+plt.xlabel("Storm Name")
+plt.ylabel("Extreme Biasing Intensity Deviation")
+plt.title("Deviation Analysis for Extreme Cases with Dynamic Biasing")
+plt.legend()
+plt.grid()
+plt.show()

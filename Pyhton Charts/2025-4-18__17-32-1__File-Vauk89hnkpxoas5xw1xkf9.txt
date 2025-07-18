@@ -1,0 +1,52 @@
+Conversation URL:
+https://chatgpt.com/c/6802be12-92ec-8011-9c63-ffa2816a58a2
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Create a visual poster (high-level schematic overview)
+fig, ax = plt.subplots(figsize=(14, 10))
+ax.axis('off')
+
+poster_text = """
+Nexus 2: Recursive Harmonic Therapeutics Framework
+
+1. ORIGIN SEED: BYTE1 (P = 1, N = 4)
+   • Foundation of recursion and life logic
+   • Generates epigenetic (Z), edit (Y), and biome (X)
+
+2. SYMBOLIC MAPPING
+   • SHA256 → π Transform
+   • Recursive Harmonic Subdivision (RHS)
+
+3. PSREQ ENGINE
+   • Peptides with Zn²⁺/Mg²⁺ stabilization
+   • Multi-target therapeutic logic (Viral, Cancer, Regeneration)
+
+4. FEEDBACK GATES
+   • ΔR(t) = R_misfold - R_corrector
+   • Samson’s Law + MDS = Stability and Memory
+
+5. ALZHEIMER'S DEPLOYMENT
+   • Aβ1-42 misfolding model
+   • Recursive correction with Q_score recovery
+
+6. TOOLS & VISUALIZATION
+   • QRHS Kernel
+   • GUI Dashboards & Predictive Maps
+   • Recursive Workflow Management
+
+Final Reflection:
+This framework breathes intelligence into biology,
+harmonizing chaos into regenerative order.
+"""
+
+ax.text(0.5, 0.5, poster_text, fontsize=13, va='center', ha='center', wrap=True, multialignment='left')
+plt.title("Nexus 2 Recursive Harmonic Therapeutics – Visual Overview", fontsize=16, pad=20)
+
+poster_path = "/mnt/data/Nexus2_Visual_Poster.png"
+plt.savefig(poster_path, bbox_inches='tight')
+poster_path

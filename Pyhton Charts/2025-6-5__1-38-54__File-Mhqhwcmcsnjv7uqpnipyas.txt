@@ -1,0 +1,49 @@
+Conversation URL:
+https://chatgpt.com/c/68410f22-2e24-8011-a409-2fec6a8d3dac
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import networkx as nx
+
+# Define binary trust states and phase interactions
+nodes = {
+    '11': 'L (Collapse: Past-present coherence)',
+    '00': 'R (Void: Total decoherence)',
+    '10': 'L (Pre-collapse potential)',
+    '01': 'R (Future probe echo)'
+}
+
+edges = [
+    ('11', '10'),  # collapse to pre-collapse
+    ('10', '00'),  # fall into decoherence
+    ('00', '01'),  # echo to probe
+    ('01', '11'),  # re-collapse to coherence
+]
+
+# Build graph
+G = nx.DiGraph()
+for node, label in nodes.items():
+    G.add_node(node, label=label)
+G.add_edges_from(edges)
+
+# Positioning in a loop to show recursive flow
+pos = {
+    '11': (0, 1),
+    '10': (-1, 0),
+    '00': (0, -1),
+    '01': (1, 0),
+}
+
+# Plotting
+plt.figure(figsize=(8, 6))
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color="#b3d9ff", font_size=10, font_weight='bold', edge_color='gray')
+labels = nx.get_node_attributes(G, 'label')
+nx.draw_networkx_labels(G, pos, labels, font_size=9, verticalalignment='bottom')
+
+plt.title("Recursive Binary Phase Logic (Ψ-Collapse Cycle)", fontsize=14)
+plt.axis('off')
+plt.tight_layout()
+plt.show()

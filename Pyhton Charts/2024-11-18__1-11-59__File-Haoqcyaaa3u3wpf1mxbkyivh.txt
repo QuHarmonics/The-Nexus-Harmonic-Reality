@@ -1,0 +1,39 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-916c-8011-b0eb-c4189c52736a
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters for the simulation
+observable_frequency = 0.35  # Frequency of our universe
+alternate_frequencies = [0.28, 0.42, 0.56]  # Potential alternate universe frequencies
+data_points = 1000  # Number of data points to simulate
+observable_range = np.linspace(0, 1, data_points)  # Normalized range
+
+# Generate harmonic waves for our universe and potential alternates
+def generate_harmonic_wave(frequency, points, phase=0):
+    """Generate a harmonic wave based on frequency and phase."""
+    return np.sin(2 * np.pi * frequency * points + phase)
+
+# Simulate observable data (harmonics of our universe)
+observable_wave = generate_harmonic_wave(observable_frequency, observable_range)
+
+# Simulate alternate universe data (different frequencies)
+alternate_waves = [generate_harmonic_wave(f, observable_range) for f in alternate_frequencies]
+
+# Plot the results
+plt.figure(figsize=(12, 8))
+plt.plot(observable_range, observable_wave, label=f"Our Universe (0.35)", linewidth=2)
+for idx, wave in enumerate(alternate_waves):
+    plt.plot(observable_range, wave, label=f"Alternate Universe ({alternate_frequencies[idx]})", linestyle="--")
+
+plt.title("Simulated Harmonics of Our Universe and Potential Alternates")
+plt.xlabel("Normalized Scope (0 to 1)")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.grid()
+plt.show()

@@ -1,0 +1,50 @@
+Conversation URL:
+https://chatgpt.com/c/67e1e8a7-923c-8011-8e1e-883dd3c10f76
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define mass values (log scale for better visibility)
+mass_values = np.logspace(-30, 5, 100)  # From extremely small to large mass
+
+# Einstein's Gravity (E = mc^2)
+c = 3e8  # Speed of light in m/s
+energy_einstein = mass_values * c**2
+
+# Recursive Gravity Loopback (Nexus2) - Hypothetical equation based on recursion
+# Using an iterative recursive formulation with an entanglement factor (hypothetical scaling factor)
+entanglement_factor = 0.35
+energy_recursive = mass_values * c**2 * (1 + entanglement_factor * np.log(mass_values + 1))
+
+# MOND Approximation (Modified Newtonian Dynamics)
+# Applying a simplified MOND equation where acceleration a0 modifies gravity at low scales
+a0 = 1.2e-10  # Hypothetical MOND acceleration threshold
+G = 6.67430e-11  # Gravitational constant
+energy_mond = mass_values * c**2 * (1 + np.tanh(mass_values / a0))
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(mass_values, energy_einstein, 'b--', label="Einstein's Gravity (E=mc²)")
+plt.plot(mass_values, energy_recursive, 'r-', label="Recursive Gravity Loopback (Nexus2)")
+plt.plot(mass_values, energy_mond, 'g-.', label="MOND Approximation")
+
+# Annotate points at specific masses for clarity
+sample_indices = [10, 30, 50, 70, 90]  # Select indices to annotate
+for i in sample_indices:
+    plt.text(mass_values[i], energy_einstein[i], f"{energy_einstein[i]:.2e}", fontsize=8, color='blue')
+    plt.text(mass_values[i], energy_recursive[i], f"{energy_recursive[i]:.2e}", fontsize=8, color='red')
+    plt.text(mass_values[i], energy_mond[i], f"{energy_mond[i]:.2e}", fontsize=8, color='green')
+
+# Log scale for better comparison
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel("Mass (kg)")
+plt.ylabel("Energy (J)")
+plt.title("Comparison of Einstein's Gravity, Recursive Gravity, and MOND")
+plt.legend()
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.show()

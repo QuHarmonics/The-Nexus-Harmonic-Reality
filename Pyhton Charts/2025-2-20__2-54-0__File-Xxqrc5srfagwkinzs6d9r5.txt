@@ -1,0 +1,34 @@
+Conversation URL:
+https://chatgpt.com/c/67b6cf81-3b6c-8011-b1de-b90805b612a3
+
+Title:
+
+
+Prompt:
+def recursive_phi_digit_extraction(n, prev=1, curr=1, depth=0):
+    """
+    Recursively extract the nth digit of the Golden Ratio (φ) using Fibonacci-based recursion
+    and KRRB-like branching principles.
+    """
+    if depth >= n:
+        return curr / prev  # Approximating φ at depth n
+    
+    # Recursive reflection: Shift Fibonacci sequence while preserving branching feedback
+    return recursive_phi_digit_extraction(n, curr, prev + curr, depth + 1)
+
+# Extract the first 100 digits of φ using the recursive method
+phi_recursive_digits = [recursive_phi_digit_extraction(i) for i in range(1, 101)]
+
+# Convert to differences (kinetic motion)
+phi_recursive_motion = np.diff(phi_recursive_digits)
+
+# Plot the extracted kinetic motion behavior
+plt.figure(figsize=(12, 6))
+plt.plot(phi_recursive_motion, color='darkred', alpha=0.8)
+plt.xlabel("Iterations")
+plt.ylabel("Change in Extracted Value (Recursive Motion)")
+plt.title("Recursive Kinetic Motion of Golden Ratio (φ) Using KRRB-Inspired Extraction")
+plt.grid(True)
+
+# Show plot
+plt.show()

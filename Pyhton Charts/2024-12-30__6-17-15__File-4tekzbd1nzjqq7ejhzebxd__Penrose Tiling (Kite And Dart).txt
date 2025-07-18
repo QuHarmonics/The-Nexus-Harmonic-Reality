@@ -1,0 +1,71 @@
+Conversation URL:
+https://chatgpt.com/c/677244df-a740-8011-b1e1-d3bcf912e328
+
+Title:
+Penrose Tiling (Kite and Dart)
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+def draw_penrose_tiling(depth, center=(0, 0), radius=1, orientation=0):
+    """
+    Draws a Penrose tiling using the kite-and-dart method.
+    - depth: Number of recursive divisions.
+    - center: Center of the tiling (x, y).
+    - radius: Radius of the initial tile.
+    - orientation: Orientation angle of the first tile.
+    """
+    golden_ratio = (1 + np.sqrt(5)) / 2  # Phi
+
+    # Define kite and dart vertices based on the golden ratio
+    def kite_vertices(center, radius, orientation):
+        x, y = center
+        angle = np.radians(orientation)
+        return [
+            (x, y),
+            (x + radius * np.cos(angle), y + radius * np.sin(angle)),
+            (x + radius * np.cos(angle + 72), y + radius * np.sin(angle + 72)),
+            (x + radius * np.cos(angle - 72), y + radius * np.sin(angle - 72))
+        ]
+
+    def dart_vertices(center, radius, orientation):
+        x, y = center
+        angle = np.radians(orientation)
+        return [
+            (x, y),
+            (x + radius * np.cos(angle), y + radius * np.sin(angle)),
+            (x + radius * np.cos(angle + 144), y + radius * np.sin(angle + 144)),
+            (x + radius * np.cos(angle - 144), y + radius * np.sin(angle - 144))
+        ]
+
+    # Recursive drawing function
+    def draw_tile(ax, vertices, depth, color='blue'):
+        if depth == 0:
+            polygon = plt.Polygon(vertices, edgecolor='black', facecolor=color, alpha=0.7)
+            ax.add_patch(polygon)
+        else:
+            # Split the kite and dart into smaller tiles recursively
+            center_x = sum(v[0] for v in vertices) / 4
+            center_y = sum(v[1] for v in vertices) / 4
+            center = (center_x, center_y)
+            new_radius = radius / golden_ratio
+            new_orientation = (orientation + 36) % 360
+            new_vertices = kite_vertices(center, new_radius, new_orientation)
+            draw_tile(ax, new_vertices, depth - 1, color='green')
+
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.set_xlim(-1.5 * radius, 1.5 * radius)
+    ax.set_ylim(-1.5 * radius, 1.5 * radius)
+    ax.set_aspect('equal')
+
+    # Initial tile (kite or dart)
+    initial_vertices = kite_vertices(center, radius, orientation)
+    draw_tile(ax, initial_vertices, depth)
+
+    plt.title("Penrose Tiling (Kite and Dart)")
+    plt.show()
+
+
+# Example: Draw a Penrose tiling with depth 4
+draw_penrose_tiling(depth=4, center=(0, 0), radius=1, orientation=0)

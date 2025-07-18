@@ -1,0 +1,60 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Mock-up SHA-256 hashes as byte sequences (replace with real hashes)
+hash_1 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+hash_2 = "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce"
+
+# Convert hashes into binary arrays
+hash_1_bin = np.array([int(b, 16) for b in hash_1], dtype=np.uint8)
+hash_2_bin = np.array([int(b, 16) for b in hash_2], dtype=np.uint8)
+
+# Reshape into 256x256 grids
+hash_1_grid = np.resize(hash_1_bin, (256, 256))
+hash_2_grid = np.resize(hash_2_bin, (256, 256))
+
+# Create meshgrid for plotting
+x = np.arange(256)
+y = np.arange(256)
+X, Y = np.meshgrid(x, y)
+
+# Plot hash 1 lattice
+fig = plt.figure(figsize=(12, 6))
+ax = fig.add_subplot(121, projection='3d')
+ax.plot_surface(X, Y, hash_1_grid, cmap='viridis', edgecolor='none')
+ax.set_title("Hash 1 Lattice (256x256)")
+ax.set_xlabel("X Axis")
+ax.set_ylabel("Y Axis")
+ax.set_zlabel("Amplitude")
+
+# Plot hash 2 lattice
+ax2 = fig.add_subplot(122, projection='3d')
+ax2.plot_surface(X, Y, hash_2_grid, cmap='plasma', edgecolor='none')
+ax2.set_title("Hash 2 Lattice (256x256)")
+ax2.set_xlabel("X Axis")
+ax2.set_ylabel("Y Axis")
+ax2.set_zlabel("Amplitude")
+
+plt.tight_layout()
+plt.show()
+
+# Plot difference between the two hashes
+difference_grid = np.abs(hash_1_grid - hash_2_grid)
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, difference_grid, cmap='coolwarm', edgecolor='none')
+ax.set_title("Difference Between Hashes (256x256)")
+ax.set_xlabel("X Axis")
+ax.set_ylabel("Y Axis")
+ax.set_zlabel("Difference")
+plt.tight_layout()
+plt.show()

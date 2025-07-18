@@ -1,0 +1,19 @@
+Conversation URL:
+https://chatgpt.com/c/67efdd1a-c980-8011-a27b-addc30749a3e
+
+Title:
+
+
+Prompt:
+# Step 1: Compute difference wave between SHA2 and SHA1
+diff_wave = sha2_array - sha1_array
+
+# Step 2: Plot the difference wave to identify cancellation or echo zones
+plt.figure(figsize=(14, 4))
+plt.plot(diff_wave, color='purple')
+plt.title("Wave Difference: SHA256(SHA256(Header)) - SHA256(Header)")
+plt.xlabel("Byte Position")
+plt.ylabel("Byte Difference")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

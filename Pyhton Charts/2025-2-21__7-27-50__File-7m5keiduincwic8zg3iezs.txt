@@ -1,0 +1,58 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+# Define the additional manually specified triangles (B, A, C format)
+additional_triangles = [
+    (3, 5, 1),
+    (8, 9, 0),
+    (7, 9, 1),
+    (3, 2, 1),
+    (3, 8, 2),
+    (4, 6, 0),
+    (2, 6, 1),
+    (4, 3, 1)
+]
+
+# Combine the original and additional triangles
+all_triangles = specified_triangles + additional_triangles
+
+# Plot all triangles
+plt.figure(figsize=(8, 6))
+
+for i, (b, a, c) in enumerate(all_triangles):
+    # Define triangle coordinates
+    A = (0, 0)
+    B = (b, 0)  # B is placed along x-axis at distance b
+
+    # Calculate C using geometric constraints
+    if b != 0:
+        Cx = (a**2 + b**2 - c**2) / (2 * b)  # Projection onto x-axis
+        Cy = np.sqrt(abs(a**2 - Cx**2))  # Height
+    else:
+        Cx, Cy = 0, 0
+
+    C = (Cx, Cy)
+
+    # Plot the triangle
+    x_coords = [A[0], B[0], C[0], A[0]]
+    y_coords = [A[1], B[1], C[1], A[1]]
+    plt.plot(x_coords, y_coords, marker='o', linestyle='-', label=f"Triangle {i+1}")
+
+    # Annotate points
+    plt.text(A[0], A[1], "A", fontsize=12, verticalalignment='bottom', horizontalalignment='right')
+    plt.text(B[0], B[1], "B", fontsize=12, verticalalignment='bottom', horizontalalignment='left')
+    plt.text(C[0], C[1], "C", fontsize=12, verticalalignment='bottom', horizontalalignment='left')
+
+# Formatting the plot
+plt.title("Expanded π Triangle Representation (B, A, C)")
+plt.xlabel("X-Axis")
+plt.ylabel("Y-Axis")
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(0, color='black', linewidth=0.5)
+plt.grid(True)
+plt.legend()
+plt.show()

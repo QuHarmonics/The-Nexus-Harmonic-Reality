@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/67e1e8a7-923c-8011-8e1e-883dd3c10f76
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+c = 3e8  # Speed of light (m/s)
+k = 1e-27  # Scaling constant for entanglement equation
+
+# Mass range (small to large)
+masses = np.linspace(1e-30, 1e5, 500)  # Covering from quantum to macro scales
+
+# Traditional E=mc²
+E_mc2 = masses * c**2
+
+# Entangled Energy Formula: E = k * Σpj * (Σεi)^0.35
+# For simplicity, assume Σpj and Σεi scale with mass (normalized)
+E_entangled = k * masses * (masses)**0.35
+
+# Deviation: Difference between E=mc² and Entangled Energy
+deviation = E_mc2 - E_entangled
+
+# Plot
+plt.figure(figsize=(10, 6))
+
+plt.plot(masses, E_mc2, 'b--', label="E=mc² (Macro Energy)")
+plt.plot(masses, E_entangled, 'r-', label="Entangled Energy (Quantum Phase)")
+plt.plot(masses, deviation, 'g-.', label="Deviation (Buffer Zone)")
+
+plt.xscale("log")
+plt.yscale("log")
+
+plt.xlabel("Mass (kg)")
+plt.ylabel("Energy (J)")
+plt.title("Deviation Between E=mc² and Entangled Energy Formula")
+plt.legend()
+plt.grid(True, which="both", linestyle="--", alpha=0.6)
+
+# Show plot
+plt.show()

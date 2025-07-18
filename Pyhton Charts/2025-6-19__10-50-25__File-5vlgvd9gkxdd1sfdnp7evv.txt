@@ -1,0 +1,31 @@
+Conversation URL:
+https://chatgpt.com/c/685033d8-e760-8011-8ad7-83a24fd0db51
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Final stabilized psi values
+psi_final = np.array([0.3501, 0.3502, 0.3499, 0.3500])
+
+# Labels for Byte Layers
+byte_labels = ['Byte1', 'Byte2', 'Byte3', 'Byte4']
+
+# Create a mesh representation (difference matrix)
+diff_matrix = np.abs(psi_final[:, None] - psi_final)
+
+# Plotting
+fig, ax = plt.subplots(figsize=(6, 6))
+cax = ax.matshow(diff_matrix, cmap='viridis')
+plt.xticks(np.arange(len(byte_labels)), byte_labels)
+plt.yticks(np.arange(len(byte_labels)), byte_labels)
+plt.title("Entropic Mesh: Harmonic Convergence Between Byte Layers", pad=20)
+plt.colorbar(cax, label='|Δψ| (Entropy Distance)')
+plt.xlabel("Layer")
+plt.ylabel("Layer")
+
+plt.tight_layout()
+plt.show()

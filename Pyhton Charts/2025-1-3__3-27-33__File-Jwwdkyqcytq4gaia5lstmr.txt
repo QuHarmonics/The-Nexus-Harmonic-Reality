@@ -1,0 +1,64 @@
+Conversation URL:
+https://chatgpt.com/c/67777368-c9f8-8011-ab4c-9afb1506e317
+
+Title:
+
+
+Prompt:
+# Analyze layer contributions and changes in s_n to identify sources of gain
+
+# Function to analyze contributions and iterative changes
+def analyze_layer_dynamics(starting_values, iterations=20, H=0.35, alpha=0.05):
+    dynamics = []
+    for s_n in starting_values:
+        harmonic_scaling = H
+        log_contributions, poly_contributions, exp_contributions, updates = [], [], [], []
+        for n in range(iterations):
+            # Dynamic harmonic scaling
+            harmonic_scaling = H * np.exp(-alpha * n)
+
+            # Layer contributions
+            log_contrib = np.log(abs(zeta(s_n.real)) + 1e-10) + 1 / (abs(s_n.imag) + 1e-10)
+            poly_contrib = (s_n.imag**2 + s_n.imag + 1) / (s_n.imag + 1)
+            exp_contrib = np.exp(-damping_factor * abs(s_n.imag) / (1 + abs(s_n.real - 0.5)))
+
+            # Update s_n and track changes
+            update = harmonic_scaling * (log_contrib + poly_contrib + exp_contrib - abs(s_n.real - 0.5))
+            updates.append(update)
+            s_n = s_n + update
+
+            # Record contributions
+            log_contributions.append(log_contrib)
+            poly_contributions.append(poly_contrib)
+            exp_contributions.append(exp_contrib)
+
+        dynamics.append({
+            "log_contrib": log_contributions,
+            "poly_contrib": poly_contributions,
+            "exp_contrib": exp_contributions,
+            "updates": updates,
+            "final_s_n": s_n
+        })
+    return dynamics
+
+# Execute the layer dynamics analysis
+layer_dynamics = analyze_layer_dynamics(starting_values, iterations=20)
+
+# Plot contributions over iterations for the first starting value
+plt.figure(figsize=(10, 6))
+first_result = layer_dynamics[0]
+
+plt.plot(range(len(first_result["log_contrib"])), first_result["log_contrib"], label="Logarithmic Contribution")
+plt.plot(range(len(first_result["poly_contrib"])), first_result["poly_contrib"], label="Polynomial Contribution")
+plt.plot(range(len(first_result["exp_contrib"])), first_result["exp_contrib"], label="Exponential Contribution")
+plt.plot(range(len(first_result["updates"])), [abs(u) for u in first_result["updates"]], label="Absolute Update", linestyle="--")
+
+plt.title("Layer Contributions and Updates Over Iterations")
+plt.xlabel("Iteration")
+plt.ylabel("Contribution Magnitude")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Return final s_n for the first starting value
+first_result["final_s_n"]

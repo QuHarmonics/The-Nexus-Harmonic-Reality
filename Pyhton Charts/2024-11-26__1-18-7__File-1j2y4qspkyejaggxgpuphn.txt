@@ -1,0 +1,62 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-6ee8-8011-bad6-30248ce2e5af
+
+Title:
+
+
+Prompt:
+# Recursive function to correctly handle depth and branching for 3D tree visualization
+def add_edges_3d_correct(graph, parent, children, depth=0, x_pos=0, z_depth=0, pos=None, branch_offset=1.0, depth_increment=1):
+    if pos is None:
+        pos = {}
+    if parent not in pos:
+        pos[parent] = (x_pos, depth, z_depth)
+    branch_count = len(children)
+    for i, child in enumerate(children):
+        child_x_pos = x_pos + (i - branch_count // 2) * branch_offset
+        if isinstance(children[child], list):  # Base methods
+            for j, method in enumerate(children[child]):
+                method_x_pos = child_x_pos + j * (branch_offset / 2)
+                graph.add_edge(parent, method)
+                pos[method] = (method_x_pos, depth - depth_increment, z_depth + depth_increment)
+        elif isinstance(children[child], dict):  # Subcategories
+            graph.add_edge(parent, child)
+            pos[child] = (child_x_pos, depth - depth_increment, z_depth + depth_increment)
+            add_edges_3d_correct(graph, child, children[child], depth - depth_increment, child_x_pos, z_depth + depth_increment, pos, branch_offset / 1.5, depth_increment)
+    return pos
+
+# Build the corrected 3D tree graph
+graph_3d_correct = nx.DiGraph()
+pos_3d_correct = add_edges_3d_correct(graph_3d_correct, "Interfaces", interfaces_structure["Interfaces"], depth_increment=1.5)
+
+# Extract positions for 3D plotting
+x, y, z = zip(*[pos for node, pos in pos_3d_correct.items()])
+
+# Map positions to nodes for plotting
+node_positions_correct = {node: (x[i], y[i], z[i]) for i, node in enumerate(pos_3d_correct)}
+
+# Create a 3D plot
+fig = plt.figure(figsize=(16, 12))
+ax = fig.add_subplot(111, projection='3d')
+
+# Draw edges
+for edge in graph_3d_correct.edges:
+    x_vals = [node_positions_correct[edge[0]][0], node_positions_correct[edge[1]][0]]
+    y_vals = [node_positions_correct[edge[0]][1], node_positions_correct[edge[1]][1]]
+    z_vals = [node_positions_correct[edge[0]][2], node_positions_correct[edge[1]][2]]
+    ax.plot(x_vals, y_vals, z_vals, 'gray')
+
+# Draw nodes
+ax.scatter(x, y, z, c='lightgreen', s=100)
+
+# Annotate nodes
+for node, (x_coord, y_coord, z_coord) in node_positions_correct.items():
+    ax.text(x_coord, y_coord, z_coord, node, fontsize=8, color='black')
+
+# Set plot labels and title
+ax.set_title("3D Interface Tree for Universe 000 Exploration with Extended Branching", fontsize=16)
+ax.set_xlabel("Horizontal Branch")
+ax.set_ylabel("Depth")
+ax.set_zlabel("Vertical Branch")
+
+plt.show()

@@ -1,0 +1,40 @@
+Conversation URL:
+https://chatgpt.com/c/67b6cf81-3b6c-8011-b1de-b90805b612a3
+
+Title:
+
+
+Prompt:
+import math
+
+def fractal_phi_extraction(n, depth=10):
+    """
+    Extracts digits of φ using a fractal recursive approach inspired by KRRB.
+    The method approximates non-sequential digit access by iterating over recursive depths.
+    """
+    results = []
+    phi_approx = (1 + math.sqrt(5)) / 2  # Golden Ratio
+    
+    for i in range(1, n+1):
+        # Generate digits using recursive fractal transformations
+        value = (phi_approx * (2 ** (depth - (i % depth)))) % 1  # Fractalized transformation
+        results.append(int(value * 10))  # Extract single digit
+
+    return results
+
+# Extract the first 100 digits of φ using fractal recursion
+phi_fractal_digits = fractal_phi_extraction(100)
+
+# Convert to kinetic motion differences
+phi_fractal_motion = np.diff(phi_fractal_digits)
+
+# Plot the fractal extraction results
+plt.figure(figsize=(12, 6))
+plt.plot(phi_fractal_motion, color='darkgreen', alpha=0.8)
+plt.xlabel("Iterations")
+plt.ylabel("Change in Extracted Value (Fractal Motion)")
+plt.title("Fractal-Based Recursive Extraction of Golden Ratio (φ) Digits")
+plt.grid(True)
+
+# Show plot
+plt.show()

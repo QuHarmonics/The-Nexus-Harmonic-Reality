@@ -1,0 +1,160 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+def recursive_growth(seed, recursion_depth, sides=4, step=0):
+    """
+    Recursively grows a nested geometric system based on feedback from the previous step.
+
+    Args:
+        seed (dict): Initial parameters for size, position, and sides.
+        recursion_depth (int): How deep to recurse into nested systems.
+        sides (int): Number of sides for the shape (default is 4 for a cube).
+        step (int): Current recursion step.
+
+    Returns:
+        list: List of recursively generated shapes.
+    """
+    if step >= recursion_depth:
+        return []
+
+    # Calculate the next layer based on reflection from the seed
+    current_size = seed["size"]
+    next_size = current_size * np.sqrt(2)  # Reflective growth, nonlinear scaling
+    center = seed["center"]
+
+    # Reflection: Generate the new center based on feedback
+    new_center = tuple(c * 1.1 for c in center)  # Dynamically shift outward
+
+    # Store the current shape
+    current_shape = {
+        "size": current_size,
+        "center": center,
+        "sides": sides
+    }
+
+    # Recursive step
+    next_seed = {"size": next_size, "center": new_center, "sides": sides}
+    return [current_shape] + recursive_growth(next_seed, recursion_depth, sides, step + 1)
+
+
+def create_shape_vertices(size, center, sides):
+    """
+    Dynamically creates vertices for an N-sided geometric object.
+
+    Args:
+        size (float): Size of the shape.
+        center (tuple): Center of the shape.
+        sides (int): Number of sides for the shape.
+
+    Returns:
+        np.array: Vertices of the shape.
+    """
+    cx, cy, cz = center
+    half_size = size / 2
+
+    if sides == 4:  # Cube
+        return np.array([
+            [cx - half_size, cy - half_size, cz - half_size],  # Bottom-left-front
+            [cx + half_size, cy - half_size, cz - half_size],  # Bottom-right-front
+            [cx + half_size, cy + half_size, cz - half_size],  # Top-right-front
+            [cx - half_size, cy + half_size, cz - half_size],  # Top-left-front
+            [cx - half_size, cy - half_size, cz + half_size],  # Bottom-left-back
+            [cx + half_size, cy - half_size, cz + half_size],  # Bottom-right-back
+            [cx + half_size, cy + half_size, cz + half_size],  # Top-right-back
+            [cx - half_size, cy + half_size, cz + half_size],  # Top-left-back
+        ])
+    elif sides == 3:  # Tetrahedron
+        return np.array([
+            [cx, cy, cz + half_size],  # Apex
+            [cx - half_size, cy - half_size, cz - half_size],  # Base-left
+            [cx + half_size, cy - half_size, cz - half_size],  # Base-right
+            [cx, cy + half_size, cz - half_size],  # Base-center
+        ])
+    else:
+        raise ValueError(f"Unsupported shape with {sides} sides.")
+
+
+def visualize_recursive_shapes(shapes):
+    """
+    Visualizes recursively grown shapes based on their calculated data.
+
+    Args:
+        shapes (list): List of shape data (size, center, sides).
+    """
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection="3d")
+
+    def plot_single_shape(ax, vertices, color, alpha, label):
+        """
+        Plots a single shape using its vertices.
+
+        Args:
+            ax: Matplotlib 3D axis.
+            vertices (np.array): Vertices of the shape.
+            color (str): Color of the shape.
+            alpha (float): Transparency of the shape.
+            label (str): Label for the shape.
+        """
+        faces = [
+            [vertices[i] for i in [0, 1, 2, 3]],  # Bottom face
+            [vertices[i] for i in [4, 5, 6, 7]],  # Top face
+            [vertices[i] for i in [0, 1, 5, 4]],  # Side face
+            [vertices[i] for i in [2, 3, 7, 6]],  # Side face
+            [vertices[i] for i in [1, 2, 6, 5]],  # Side face
+            [vertices[i] for i in [0, 3, 7, 4]],  # Side face
+        ]
+        ax.add_collection3d(Poly3DCollection(faces, color=color, alpha=alpha, edgecolor="k"))
+        ax.text(
+            np.mean(vertices[:, 0]),
+            np.mean(vertices[:, 1]),
+            np.mean(vertices[:, 2]),
+            label,
+            color=color,
+        )
+
+    # Assign colors and labels
+    colors = ['red', 'blue', 'green', 'purple', 'orange']
+    alpha_values = [0.4, 0.3, 0.2, 0.1, 0.05]
+
+    for i, shape in enumerate(shapes):
+        size = shape["size"]
+        center = shape["center"]
+        sides = shape["sides"]
+
+        # Generate vertices dynamically
+        vertices = create_shape_vertices(size, center, sides)
+
+        # Plot shape
+        color = colors[i % len(colors)]
+        alpha = alpha_values[i % len(alpha_values)]
+        plot_single_shape(ax, vertices, color, alpha, label=f"Shape {i + 1}")
+
+    # Set plot limits based on the largest shape
+    max_size = max([s["size"] for s in shapes])
+    ax.set_xlim(-max_size, max_size)
+    ax.set_ylim(-max_size, max_size)
+    ax.set_zlim(-max_size, max_size)
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("Recursive Reflective Shapes (Nonlinear Growth)")
+    plt.show()
+
+
+# Input seed and parameters
+seed = {"size": 256, "center": (0, 0, 0), "sides": 4}
+recursion_depth = 4
+
+# Generate shapes recursively
+shapes = recursive_growth(seed, recursion_depth)
+
+# Visualize the shapes
+visualize_recursive_shapes(shapes)

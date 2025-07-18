@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/67e1e8a7-923c-8011-8e1e-883dd3c10f76
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Extract data
+atomic_numbers = df_periodic["Atomic Number"]
+atomic_masses = df_periodic["Atomic Mass"]
+mass_differences = np.diff(atomic_masses)  # Rate of change in atomic mass
+
+# Compute binary lengths of atomic numbers
+binary_lengths = df_periodic["Atomic Number"].apply(lambda x: len(bin(x)[2:]))
+
+# Plot 1: Atomic Number vs. Atomic Mass
+plt.figure(figsize=(8, 5))
+plt.plot(atomic_numbers, atomic_masses, marker="o", linestyle="-", label="Atomic Mass")
+plt.xlabel("Atomic Number")
+plt.ylabel("Atomic Mass")
+plt.title("Atomic Number vs. Atomic Mass")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Plot 2: Atomic Number vs. Rate of Change in Atomic Mass
+plt.figure(figsize=(8, 5))
+plt.plot(atomic_numbers[:-1], mass_differences, marker="s", linestyle="--", label="Rate of Change in Mass")
+plt.xlabel("Atomic Number")
+plt.ylabel("Rate of Change in Atomic Mass")
+plt.title("Rate of Change in Atomic Mass Between Elements")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Plot 3: Atomic Number vs. Binary Length (Grouping Pattern?)
+plt.figure(figsize=(8, 5))
+plt.bar(atomic_numbers, binary_lengths, color="purple", label="Binary Length of Atomic Number")
+plt.xlabel("Atomic Number")
+plt.ylabel("Binary Length")
+plt.title("Binary Length of Atomic Number (Grouping Pattern)")
+plt.grid(axis="y")
+plt.legend()
+plt.show()

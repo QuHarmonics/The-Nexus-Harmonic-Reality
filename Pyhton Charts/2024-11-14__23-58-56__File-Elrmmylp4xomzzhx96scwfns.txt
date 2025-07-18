@@ -1,0 +1,75 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Feedback-enhanced Weather Prediction Simulation
+def run_feedback_weather_simulation(cells, interaction_scale, iterations, storm_threshold, feedback_exponent=2):
+    """
+    Simulates weather prediction with dynamic feedback scaling.
+    
+    :param cells: List of weather cells with temperature, humidity, and pressure.
+    :param interaction_scale: Base scaling factor for interactions (e.g., 0.35).
+    :param iterations: Number of iterations for simulation.
+    :param storm_threshold: Threshold for triggering extreme weather events.
+    :param feedback_exponent: Exponent for non-linear feedback scaling near thresholds.
+    :return: Time series of average temperature and storm probabilities.
+    """
+    avg_temperatures = []
+    storm_probabilities = []
+    
+    for _ in range(iterations):
+        avg_temp = 0
+        storm_count = 0
+
+        for cell in cells:
+            # Compute feedback scaling based on proximity to storm threshold
+            delta_pressure = max(0, storm_threshold - cell["pressure"])
+            feedback = 1 + (delta_pressure / storm_threshold) ** feedback_exponent
+
+            # Adjust temperature based on neighbor interactions and feedback
+            cell["temperature"] += interaction_scale * feedback * np.random.uniform(-1, 1)
+            avg_temp += cell["temperature"]
+
+            # Count as storm if temperature exceeds storm threshold
+            if cell["temperature"] >= storm_threshold:
+                storm_count += 1
+
+        # Record average temperature and storm probability for this iteration
+        avg_temperatures.append(avg_temp / len(cells))
+        storm_probabilities.append(storm_count / len(cells))
+
+    return avg_temperatures, storm_probabilities
+
+
+# Initialize weather cells with random temperature, humidity, and pressure values
+weather_cells_feedback = [{"temperature": np.random.uniform(15, 30),
+                           "humidity": np.random.uniform(0.3, 0.9),
+                           "pressure": np.random.uniform(950, 1050)} for _ in range(50)]
+
+# Run the simulation with feedback mechanism
+avg_temperatures_feedback, storm_probabilities_feedback = run_feedback_weather_simulation(
+    weather_cells_feedback, interaction_scale=0.35, iterations=100, storm_threshold=35
+)
+
+# Plot Results
+plt.figure(figsize=(12, 6))
+plt.subplot(2, 1, 1)
+plt.plot(avg_temperatures_feedback, label="Average Temperature")
+plt.axhline(y=35, color='r', linestyle='--', label="Storm Threshold")
+plt.xlabel("Iteration")
+plt.ylabel("Temperature (°C)")
+plt.title("Average Temperature Over Time with Feedback")
+plt.legend()
+
+plt.subplot(2, 1, 2)
+plt.plot(storm_probabilities_feedback, label="Storm Probability", color='orange')
+plt.xlabel("Iteration")
+plt.ylabel("Storm Probability")
+plt.title("Storm Probability Over Time with Feedback")
+plt.legend()
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,54 @@
+Conversation URL:
+https://chatgpt.com/c/680141c8-f3cc-8011-8a38-859887970f31
+
+Title:
+
+
+Prompt:
+import hashlib
+import math
+import matplotlib.pyplot as plt
+
+# Glucagon peptide sequence
+peptide = "HSQGTFTSDYSKYLDSRRAQDFVQWLMNT"
+sequence_length = len(peptide)
+
+# Calculate SHA-256 hash
+sha256_hash = hashlib.sha256(peptide.encode('utf-8')).hexdigest()
+
+# PRESQ parameters
+H = 0.35  # Harmonic constant
+F = 3.846  # Feedback weight
+R0 = -7.5  # Fold seed
+
+# Compute R(t) using the recursive formula with log-scaling to prevent overflow
+def recursive_R(t, R0, H, F):
+    return R0 * math.log(math.exp(H * F * t) + 1)
+
+# Evaluate R(t) over time
+t_values = list(range(1, sequence_length + 1))
+R_values = [recursive_R(t, R0, H, F) for t in t_values]
+
+# Plotting the recursive fold profile
+plt.figure(figsize=(10, 6))
+plt.plot(t_values, R_values, marker='o', linestyle='-', label='R(t)')
+plt.axhline(y=0, color='gray', linestyle='--', linewidth=0.8)
+plt.title("Recursive Fold Profile of Glucagon Peptide")
+plt.xlabel("t (Amino Acid Position)")
+plt.ylabel("R(t) - Harmonic Fold Potential")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+# Output key metrics
+{
+    "Peptide": peptide,
+    "Length": sequence_length,
+    "SHA256": sha256_hash,
+    "Feedback Weight (F)": F,
+    "R0": R0,
+    "Total Resonance (ΣR)": round(sum(R_values), 2),
+    "Harmonic Drift": round(abs(H - (sum(R_values)/len(R_values))/F), 3),
+    "Quality Score (Q)": round(abs(sum(R_values)) / sequence_length, 2)
+}

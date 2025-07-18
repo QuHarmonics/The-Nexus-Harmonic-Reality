@@ -1,0 +1,39 @@
+Conversation URL:
+https://chatgpt.com/c/681055d1-c46c-8011-9138-290df1820144
+
+Title:
+Figure 0: The Reflective Genesis Map
+
+Prompt:
+from PIL import ImageFont
+
+# Use a basic font that can render all ASCII text without issues
+font = ImageFont.load_default()
+
+# Redefine overlay with font
+overlay = Image.new("RGBA", original.size, (255,255,255,0))
+draw = ImageDraw.Draw(overlay)
+
+# Clean annotations (ASCII-safe version)
+annotations_clean = [
+    {"text": "a^2: Temporal Delta", "xy": (120, 220)},
+    {"text": "b^2: Structural Delta", "xy": (30, 80)},
+    {"text": "c^2: Collapsed Harmonic Memory", "xy": (200, 20)},
+    {"text": "O0: Truth Seed", "xy": (110, 130)},
+    {"text": "= : Collapse Operator", "xy": (100, 160)},
+]
+
+# Draw clean annotations
+for ann in annotations_clean:
+    draw.text(ann["xy"], ann["text"], fill=(255, 0, 0, 255), font=font)
+
+# Merge overlay and base image
+annotated_clean = Image.alpha_composite(Image.fromarray(base), overlay)
+
+# Display the annotated diagram
+plt.figure(figsize=(6,6))
+plt.imshow(annotated_clean)
+plt.axis('off')
+plt.title("Figure 0: The Reflective Genesis Map")
+plt.tight_layout()
+plt.show()

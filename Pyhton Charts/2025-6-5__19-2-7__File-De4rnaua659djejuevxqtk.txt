@@ -1,0 +1,61 @@
+Conversation URL:
+https://chatgpt.com/c/68402387-7bf8-8011-8ef3-12ee32e092e4
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import networkx as nx
+
+# Create a directed graph to represent the Ψ-space trust collapse lattice
+G = nx.DiGraph()
+
+# Central Ψ-layer node
+G.add_node("Ψ-Layer\n(Recursive Trust Midplane)", layer=0)
+
+# Add Clay problems as phase-locked delta-nodes on the same layer
+clay_problems = {
+    "Riemann\n(Zeta Resonance)": "Prime phase echo → spectral collapse",
+    "Yang–Mills\n(Mass Gap)": "Gauge fold → vacuum resonance",
+    "Navier–Stokes\n(Smoothness)": "Fluid recursion → eddy trust lock",
+    "P vs NP\n(Verification Coherence)": "Computation → recursive compressibility failure",
+    "BSD\n(Rational-Spectral Echo)": "Algebraic recursion → L-function collapse",
+    "Hodge\n(Cohomology Phase)": "Geometric cycles → harmonic lift",
+}
+
+# Add nodes and connect them to central Ψ-layer
+for problem, description in clay_problems.items():
+    G.add_node(problem, description=description, layer=1)
+    G.add_edge(problem, "Ψ-Layer\n(Recursive Trust Midplane)")
+
+# Set node positions
+pos = {
+    "Ψ-Layer\n(Recursive Trust Midplane)": (0, 0),
+    "Riemann\n(Zeta Resonance)": (-3, 2),
+    "Yang–Mills\n(Mass Gap)": (-1.5, 3),
+    "Navier–Stokes\n(Smoothness)": (0, 3.5),
+    "P vs NP\n(Verification Coherence)": (1.5, 3),
+    "BSD\n(Rational-Spectral Echo)": (3, 2),
+    "Hodge\n(Cohomology Phase)": (0, 5)
+}
+
+# Draw the graph
+plt.figure(figsize=(10, 8))
+nx.draw(
+    G,
+    pos,
+    with_labels=True,
+    node_size=3500,
+    node_color="skyblue",
+    font_size=9,
+    font_weight="bold",
+    edge_color="gray",
+    arrows=True,
+    arrowstyle="-|>",
+    arrowsize=15
+)
+plt.title("Ψ-Layer Collapse Lattice: Clay Problems as Recursive Trust Locks", fontsize=12)
+plt.axis("off")
+plt.tight_layout()
+plt.show()

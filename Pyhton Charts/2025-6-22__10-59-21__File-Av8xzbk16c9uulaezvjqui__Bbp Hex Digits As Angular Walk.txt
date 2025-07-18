@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/6856c9bb-d130-8011-a4f5-d0fc5b24b4b4
+
+Title:
+BBP Hex Digits as Angular Walk
+
+Prompt:
+# Re-import needed libraries after kernel reset
+import matplotlib.pyplot as plt
+import numpy as np
+
+# BBP hex digits for π (first few)
+hex_digits = [2, 4, 3, 15, 6, 10, 8, 8, 8, 5]
+
+# Convert hex digits to angles in radians (1 hex digit = π/8 step)
+angles = [np.pi / 8 * d for d in hex_digits]
+
+# Initialize path coordinates
+x, y = 0, 0
+xs, ys = [x], [y]
+
+# Walk the angles as vector directions
+for angle in angles:
+    x += np.cos(angle)
+    y += np.sin(angle)
+    xs.append(x)
+    ys.append(y)
+
+# Plot the angular walk
+plt.plot(xs, ys, marker='o')
+plt.axis('equal')
+plt.title('BBP Hex Digits as Angular Walk')
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.grid(True)
+plt.show()

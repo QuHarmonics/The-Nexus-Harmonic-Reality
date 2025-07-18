@@ -1,0 +1,46 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-b7f0-8011-9962-4f2abd03c397
+
+Title:
+
+
+Prompt:
+# Recursive correction until the final noise is less than 99.9
+refinement_limit = 99.9  # Desired noise threshold
+iterations_recursive = 0
+current_state_recursive = unhealthy_state.copy()
+
+while True:
+    # Calculate noise and its magnitude
+    noise_signal = healthy_state - current_state_recursive
+    noise_magnitude = np.linalg.norm(noise_signal)
+
+    # Break if noise is below the threshold
+    if noise_magnitude <= refinement_limit:
+        break
+
+    # Dynamically adjust the resonance factor
+    R_tuned = dynamic_resonance_factor(noise_magnitude)
+    corrective_signal = -noise_signal * R_tuned  # Generate corrective signal
+    current_state_recursive += corrective_signal  # Apply correction
+    iterations_recursive += 1
+
+    # Safety limit for excessive iterations
+    if iterations_recursive > 1000:
+        break
+
+# Plot the result of the recursive refinement
+plt.figure(figsize=(12, 6))
+plt.plot(x, healthy_state, label="Healthy State (Ideal)", linewidth=2)
+plt.plot(x, unhealthy_state, label="Unhealthy State (Initial)", linestyle="--", alpha=0.7)
+plt.plot(x, current_state_recursive, label="Corrected State (Recursive)", linewidth=2, linestyle=":")
+plt.title("KHRC with Recursive Refinement (Distorted Sine Wave)")
+plt.xlabel("Time / Space")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Return the final noise and total iterations for recursive refinement
+final_noise_recursive = np.linalg.norm(healthy_state - current_state_recursive)
+iterations_recursive, final_noise_recursive

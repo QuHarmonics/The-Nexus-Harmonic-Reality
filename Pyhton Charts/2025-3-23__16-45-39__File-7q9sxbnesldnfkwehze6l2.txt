@@ -1,0 +1,32 @@
+Conversation URL:
+https://chatgpt.com/c/67e05ac3-1c74-8011-9356-9394c4c34643
+
+Title:
+
+
+Prompt:
+# Create cumulative groupings: 4, 8, 16, 32, ..., 2048
+bit_sizes = [2 ** i for i in range(2, 12)]  # 4 to 2048
+odd_ratios = []
+even_ratios = []
+
+for size in bit_sizes:
+    digits = [int(d) for d in pi_digits_str_256[:size] if d.isdigit()]
+    odd = sum(1 for d in digits if d % 2 != 0)
+    even = len(digits) - odd
+    total = odd + even
+    odd_ratios.append(odd / total)
+    even_ratios.append(even / total)
+
+# Plotting the odd/even ratios as cumulative harmonic grouping increases
+plt.figure(figsize=(14, 6))
+plt.plot(bit_sizes, odd_ratios, label="Odd Ratio", marker='o')
+plt.plot(bit_sizes, even_ratios, label="Even Ratio", marker='o')
+plt.xscale("log", base=2)
+plt.xticks(bit_sizes, bit_sizes)
+plt.title("Odd/Even Ratios from Pi Over Increasing Bit Ranges (4 to 2048)")
+plt.xlabel("Bit Range (Digits from Start)")
+plt.ylabel("Ratio")
+plt.legend()
+plt.grid(True)
+plt.show()

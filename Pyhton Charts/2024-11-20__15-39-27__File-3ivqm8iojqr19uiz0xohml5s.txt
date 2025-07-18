@@ -1,0 +1,58 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-c95c-8011-9d11-5493451b98f0
+
+Title:
+
+
+Prompt:
+# Function to recursively traverse and map nodes up to a depth of 20
+def traverse_graph(graph, start_node, depth, max_depth, visited, positions, current_depth=0):
+    if current_depth > max_depth:
+        return
+    
+    # Track visited nodes and their positions
+    if start_node not in visited:
+        visited.add(start_node)
+        positions[start_node] = current_depth
+    
+    # Recursively traverse successors
+    for successor in graph.successors(start_node):
+        traverse_graph(graph, successor, depth + 1, max_depth, visited, positions, current_depth + 1)
+
+# Initialize tracking variables
+visited_nodes = set()
+node_positions = {}
+
+# Perform recursive traversal starting at "Quantum Fields"
+traverse_graph(G_3d_atom, "Quantum Fields", 0, 20, visited_nodes, node_positions)
+
+# Generate positions for the visited nodes in 3D space
+node_3d_positions = nx.spring_layout(G_3d_atom.subgraph(visited_nodes), dim=3, seed=42)
+
+# Extract positions and edges for visualization
+xyz_expanded = np.array([node_3d_positions[node] for node in visited_nodes])
+edges_expanded = np.array([(node_3d_positions[u], node_3d_positions[v]) for u, v in G_3d_atom.edges() if u in visited_nodes and v in visited_nodes])
+
+# Set up 3D plot for the expanded traversal
+fig = plt.figure(figsize=(14, 12))
+ax = fig.add_subplot(111, projection='3d')
+ax.grid(False)
+
+# Plot nodes
+ax.scatter(xyz_expanded[:, 0], xyz_expanded[:, 1], xyz_expanded[:, 2], s=100, c='blue', label='Nodes')
+
+# Plot edges
+for edge in edges_expanded:
+    x_edge, y_edge, z_edge = zip(*edge)
+    ax.plot(x_edge, y_edge, z_edge, color='gray', alpha=0.7)
+
+# Label nodes
+for node, (x, y, z) in node_3d_positions.items():
+    ax.text(x, y, z, node, fontsize=8, ha='center', va='center')
+
+# Set plot appearance
+ax.set_title("3D Expansion of Atom's Growth Path (20 Nodes)", fontsize=16)
+ax.set_xlabel("X-axis")
+ax.set_ylabel("Y-axis")
+ax.set_zlabel("Z-axis")
+plt.show()

@@ -1,0 +1,32 @@
+Conversation URL:
+https://chatgpt.com/c/683b3e84-3748-8011-829e-a71c8b872f9e
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+# Generate hex colors from 000000 to FFFFFF where digits are repeated (e.g., 000000, 111111, ..., FFFFFF)
+hex_colors = []
+labels = []
+
+# Iterate over hex digits 0-9 and a-f
+for digit in list('0123456789ABCDEF'):
+    hex_code = digit * 6  # Repeat the digit six times
+    decimal_value = int(hex_code, 16)
+    hex_colors.append(f"#{hex_code}")
+    labels.append(f"{hex_code} = {decimal_value}")
+
+# Plotting
+fig, ax = plt.subplots(figsize=(12, 2))
+for i, color in enumerate(hex_colors):
+    ax.add_patch(mpatches.Rectangle((i, 0), 1, 1, color=color))
+    ax.text(i + 0.5, -0.3, labels[i], ha='center', va='top', fontsize=8, rotation=45)
+
+ax.set_xlim(0, len(hex_colors))
+ax.set_ylim(0, 1)
+ax.axis('off')
+plt.tight_layout()
+plt.show()

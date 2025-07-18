@@ -1,0 +1,27 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-6f7c-8011-895c-28cb2adac5f4
+
+Title:
+
+
+Prompt:
+# Constants for the speed of light squared
+c_squared = (3e8) ** 2  # Speed of light squared in m^2/s^2
+
+# Define masses for expected E = mc^2 results at each interaction level (scaled arbitrarily for demonstration)
+# Since we're scaling, these masses are hypothetical examples to compare against the formula results
+masses = [1e-10 * count for count in interaction_counts]  # Mass in kg based on interaction scaling
+expected_energies = [m * c_squared for m in masses]  # E = mc^2 expected energies
+
+# Plot the calculated vs. expected results
+plt.figure(figsize=(12, 8))
+plt.plot(interaction_counts, energies, marker='o', linestyle='-', label="Calculated Energy (Formula)")
+plt.plot(interaction_counts, expected_energies, marker='x', linestyle='--', label="Expected Energy (E=mc^2)")
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel("Interaction Count (log scale)")
+plt.ylabel("Energy (Joules, log scale)")
+plt.title("Calculated vs Expected Energy Across Interaction Counts")
+plt.legend()
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.show()

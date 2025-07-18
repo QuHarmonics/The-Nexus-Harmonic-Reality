@@ -1,0 +1,29 @@
+Conversation URL:
+https://chatgpt.com/c/6814b735-71a4-8011-886e-dc106dd24c81
+
+Title:
+Resonance Plot: Bitwise Difference between Byte1 and Byte2
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Given SHA-derived bytes
+byte1 = 47787201
+byte2 = 92771528
+
+# Convert to 32-bit arrays
+bits1 = [(byte1 >> i) & 1 for i in range(31, -1, -1)]
+bits2 = [(byte2 >> i) & 1 for i in range(31, -1, -1)]
+
+# Compute bitwise difference (waveform misalignment)
+diff = [b1 - b2 for b1, b2 in zip(bits1, bits2)]
+
+# Plot resonance (misalignment) waveform
+plt.figure(figsize=(10, 4))
+plt.plot(range(32), diff)
+plt.xlabel("Bit Position (31 → 0)")
+plt.ylabel("Difference (Bit1 - Bit2)")
+plt.title("Resonance Plot: Bitwise Difference between Byte1 and Byte2")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

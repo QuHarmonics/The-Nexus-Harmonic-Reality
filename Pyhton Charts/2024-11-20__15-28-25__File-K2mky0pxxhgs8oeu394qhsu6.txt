@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-c95c-8011-9d11-5493451b98f0
+
+Title:
+
+
+Prompt:
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Create a directed graph for the text tree
+G = nx.DiGraph()
+
+# Define nodes and their relationships (smaller bonds to macro-level systems)
+nodes = [
+    ("Quantum Particles", "Subatomic Bonds"),  # Layer 1: Quantum level
+    ("Subatomic Bonds", "Atomic Structures"),  # Layer 2: Atomic level
+    ("Atomic Structures", "Molecules"),  # Layer 3: Molecular level
+    ("Molecules", "Cells"),  # Layer 4: Cellular level
+    ("Cells", "Organs"),  # Layer 5: Biological level
+    ("Organs", "Organisms"),  # Layer 6: Organism level
+    ("Organisms", "Ecosystems"),  # Layer 7: Ecosystem level
+    ("Ecosystems", "Planetary Systems"),  # Layer 8: Planetary level
+    ("Planetary Systems", "Galactic Systems"),  # Layer 9: Galactic level
+    ("Galactic Systems", "Universal Systems")  # Layer 10: Universal level
+]
+
+# Add nodes and edges to the graph
+G.add_edges_from(nodes)
+
+# Create a layout for better visualization
+pos = nx.spring_layout(G, seed=42)
+
+# Plot the graph
+plt.figure(figsize=(10, 8))
+nx.draw(
+    G,
+    pos,
+    with_labels=True,
+    node_size=3000,
+    node_color="lightblue",
+    font_size=10,
+    font_weight="bold",
+    edge_color="gray"
+)
+plt.title("Hierarchy of Complexity: From Quantum to Universal Systems", fontsize=14)
+plt.show()

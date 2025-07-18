@@ -1,0 +1,85 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate data for deeper analysis of amplitude and phase differences across iterations
+# Assuming `amplitude_diff` and `phase_diff` are previously calculated matrices from prior steps
+
+# Step 1: Quantify amplitude and phase differences over iterations
+iterations = 20  # Expand beyond 10 folds
+amplitude_diffs = []
+phase_diffs = []
+
+for i in range(1, iterations + 1):
+    # Simulate recursive folding with a scaling factor for each iteration
+    scale_factor = 1 / (i + 1)
+    new_amplitude_diff = amplitude_diff * scale_factor
+    new_phase_diff = phase_diff * scale_factor
+
+    amplitude_diffs.append(np.sum(np.abs(new_amplitude_diff)))
+    phase_diffs.append(np.sum(np.abs(new_phase_diff)))
+
+# Step 2: Plot decay or convergence of differences over iterations
+plt.figure(figsize=(10, 6))
+plt.plot(range(1, iterations + 1), amplitude_diffs, label="Amplitude Difference Decay", marker='o')
+plt.plot(range(1, iterations + 1), phase_diffs, label="Phase Difference Decay", marker='s')
+plt.axvline(10, color='red', linestyle='--', label="10-Fold Threshold")
+plt.title("Decay of Amplitude and Phase Differences Over Iterations")
+plt.xlabel("Iteration (Folds)")
+plt.ylabel("Total Difference")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Step 3: Analyze specific regions in the frequency space for harmonic patterns
+frequency_x_range = slice(100, 200)
+frequency_y_range = slice(100, 200)
+region_amplitude_diff = amplitude_diff[frequency_x_range, frequency_y_range]
+region_phase_diff = phase_diff[frequency_x_range, frequency_y_range]
+
+plt.figure(figsize=(12, 6))
+
+# Region-wise Amplitude Difference
+plt.subplot(1, 2, 1)
+plt.imshow(region_amplitude_diff, cmap='viridis', extent=[100, 200, 100, 200])
+plt.title("Region Amplitude Difference (100:200)")
+plt.colorbar()
+
+# Region-wise Phase Difference
+plt.subplot(1, 2, 2)
+plt.imshow(region_phase_diff, cmap='plasma', extent=[100, 200, 100, 200])
+plt.title("Region Phase Difference (100:200)")
+plt.colorbar()
+
+plt.tight_layout()
+plt.show()
+
+# Step 4: Force iterations beyond 10 folds and visualize
+extended_iterations = 15  # Test stability beyond 10
+extended_amplitude_diffs = []
+extended_phase_diffs = []
+
+for i in range(1, extended_iterations + 1):
+    scale_factor = 1 / (i + 1)
+    new_amplitude_diff = amplitude_diff * scale_factor
+    new_phase_diff = phase_diff * scale_factor
+
+    extended_amplitude_diffs.append(np.sum(np.abs(new_amplitude_diff)))
+    extended_phase_diffs.append(np.sum(np.abs(new_phase_diff)))
+
+plt.figure(figsize=(10, 6))
+plt.plot(range(1, extended_iterations + 1), extended_amplitude_diffs, label="Extended Amplitude Decay", marker='o')
+plt.plot(range(1, extended_iterations + 1), extended_phase_diffs, label="Extended Phase Decay", marker='s')
+plt.axvline(10, color='red', linestyle='--', label="10-Fold Threshold")
+plt.title("Extended Decay of Differences Over Iterations")
+plt.xlabel("Iteration (Folds)")
+plt.ylabel("Total Difference")
+plt.legend()
+plt.grid()
+plt.show()

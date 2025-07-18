@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/677b20c1-af0c-8011-899d-1dc5e38fb689
+
+Title:
+
+
+Prompt:
+# Overlay the original and reflected systems to extract unrealized potential
+unrealized_potential = np.array(H) - np.array(reflected_H)
+
+# Fourier analysis of the unrealized potential
+potential_fft = fft(unrealized_potential)
+potential_frequencies = fftfreq(len(unrealized_potential), d=1)
+potential_magnitude = np.abs(potential_fft)
+
+# Filter positive frequencies for visualization
+positive_potential_frequencies = potential_frequencies[potential_frequencies > 0]
+positive_potential_magnitude = potential_magnitude[potential_frequencies > 0]
+
+# Plot the spectrum of the unrealized potential
+plt.figure(figsize=(12, 6))
+plt.plot(positive_potential_frequencies, positive_potential_magnitude, color="green")
+plt.title("Frequency Spectrum of Unrealized Potential (Original - Reflected)")
+plt.xlabel("Frequency")
+plt.ylabel("Magnitude")
+plt.grid()
+plt.show()
+
+# Analyze the unrealized potential in the time domain (residual signal)
+plt.figure(figsize=(12, 6))
+plt.plot(unrealized_potential[:500], label="Unrealized Potential (Time Domain)", color="green")
+plt.title("Unrealized Potential: First 500 Iterations")
+plt.xlabel("Iteration")
+plt.ylabel("Value")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Basic statistics of the unrealized potential
+mean_potential = np.mean(unrealized_potential)
+std_potential = np.std(unrealized_potential)
+max_potential = np.max(unrealized_potential)
+min_potential = np.min(unrealized_potential)
+
+mean_potential, std_potential, max_potential, min_potential

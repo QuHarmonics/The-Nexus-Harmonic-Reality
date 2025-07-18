@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Compute deviation of refined formula from E=mc^2
+deviation_results = []
+
+for mass in star_masses:
+    for surface_area in star_surface_areas:
+        for potential in star_potentials:
+            for size_scale in star_size_scales:
+                # Compute energy using the refined formula
+                energy_star = refined_star_formula(
+                    mass, star_velocity, potential, surface_area, size_scale, quantum_scale, critical_mass, upper_threshold
+                )
+
+                # Compute baseline energy using E=mc^2
+                energy_baseline = mass * (3e8)**2
+
+                # Calculate deviation
+                deviation = abs(energy_star - energy_baseline) / energy_baseline * 100
+
+                # Record results
+                deviation_results.append((mass, size_scale, deviation))
+
+# Convert results to a DataFrame for analysis
+deviation_df = pd.DataFrame(deviation_results, columns=["Mass (kg)", "Size Scale", "Deviation (%)"])
+
+# Plot deviation from E=mc^2
+plt.figure(figsize=(10, 6))
+for mass in np.unique(deviation_df["Mass (kg)"]):
+    subset = deviation_df[deviation_df["Mass (kg)"] == mass]
+    plt.plot(subset["Size Scale"], subset["Deviation (%)"], label=f"Mass = {mass:.1e} kg")
+
+plt.xlabel("Size Scale")
+plt.ylabel("Deviation (%)")
+plt.title("Deviation of Refined Formula from E=mc^2")
+plt.legend()
+plt.grid()
+plt.show()

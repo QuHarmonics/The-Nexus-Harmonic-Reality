@@ -1,0 +1,41 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from hashlib import sha256
+
+# Function to generate SHA-256 hash and track entropy over compression
+def hash_and_analyze(input_data, iterations=50):
+    entropy_values = []
+    input_bytes = input_data.encode()
+    
+    for i in range(iterations):
+        hashed = sha256(input_bytes).digest()  # Get binary hash output
+        entropy = np.std(np.frombuffer(hashed, dtype=np.uint8))  # Measure standard deviation (entropy)
+        entropy_values.append(entropy)
+        
+        # Compress (reduce redundancy) - simulating 'wringing out' the sponge
+        input_bytes = hashed[:len(hashed)//2]  # Take only half to reduce state space
+
+    return entropy_values, hashed.hex()
+
+# Run experiment: Start with "hello" and simulate compression
+entropy_tracking, final_hash = hash_and_analyze("hello", iterations=20)
+
+# Plot entropy over iterations
+plt.figure(figsize=(8,5))
+plt.plot(range(len(entropy_tracking)), entropy_tracking, marker='o', label="Entropy")
+plt.xlabel("Iteration")
+plt.ylabel("Entropy")
+plt.title("Entropy Compression Over Iterations (Wringing Out the Sponge)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Display final hash after compression process
+final_hash

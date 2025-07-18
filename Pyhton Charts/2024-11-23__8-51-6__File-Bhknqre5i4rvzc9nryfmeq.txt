@@ -1,0 +1,41 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-34d8-8011-88f1-720c3e804e65
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define parameters for Mark 1 visualization
+C = 0.35  # Harmonic constant
+P_i = np.array([1.0, 0.8, 0.6, 0.4, 0.2])  # Potential energies
+A_i = np.array([0.5, 0.4, 0.3, 0.2, 0.1])  # Actualized energies
+
+# Calculate harmonic resonance factor H
+H = np.sum(P_i) / np.sum(A_i)
+
+# Generate data for visualization
+time = np.linspace(0, 10, 1000)  # Time array from 0 to 10 seconds
+frequencies = np.array([220, 440, 660, 880, 1100])  # Fundamental and harmonic frequencies
+waveform = np.zeros_like(time)
+
+# Generate harmonic components
+for n, freq in enumerate(frequencies):
+    amplitude = (C ** n) * (H / (n + 1))  # Amplitude adjusted by harmonic constant and H
+    waveform += amplitude * np.sin(2 * np.pi * freq * time)
+
+# Normalize the waveform
+waveform /= np.max(np.abs(waveform))
+
+# Plot the waveform
+plt.figure(figsize=(12, 6))
+plt.plot(time, waveform, label="Mark 1 Harmonic Waveform", color="blue")
+plt.title("Visualization of Mark 1 Harmonic Resonance", fontsize=16)
+plt.xlabel("Time (s)", fontsize=12)
+plt.ylabel("Amplitude", fontsize=12)
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+plt.axhline(0, color='black', linewidth=0.8)
+plt.legend()
+plt.show()

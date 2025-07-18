@@ -1,0 +1,28 @@
+Conversation URL:
+https://chatgpt.com/c/686ebde1-4f94-8011-a001-3f45525a1d50
+
+Title:
+Echo Signature Spectrum (π-Chunk Frequency ≥ 2)
+
+Prompt:
+from collections import defaultdict
+
+# Count π-chunk frequencies
+chunk_counter = defaultdict(int)
+for r in resonant_triangles:
+    chunk_str = ''.join(map(str, r['pi_chunk']))
+    chunk_counter[chunk_str] += 1
+
+# Filter to chunks that appear more than once
+echo_chunks = {k: v for k, v in chunk_counter.items() if v > 1}
+
+# Plot bar chart of echo frequencies
+plt.figure(figsize=(12, 6))
+plt.bar(echo_chunks.keys(), echo_chunks.values(), color='teal')
+plt.title("Echo Signature Spectrum (π-Chunk Frequency ≥ 2)")
+plt.xlabel("π-Chunks")
+plt.ylabel("Frequency")
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y')
+plt.tight_layout()
+plt.show()

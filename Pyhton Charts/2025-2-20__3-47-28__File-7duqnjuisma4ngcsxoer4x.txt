@@ -1,0 +1,65 @@
+Conversation URL:
+https://chatgpt.com/c/67b6cf81-3b6c-8011-b1de-b90805b612a3
+
+Title:
+
+
+Prompt:
+import numpy as np
+
+def analyze_pi_for_golden_ratio(n_digits):
+    """
+    Analyze the growth pattern of π digits to check for golden ratio-like segmentation.
+    Looks at spacing between occurrences of digits and ratio of successive values.
+    """
+    # First n_digits of π
+    pi_digits = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6,
+                 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1]  # More digits can be added
+    
+    if n_digits > len(pi_digits):
+        raise ValueError("Dataset contains only a limited number of preloaded π digits. Expand dataset for deeper analysis.")
+
+    pi_digits = pi_digits[:n_digits]
+
+    # Compute ratios of consecutive digits (growth rate between steps)
+    digit_ratios = [pi_digits[i] / pi_digits[i - 1] if pi_digits[i - 1] != 0 else 1 for i in range(1, len(pi_digits))]
+
+    # Compute segment spacing: distance between occurrences of the same digit
+    digit_positions = {d: [] for d in set(pi_digits)}
+    for index, digit in enumerate(pi_digits):
+        digit_positions[digit].append(index)
+
+    segment_lengths = []
+    for digit, positions in digit_positions.items():
+        for i in range(1, len(positions)):
+            segment_lengths.append(positions[i] - positions[i - 1])
+
+    # Compute ratio of segment lengths
+    segment_ratios = [segment_lengths[i] / segment_lengths[i - 1] if segment_lengths[i - 1] != 0 else 1 for i in range(1, len(segment_lengths))]
+
+    # Plot results
+    fig, axs = plt.subplots(2, 1, figsize=(10, 8))
+
+    # Plot ratios of consecutive digits
+    axs[0].plot(digit_ratios, label="Ratio of Successive Digits", color="blue")
+    axs[0].axhline(y=(1 + np.sqrt(5)) / 2, color="gold", linestyle="dashed", label="Golden Ratio φ")
+    axs[0].set_xlabel("Digit Position")
+    axs[0].set_ylabel("Ratio")
+    axs[0].set_title("Growth Rate Between π Digits")
+    axs[0].legend()
+    axs[0].grid()
+
+    # Plot segment ratios
+    axs[1].plot(segment_ratios, label="Segment Spacing Ratios", color="green")
+    axs[1].axhline(y=(1 + np.sqrt(5)) / 2, color="gold", linestyle="dashed", label="Golden Ratio φ")
+    axs[1].set_xlabel("Digit Spacing Position")
+    axs[1].set_ylabel("Ratio")
+    axs[1].set_title("Ratios of π Digit Spacing")
+    axs[1].legend()
+    axs[1].grid()
+
+    plt.tight_layout()
+    plt.show()
+
+# Run the analysis on the first 40 digits of π
+analyze_pi_for_golden_ratio(40)

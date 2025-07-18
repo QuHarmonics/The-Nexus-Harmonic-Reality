@@ -1,0 +1,69 @@
+Conversation URL:
+https://chatgpt.com/c/68030da1-8898-8011-bcac-6c40d5dff28b
+
+Title:
+Convergence of Harmonic Error in SHA256 Digest
+
+Prompt:
+# Re-run the code after reset
+
+import hashlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Target harmonic constant
+C = 0.35
+
+# Helper function to calculate SHA256 hash
+def sha256_digest(data: str) -> str:
+    return hashlib.sha256(data.encode()).hexdigest()
+
+# Convert SHA256 hex digest to a vector of nibble magnitudes normalized to [0, 1]
+def digest_to_harmonic_vector(digest: str):
+    nibbles = [int(char, 16) for char in digest]  # 64 hex characters → 64 nibbles
+    return np.array([n / 15.0 for n in nibbles])  # Normalize to [0, 1]
+
+# Compute harmonic error
+def harmonic_error(vec):
+    error_vector = np.abs(vec - C)
+    return np.linalg.norm(error_vector), error_vector
+
+# Scan nonces and find one with lowest harmonic deviation
+def scan_harmonic_nonces(base_input, nonce_range=(0, 10000), tolerance=0.001):
+    best_nonce = None
+    best_error = float('inf')
+    best_vector = None
+
+    error_track = []
+
+    for n in range(nonce_range[0], nonce_range[1]):
+        combined_input = f"{base_input}{n}"
+        digest = sha256_digest(combined_input)
+        harmonic_vec = digest_to_harmonic_vector(digest)
+        total_error, error_vector = harmonic_error(harmonic_vec)
+        error_track.append(total_error)
+
+        if total_error < best_error:
+            best_error = total_error
+            best_nonce = n
+            best_vector = harmonic_vec
+
+            if best_error < tolerance:
+                break
+
+    return best_nonce, best_error, best_vector, error_track
+
+# Run scan on the example phrase
+best_nonce, best_error, best_vector, error_track = scan_harmonic_nonces("PSREQ", (0, 5000))
+
+# Plot convergence of harmonic error
+plt.figure(figsize=(10, 5))
+plt.plot(error_track)
+plt.xlabel("Nonce")
+plt.ylabel("Harmonic Error (L2 Norm)")
+plt.title("Convergence of Harmonic Error in SHA256 Digest")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+(best_nonce, best_error)

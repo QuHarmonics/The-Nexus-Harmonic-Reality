@@ -1,0 +1,73 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-7bdc-8011-a523-8cde7469bee8
+
+Title:
+
+
+Prompt:
+# Refined code for generating 3D sports complex with geometric precision
+
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define basic 3D geometric structures
+def cuboid(x, y, z, dx, dy, dz, color='blue', alpha=0.5):
+    """
+    Create a cuboid at position (x, y, z) with dimensions (dx, dy, dz).
+    """
+    # Vertices of a cuboid
+    vertices = [
+        [x, y, z],
+        [x + dx, y, z],
+        [x + dx, y + dy, z],
+        [x, y + dy, z],
+        [x, y, z + dz],
+        [x + dx, y, z + dz],
+        [x + dx, y + dy, z + dz],
+        [x, y + dy, z + dz],
+    ]
+    # Faces of the cuboid
+    faces = [
+        [vertices[0], vertices[1], vertices[5], vertices[4]],  # Front
+        [vertices[1], vertices[2], vertices[6], vertices[5]],  # Right
+        [vertices[2], vertices[3], vertices[7], vertices[6]],  # Back
+        [vertices[3], vertices[0], vertices[4], vertices[7]],  # Left
+        [vertices[4], vertices[5], vertices[6], vertices[7]],  # Top
+        [vertices[0], vertices[1], vertices[2], vertices[3]],  # Bottom
+    ]
+    return faces, color, alpha
+
+# Draw the sports complex
+def draw_sports_complex():
+    fig = plt.figure(figsize=(12, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    
+    # Define components
+    structures = [
+        cuboid(0, 0, 0, 20, 10, 10, color='blue', alpha=0.5),  # Main arena
+        cuboid(22, 0, 0, 10, 5, 5, color='red', alpha=0.7),  # Basketball court
+        cuboid(0, 12, 0, 10, 8, 6, color='green', alpha=0.6),  # Fitness center
+        cuboid(-15, -5, 0, 10, 10, 3, color='purple', alpha=0.8),  # Pool area
+    ]
+    
+    # Add components to plot
+    for structure in structures:
+        faces, color, alpha = structure
+        poly3d = Poly3DCollection(faces, facecolors=color, linewidths=1, alpha=alpha)
+        ax.add_collection3d(poly3d)
+    
+    # Set plot limits and labels
+    ax.set_xlim([-20, 40])
+    ax.set_ylim([-10, 20])
+    ax.set_zlim([0, 15])
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("3D Sports Complex Visualization")
+    
+    plt.show()
+
+# Execute the function
+draw_sports_complex()

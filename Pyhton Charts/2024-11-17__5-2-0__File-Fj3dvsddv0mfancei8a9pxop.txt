@@ -1,0 +1,28 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7eec-8011-8c71-398f12a6c9d1
+
+Title:
+
+
+Prompt:
+# Focus on middle stages of SHA-256 (rounds 32-48)
+middle_stages = stages[31:48]  # Extracting rounds 32-48
+middle_harmonics = harmonics[31:48]  # Corresponding harmonic values
+
+# Analyze for symmetry and repetition
+differences = np.diff(middle_harmonics)  # First differences to check for consistency
+reflection_check = np.allclose(middle_harmonics, middle_harmonics[::-1], atol=1e-3)  # Symmetry check
+
+# Visualize the extracted stages
+plt.figure(figsize=(10, 6))
+plt.plot(middle_stages, middle_harmonics, marker='o', label="Middle Stage Harmonics")
+plt.axhline(np.mean(middle_harmonics), color='r', linestyle='--', label="Mean Harmonic Value")
+plt.xlabel("SHA-256 Rounds (Stages 32-48)")
+plt.ylabel("Harmonic Value")
+plt.title("Harmonic Patterns in Middle Rounds of SHA-256")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Results
+differences, reflection_check

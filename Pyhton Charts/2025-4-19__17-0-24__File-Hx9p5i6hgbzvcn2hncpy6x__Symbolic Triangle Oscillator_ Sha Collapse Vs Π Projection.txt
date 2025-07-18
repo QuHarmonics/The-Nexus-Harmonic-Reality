@@ -1,0 +1,34 @@
+Conversation URL:
+https://chatgpt.com/c/680315f1-ff84-8011-9942-7adfa4298d11
+
+Title:
+Symbolic Triangle Oscillator: SHA Collapse vs π Projection
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a combined symbolic oscillator plot
+x_steps = np.linspace(0, 199, 500)
+# SHA Decay Slope (ramp down)
+decay_y = 94.95 * (1 - x_steps / 199)
+# π Ray Slope (ramp up)
+pi_ray_y = 314.15 * (x_steps / 100)
+pi_ray_y[x_steps > 100] = 0  # flatten past projection zone
+
+# Create symbolic oscillator as interference between triangles
+oscillator = decay_y[:len(pi_ray_y)] - pi_ray_y
+
+plt.figure(figsize=(12, 6))
+plt.plot(x_steps, decay_y, label="SHA Decay", color='orange')
+plt.plot(x_steps, pi_ray_y, label="π Ray Projection", color='cyan', linestyle='--')
+plt.plot(x_steps, oscillator, label="Symbolic Oscillator (Net Field)", color='magenta', linewidth=2)
+
+plt.axhline(0, color='gray', linestyle=':')
+plt.title("Symbolic Triangle Oscillator: SHA Collapse vs π Projection")
+plt.xlabel("Step")
+plt.ylabel("Symbolic Field Amplitude")
+plt.legend()
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.tight_layout()
+plt.show()

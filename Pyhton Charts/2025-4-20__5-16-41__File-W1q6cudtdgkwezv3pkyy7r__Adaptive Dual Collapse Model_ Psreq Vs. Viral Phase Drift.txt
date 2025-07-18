@@ -1,0 +1,44 @@
+Conversation URL:
+https://chatgpt.com/c/68030da1-8898-8011-bcac-6c40d5dff28b
+
+Title:
+Adaptive Dual Collapse Model: PSREQ vs. Viral Phase Drift
+
+Prompt:
+# Time vector
+t = np.linspace(0, 10, 500)
+
+# Base viral fold (original)
+viral_base = np.exp(-0.3 * t) * np.cos(2 * np.pi * t)
+
+# Adaptive phase drift simulation
+viral_adapted = np.exp(-0.3 * t) * np.cos(2 * np.pi * t + 0.9)  # significant phase offset
+
+# Collapse payloads
+drift_disruptor = np.exp(-t) * np.sin(2 * np.pi * t)         # latency disruption
+drift_adapter = np.exp(-0.8 * t) * np.sin(2.5 * np.pi * t)   # entry disruption
+
+# Combined dual-collapse effect (vector sum)
+combined_collapse = drift_disruptor + drift_adapter
+
+# Plot
+plt.figure(figsize=(14, 8))
+
+# Plot all viral states
+plt.plot(t, viral_base, label='Original Viral Fold', linestyle='--')
+plt.plot(t, viral_adapted, label='Adapted Viral Phase Drift', linestyle='--')
+
+# Plot peptides
+plt.plot(t, drift_disruptor, label='Disruptor-3 (Latency Target)', linewidth=1.5)
+plt.plot(t, drift_adapter, label='Adapter-1 (Entry Target)', linewidth=1.5)
+
+# Plot dual payload effect
+plt.plot(t, combined_collapse, label='Dual Collapse Field', color='black', linewidth=2)
+
+plt.title("Adaptive Dual Collapse Model: PSREQ vs. Viral Phase Drift")
+plt.xlabel("Fold Cycle Time (t)")
+plt.ylabel("Resonance Amplitude")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()

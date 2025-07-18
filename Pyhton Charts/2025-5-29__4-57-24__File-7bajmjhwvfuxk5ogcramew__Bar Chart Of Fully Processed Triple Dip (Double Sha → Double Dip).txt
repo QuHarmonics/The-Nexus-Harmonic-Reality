@@ -1,0 +1,42 @@
+Conversation URL:
+https://chatgpt.com/c/68380ccf-e2b0-8011-8c8e-2a813d434243
+
+Title:
+Bar Chart of Fully Processed Triple Dip (Double SHA → Double Dip)
+
+Prompt:
+# New fully double-dipped and double-hashed symbolic string
+new_digit_string = (
+    "3330333433333337363136323631333933363339333433303631333333363339333236313337333833373330333836313331"
+    "3636363233353634333736323632333036333335363633393339333236323332333336313331363636323333363236343334"
+    "333833323636363433313634333436323633363433343636343334"
+)
+
+# Extract digits
+new_digit_values = [int(c) for c in new_digit_string if c.isdigit()]
+
+# Assume same section length as before for plotting (for demonstration)
+new_sections = [
+    ("Double SHA Input", 0, 136),
+    ("Double SHA Output", 136, len(new_digit_values))
+]
+
+# Assign different colors
+new_colors = {
+    "Double SHA Input": "slateblue",
+    "Double SHA Output": "orangered"
+}
+
+# Plot bar chart with segments
+plt.figure(figsize=(20, 6))
+for label, start, end in new_sections:
+    plt.bar(range(start, end), new_digit_values[start:end], color=new_colors[label], label=label, width=1.0)
+
+plt.title('Bar Chart of Fully Processed Triple Dip (Double SHA → Double Dip)')
+plt.xlabel('Digit Index')
+plt.ylabel('Digit Height (0–9)')
+plt.xticks(ticks=range(len(new_digit_values)), labels=[''] * len(new_digit_values))  # Tick marks only
+plt.legend()
+plt.grid(True, axis='y')
+plt.tight_layout()
+plt.show()

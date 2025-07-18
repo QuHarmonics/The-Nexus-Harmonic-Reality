@@ -1,0 +1,146 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+def generate_vertices(center, radius, sides, z_func=None):
+    """
+    Generate vertices for a regular polygon or 3D shape.
+
+    Args:
+        center (tuple): The center of the shape (cx, cy, cz).
+        radius (float): Radius of the shape (distance from center to vertex).
+        sides (int): Number of sides for the polygon.
+        z_func (function): Function to compute the Z-coordinate for each vertex (optional).
+
+    Returns:
+        np.array: Vertices of the shape in 3D.
+    """
+    cx, cy, cz = center
+    vertices = []
+    for i in range(sides):
+        angle = 2 * np.pi * i / sides  # Angle for each vertex
+        x = cx + radius * np.cos(angle)
+        y = cy + radius * np.sin(angle)
+        z = cz if z_func is None else z_func(x, y)  # Use z_func if provided
+        vertices.append([x, y, z])
+    return np.array(vertices)
+
+
+def recursive_growth_objects(center, seed_radius, recursion_depth, sides):
+    """
+    Recursively grow objects centered at (0,0,0) with 3D geometric expansion.
+
+    Args:
+        center (tuple): Center of all objects (0, 0, 0).
+        seed_radius (float): Initial radius of the object.
+        recursion_depth (int): Depth of recursion (number of layers).
+        sides (int): Number of sides for the polygon.
+
+    Returns:
+        list: List of objects with vertices and parameters.
+    """
+    objects = []
+    radius = seed_radius
+
+    for _ in range(recursion_depth):
+        vertices = generate_vertices(center, radius, sides)
+        objects.append({
+            "vertices": vertices,
+            "radius": radius,
+            "sides": sides,
+        })
+        radius *= 2  # Double the size at each recursion
+
+    return objects
+
+
+def calculate_faces(vertices, center):
+    """
+    Generate faces for a polygon or 3D shape by connecting vertices to the center.
+
+    Args:
+        vertices (np.array): Vertices of the shape.
+        center (tuple): The center point of the shape.
+
+    Returns:
+        list: List of faces defined by vertex indices.
+    """
+    num_vertices = len(vertices)
+    center_index = num_vertices  # Add center as a vertex
+    faces = []
+    for i in range(num_vertices):
+        next_index = (i + 1) % num_vertices
+        faces.append([i, next_index, center_index])  # Triangle with the center
+    return faces
+
+
+def plot_recursive_objects(objects, center):
+    """
+    Plot recursively grown objects in 3D.
+
+    Args:
+        objects (list): List of objects with vertices and parameters.
+        center (tuple): Center of all objects (0, 0, 0).
+    """
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection="3d")
+
+    def plot_shape(ax, vertices, radius, color, alpha, label):
+        """
+        Plot a single shape in 3D.
+
+        Args:
+            ax: Matplotlib 3D axis.
+            vertices (np.array): Vertices of the shape.
+            radius (float): Radius of the shape.
+            color (str): Color of the shape.
+            alpha (float): Transparency of the shape.
+            label (str): Label for the shape.
+        """
+        vertices_with_center = np.vstack([vertices, np.array(center)])
+        faces = calculate_faces(vertices, center)
+        for face in faces:
+            ax.add_collection3d(
+                Poly3DCollection([vertices_with_center[face]], color=color, alpha=alpha, edgecolor="k")
+            )
+        ax.text(center[0], center[1], center[2] + radius, label, color=color)
+
+    colors = ['red', 'blue', 'green', 'purple', 'orange']
+    alpha_values = [0.4, 0.3, 0.2, 0.1, 0.05]
+
+    for i, obj in enumerate(objects):
+        vertices = obj["vertices"]
+        radius = obj["radius"]
+        color = colors[i % len(colors)]
+        alpha = alpha_values[i % len(alpha_values)]
+        plot_shape(ax, vertices, radius, color, alpha, label=f"Object {i + 1}")
+
+    max_radius = max([obj["radius"] for obj in objects])
+    ax.set_xlim(-max_radius, max_radius)
+    ax.set_ylim(-max_radius, max_radius)
+    ax.set_zlim(-max_radius, max_radius)
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("Recursive Objects Grown from (0,0,0)")
+    plt.show()
+
+
+# Parameters
+center = (0, 0, 0)  # Constant center point
+seed_radius = 128  # Initial radius
+recursion_depth = 4  # Depth of recursion
+sides = 6  # Number of sides (e.g., hexagon, polygon)
+
+# Generate recursive objects
+objects = recursive_growth_objects(center, seed_radius, recursion_depth, sides)
+
+# Plot the recursive objects
+plot_recursive_objects(objects, center)

@@ -1,0 +1,127 @@
+Conversation URL:
+https://chatgpt.com/c/6814a123-a51c-8011-a87a-fa6707246c06
+
+Title:
+Phase 2 Retrained: Actual vs Predicted Suppression
+
+Prompt:
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPRegressor, MLPClassifier
+from sklearn.metrics import mean_squared_error, r2_score, classification_report, confusion_matrix
+
+# ── Constants ─────────────────────────────────────────────────────────────────
+G    = 6.67430e-11        # m^3·kg⁻¹·s⁻²
+hbar = 1.054571817e-34    # J·s
+c    = 299792458          # m/s
+phi  = 1.618              # golden fold constant
+A    = 1.0                # effective interaction surface (m^2)
+
+# ── Casimir pressure function ────────────────────────────────────────────────
+def sigma(r):
+    return np.pi**2 * hbar * c / (240 * r**4)
+
+# ── Calibration: ΔE = 0.35·ħc at r = r_c ───────────────────────────────────────
+def compute_k_calibrated(m1, m2):
+    rc = np.sqrt(G * m1 * m2 / (hbar * c))
+    m_sum = m1 + m2
+    E_target = m_sum * c**2 - 0.35 * hbar * c
+    denom = (m_sum * phi) * (sigma(rc) * A)**0.35
+    return E_target / denom
+
+# ── Suppression calculations ─────────────────────────────────────────────────
+def suppression_simple(r, m1, m2):
+    deltaE = G * m1 * m2 / r**2
+    return np.exp(-deltaE / (hbar * c))
+
+def suppression_harmonic(r, m1, m2, k):
+    m_sum = m1 + m2
+    E_ent = k * (m_sum * phi) * (sigma(r) * A)**0.35
+    deltaE = m_sum * c**2 - E_ent
+    # Avoid overflow: clamp deltaE/(ħc)
+    norm = deltaE / (hbar * c)
+    norm = np.clip(norm, -1e2, 1e2)
+    G_newt = G * m1 * m2 / r**2
+    G_loop = (deltaE * np.exp(-norm))
+    ratio = G_loop / G_newt
+    return ratio, deltaE / (hbar * c)
+
+# ── Generate calibrated dataset ───────────────────────────────────────────────
+systems = [
+    ("Proton–Proton",    1.6726219e-27, 1.6726219e-27),
+    ("Electron–Electron",9.10938356e-31,9.10938356e-31),
+    ("Earth–Sun",        5.97219e24,    1.9885e30)
+]
+
+rows = []
+for name, m1, m2 in systems:
+    k_val = compute_k_calibrated(m1, m2)
+    rc = np.sqrt(G * m1 * m2 / (hbar * c))
+    r_vals = rc * np.logspace(-2, 2, 200)
+    for r in r_vals:
+        sup_simple = suppression_simple(r, m1, m2)
+        sup_harm, dE_norm = suppression_harmonic(r, m1, m2, k_val)
+        if not np.isfinite(sup_harm) or not np.isfinite(dE_norm):
+            continue
+        # classify zones by dE_norm
+        if dE_norm < 0.35:
+            zone = 0
+        elif dE_norm > 0.35:
+            zone = 2
+        else:
+            zone = 1
+        rows.append({
+            "System": name, "m1": m1, "m2": m2, "r": r,
+            "r/r_c": r/rc,
+            "G_simple/G_Newton": sup_simple,
+            "G_harmonic/G_Newton": sup_harm,
+            "ΔE/(ħc)": dE_norm,
+            "Zone": zone
+        })
+
+df_phase1 = pd.DataFrame(rows)
+df_phase1.to_csv('/mnt/data/rgcl_phase1_calibrated.csv', index=False)
+
+# ── Phase 2: Prepare data ──────────────────────────────────────────────────────
+df = df_phase1.copy()
+# Filter valid target range 0-1
+df = df[(df['G_harmonic/G_Newton'] >= 0) & (df['G_harmonic/G_Newton'] <= 1)]
+
+features = df[['m1','m2','r']].values
+reg_target = df['G_harmonic/G_Newton'].values
+clf_target = df['Zone'].values
+
+X_train, X_test, y_train_reg, y_test_reg, y_train_clf, y_test_clf = train_test_split(
+    features, reg_target, clf_target, test_size=0.2, random_state=0
+)
+
+# ── Train Regression ─────────────────────────────────────────────────────────
+reg = MLPRegressor(hidden_layer_sizes=(50,30), max_iter=1000, random_state=0)
+reg.fit(X_train, y_train_reg)
+y_pred_reg = reg.predict(X_test)
+mse = mean_squared_error(y_test_reg, y_pred_reg)
+r2 = r2_score(y_test_reg, y_pred_reg)
+
+# ── Train Classification ──────────────────────────────────────────────────────
+clf = MLPClassifier(hidden_layer_sizes=(50,30), max_iter=1000, random_state=0)
+clf.fit(X_train, y_train_clf)
+y_pred_clf = clf.predict(X_test)
+
+# ── Output Metrics ────────────────────────────────────────────────────────────
+print("Regression MSE:", mse)
+print("Regression R²: ", r2)
+print("\nClassification Report:\n", classification_report(y_test_clf, y_pred_clf))
+print("Confusion Matrix:\n", confusion_matrix(y_test_clf, y_pred_clf))
+
+# ── Plot Actual vs Predicted Suppression ─────────────────────────────────────
+plt.figure(figsize=(6,6))
+plt.scatter(y_test_reg, y_pred_reg, alpha=0.6)
+plt.plot([0,1],[0,1],'r--')
+plt.xlabel('Actual G_harmonic/G_Newton')
+plt.ylabel('Predicted G_harmonic/G_Newton')
+plt.title('Phase 2 Retrained: Actual vs Predicted Suppression')
+plt.grid(True)
+plt.tight_layout()
+plt.show()

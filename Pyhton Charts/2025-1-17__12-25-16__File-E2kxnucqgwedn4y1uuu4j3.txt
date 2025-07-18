@@ -1,0 +1,24 @@
+Conversation URL:
+https://chatgpt.com/c/678a4f51-d2f8-8011-b459-d7ff7fe80496
+
+Title:
+
+
+Prompt:
+# Correcting the issue by ensuring all arrays are properly resampled to match the fine time resolution
+stack_amplitude_resampled = np.interp(time, np.linspace(0, len(waveform_steps) - 1, len(waveform_steps)), stack_amplitude)
+stack_frequency_resampled = np.interp(time, np.linspace(0, len(waveform_steps) - 1, len(waveform_steps)), stack_frequency)
+pi_modulator_resampled = np.interp(time, np.linspace(0, len(ratios) - 1, len(ratios)), pi_modulator)
+
+# Generate the combined waveform
+combined_waveform = stack_amplitude_resampled * np.sin(2 * np.pi * stack_frequency_resampled * time / len(time)) * pi_modulator_resampled
+
+# Plot the combined waveform
+plt.figure(figsize=(12, 8))
+plt.plot(time, combined_waveform, label="Combined Waveform (Stack + π)", color="purple")
+plt.title("Combined Waveform Using ASM Stack and π Modulation")
+plt.xlabel("Time (Normalized)")
+plt.ylabel("Waveform Amplitude")
+plt.legend()
+plt.grid(True)
+plt.show()

@@ -1,0 +1,43 @@
+Conversation URL:
+https://chatgpt.com/c/674ccee4-4298-8011-b79a-394fb49debf7
+
+Title:
+
+
+Prompt:
+# Simulate Dark Matter: Exploring Gravitational Effects
+# Using a simplified galaxy rotation curve model
+
+# Constants
+G = 4.3e-6  # Gravitational constant in kpc * (km/s)^2 / M_sun
+M = 1e11  # Mass of galaxy in solar masses
+r = np.linspace(0.1, 50, 1000)  # Radial distance in kpc
+
+# Rotation curve: including a dark matter halo component
+def rotation_curve(r, M, G, rho_0, r_c):
+    # Baryonic matter component (Keplerian dynamics)
+    v_baryonic = np.sqrt(G * M / r)
+    # Dark matter halo component (NFW profile approximation)
+    v_dark_matter = np.sqrt(4 * np.pi * G * rho_0 * r_c**2 * (1 - np.arctan(r / r_c) / (r / r_c)))
+    return np.sqrt(v_baryonic**2 + v_dark_matter**2)
+
+# Parameters for dark matter halo
+rho_0 = 0.04  # Central density of halo (M_sun / kpc^3)
+r_c = 5  # Core radius of the halo (kpc)
+
+# Compute rotation curves
+v_total = rotation_curve(r, M, G, rho_0, r_c)
+
+# Plot the results
+plt.figure(figsize=(10, 6))
+plt.plot(r, v_total, label="Total Rotation Curve (With Dark Matter)", color="purple")
+plt.title("Dark Matter Simulation: Galaxy Rotation Curve")
+plt.xlabel("Radius (kpc)")
+plt.ylabel("Velocity (km/s)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+
+# Save and show the plot
+plt.savefig("/mnt/data/dark_matter_simulation.png")
+plt.show()

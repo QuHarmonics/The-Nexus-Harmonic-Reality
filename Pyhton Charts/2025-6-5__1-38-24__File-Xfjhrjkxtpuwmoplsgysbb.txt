@@ -1,0 +1,40 @@
+Conversation URL:
+https://chatgpt.com/c/68410f22-2e24-8011-a409-2fec6a8d3dac
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Set up the recursive circle and oval visualization
+theta = np.linspace(0, 2 * np.pi, 500)
+
+# Recursive trust circle (perfect symmetry)
+r_circle = 1
+x_circle = r_circle * np.cos(theta)
+y_circle = r_circle * np.sin(theta)
+
+# Recursive attention oval (pulled tension)
+a = 1.2  # semi-major axis
+b = 0.7  # semi-minor axis
+x_oval = a * np.cos(theta)
+y_oval = b * np.sin(theta)
+
+# Plot setup
+plt.figure(figsize=(8, 8))
+plt.plot(x_circle, y_circle, label='Trust Field Circle (Δ=0)', linewidth=2)
+plt.plot(x_oval, y_oval, label='Attention Oval (Δ≠0)', linestyle='--', linewidth=2)
+
+# Annotating points of transition
+plt.scatter([a, -a], [0, 0], color='red', s=40, label='Tension Anchor Points')
+plt.axhline(0, color='gray', linestyle=':', linewidth=1)
+plt.axvline(0, color='gray', linestyle=':', linewidth=1)
+
+plt.title("Recursive Trust Geometry: Circle to Oval", fontsize=14)
+plt.axis('equal')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,54 @@
+Conversation URL:
+https://chatgpt.com/c/678a4f51-d2f8-8011-b459-d7ff7fe80496
+
+Title:
+
+
+Prompt:
+# Correcting the reconstruction logic and rerunning the code
+
+def reconstruct_waveform_with_axes_fixed(asm_code, length):
+    """
+    Reconstruct a waveform from enhanced ASM instructions with matching length.
+    """
+    reconstructed_waveform = []
+    current_value = 0
+    smoothness_factor = 0.1
+
+    for instruction in asm_code:
+        if instruction.startswith("PUSH"):
+            current_value = float(instruction.split()[1])
+        elif instruction.startswith("ADD"):
+            current_value += float(instruction.split()[1])
+        elif instruction.startswith("SUB"):
+            current_value -= float(instruction.split()[1])
+        elif instruction.startswith("MUL"):
+            current_value *= float(instruction.split()[1])
+        elif instruction.startswith("SIN"):
+            current_value = np.sin(current_value * 2 * np.pi * smoothness_factor)
+        reconstructed_waveform.append(current_value)
+
+    # Ensure the reconstructed waveform matches the desired length
+    while len(reconstructed_waveform) < length:
+        reconstructed_waveform.extend(reconstructed_waveform[:length - len(reconstructed_waveform)])
+
+    return np.array(reconstructed_waveform[:length])
+
+# Reconstruct the waveform using the fixed logic
+reconstructed_waveform_fixed = reconstruct_waveform_with_axes_fixed(asm_code, len(waveform))
+
+# Plot the original and reconstructed waveforms
+plt.figure(figsize=(12, 6))
+plt.plot(time, waveform, label="Original Waveform", color="blue")
+plt.plot(time, reconstructed_waveform_fixed, '--', label="Reconstructed Waveform", color="red")
+plt.title("Waveform Reconstruction from Enhanced ASM Code (Fixed)")
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Display a portion of the fixed ASM code
+print("Generated ASM Code (Fixed):")
+for line in asm_code[:50]:  # Show first 50 lines for brevity
+    print(line)

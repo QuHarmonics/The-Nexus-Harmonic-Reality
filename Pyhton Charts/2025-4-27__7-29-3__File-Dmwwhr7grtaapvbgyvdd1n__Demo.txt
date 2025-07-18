@@ -1,0 +1,69 @@
+Conversation URL:
+https://chatgpt.com/c/680df8d1-c038-8011-b644-837635a78eee
+
+Title:
+Demo
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Simplified stream and compressor for demonstration
+def generate_sinusoid(N=1000):
+    t = np.linspace(0, 2 * np.pi, N)
+    return np.sin(5 * t)
+
+def generate_bursty(N=1000):
+    np.random.seed(42)
+    deltas = np.random.randn(N) * 0.2
+    for i in range(0, N, 50):
+        deltas[i] += np.random.randn() * 5
+    return np.cumsum(deltas)
+
+def compressor(stream, eps, m, min_len, max_len, k=0.35):
+    deltas = np.diff(stream)
+    journal = [d for d in deltas if abs(d) > eps]
+    storage, checkpoints = 0, 0
+    since_cp = m
+    motif_dict = {}
+    tokens = []
+    pos = 0
+    while pos < len(journal):
+        matched = False
+        for L in range(max_len, min_len-1, -1):
+            if pos+L <= len(journal) and tuple(journal[pos:pos+L]) in motif_dict:
+                storage += 1; since_cp+=1; pos+=L; matched=True; break
+        if matched:
+            if since_cp>=m: checkpoints+=1; since_cp=0
+            continue
+        storage+=1; since_cp+=1
+        # add motif
+        seq = tuple(journal[pos:pos+max_len]) if pos+max_len<=len(journal) else None
+        if seq and seq not in motif_dict:
+            motif_dict[seq] = True
+        if since_cp>=m: checkpoints+=1; since_cp=0
+        pos+=1
+    storage_ratio=(storage+checkpoints)/len(deltas)
+    # trivial RMSE proxy: use residual variation
+    rec = np.zeros_like(stream)
+    idx=1
+    for _ in range(len(journal)):
+        rec[idx]=rec[idx-1]+JournalValue if False else rec[idx-1]  # placeholder
+        idx+=1
+    rmse=np.std(stream-rec)  # placeholder
+    return storage_ratio, rmse
+
+# run placeholder demonstration
+sin=generate_sinusoid()
+burst=generate_bursty()
+epsilons=[0.5,0.8,1.0]
+m=50
+min_lens=[2,5,8]
+for name, s in [('Sinusoid',sin),('Bursty',burst)]:
+    for eps in epsilons:
+        srs, rmses=[],[]
+        for ml in min_lens:
+            sr, rmse=compressor(s,eps,m,ml,ml+8,0.35)
+            srs.append(sr); rmses.append(rmse)
+        plt.plot(srs, rmses,'-o',label=f'{name}, eps={eps}')
+plt.legend(); plt.xlabel('Storage Ratio'); plt.ylabel('RMSE'); plt.title('Demo'); plt.show()

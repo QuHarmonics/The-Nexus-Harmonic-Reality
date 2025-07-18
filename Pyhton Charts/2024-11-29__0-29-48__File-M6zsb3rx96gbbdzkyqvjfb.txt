@@ -1,0 +1,61 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-d5fc-8011-b567-bc5ad3db1395
+
+Title:
+
+
+Prompt:
+# Extracting key formulas from Mary's Receipt Book and Samson's Law
+# From Mary's Receipt Book
+marys_receipt_formula = """
+P_t = α (T_t ⋅ H_t ⋅ C_t) + β (∇ ⋅ F_t ⋅ W_t) + γ ⋅ Reflect(X_t)
+
+Harmonic Adjustments:
+T_harmonic = T_t + 0.35 ⋅ sin(time step)
+H_harmonic = H_t + 0.35 ⋅ cos(time step)
+
+Feedback Mechanism:
+F_t = P_t - (H_t / 100) + 0.1 ⋅ (CAPE / 3000) + 0.2 ⋅ (Cloud Density / 100)
+"""
+
+# From Samson's Law
+samsons_feedback_formula = """
+F_t = P_t - (H_t / 100) + 0.1 ⋅ (CAPE / 3000) + 0.2 ⋅ (Cloud Density / 100)
+"""
+
+# Simulating key components of harmonic adjustments and feedback mechanisms
+# Defining parameters for the simulation
+time_steps = np.linspace(0, 10, 100)  # 100 time steps for simplicity
+CAPE = 1000  # Convective Available Potential Energy
+cloud_density = 50  # Cloud density percentage
+alpha, beta, gamma = 1.0, 0.5, 0.2  # Constants for calculation
+
+# Initial conditions
+T_t = np.zeros_like(time_steps)
+H_t = np.zeros_like(time_steps)
+P_t = np.zeros_like(time_steps)
+
+# Recursive harmonic adjustments and feedback loop
+for i, t in enumerate(time_steps):
+    # Harmonic adjustments
+    T_t[i] = 0.35 * np.sin(t)
+    H_t[i] = 0.35 * np.cos(t)
+    
+    # Feedback mechanism (Samson's Law)
+    F_t = P_t[i-1] - (H_t[i] / 100) + 0.1 * (CAPE / 3000) + 0.2 * (cloud_density / 100) if i > 0 else 0
+
+    # Recursive reflection (simplified)
+    P_t[i] = alpha * (T_t[i] * H_t[i] * cloud_density) + beta * F_t + gamma
+
+# Plotting the results
+plt.figure(figsize=(12, 8))
+plt.plot(time_steps, P_t, label="Precipitation Probability (P_t)", linewidth=2)
+plt.plot(time_steps, T_t, label="Temperature Harmonic (T_t)", linestyle='--')
+plt.plot(time_steps, H_t, label="Humidity Harmonic (H_t)", linestyle='--')
+plt.axhline(0, color='gray', linestyle='--', linewidth=0.8)
+plt.title("Simulation of Recursive Reflection and Feedback (Mary's Receipt Book)")
+plt.xlabel("Time")
+plt.ylabel("Values")
+plt.legend()
+plt.grid()
+plt.show()

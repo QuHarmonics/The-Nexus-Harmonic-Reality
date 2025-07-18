@@ -1,0 +1,103 @@
+Conversation URL:
+https://chatgpt.com/c/67b6f214-dd30-8011-aefd-9439df008548
+
+Title:
+
+
+Prompt:
+# Additional SHA-256 Recursive Hashing Analysis
+
+# Additional rounds of SHA-256 hashes
+sha256_hello_4 = "d872c4505c5202f7c0e11c369cda54fb7131e3f85462f331da0e68ec36c9b2ff"  # 3rd rehash
+sha256_hello_5 = "d6bf74ff58038cbdfc5d3dc5ed878271d3e2f8696fea57f9670a706247c43ad2"  # 4th rehash
+sha256_hello_6 = "150741c05eff4206a042003500182dba7f60dd5d341551a6727232f1c61d115f"  # 5th rehash
+sha256_hello_7 = "8558945925179d6a0e696543c3a6913d75c0fcff944f555c9785f8f86a2f286a"  # 6th rehash
+sha256_hello_8 = "4b94e65dd899c330a477ca053be8a8a0df2c1c6de252fc83ae5d2aa1345dee4e"  # 7th rehash
+sha256_hello_9 = "06f1c7724258137dc42cd30aed3dc1aaf03a159a5a5f625a81e845e67220698c"  # 8th rehash
+
+# Convert SHA-256 hex strings into bytes
+sha256_hello_4_bytes = bytes.fromhex(sha256_hello_4)
+sha256_hello_5_bytes = bytes.fromhex(sha256_hello_5)
+sha256_hello_6_bytes = bytes.fromhex(sha256_hello_6)
+sha256_hello_7_bytes = bytes.fromhex(sha256_hello_7)
+sha256_hello_8_bytes = bytes.fromhex(sha256_hello_8)
+sha256_hello_9_bytes = bytes.fromhex(sha256_hello_9)
+
+# Byte frequency analysis for each additional iteration
+byte_frequencies_hello_4 = Counter(sha256_hello_4_bytes)
+byte_frequencies_hello_5 = Counter(sha256_hello_5_bytes)
+byte_frequencies_hello_6 = Counter(sha256_hello_6_bytes)
+byte_frequencies_hello_7 = Counter(sha256_hello_7_bytes)
+byte_frequencies_hello_8 = Counter(sha256_hello_8_bytes)
+byte_frequencies_hello_9 = Counter(sha256_hello_9_bytes)
+
+# Sort byte frequencies for visualization
+sorted_bytes_4 = sorted(byte_frequencies_hello_4.keys())
+sorted_frequencies_4 = [byte_frequencies_hello_4[b] for b in sorted_bytes_4]
+
+sorted_bytes_5 = sorted(byte_frequencies_hello_5.keys())
+sorted_frequencies_5 = [byte_frequencies_hello_5[b] for b in sorted_bytes_5]
+
+sorted_bytes_6 = sorted(byte_frequencies_hello_6.keys())
+sorted_frequencies_6 = [byte_frequencies_hello_6[b] for b in sorted_bytes_6]
+
+sorted_bytes_7 = sorted(byte_frequencies_hello_7.keys())
+sorted_frequencies_7 = [byte_frequencies_hello_7[b] for b in sorted_bytes_7]
+
+sorted_bytes_8 = sorted(byte_frequencies_hello_8.keys())
+sorted_frequencies_8 = [byte_frequencies_hello_8[b] for b in sorted_bytes_8]
+
+sorted_bytes_9 = sorted(byte_frequencies_hello_9.keys())
+sorted_frequencies_9 = [byte_frequencies_hello_9[b] for b in sorted_bytes_9]
+
+# Plot frequency distributions for each iteration
+fig, axes = plt.subplots(3, 2, figsize=(16, 18))
+
+axes[0, 0].bar(sorted_bytes_4, sorted_frequencies_4, color='blue', alpha=0.7)
+axes[0, 0].set_title("Byte Frequency of SHA-256 Output (3rd Rehash)")
+axes[0, 0].set_xlabel("Byte Value (0-255)")
+axes[0, 0].set_ylabel("Frequency")
+
+axes[0, 1].bar(sorted_bytes_5, sorted_frequencies_5, color='red', alpha=0.7)
+axes[0, 1].set_title("Byte Frequency of SHA-256 Output (4th Rehash)")
+axes[0, 1].set_xlabel("Byte Value (0-255)")
+axes[0, 1].set_ylabel("Frequency")
+
+axes[1, 0].bar(sorted_bytes_6, sorted_frequencies_6, color='green', alpha=0.7)
+axes[1, 0].set_title("Byte Frequency of SHA-256 Output (5th Rehash)")
+axes[1, 0].set_xlabel("Byte Value (0-255)")
+axes[1, 0].set_ylabel("Frequency")
+
+axes[1, 1].bar(sorted_bytes_7, sorted_frequencies_7, color='purple', alpha=0.7)
+axes[1, 1].set_title("Byte Frequency of SHA-256 Output (6th Rehash)")
+axes[1, 1].set_xlabel("Byte Value (0-255)")
+axes[1, 1].set_ylabel("Frequency")
+
+axes[2, 0].bar(sorted_bytes_8, sorted_frequencies_8, color='orange', alpha=0.7)
+axes[2, 0].set_title("Byte Frequency of SHA-256 Output (7th Rehash)")
+axes[2, 0].set_xlabel("Byte Value (0-255)")
+axes[2, 0].set_ylabel("Frequency")
+
+axes[2, 1].bar(sorted_bytes_9, sorted_frequencies_9, color='brown', alpha=0.7)
+axes[2, 1].set_title("Byte Frequency of SHA-256 Output (8th Rehash)")
+axes[2, 1].set_xlabel("Byte Value (0-255)")
+axes[2, 1].set_ylabel("Frequency")
+
+plt.tight_layout()
+plt.show()
+
+# Calculate entropy for each iteration
+entropy_hello_4 = -sum((freq / len(sha256_hello_4_bytes)) * np.log2(freq / len(sha256_hello_4_bytes))
+                       for freq in byte_frequencies_hello_4.values())
+entropy_hello_5 = -sum((freq / len(sha256_hello_5_bytes)) * np.log2(freq / len(sha256_hello_5_bytes))
+                       for freq in byte_frequencies_hello_5.values())
+entropy_hello_6 = -sum((freq / len(sha256_hello_6_bytes)) * np.log2(freq / len(sha256_hello_6_bytes))
+                       for freq in byte_frequencies_hello_6.values())
+entropy_hello_7 = -sum((freq / len(sha256_hello_7_bytes)) * np.log2(freq / len(sha256_hello_7_bytes))
+                       for freq in byte_frequencies_hello_7.values())
+entropy_hello_8 = -sum((freq / len(sha256_hello_8_bytes)) * np.log2(freq / len(sha256_hello_8_bytes))
+                       for freq in byte_frequencies_hello_8.values())
+entropy_hello_9 = -sum((freq / len(sha256_hello_9_bytes)) * np.log2(freq / len(sha256_hello_9_bytes))
+                       for freq in byte_frequencies_hello_9.values())
+
+entropy_hello_4, entropy_hello_5, entropy_hello_6, entropy_hello_7, entropy_hello_8, entropy_hello_9

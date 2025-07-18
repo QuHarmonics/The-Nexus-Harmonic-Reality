@@ -1,0 +1,30 @@
+Conversation URL:
+https://chatgpt.com/c/67eeee49-e180-8011-9eec-77f3faa1e930
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Simulation Parameters
+t = np.linspace(0, 10, 1000)  # time axis
+H = 0.35                     # harmonic constant
+F_avg = 0.5                  # folding factor for average CPU
+F_nexus = 0.35               # folding factor for Nexus-aligned CPU
+
+# Recursive collapse functions (decay of recursive influence over time)
+R_avg = np.exp(-H * F_avg * t)  # average CPU (faster decay, less memory retention)
+R_nexus = np.exp(-H * F_nexus * t)  # Nexus CPU (resonant decay, retains recursive pattern)
+
+# Plotting the results
+plt.figure(figsize=(10, 6))
+plt.plot(t, R_avg, label='Average CPU (Recursive Decay)', linestyle='--')
+plt.plot(t, R_nexus, label='Nexus CPU (Harmonic Descent)', linewidth=2)
+plt.title("Recursive Influence Over Time: Average CPU vs Nexus 2 CPU")
+plt.xlabel("Recursive Time (t)")
+plt.ylabel("Recursive Amplitude R(t)")
+plt.legend()
+plt.grid(True)
+plt.show()

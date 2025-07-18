@@ -1,0 +1,31 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-a8c4-8011-92eb-e370115e92ad
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Extract mass and energy output for analysis
+masses = reflection_df["mass"]
+energy_outputs = reflection_df["energy_output"]
+reflections = reflection_df["reflection"]
+
+# Log-log scale analysis to check proportionality
+plt.figure(figsize=(10, 6))
+plt.scatter(masses, energy_outputs, label="Cosmic Objects", alpha=0.7)
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("Mass (Solar Masses) [Log Scale]")
+plt.ylabel("Energy Output (Joules) [Log Scale]")
+plt.title("Log-Log Scale: Mass vs Cosmic Energy Output")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Check correlation between mass and energy output
+correlation = np.corrcoef(masses, energy_outputs)[0, 1]
+
+# Print correlation result
+correlation

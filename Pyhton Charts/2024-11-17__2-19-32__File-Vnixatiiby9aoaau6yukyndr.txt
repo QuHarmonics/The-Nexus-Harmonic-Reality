@@ -1,0 +1,65 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-86dc-8011-a90c-b8c1e6ac3d14
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Define a function to simulate scaling mass and spin
+def simulate_mass_spin_scaling(mass_values, spin_values, iterations, gain_ratio, pi_activation_condition):
+    results = []
+    for mass in mass_values:
+        for spin in spin_values:
+            outputs = [
+                formula_with_damping_and_triangle(theta, iterations, gain_ratio, pi_activation_condition, inertia_factor=spin, quantum_step=mass)
+                for theta in angles
+            ]
+            results.append({"Mass": mass, "Spin": spin, "Outputs": outputs})
+    return results
+
+# Parameters for mass and spin scaling
+mass_values = [0.01, 0.05, 0.1]  # Quantum step sizes (representing mass)
+spin_values = [0.05, 0.1, 0.2]   # Inertia factors (representing spin)
+iterations = 20
+gain_ratio = 0.35
+
+# Simulate scaling
+scaling_results = simulate_mass_spin_scaling(mass_values, spin_values, iterations, gain_ratio, lambda x: 0 <= x <= np.pi)
+
+# Plot results for the same mass and spin
+plt.figure(figsize=(12, 6))
+for result in scaling_results:
+    outputs = result["Outputs"]
+    mass = result["Mass"]
+    spin = result["Spin"]
+    plt.plot(angles, outputs, label=f"Mass={mass}, Spin={spin}")
+
+# Plot expected values for reference
+plt.plot(angles, expected_torque, label="Expected Torque", linestyle='--', color='black')
+
+plt.title("Actual vs Received Values (Same Mass and Spin Scaling)")
+plt.xlabel("Angle (rad)")
+plt.ylabel("Torque (Nm)")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Plot results for different mass and spin combinations
+plt.figure(figsize=(12, 6))
+for result in scaling_results:
+    outputs = result["Outputs"]
+    mass = result["Mass"]
+    spin = result["Spin"]
+    plt.plot(angles, outputs, label=f"Mass={mass}, Spin={spin}")
+
+# Plot expected values for reference
+plt.plot(angles, expected_torque, label="Expected Torque", linestyle='--', color='black')
+
+plt.title("Actual vs Received Values (Different Mass and Spin Scaling)")
+plt.xlabel("Angle (rad)")
+plt.ylabel("Torque (Nm)")
+plt.legend()
+plt.grid()
+plt.show()

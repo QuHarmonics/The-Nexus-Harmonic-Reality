@@ -1,0 +1,153 @@
+Conversation URL:
+https://chatgpt.com/c/680df8d1-c038-8011-b644-837635a78eee
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate a sinusoid stream
+def generate_sinusoid(N=1000, freq=5, amplitude=1.0, phase=0.0):
+    t = np.linspace(0, 2 * np.pi, N)
+    return amplitude * np.sin(freq * t + phase)
+
+# Compression function from before, adapted for novelty + motif
+def novelty_motif_compression(stream, base_eps, adaptive, min_len, max_len, bias, k=0.35, window_vol=10):
+    deltas = np.diff(stream)
+    N = len(deltas)
+    vol = np.array([np.std(deltas[max(0, i-window_vol):i+1]) for i in range(N)])
+    
+    # Journal deltas by epsilon
+    journal = []
+    for i, d in enumerate(deltas):
+        eps = (base_eps * vol[i]) if adaptive else base_eps
+        if abs(d) > eps:
+            journal.append(d)
+    # Setup for compression
+    motif_dict = {}
+    next_id = 0
+    tokens = []
+    storage_tokens = 0
+    checkpoints = 0
+    pos = 0
+    journal = list(journal)
+    
+    while pos < len(journal):
+        matched = False
+        # match existing motifs
+        for L in range(max_len, min_len - 1, -1):
+            if pos + L <= len(journal):
+                seq = tuple(journal[pos:pos + L])
+                if seq in motif_dict:
+                    tokens.append(('M', motif_dict[seq]))
+                    storage_tokens += 1
+                    pos += L
+                    matched = True
+                    break
+        if matched:
+            continue
+        
+        # literal
+        tokens.append(('D', journal[pos]))
+        storage_tokens += 1
+        
+        # candidate new motifs
+        candidates = [tuple(journal[pos:pos + L]) 
+                      for L in range(min_len, max_len + 1) 
+                      if pos + L <= len(journal)]
+        
+        if candidates:
+            if bias:
+                # pick closest to k
+                best = min(candidates, key=lambda s: abs(np.mean(s) - k))
+                if best not in motif_dict:
+                    motif_dict[best] = next_id
+                    next_id += 1
+                    checkpoints += 1
+            else:
+                first_added = False
+                for seq in candidates:
+                    if seq not in motif_dict:
+                        motif_dict[seq] = next_id
+                        next_id += 1
+                        if not first_added:
+                            checkpoints += 1
+                            first_added = True
+        
+        pos += 1
+    
+    total_storage = storage_tokens + checkpoints
+    
+    # Reconstruction
+    reconstructed = np.zeros(len(stream))
+    idx = 1
+    inv_motifs = {v: k for k, v in motif_dict.items()}
+    for typ, val in tokens:
+        if typ == 'M':
+            seq = inv_motifs[val]
+            for d in seq:
+                reconstructed[idx] = reconstructed[idx - 1] + d
+                idx += 1
+        else:  # literal
+            d = val
+            reconstructed[idx] = reconstructed[idx - 1] + d
+            idx += 1
+    
+    rmse = np.sqrt(np.mean((reconstructed - stream) ** 2))
+    return total_storage / N, rmse
+
+# Parameters
+length = 1000
+sin_stream = generate_sinusoid(length)
+epsilon_bases = [0.5, 1.0, 2.0, 4.0]
+schemes = [False, True]  # fixed, adaptive
+motif_lengths = list(range(2, 9))
+bias_options = [False, True]
+
+# Collect results
+results = []
+for adaptive in schemes:
+    for eps in epsilon_bases:
+        for min_len in motif_lengths:
+            max_len = min_len + 3
+            for bias in bias_options:
+                storage_ratio, rmse = novelty_motif_compression(
+                    sin_stream, eps, adaptive, min_len, max_len, bias
+                )
+                results.append({
+                    'scheme': 'adaptive' if adaptive else 'fixed',
+                    'base_eps': eps,
+                    'min_len': min_len,
+                    'bias': bias,
+                    'storage_ratio': storage_ratio,
+                    'rmse': rmse
+                })
+
+# Convert to structured array for plotting
+import pandas as pd
+df = pd.DataFrame(results)
+
+# Plotting: 2 figures for bias=False and bias=True, each with 2x2 subplots for each epsilon
+for bias in bias_options:
+    fig, axs = plt.subplots(2, 2, figsize=(12, 8), sharex=True, sharey=True)
+    fig.suptitle(f'Novelty + Motif Sweep on Sinusoid (bias={bias})', fontsize=16)
+    for idx, eps in enumerate(epsilon_bases):
+        ax = axs[idx // 2, idx % 2]
+        subset = df[(df['base_eps'] == eps) & (df['bias'] == bias)]
+        for min_len in motif_lengths:
+            df_ml = subset[subset['min_len'] == min_len]
+            for scheme, marker in [('fixed', 'o'), ('adaptive', 'x')]:
+                df_plot = df_ml[df_ml['scheme'] == scheme]
+                ax.scatter(df_plot['storage_ratio'], df_plot['rmse'],
+                           label=f'len={min_len}, {scheme}',
+                           marker=marker, s=50, alpha=0.7)
+        ax.set_title(f'ε = {eps}')
+        ax.set_xlabel('Total Storage Ratio')
+        ax.set_ylabel('RMSE')
+        ax.grid(True)
+        if idx == 0:
+            ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+    plt.tight_layout(rect=[0, 0, 0.9, 0.95])
+    plt.show()

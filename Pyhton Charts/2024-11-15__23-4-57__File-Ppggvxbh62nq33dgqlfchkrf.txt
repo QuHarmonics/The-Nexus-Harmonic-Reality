@@ -1,0 +1,48 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7eec-8011-8c71-398f12a6c9d1
+
+Title:
+
+
+Prompt:
+# Function to generate twin primes up to a given limit
+def generate_twin_primes(limit):
+    primes = []
+    twin_primes = []
+
+    # Helper function to check primality
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    # Generate primes and twin primes
+    for num in range(2, limit + 1):
+        if is_prime(num):
+            primes.append(num)
+            if len(primes) > 1 and primes[-1] - primes[-2] == 2:
+                twin_primes.append((primes[-2], primes[-1]))
+
+    return twin_primes
+
+# Generate twin primes up to a large number
+limit = 10000
+twin_primes = generate_twin_primes(limit)
+
+# Extract the first elements of the twin pairs for visualization
+twin_starts = [pair[0] for pair in twin_primes]
+
+# Plot the distribution of twin primes
+plt.figure(figsize=(12, 6))
+plt.scatter(twin_starts, [1] * len(twin_starts), alpha=0.6, label="Twin Primes", color="blue", marker="|")
+plt.title(f"Distribution of Twin Primes up to {limit}")
+plt.xlabel("Prime Number")
+plt.ylabel("Twin Prime Indicator")
+plt.yticks([])  # No meaningful y-axis for this visualization
+plt.grid(True, axis='x', linestyle='--', alpha=0.5)
+plt.legend()
+plt.tight_layout()
+plt.show()

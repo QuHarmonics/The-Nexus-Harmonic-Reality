@@ -1,0 +1,81 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-7bdc-8011-a523-8cde7469bee8
+
+Title:
+
+
+Prompt:
+# Multi-dimensional gain refinement starting from the lowest node outwards
+def gain_refinement(states, iterations=300, gain_factor=0.05, noise_factor=0.01):
+    """
+    Apply multi-dimensional gain adjustments, starting from the lowest node (minimal deviation) outwards.
+    This method progressively adjusts each axis based on its deviation hierarchy.
+    """
+    refined_states = states.copy()
+    alignment_history = []
+
+    for i in range(iterations):
+        # Calculate current harmonic alignment
+        alignment = calculate_harmonic_alignment(refined_states)
+        alignment_history.append(alignment)
+
+        # Identify the axis with the smallest deviation and refine it first
+        deviations = [np.mean(state) for state in refined_states]
+        sorted_axes = np.argsort(np.abs(np.array(deviations) - 0.35))
+
+        # Apply gain adjustment iteratively starting from the lowest deviation axis
+        for axis in sorted_axes:
+            deviation = deviations[axis] - 0.35
+            gain_adjustment = 1 + gain_factor * (-1 if deviation > 0 else 1)  # Adjust gain directionally
+            refined_states[axis] *= gain_adjustment
+
+        # Dynamically tune noise
+        refined_states = dynamic_noise_tuning(refined_states, noise_factor=noise_factor)
+
+        # Exit if alignment is within tolerance
+        if abs(alignment - 0.35) < 0.01:
+            break
+
+    return refined_states, alignment, alignment_history
+
+
+# Run the gain refinement process
+gain_states, gain_alignment, gain_history = gain_refinement(refined_states_to_target, iterations=300)
+
+# Visualize the alignment progress
+plt.figure(figsize=(10, 6))
+plt.plot(gain_history, label="Harmonic Alignment Progress (Gain Refinement)")
+plt.axhline(0.35, color="red", linestyle="--", label="Target H=0.35")
+plt.title("Alignment Progress Using Multi-Dimensional Gain Refinement")
+plt.xlabel("Iteration")
+plt.ylabel("Harmonic Alignment")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Visualize the final gain-refined states
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection="3d")
+
+# Plot the final gain-refined states
+for axis, color in enumerate(colors):
+    ax.scatter(
+        gain_states[axis][:, 0],
+        gain_states[axis][:, 1],
+        gain_states[axis][:, 2],
+        c=color,
+        label=f"Mark_{axis + 1}",
+        alpha=0.6,
+    )
+
+# Labels and visualization details
+ax.set_title("Final States After Multi-Dimensional Gain Refinement")
+ax.set_xlabel("X-axis")
+ax.set_ylabel("Y-axis")
+ax.set_zlabel("Z-axis")
+ax.legend()
+
+plt.show()
+
+# Display final alignment
+gain_alignment

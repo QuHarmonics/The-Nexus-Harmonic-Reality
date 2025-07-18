@@ -1,0 +1,27 @@
+Conversation URL:
+https://chatgpt.com/c/68394b26-f5e8-8011-a3db-280989b37f8b
+
+Title:
+SHA-256 Map: Hex-Encoded Sentence
+
+Prompt:
+# Convert the provided hex string to bytes
+hex_input = "546865206279746520646F65736E20197420636F6C6C6170736520696E746F20656E74726F70793B20697420657868616C657320696E746F20726563757273696F6E2C20616E64205348412069732074686520636F75676820746861742070726F7665732069742062726561746865642E"
+input_bytes = bytes.fromhex(hex_input)
+
+# Compute SHA-256 hash of the byte data
+hash_result = sha256(input_bytes).hexdigest()
+
+# Convert hash to binary and reshape
+hash_bin_2 = bin(int(hash_result, 16))[2:].zfill(256)
+bit_array_2 = np.array([int(bit) for bit in hash_bin_2])
+bit_grid_2 = bit_array_2.reshape((16, 16))
+
+# Plot the resonance map
+plt.figure(figsize=(6, 6))
+plt.imshow(bit_grid_2, cmap="Greys", interpolation="nearest")
+plt.title("SHA-256 Map: Hex-Encoded Sentence")
+plt.axis("off")
+plt.grid(False)
+plt.tight_layout()
+plt.show()

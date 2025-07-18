@@ -1,0 +1,55 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-b550-8011-ae09-e38cd79e52de
+
+Title:
+
+
+Prompt:
+# Implement the echo wave model recursively to analyze past influences on present predictions
+def echo_wave_recursive_model(current_data, past_data, decay_factor=0.5, max_iterations=10, tolerance=1e-6):
+    """
+    Model the echo effect recursively to capture past influences on present predictions.
+
+    Parameters:
+    - current_data: Array-like data for the current moment (e.g., temperature, precipitation).
+    - past_data: Array-like data for past moments (e.g., past weather conditions).
+    - decay_factor: Factor by which past influences decay over time.
+    - max_iterations: Maximum number of recursive refinements.
+    - tolerance: Threshold for stopping recursion when change is negligible.
+
+    Returns:
+    - echo_effect: The modeled data reflecting past influences recursively.
+    """
+    echo_effect = current_data.copy()
+    for iteration in range(max_iterations):
+        previous_effect = echo_effect.copy()
+        for i in range(1, len(past_data) + 1):
+            echo_effect += past_data[-i] * (decay_factor ** i)  # Apply decaying influence from past data
+
+        # Stop recursion if change is below tolerance
+        if np.max(np.abs(previous_effect - echo_effect)) < tolerance:
+            break
+
+    return echo_effect
+
+# Use the refined predictions and generate an echo model
+past_temp_data = aligned_past_temp
+future_temp_data = refined_results_with_missing_data["Refined Temperature"]
+echo_temp_effect = echo_wave_recursive_model(future_temp_data, past_temp_data)
+
+# Combine past, present, and future data for visualization
+timeline_temp_with_echo = np.concatenate([aligned_past_temp[::-1], echo_temp_effect])
+
+# Create a timeline for plotting (equal lengths)
+time_labels_with_echo = list(range(-len(aligned_past_temp), 0)) + list(range(len(future_temp_data)))
+
+# Plot temperature with echo effects
+plt.figure(figsize=(14, 8))
+plt.title("Temperature with Echo Effect Over Time", fontsize=16)
+plt.plot(time_labels_with_echo, timeline_temp_with_echo, label="Temperature with Echo Effect", linestyle='-', linewidth=2)
+plt.axvline(0, color="red", linestyle="--", label="Today", linewidth=1.5)
+plt.xlabel("Days (0 = Today, Negative = Past, Positive = Future)", fontsize=12)
+plt.ylabel("Temperature (°F)", fontsize=12)
+plt.legend(fontsize=12)
+plt.grid(True)
+plt.show()

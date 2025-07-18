@@ -1,0 +1,32 @@
+Conversation URL:
+https://chatgpt.com/c/674ccee4-4298-8011-b79a-394fb49debf7
+
+Title:
+
+
+Prompt:
+# Generate a range of distances for simulation
+distances = np.linspace(1e19, 1e21, 100)  # Distances from 10^19 to 10^21 meters
+forces = []
+
+# Calculate relational force for each distance
+for d in distances:
+    force = universal_force(mass_galaxy_core, mass_cluster, d, harmonic_params, stress_energy_factor)
+    forces.append(force)
+
+# Plot the force-distance relationship
+plt.figure(figsize=(8, 5))
+plt.plot(distances, forces, label="Relational Force", color="blue")
+plt.title("Relational Force vs. Distance (Dark Matter Simulation)")
+plt.xlabel("Distance (m)")
+plt.ylabel("Force (N)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+
+# Save the plot
+plot_path = "/mnt/data/dark_matter_force_distance.png"
+plt.savefig(plot_path)
+plt.show()
+
+plot_path

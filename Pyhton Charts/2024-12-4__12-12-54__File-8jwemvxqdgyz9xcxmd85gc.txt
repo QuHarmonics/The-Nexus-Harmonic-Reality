@@ -1,0 +1,41 @@
+Conversation URL:
+https://chatgpt.com/c/674ccee4-4298-8011-b79a-394fb49debf7
+
+Title:
+
+
+Prompt:
+# Quantum Gravity: Planck-Scale Spacetime Simulation
+
+# Constants
+h_bar = 1.0545718e-34  # Reduced Planck constant (m^2 kg / s)
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+c = 3.0e8  # Speed of light (m/s)
+
+# Planck units
+planck_length = np.sqrt(h_bar * G / c**3)  # Planck length in meters
+planck_time = planck_length / c  # Planck time in seconds
+
+# Simulate spacetime curvature at Planck scales
+x = np.linspace(-10 * planck_length, 10 * planck_length, 500)  # Spatial dimension in Planck lengths
+y = np.linspace(-10 * planck_length, 10 * planck_length, 500)  # Temporal dimension in Planck times
+X, Y = np.meshgrid(x, y)
+
+# Curvature simulation using an arbitrary metric tensor approximation
+def curvature(x, y):
+    return np.sin(x / planck_length) * np.cos(y / planck_time)
+
+Z = curvature(X, Y)
+
+# Plot the results
+plt.figure(figsize=(10, 6))
+plt.contourf(X, Y, Z, cmap="viridis")
+plt.colorbar(label="Curvature Intensity (Arbitrary Units)")
+plt.title("Quantum Gravity Simulation: Planck-Scale Curvature")
+plt.xlabel("Spatial Dimension (Planck Lengths)")
+plt.ylabel("Temporal Dimension (Planck Times)")
+plt.tight_layout()
+
+# Save and show the plot
+plt.savefig("/mnt/data/quantum_gravity_simulation.png")
+plt.show()

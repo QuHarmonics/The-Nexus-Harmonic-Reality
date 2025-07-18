@@ -1,0 +1,32 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-b550-8011-ae09-e38cd79e52de
+
+Title:
+
+
+Prompt:
+# Ensure proper alignment by averaging over past days to match future data length
+aligned_past_temp = np.mean(past_temp[:, :future_temp.shape[0]], axis=0)
+aligned_past_humidity = np.mean(past_humidity[:, :future_humidity.shape[0]], axis=0)
+aligned_past_precip = np.mean(past_precip[:, :future_precip.shape[0]], axis=0)
+
+# Concatenate past and future data for each parameter
+timeline_temp = np.concatenate([aligned_past_temp[::-1], future_temp])
+timeline_humidity = np.concatenate([aligned_past_humidity[::-1], future_humidity])
+timeline_precip = np.concatenate([aligned_past_precip[::-1], future_precip])
+
+# Create a timeline for plotting (equal lengths)
+time_labels = list(range(-len(aligned_past_temp), 0)) + list(range(len(future_temp)))
+
+# Plot temperature, humidity, and precipitation
+plt.figure(figsize=(14, 8))
+plt.title("Weather Data Timeline with Decay Effect", fontsize=16)
+plt.plot(time_labels, timeline_temp, label="Temperature (°F)", linestyle='-', linewidth=2)
+plt.plot(time_labels, timeline_humidity, label="Humidity (%)", linestyle='--', linewidth=2)
+plt.plot(time_labels, timeline_precip * 100, label="Precipitation Probability (%)", linestyle=':', linewidth=2)
+plt.axvline(0, color="red", linestyle="--", label="Today", linewidth=1.5)
+plt.xlabel("Days (0 = Today, Negative = Past, Positive = Future)", fontsize=12)
+plt.ylabel("Values", fontsize=12)
+plt.legend(fontsize=12)
+plt.grid(True)
+plt.show()

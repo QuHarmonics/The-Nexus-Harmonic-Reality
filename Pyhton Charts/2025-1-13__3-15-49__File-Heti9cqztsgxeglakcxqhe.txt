@@ -1,0 +1,82 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+# Correcting the indexing issue and re-importing necessary libraries
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+
+def visualize_cubes(S_dim, U_dim):
+    """
+    Visualizes the Sample and Universe matrices as nested cubes.
+    
+    Args:
+        S_dim (tuple): Dimensions of the Sample Matrix (S_x, S_y, S_z).
+        U_dim (tuple): Dimensions of the Universe Matrix (U_x, U_y, U_z).
+    """
+    # Define the cubes for visualization
+    S_x, S_y, S_z = S_dim
+    U_x, U_y, U_z = U_dim
+
+    # Define Sample Cube (S) vertices
+    S = np.array([
+        [0, 0, 0], [S_x, 0, 0], [S_x, S_y, 0], [0, S_y, 0],  # Bottom face
+        [0, 0, S_z], [S_x, 0, S_z], [S_x, S_y, S_z], [0, S_y, S_z]  # Top face
+    ])
+
+    # Define Universe Cube (U) vertices
+    U = np.array([
+        [0, 0, 0], [U_x, 0, 0], [U_x, U_y, 0], [0, U_y, 0],  # Bottom face
+        [0, 0, U_z], [U_x, 0, U_z], [U_x, U_y, U_z], [0, U_y, U_z]  # Top face
+    ])
+
+    # Function to plot a cube given vertices
+    def plot_cube(ax, vertices, color, label):
+        # Draw cube edges
+        edges = [
+            (0, 1), (1, 2), (2, 3), (3, 0),  # Bottom face
+            (4, 5), (5, 6), (6, 7), (7, 4),  # Top face
+            (0, 4), (1, 5), (2, 6), (3, 7)   # Vertical edges
+        ]
+        for edge in edges:
+            ax.plot3D(*zip(*vertices[list(edge)]), color=color, lw=2)
+        # Add labels
+        x_center = (vertices[0][0] + vertices[6][0]) / 2
+        y_center = (vertices[0][1] + vertices[6][1]) / 2
+        z_center = (vertices[0][2] + vertices[6][2]) / 2
+        ax.text(x_center, y_center, z_center, label, color=color, fontsize=10)
+
+    # Initialize 3D plot
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Plot the Universe Cube (U)
+    plot_cube(ax, U, color='blue', label='Universe (U)')
+
+    # Plot the Sample Cube (S)
+    plot_cube(ax, S, color='red', label='Sample (S)')
+
+    # Set plot limits
+    max_dim = max(U_x, U_y, U_z)
+    ax.set_xlim([0, max_dim])
+    ax.set_ylim([0, max_dim])
+    ax.set_zlim([0, max_dim])
+
+    # Labels and title
+    ax.set_xlabel('X-axis')
+    ax.set_ylabel('Y-axis')
+    ax.set_zlabel('Z-axis')
+    ax.set_title('Visualization of Sample (S) and Universe (U) Cubes')
+
+    plt.show()
+
+# Example dimensions
+S_dimensions = (512, 512, 512)
+U_dimensions = (1024, 1024, 1024)
+
+# Visualize the cubes
+visualize_cubes(S_dimensions, U_dimensions)

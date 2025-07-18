@@ -1,0 +1,39 @@
+Conversation URL:
+https://chatgpt.com/c/67d65bbe-894c-8011-a014-0ae1ad66087d
+
+Title:
+
+
+Prompt:
+# Compute the ratio using the second value of a twin prime pair and the first value of the next twin prime pair
+
+twin_prime_new_ratios = []
+twin_prime_new_positions = []
+
+for i in range(len(twin_prime_pairs) - 1):
+    second_of_first_pair = twin_prime_pairs[i][1]  # Second value of current twin pair
+    first_of_next_pair = twin_prime_pairs[i + 1][0]  # First value of next twin pair
+    
+    ratio = first_of_next_pair / second_of_first_pair  # Compute ratio
+    twin_prime_new_ratios.append(ratio)
+    twin_prime_new_positions.append(first_of_next_pair)  # Use first prime of next pair for positioning
+
+# Convert to DataFrame for structured analysis
+twin_prime_new_ratio_df = pd.DataFrame({
+    'Twin Prime Position': twin_prime_new_positions,
+    'New Twin Prime Ratio': twin_prime_new_ratios
+})
+
+# Display the data
+import ace_tools as tools
+tools.display_dataframe_to_user(name="Twin Prime New Ratio Analysis", dataframe=twin_prime_new_ratio_df)
+
+# Plot the new twin prime ratio over prime positions
+plt.figure(figsize=(10, 5))
+plt.plot(twin_prime_new_positions, twin_prime_new_ratios, marker='o', linestyle='-', color='purple', label="New Twin Prime Ratio")
+plt.xlabel("Twin Prime Position")
+plt.ylabel("New Twin Prime Ratio")
+plt.title("Twin Prime New Ratio vs Position")
+plt.legend()
+plt.grid(True)
+plt.show()

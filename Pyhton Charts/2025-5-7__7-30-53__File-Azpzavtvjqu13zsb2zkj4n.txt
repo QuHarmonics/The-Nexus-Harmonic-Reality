@@ -1,0 +1,57 @@
+Conversation URL:
+https://chatgpt.com/c/681b3cfe-5f60-8011-9fb8-a1d390ffb762
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+import hashlib
+import math
+
+def sha256_segments(input_str):
+    """Return 8 32-bit segments from SHA256 hash."""
+    hash_hex = hashlib.sha256(input_str.encode('utf-8')).hexdigest()
+    return [int(hash_hex[i:i+8], 16) for i in range(0, 64, 8)]
+
+# Use previous mirror pair
+original = "12345678"
+mirror = original[::-1]
+
+# Compute SHA-256 segments
+seg_orig = sha256_segments(original)
+seg_mirr = sha256_segments(mirror)
+
+# Compute first derivative (signed drift)
+delta = np.array([b - a for a, b in zip(seg_orig, seg_mirr)])
+
+# Compute second derivative (Δ²)
+delta2 = np.diff(delta, n=1)
+
+# π-phase projection: map segment index to π*(i/8)
+pi_proj = [math.pi * (i / 8) for i in range(len(delta))]
+
+# Plotting
+fig, axs = plt.subplots(2, 1, figsize=(10, 8))
+
+# Δ vs π-phase
+axs[0].plot(pi_proj, delta, marker='o', label='Δ (Signed Drift)', color='steelblue')
+axs[0].set_title('Δ Drift Projected over π-Phase Space')
+axs[0].set_xlabel('π × (i/8)')
+axs[0].set_ylabel('Δ Value')
+axs[0].grid(True)
+axs[0].legend()
+
+# Δ² curvature
+axs[1].bar(range(len(delta2)), delta2, color='darkorange')
+axs[1].set_title('Δ² (Second Derivative of Drift) — Collapse Curvature')
+axs[1].set_xlabel('Segment Index')
+axs[1].set_ylabel('Δ²')
+axs[1].grid(True)
+
+plt.tight_layout()
+plt.show()
+
+# Return raw values for inspection
+delta.tolist(), delta2.tolist(), pi_proj

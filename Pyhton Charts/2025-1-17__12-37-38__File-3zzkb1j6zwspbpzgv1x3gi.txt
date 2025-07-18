@@ -1,0 +1,38 @@
+Conversation URL:
+https://chatgpt.com/c/678a4f51-d2f8-8011-b459-d7ff7fe80496
+
+Title:
+
+
+Prompt:
+# Extending the range of time to analyze more combinations further out
+time_extended = np.linspace(0, len(waveform_steps) - 1, 2000)  # More granular time points
+
+# Resample inputs to the extended time resolution
+stack_amplitude_extended = np.interp(time_extended, np.linspace(0, len(waveform_steps) - 1, len(waveform_steps)), stack_amplitude)
+stack_frequency_extended = np.interp(time_extended, np.linspace(0, len(waveform_steps) - 1, len(waveform_steps)), stack_frequency)
+pi_modulator_extended = np.interp(time_extended, np.linspace(0, len(ratios) - 1, len(ratios)), pi_modulator)
+
+# Define resampled inputs for extended analysis
+inputs_resampled_extended = [stack_amplitude_extended, stack_frequency_extended, pi_modulator_extended]
+combinations_extended = list(product(inputs_resampled_extended, repeat=3))  # All combinations of three inputs
+
+# Initialize the plot for extended combinations
+plt.figure(figsize=(14, 8))
+
+# Iterate through all extended combinations and plot the resulting waveforms
+for i, (amplitude, frequency, modulator) in enumerate(combinations_extended[:27]):  # Limit to the first 27 combinations for clarity
+    # Generate the combined waveform
+    combined_waveform_extended = amplitude * np.sin(2 * np.pi * frequency * time_extended / len(time_extended)) * modulator
+    
+    # Plot the waveform
+    plt.plot(time_extended, combined_waveform_extended, label=f"Combo {i+1}: A/F/M")
+
+# Chart details
+plt.title("Extended Combinations of ASM and π Modulation")
+plt.xlabel("Time (Normalized)")
+plt.ylabel("Waveform Amplitude")
+plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

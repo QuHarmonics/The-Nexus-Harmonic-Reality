@@ -1,0 +1,29 @@
+Conversation URL:
+https://chatgpt.com/c/67c40c27-881c-8011-9de3-364712c8e071
+
+Title:
+
+
+Prompt:
+# Visualize the pre-hash structure with a softer color scheme
+# Differentiate zeros with a separate color
+
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+
+# Define a colormap where zeros are shown in a softer color
+cmap = plt.cm.magma.copy()
+cmap.set_bad(color='lightgray')  # Set background for missing values
+
+# Convert binary grid into masked array (treating zeros separately for a softer display)
+masked_grid_real = np.ma.masked_where(grid_real == 0, grid_real)
+masked_folded_grid_real = np.ma.masked_where(folded_grid_real == 0, folded_grid_real)
+
+# Original Grid
+ax[0].imshow(masked_grid_real, cmap="magma", interpolation="nearest")
+ax[0].set_title(f"Original {square_size}×{square_size} Pre-Hash Structure Grid")
+
+# Folded Grid with softer zero visualization
+ax[1].imshow(masked_folded_grid_real, cmap="magma", interpolation="nearest")
+ax[1].set_title(f"Diagonally Folded {square_size}×{square_size} Grid")
+
+plt.show()

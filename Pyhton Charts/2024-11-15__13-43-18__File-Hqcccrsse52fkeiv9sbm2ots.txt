@@ -1,0 +1,66 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Simulate the application of the formula to quantum mechanics laws (Schrödinger's Equation Simplified)
+
+# Generate scenarios for testing quantum mechanics principles
+quantum_mechanics_data = pd.DataFrame({
+    "Scenario": [f"Quantum Test {i+1}" for i in range(30)],  # 30 test scenarios
+    "Potential Energy (J)": np.random.uniform(1e-21, 1e-19, 30),  # Potential energy in Joules (quantum scale)
+    "Kinetic Energy (J)": np.random.uniform(1e-21, 1e-19, 30),  # Kinetic energy in Joules (quantum scale)
+    "Wavefunction Amplitude (A)": np.random.uniform(0.1, 1.0, 30),  # Wavefunction amplitude (relative units)
+})
+
+# Quantum mechanics formula comparison (Simplified Schrödinger Equation)
+def quantum_mechanics_comparison_formula(potential_energy, kinetic_energy, wavefunction_amplitude):
+    """
+    Use the formula to calculate consistency with quantum mechanics principles.
+    """
+    # Total Energy: E = KE + PE
+    total_energy = potential_energy + kinetic_energy
+
+    # Quantum Adjustment using wavefunction amplitude
+    quantum_correction = wavefunction_amplitude**2
+
+    # Sweet spot consistency adjustment
+    consistency_factor = 1 / (1 + np.exp(-10 * (wavefunction_amplitude / 0.5 - 0.35)))  # Transition to sweet spot
+
+    # Adjusted quantum energy
+    adjusted_energy = total_energy * quantum_correction * consistency_factor
+
+    return adjusted_energy
+
+# Apply the formula to quantum mechanics scenarios
+quantum_mechanics_data["Predicted Energy"] = quantum_mechanics_data.apply(
+    lambda row: quantum_mechanics_comparison_formula(
+        row["Potential Energy (J)"], row["Kinetic Energy (J)"], row["Wavefunction Amplitude (A)"]
+    ),
+    axis=1
+)
+
+# Calculate deviation from expected energy (baseline using total energy KE + PE)
+quantum_mechanics_data["Baseline Energy"] = quantum_mechanics_data["Potential Energy (J)"] + quantum_mechanics_data["Kinetic Energy (J)"]
+quantum_mechanics_data["Energy Deviation (%)"] = (
+    (quantum_mechanics_data["Predicted Energy"] - quantum_mechanics_data["Baseline Energy"]) / quantum_mechanics_data["Baseline Energy"] * 100
+)
+
+# Display results for quantum mechanics testing in the sweet spot
+import ace_tools as tools; tools.display_dataframe_to_user(name="Quantum Mechanics Testing with Simplified Schrödinger Equation", dataframe=quantum_mechanics_data)
+
+# Visualize energy deviations over scenarios
+plt.figure(figsize=(14, 8))
+plt.plot(quantum_mechanics_data["Scenario"], quantum_mechanics_data["Energy Deviation (%)"], marker='o', linestyle='-', color="cyan")
+plt.axhline(0, color="green", linestyle="--", label="Perfect Consistency")
+plt.axhline(5, color="red", linestyle="--", label="Positive Threshold")
+plt.axhline(-5, color="blue", linestyle="--", label="Negative Threshold")
+plt.xlabel("Quantum Mechanics Scenarios")
+plt.ylabel("Energy Deviation (%)")
+plt.title("Quantum Mechanics Consistency in Sweet Spot")
+plt.legend()
+plt.grid()
+plt.xticks(rotation=45)
+plt.show()

@@ -1,0 +1,93 @@
+Conversation URL:
+https://chatgpt.com/c/6872dfc3-71ac-8011-b0a7-2d6442c1c7b1
+
+Title:
+Recursive Harmonic Heartbeat (Triune Driven)
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+from mpmath import mp
+
+# Set π precision
+mp.dps = 1000
+pi_digits = str(mp.pi)[2:]
+
+# --- Layer 1: Byte1 Triune Fold ---
+def triune_seed_fold(seed=(1, 4, 1), steps=12):
+    result = []
+    a, b, c = seed  # outer, middle, inner
+
+    for i in range(steps):
+        # Harmonic difference pattern
+        delta_outer = abs(a - b)
+        delta_inner = abs(b - c)
+        blend = (delta_outer + delta_inner + abs(a - c)) % 10
+
+        result.append(blend)
+        # π pressure modulator
+        pi_mod = int(pi_digits[i % len(pi_digits)]) or 1
+
+        # Recursive phase shift
+        a, b, c = b, c, (blend + pi_mod) % 10
+
+    return result
+
+# --- Layer 2: Harmonic Growth ---
+def harmonic_growth(sequence, target_h=0.35, max_iter=40):
+    h_values = []
+
+    for i in range(max_iter):
+        h = sum(sequence) / len(sequence)
+        deviation = abs(h - target_h)
+        h_values.append(h)
+        if deviation < 0.01:
+            break
+        next_val = (sequence[-1] + sequence[-2] + sequence[-3]) % 10
+        sequence.append(next_val)
+
+    return sequence, h_values
+
+# --- Layer 3: Recursive Reflection Pulse ---
+def recursive_pulse(seed=(1, 4, 1), cycles=10):
+    full_sequence = []
+    all_h_values = []
+
+    for cycle in range(cycles):
+        base_seq = triune_seed_fold(seed=seed, steps=9)
+        grown_seq, h_vals = harmonic_growth(base_seq)
+
+        # Advance seed using triad from fold edge
+        if len(grown_seq) >= 3:
+            seed = tuple(grown_seq[-3:])
+        else:
+            seed = (1, 4, 1)  # fallback
+
+        full_sequence.extend(grown_seq)
+        all_h_values.extend(h_vals)
+
+    return full_sequence, all_h_values
+
+# --- Run ---
+sequence, h_tracking = recursive_pulse()
+
+# --- Plot Byte Pulse ---
+plt.figure(figsize=(12, 4))
+plt.plot(sequence, label='Byte Sequence', color='dodgerblue')
+plt.title('Recursive Harmonic Heartbeat (Triune Driven)')
+plt.xlabel('Iteration')
+plt.ylabel('Byte Value')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# --- Plot H Convergence ---
+plt.figure(figsize=(12, 3))
+plt.plot(h_tracking, color='orange', label='H (harmonic state)')
+plt.title('Harmonic State Convergence Over Cycles')
+plt.xlabel('Iteration')
+plt.ylabel('H Value')
+plt.axhline(0.35, color='gray', linestyle='--', linewidth=1)
+plt.grid(True)
+plt.legend()
+plt.show()

@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/674ccee4-4298-8011-b79a-394fb49debf7
+
+Title:
+
+
+Prompt:
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Create a graph to map interactions based on shared word frequencies
+G = nx.Graph()
+
+# Limit to top 50 words for clarity in visualization
+top_words = all_words_df.head(50)
+
+# Add nodes and weighted edges based on co-occurrence in top themes
+for idx, row in top_words.iterrows():
+    word = row["Word"]
+    freq = row["Frequency"]
+    G.add_node(word, size=freq)
+
+# Create weighted edges (mock relationships based on shared occurrence)
+for i, word1 in enumerate(top_words["Word"]):
+    for j, word2 in enumerate(top_words["Word"]):
+        if i < j:
+            # Weight as an arbitrary function of combined frequency
+            weight = (top_words.iloc[i]["Frequency"] + top_words.iloc[j]["Frequency"]) / 2000
+            if weight > 1:  # Add only significant relationships
+                G.add_edge(word1, word2, weight=weight)
+
+# Visualize the graph
+plt.figure(figsize=(12, 12))
+pos = nx.spring_layout(G, seed=42)  # Layout for positioning
+sizes = [G.nodes[node]["size"] for node in G.nodes()]
+
+# Draw nodes and edges
+nx.draw_networkx_nodes(G, pos, node_size=sizes, alpha=0.7)
+nx.draw_networkx_edges(G, pos, width=1.0, alpha=0.5)
+nx.draw_networkx_labels(G, pos, font_size=10)
+
+plt.title("Interaction Map of Key Terms and Themes", fontsize=16)
+plt.axis("off")
+plt.savefig("/mnt/data/interaction_map.png")
+plt.show()

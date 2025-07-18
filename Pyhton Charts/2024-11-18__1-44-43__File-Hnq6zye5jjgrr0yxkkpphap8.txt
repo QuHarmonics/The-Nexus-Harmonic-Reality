@@ -1,0 +1,55 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-916c-8011-b0eb-c4189c52736a
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define simulated interaction data for the proposed drug
+# Targets: TNF-α, IL-6, ROS, and Treg enhancement
+
+# Simulated baseline levels (normalized to healthy levels)
+baseline_tnf = 1.0  # Normalized TNF-α level
+baseline_il6 = 1.0  # Normalized IL-6 level
+baseline_ros = 1.0  # Normalized ROS level
+baseline_treg = 1.0  # Normalized Treg activity
+
+# Simulated lupus levels before treatment (normalized)
+lupus_tnf = 2.5  # Elevated TNF-α
+lupus_il6 = 3.0  # Elevated IL-6
+lupus_ros = 4.0  # Elevated ROS
+lupus_treg = 0.5  # Reduced Treg activity
+
+# Simulated effect of the proposed drug over time (normalized)
+time = np.linspace(0, 10, 100)  # Time in arbitrary units
+drug_tnf = lupus_tnf - 0.15 * time  # TNF-α reduced by 0.15 units per time step
+drug_il6 = lupus_il6 - 0.2 * time   # IL-6 reduced by 0.2 units per time step
+drug_ros = lupus_ros - 0.3 * time   # ROS reduced by 0.3 units per time step
+drug_treg = lupus_treg + 0.05 * time  # Treg activity increased by 0.05 units per time step
+
+# Ensure levels don't go below baseline (saturation point)
+drug_tnf = np.clip(drug_tnf, baseline_tnf, None)
+drug_il6 = np.clip(drug_il6, baseline_il6, None)
+drug_ros = np.clip(drug_ros, baseline_ros, None)
+drug_treg = np.clip(drug_treg, None, 1.5)  # Treg enhancement limited to a max of 1.5
+
+# Plot the simulated effects
+plt.figure(figsize=(12, 8))
+plt.plot(time, drug_tnf, label="TNF-α Level", linewidth=2)
+plt.plot(time, drug_il6, label="IL-6 Level", linewidth=2)
+plt.plot(time, drug_ros, label="ROS Level", linewidth=2)
+plt.plot(time, drug_treg, label="Treg Activity", linewidth=2)
+
+# Add baseline markers
+plt.axhline(baseline_tnf, color='gray', linestyle="--", label="Baseline Levels")
+
+# Plot settings
+plt.title("Simulated Effects of Proposed Lupus Drug Over Time", fontsize=14)
+plt.xlabel("Time (arbitrary units)", fontsize=12)
+plt.ylabel("Normalized Levels", fontsize=12)
+plt.legend()
+plt.grid()
+plt.show()

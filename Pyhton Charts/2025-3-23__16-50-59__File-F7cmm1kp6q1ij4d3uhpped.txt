@@ -1,0 +1,23 @@
+Conversation URL:
+https://chatgpt.com/c/67e05ac3-1c74-8011-9356-9394c4c34643
+
+Title:
+
+
+Prompt:
+# Calculate the ratio of odd to total digits for each byte size
+odd_ratios_bytes = [odd / (odd + even) for odd, even in zip(odd_counts_bytes, even_counts_bytes)]
+even_ratios_bytes = [even / (odd + even) for odd, even in zip(odd_counts_bytes, even_counts_bytes)]
+
+# Plotting the ratios
+plt.figure(figsize=(14, 6))
+plt.plot(byte_sizes, odd_ratios_bytes, label="Odd Ratio", marker='o')
+plt.plot(byte_sizes, even_ratios_bytes, label="Even Ratio", marker='o')
+plt.title("Odd vs Even Digit Ratios by Byte Size (Pi Digits from 0.1415...)")
+plt.xlabel("Byte Size (Digits)")
+plt.ylabel("Ratio")
+plt.xscale("log", base=2)
+plt.xticks(byte_sizes, byte_sizes)
+plt.legend()
+plt.grid(True)
+plt.show()

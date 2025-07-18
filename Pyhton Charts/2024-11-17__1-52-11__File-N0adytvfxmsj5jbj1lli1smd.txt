@@ -1,0 +1,49 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-86dc-8011-a90c-b8c1e6ac3d14
+
+Title:
+
+
+Prompt:
+# Revised formula with conditional π integration
+def kulik_formula_with_pi(x, iterations, gain_ratio, k_pi):
+    """
+    Recursive formula with conditional π influence.
+    :param x: Initial value
+    :param iterations: Number of iterations
+    :param gain_ratio: Core gain ratio (e.g., 0.35)
+    :param k_pi: Scaling factor for π influence
+    :return: List of results
+    """
+    results = []
+    for i in range(iterations):
+        # Linear correction term
+        x = x + gain_ratio * (1 - x)
+        
+        # Conditional π influence (add only when relevant)
+        pi_term = k_pi * np.sin(np.pi * x) if x > 0.1 else 0  # Dynamic activation
+        x += pi_term
+
+        results.append(x)
+    return results
+
+# Parameters
+initial_value = 0.5
+iterations = 50
+gain_ratio = 0.35
+k_pi = 0.1  # Small influence of π
+
+# Simulate the formula with π integration
+results_linear_with_pi = kulik_formula_with_pi(initial_value, iterations, gain_ratio, k_pi)
+
+# Plot results to analyze linear behavior
+plt.figure(figsize=(10, 6))
+plt.plot(range(iterations), results_without_pi, label="Without π Influence")
+plt.plot(range(iterations), results_linear_with_pi, label="With Conditional π Influence", linestyle='--')
+plt.axhline(1, color='r', linestyle='--', label="Equilibrium Point")
+plt.title("Revised Formula with Conditional π Integration")
+plt.xlabel("Iteration")
+plt.ylabel("Output Value")
+plt.legend()
+plt.grid()
+plt.show()

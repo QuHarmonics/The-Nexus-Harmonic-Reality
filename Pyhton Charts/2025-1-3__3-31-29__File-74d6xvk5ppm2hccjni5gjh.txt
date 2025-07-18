@@ -1,0 +1,69 @@
+Conversation URL:
+https://chatgpt.com/c/67777368-c9f8-8011-ab4c-9afb1506e317
+
+Title:
+
+
+Prompt:
+# Adjusted refinement process with dynamic resampling to address oversampling
+
+def dynamic_sampling_rate(s_n, base_rate=0.1, proximity_threshold=1e-2):
+    # Sampling rate inversely proportional to proximity to the critical line
+    proximity = abs(s_n.real - 0.5)
+    sampling_factor = 1 / (proximity + proximity_threshold)
+    return base_rate * sampling_factor
+
+def refined_rh_with_resampling(starting_values, iterations=20, H=0.35, alpha=0.05, base_rate=0.1):
+    results = []
+    for s_n in starting_values:
+        harmonic_scaling = H
+        log_contributions, poly_contributions, exp_contributions, errors = [], [], [], []
+        for n in range(iterations):
+            # Adjust harmonic scaling dynamically
+            harmonic_scaling = H * np.exp(-alpha * n)
+            sampling_rate = dynamic_sampling_rate(s_n, base_rate=base_rate)
+
+            # Adjusted contributions with resampling
+            log_contrib = sampling_rate * (np.log(abs(zeta(s_n.real)) + 1e-10) + 1 / (abs(s_n.imag) + 1e-10))
+            poly_contrib = sampling_rate * ((s_n.imag**2 + s_n.imag + 1) / (s_n.imag + 1))
+            exp_contrib = sampling_rate * np.exp(-damping_factor * abs(s_n.imag) / (1 + abs(s_n.real - 0.5)))
+            error_contrib = sampling_rate * abs(s_n.real - 0.5)
+
+            # Apply Samson's feedback with dynamic resampling
+            feedback = samson_reflective_feedback(s_n, log_contrib, poly_contrib, exp_contrib, error_contrib, dynamic_weights(n, iterations))
+
+            # Update s_n using harmonic scaling and feedback
+            s_n = s_n + harmonic_scaling * feedback
+
+            # Collect contributions for analysis
+            log_contributions.append(log_contrib)
+            poly_contributions.append(poly_contrib)
+            exp_contributions.append(exp_contrib)
+            errors.append(error_contrib)
+
+        results.append({
+            "log_contrib": log_contributions,
+            "poly_contrib": poly_contributions,
+            "exp_contrib": exp_contrib,
+            "errors": errors,
+            "final_s_n": s_n
+        })
+    return results
+
+# Execute the resampling-refined RH proof process
+resampled_results = refined_rh_with_resampling(starting_values, iterations=20)
+
+# Visualize error decay across starting conditions
+plt.figure(figsize=(10, 6))
+for idx, result in enumerate(resampled_results):
+    plt.plot(range(len(result["errors"])), result["errors"], label=f"Start: {starting_values[idx]}")
+
+plt.title("Error Decay with Dynamic Resampling")
+plt.xlabel("Iteration")
+plt.ylabel("Error |Re(s) - 0.5|")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Final values for all starting points
+[s["final_s_n"] for s in resampled_results]

@@ -1,0 +1,143 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+def generate_polygon_vertices(center, radius, sides):
+    """
+    Generate vertices for a regular polygon in 3D space.
+
+    Args:
+        center (tuple): The center of the polygon (cx, cy, cz).
+        radius (float): The radius of the polygon (distance from center to vertex).
+        sides (int): Number of sides of the polygon.
+
+    Returns:
+        np.array: Vertices of the polygon in 3D.
+    """
+    cx, cy, cz = center
+    vertices = []
+    for i in range(sides):
+        angle = 2 * np.pi * i / sides  # Angle for each vertex
+        x = cx + radius * np.cos(angle)
+        y = cy + radius * np.sin(angle)
+        z = cz  # Flat on a plane for now (z constant)
+        vertices.append([x, y, z])
+    return np.array(vertices)
+
+
+def create_faces(vertices):
+    """
+    Generate faces for a polygon by connecting vertices to the center.
+
+    Args:
+        vertices (np.array): Vertices of the polygon.
+
+    Returns:
+        list: List of faces defined by vertex indices.
+    """
+    faces = []
+    num_vertices = len(vertices)
+    center_index = num_vertices  # Assume the center will be added later
+    for i in range(num_vertices):
+        next_index = (i + 1) % num_vertices
+        faces.append([i, next_index, center_index])  # Triangle with center
+    return faces
+
+
+def recursive_waveform_objects(center, seed_radius, recursion_depth, sides):
+    """
+    Generate recursive layers of objects with dynamically calculated vertices.
+
+    Args:
+        center (tuple): Center of the object (0, 0, 0).
+        seed_radius (float): Radius of the initial object.
+        recursion_depth (int): Depth of recursion.
+        sides (int): Number of sides for the polygon.
+
+    Returns:
+        list: List of objects with vertices and faces.
+    """
+    objects = []
+    radius = seed_radius
+
+    for _ in range(recursion_depth):
+        vertices = generate_polygon_vertices(center, radius, sides)
+        objects.append({
+            "vertices": vertices,
+            "radius": radius,
+            "sides": sides
+        })
+        radius *= 2  # Recursive expansion
+
+    return objects
+
+
+def plot_recursive_waveform_objects(objects):
+    """
+    Plot recursively generated objects using their vertices.
+
+    Args:
+        objects (list): List of objects with vertices and faces.
+    """
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection="3d")
+
+    def plot_polygon(ax, vertices, radius, color, alpha, label):
+        """
+        Plot a single polygon in 3D space.
+
+        Args:
+            ax: Matplotlib 3D axis.
+            vertices (np.array): Vertices of the polygon.
+            radius (float): Radius of the polygon.
+            color (str): Color of the polygon.
+            alpha (float): Transparency of the polygon.
+            label (str): Label for the polygon.
+        """
+        faces = create_faces(vertices)
+        vertices = np.vstack([vertices, [0, 0, 0]])  # Add center as a vertex
+        for face in faces:
+            ax.add_collection3d(
+                Poly3DCollection([vertices[face]], color=color, alpha=alpha, edgecolor="k")
+            )
+        ax.text(0, 0, radius, label, color=color)
+
+    colors = ['red', 'blue', 'green', 'purple', 'orange']
+    alpha_values = [0.4, 0.3, 0.2, 0.1, 0.05]
+
+    for i, obj in enumerate(objects):
+        vertices = obj["vertices"]
+        radius = obj["radius"]
+        color = colors[i % len(colors)]
+        alpha = alpha_values[i % len(alpha_values)]
+        plot_polygon(ax, vertices, radius, color, alpha, label=f"Object {i + 1}")
+
+    max_radius = max([obj["radius"] for obj in objects])
+    ax.set_xlim(-max_radius, max_radius)
+    ax.set_ylim(-max_radius, max_radius)
+    ax.set_zlim(-max_radius, max_radius)
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("Recursive Waveform Objects with Dynamic Vertices")
+    plt.show()
+
+
+# Parameters
+center = (0, 0, 0)  # Constant center point
+seed_radius = 256  # Initial radius of the polygon
+recursion_depth = 4  # Number of recursive layers
+sides = 6  # Number of sides (e.g., 6 for hexagon, 4 for square)
+
+# Generate recursive objects
+objects = recursive_waveform_objects(center, seed_radius, recursion_depth, sides)
+
+# Plot the objects
+plot_recursive_waveform_objects(objects)

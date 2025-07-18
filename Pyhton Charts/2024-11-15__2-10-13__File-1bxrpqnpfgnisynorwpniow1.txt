@@ -1,0 +1,62 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Reverting to the simpler core formula without additional scaling refinements
+def original_feedback_formula(mass, velocity, potential):
+    """
+    Original feedback-enhanced formula without additional scaling refinements.
+    :param mass: Rest mass of the particle (kg).
+    :param velocity: Velocity as a fraction of the speed of light (c).
+    :param potential: Hypothetical potential or interaction energy (arbitrary units).
+    :return: Energy estimate (J).
+    """
+    c = 3e8  # Speed of light in m/s
+    gamma = 1 / np.sqrt(1 - velocity**2)  # Lorentz factor
+    feedback = 1 + (potential / mass)**2  # Original feedback adjustment
+    return mass * c**2 * gamma * feedback  # Simplified feedback-enhanced formula
+
+# Calculate energies using E=mc^2 and the original feedback formula
+restored_energies = [
+    original_feedback_formula(m, v, p)
+    for m, v, p in zip(particle_masses, particle_velocities, particle_potentials)
+]
+
+# Calculate deviation between the two models
+restored_deviation = np.abs(np.array(restored_energies) - np.array(relativistic_energies)) / np.array(relativistic_energies) * 100
+
+# Plot results
+plt.figure(figsize=(14, 7))
+
+# Energy comparison
+plt.subplot(1, 2, 1)
+plt.plot(particle_masses, relativistic_energies, label="Relativistic Energy (E=mc^2)", color="blue")
+plt.plot(particle_masses, restored_energies, label="Restored Feedback Formula", color="orange", linestyle="--")
+plt.xlabel("Particle Mass (kg)")
+plt.ylabel("Energy (J)")
+plt.xscale("log")
+plt.title("Comparison: Relativistic Energy vs Restored Formula")
+plt.legend()
+
+# Deviation plot
+plt.subplot(1, 2, 2)
+plt.plot(particle_masses, restored_deviation, label="Deviation (%)", color="red")
+plt.xlabel("Particle Mass (kg)")
+plt.ylabel("Deviation (%)")
+plt.xscale("log")
+plt.title("Deviation Between Restored Formula and Relativistic Energy")
+plt.axhline(y=5, color="green", linestyle="--", label="Acceptable Deviation Threshold")
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Display deviation summary
+{
+    "Max Deviation (%)": np.max(restored_deviation),
+    "Min Deviation (%)": np.min(restored_deviation),
+    "Average Deviation (%)": np.mean(restored_deviation),
+}

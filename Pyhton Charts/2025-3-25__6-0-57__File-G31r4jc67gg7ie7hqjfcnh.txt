@@ -1,0 +1,50 @@
+Conversation URL:
+https://chatgpt.com/c/67e1e8a7-923c-8011-8e1e-883dd3c10f76
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+c = 3.0e8  # Speed of light (m/s)
+k = 1e-27  # Scaling factor for recursive gravity
+
+# Mass range (logarithmic scale)
+mass_values = np.logspace(-30, 5, 100)  # Wide range from small quantum to large astronomical masses
+
+# Einstein's Gravity: E = mc^2
+einstein_energy = mass_values * c**2
+
+# Recursive Gravity Loopback (Nexus2)
+recursive_energy = k * np.cumsum(mass_values)  # Simulating a cumulative effect over mass iterations
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.xscale("log")
+plt.yscale("log")
+
+# Einstein's Gravity Plot
+plt.plot(mass_values, einstein_energy, label="Einstein's Gravity (E=mc²)", linestyle="dashed", color="blue", linewidth=2)
+
+# Recursive Gravity Plot (Ensuring it's visible)
+plt.plot(mass_values, recursive_energy, label="Recursive Gravity Loopback (Nexus2)", linestyle="-", color="red", linewidth=2)
+
+# Labels and Title
+plt.xlabel("Mass (kg)")
+plt.ylabel("Energy (J)")
+plt.title("Comparison of Einstein's Gravity and Recursive Gravity (Nexus2)")
+plt.legend()
+
+# Show Plot
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.show()
+
+# Output numerical values
+output_data = np.column_stack((mass_values, einstein_energy, recursive_energy))
+import pandas as pd
+df_output = pd.DataFrame(output_data, columns=["Mass (kg)", "E=mc² (J)", "Recursive Gravity (J)"])
+import ace_tools as tools
+tools.display_dataframe_to_user(name="Gravity Comparison Data", dataframe=df_output)

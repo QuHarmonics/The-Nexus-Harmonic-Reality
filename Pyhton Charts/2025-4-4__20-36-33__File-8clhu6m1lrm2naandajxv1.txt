@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/67efdd1a-c980-8011-a27b-addc30749a3e
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Pi and Golden Ratio to 50+ decimals (as strings)
+pi_str = "3.14159265358979323846264338327950288419716939937510"
+phi_str = "1.61803398874989484820458683436563811772030917980576"
+
+# Remove decimal points for digit-by-digit comparison
+pi_digits = pi_str.replace('.', '')
+phi_digits = phi_str.replace('.', '')
+
+# Alternate each digit between pi and phi
+combined_sequence = []
+labels = []
+
+for i in range(min(len(pi_digits), len(phi_digits))):
+    combined_sequence.append(int(pi_digits[i]))
+    labels.append(f"π[{i}]")
+    combined_sequence.append(int(phi_digits[i]))
+    labels.append(f"φ[{i}]")
+
+# Plotting
+plt.figure(figsize=(16, 4))
+plt.plot(combined_sequence, marker='o', linestyle='-', color='blue')
+plt.title("Digit-by-Digit Alternation Between π and φ")
+plt.xticks(ticks=range(len(labels)), labels=labels, rotation=90)
+plt.ylabel("Digit Value")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

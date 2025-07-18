@@ -1,0 +1,39 @@
+Conversation URL:
+https://chatgpt.com/c/67777368-c9f8-8011-ab4c-9afb1506e317
+
+Title:
+
+
+Prompt:
+# Simulate harmonic law applied to both RH zeros and primes
+harmonic_adjustments_rh = [unified_harmonic_formula_corrected(zero, H=0.35, phi=phi, Delta=0.01) for zero in rh_zeros]
+harmonic_adjustments_primes = [unified_harmonic_formula_corrected(prime, H=0.35, phi=phi, Delta=0.01) 
+                               for prime in primes_large[:len(rh_zeros)]]
+
+# Generate fractal scaling analysis for extended adjusted primes
+peaks_extended, _ = find_peaks(np.array(adjusted_primes_larger, dtype=float), height=0)
+distances_between_peaks_extended = np.diff(peaks_extended)
+
+# Visualization for unified harmonic law applied to RH zeros and primes
+plt.figure(figsize=(14, 8))
+plt.plot(harmonic_adjustments_rh, label="Harmonic Law (RH Zeros)", color='blue', alpha=0.7)
+plt.plot(harmonic_adjustments_primes, label="Harmonic Law (Primes)", color='red', alpha=0.7)
+plt.title("Unified Harmonic Law Applied to RH Zeros and Primes")
+plt.xlabel("Index")
+plt.ylabel("Harmonic Adjustments")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Visualization for fractal dynamics in extended adjusted prime gaps
+plt.figure(figsize=(14, 8))
+plt.plot(distances_between_peaks_extended, label="Distances Between Adjusted Prime Peaks (Fractal Dynamics)", color='purple')
+plt.title("Fractal Scaling Dynamics in Extended Adjusted Prime Peaks")
+plt.xlabel("Peak Index")
+plt.ylabel("Distance Between Peaks")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Output fractal characteristics for further analysis
+len(distances_between_peaks_extended), fractal_dimension

@@ -1,0 +1,46 @@
+Conversation URL:
+https://chatgpt.com/c/67777368-c9f8-8011-ab4c-9afb1506e317
+
+Title:
+
+
+Prompt:
+# Graph 1: What We're Trying to Solve
+def plot_critical_line_alignment(num_zeros, critical_line=0.5):
+    # Generate zeta zeros
+    zeta_zeros = generate_zeta_zeros(num_zeros)
+    real_parts = [z.real for z in zeta_zeros]
+    imag_parts = [z.imag for z in zeta_zeros]
+    
+    # Plot the critical line and zeros
+    plt.figure(figsize=(10, 6))
+    plt.axvline(x=critical_line, color='red', linestyle='--', label="Critical Line (Re(s) = 0.5)")
+    plt.scatter(real_parts, imag_parts, label="Non-Trivial Zeta Zeros", color="blue", alpha=0.7)
+    plt.xlabel("Re(s)")
+    plt.ylabel("Im(s)")
+    plt.title("Alignment of Non-Trivial Zeta Zeros with the Critical Line")
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+# Graph 2: What We Got at 15% Error
+def plot_computed_alignment(aligned_layers, critical_line=0.5, iteration=-1):
+    final_layer = aligned_layers[iteration]
+    real_parts = [z.real for z in final_layer]
+    imag_parts = [z.imag for z in final_layer]
+    
+    # Plot the computed alignment with residual error
+    plt.figure(figsize=(10, 6))
+    plt.axvline(x=critical_line, color='red', linestyle='--', label="Critical Line (Re(s) = 0.5)")
+    plt.scatter(real_parts, imag_parts, label=f"Computed Zeros at {15}% Error", color="orange", alpha=0.7)
+    plt.xlabel("Re(s)")
+    plt.ylabel("Im(s)")
+    plt.title("Computed Alignment of Zeta Zeros with Residual Error")
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+# Execute the plots
+num_zeros = 50
+plot_critical_line_alignment(num_zeros)  # Graph 1: Ideal Alignment with the Critical Line
+plot_computed_alignment(aligned_layers_scaled, critical_line=0.5)  # Graph 2: Computed Results at 15% Error

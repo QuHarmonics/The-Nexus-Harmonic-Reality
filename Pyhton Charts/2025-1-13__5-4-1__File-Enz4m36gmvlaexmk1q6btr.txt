@@ -1,0 +1,90 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import numpy as np
+
+def create_recursive_shapes(frame_size, sides, iterations):
+    """
+    Create recursive shapes starting from (0,0,0) based on input frame size, number of sides, and iterations.
+    """
+    shapes = []
+
+    # Base radius and height for the polygon based on frame size
+    radius = frame_size / 2
+    height = frame_size / 2
+
+    for i in range(iterations):
+        current_radius = radius * (2**i)
+        vertices = []
+        
+        for j in range(sides):
+            angle = (2 * np.pi / sides) * j
+            x = current_radius * np.cos(angle)
+            y = current_radius * np.sin(angle)
+            z = 0
+            vertices.append([x, y, z])
+        
+        # Adding top and bottom vertices for 3D polyhedron representation
+        top_vertices = [[x, y, height] for x, y, _ in vertices]
+        bottom_vertices = [[x, y, -height] for x, y, _ in vertices]
+        shapes.append((top_vertices, bottom_vertices))
+    
+    return shapes
+
+def visualize_recursive_shapes(shapes):
+    """
+    Visualize recursive shapes in a 3D plot.
+    """
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection='3d')
+
+    colors = ['red', 'blue', 'green', 'purple', 'orange']
+    
+    for i, (top, bottom) in enumerate(shapes):
+        # Combine top and bottom faces for full shape
+        vertices = top + bottom
+        edges = []
+        sides = len(top)
+
+        # Top face edges
+        for j in range(sides):
+            edges.append([top[j], top[(j + 1) % sides]])
+        
+        # Bottom face edges
+        for j in range(sides):
+            edges.append([bottom[j], bottom[(j + 1) % sides]])
+        
+        # Vertical edges connecting top and bottom faces
+        for j in range(sides):
+            edges.append([top[j], bottom[j]])
+
+        for edge in edges:
+            x, y, z = zip(*edge)
+            ax.plot(x, y, z, color=colors[i % len(colors)])
+    
+    # Set plot limits
+    max_dim = max([max([abs(coord) for vertex in shape[0] for coord in vertex]) for shape in shapes]) * 1.5
+    ax.set_xlim([-max_dim, max_dim])
+    ax.set_ylim([-max_dim, max_dim])
+    ax.set_zlim([-max_dim, max_dim])
+    ax.set_title("Recursive Shapes Grown from (0,0,0)")
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+
+    plt.show()
+
+# Define parameters
+frame_size = 256  # Base frame size
+sides = 6  # Number of sides for polygon (hexagon example)
+iterations = 3  # Number of recursive iterations
+
+# Generate shapes and visualize
+recursive_shapes = create_recursive_shapes(frame_size, sides, iterations)
+visualize_recursive_shapes(recursive_shapes)

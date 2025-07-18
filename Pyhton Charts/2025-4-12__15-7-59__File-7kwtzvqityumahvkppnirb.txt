@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/67f95edf-b4f0-8011-bf7d-1f0be7727312
+
+Title:
+
+
+Prompt:
+import hashlib
+import matplotlib.pyplot as plt
+
+def sha256_hex(text: str) -> str:
+    return hashlib.sha256(text.encode('utf-8')).hexdigest()
+
+# Test range
+base = "123456789abcdef"
+prefixes = ["0" * i for i in range(33)]  # from 0 to 32 zeroes
+hash_heads = []
+inputs = []
+
+for prefix in prefixes:
+    test_input = prefix + base
+    sha = sha256_hex(test_input)
+    head_value = int(sha[:2], 16)  # first byte (8 bits of SHA output)
+    hash_heads.append(head_value)
+    inputs.append(len(prefix))  # track prefix length
+
+# Plot
+plt.figure(figsize=(10, 4))
+plt.plot(inputs, hash_heads, marker='o', linestyle='-', color='purple')
+plt.title("SHA256 Harmonic Shift from Zero-Prefix Input")
+plt.xlabel("Leading Zeros in Input")
+plt.ylabel("First Byte of SHA Output (Hex → Int)")
+plt.grid(True)
+plt.xticks(inputs)
+plt.tight_layout()
+plt.show()

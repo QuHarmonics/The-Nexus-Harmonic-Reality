@@ -1,0 +1,54 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Define parameters for time-step simulation of traffic congestion
+time_steps = 20  # Number of time steps to simulate traffic dynamics
+congestion_threshold_time = 0.3  # Threshold for congestion in the time-step model
+num_neighbors_time = 4  # Number of neighboring intersections to consider
+
+# Initialize traffic intersections for time-step simulation
+traffic_intersections_time = [{"position": np.random.uniform(-grid_range, grid_range, size=3), "mass": np.random.uniform(0.5, 2.0)} for _ in range(num_intersections)]
+positions_time = np.array([intersection["position"] for intersection in traffic_intersections_time])
+masses_time = np.array([intersection["mass"] for intersection in traffic_intersections_time])
+kdtree_time = KDTree(positions_time)  # KD-tree for efficient neighbor searches
+
+# Store congestion levels over each time step
+congestion_levels_over_time = []
+
+# Run the time-step simulation for traffic congestion dynamics
+for step in range(time_steps):
+    total_congestion = np.zeros(num_intersections)
+
+    for i, intersection in enumerate(traffic_intersections_time):
+        # Find the nearest neighbors
+        _, neighbor_indices = kdtree_time.query(intersection["position"], k=num_neighbors_time + 1)
+
+        # Calculate congestion influence from nearest neighbors
+        congestion = 0
+        for j in neighbor_indices[1:]:  # Skip the intersection itself
+            d_vec = positions_time[i] - positions_time[j]
+            d_mag = np.linalg.norm(d_vec) if np.linalg.norm(d_vec) > 0 else 1.0  # Avoid division by zero
+            # Add scaled influence with slight random variation to simulate traffic flow variability
+            congestion += (masses_time[j] * 2.0 / d_mag ** 2) * (1 + np.random.uniform(-0.15, 0.15))
+        total_congestion[i] = congestion
+
+    # Normalize congestion levels for visualization purposes
+    normalized_congestion = total_congestion / (np.max(total_congestion) if np.max(total_congestion) != 0 else 1)
+    congestion_levels_over_time.append(normalized_congestion)
+
+# Visualize congestion levels over time
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 8))
+for step, congestion in enumerate(congestion_levels_over_time):
+    plt.plot(congestion, label=f"Time Step {step + 1}")
+
+plt.xlabel("Intersection")
+plt.ylabel("Normalized Congestion Level")
+plt.title("Traffic Congestion Levels Over Time Steps")
+plt.legend()
+plt.show()

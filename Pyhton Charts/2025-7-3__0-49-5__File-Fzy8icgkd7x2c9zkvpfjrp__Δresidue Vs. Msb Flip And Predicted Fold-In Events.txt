@@ -1,0 +1,73 @@
+Conversation URL:
+https://chatgpt.com/c/68660489-4854-8011-bdb9-259a66efdde3
+
+Title:
+ΔResidue vs. MSB Flip and Predicted Fold-In Events
+
+Prompt:
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate input data (mock example)
+np.random.seed(42)
+df = pd.DataFrame({'state': np.random.randint(0, 256, size=300)})
+
+# Compute Residue (mod 64) and Delta
+df['residue'] = df['state'] % 64
+df['residue_next'] = df['residue'].shift(-1)
+df['delta_residue'] = (df['residue_next'] - df['residue']).abs()
+df['delta_residue_drop'] = df['delta_residue'].diff(periods=-1)  # forward difference
+df['drift_dir'] = np.sign(df['delta_residue'].diff())
+
+# Compute Bit Pattern and MSB
+df['bit_pattern'] = df['state'].apply(lambda x: list(map(int, f"{x:08b}")))
+df['bit7'] = df['bit_pattern'].apply(lambda bits: bits[0])  # MSB
+df['bit6'] = df['bit_pattern'].apply(lambda bits: bits[1])  # bit6
+df['bit5'] = df['bit_pattern'].apply(lambda bits: bits[2])  # bit5
+df['bit7_next'] = df['bit7'].shift(-1)
+df['msb_flip'] = (df['bit7'] != df['bit7_next']).astype(int)
+
+# Compute Hamming distances
+def hamming(a, b):
+    return bin(int(a) ^ int(b)).count('1') if pd.notnull(a) and pd.notnull(b) else 0
+
+df['state_prev1'] = df['state'].shift(1)
+df['state_prev2'] = df['state'].shift(2)
+df['state_prev3'] = df['state'].shift(3)
+
+df['hamm_1'] = df.apply(lambda r: hamming(r['state'], r['state_prev1']), axis=1)
+df['hamm_2'] = df.apply(lambda r: hamming(r['state_prev1'], r['state_prev2']), axis=1)
+df['hamm_3'] = df.apply(lambda r: hamming(r['state_prev2'], r['state_prev3']), axis=1)
+
+# Define new fold-in prediction condition
+df['fold_quality'] = (
+    (df['drift_dir'].rolling(3).sum() < 0) &
+    (df['bit7'] == 1) &
+    (df['hamm_1'] <= 2)
+).astype(int)
+
+# Evaluation
+tp = ((df['fold_quality'] == 1) & (df['msb_flip'] == 1)).sum()
+fp = ((df['fold_quality'] == 1) & (df['msb_flip'] == 0)).sum()
+fn = ((df['fold_quality'] == 0) & (df['msb_flip'] == 1)).sum()
+precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+
+# Plot
+plt.figure(figsize=(12, 6))
+plt.plot(df['delta_residue'], label='ΔResidue', color='blue')
+plt.scatter(df[df['msb_flip'] == 1].index, df[df['msb_flip'] == 1]['delta_residue'],
+            color='red', label='MSB Flip', marker='x', zorder=5)
+plt.scatter(df[df['fold_quality'] == 1].index, df[df['fold_quality'] == 1]['delta_residue'],
+            color='orange', label='Predicted Fold-In', marker='o', facecolors='none', edgecolors='orange', zorder=4)
+plt.axhline(30, color='gray', linestyle='--', alpha=0.5, label='ΔResidue Threshold 30')
+plt.xlabel('Timestep')
+plt.ylabel('ΔResidue')
+plt.title('ΔResidue vs. MSB Flip and Predicted Fold-In Events')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+(tp, fp, fn, precision, recall)

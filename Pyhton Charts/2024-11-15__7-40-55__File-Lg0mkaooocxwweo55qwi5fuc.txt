@@ -1,0 +1,58 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Compute deviations and identify the upper threshold by comparing the refined formula with E=mc^2
+upper_threshold_results = []
+
+for mass in star_masses:
+    for surface_area in star_surface_areas:
+        for potential in star_potentials:
+            for size_scale in star_size_scales:
+                # Compute energy using the refined formula
+                energy_star = refined_star_formula(
+                    mass, star_velocity, potential, surface_area, size_scale, quantum_scale, critical_mass, upper_threshold
+                )
+
+                # Compute baseline energy using E=mc^2
+                energy_baseline = mass * (3e8)**2
+
+                # Calculate deviation
+                deviation = abs(energy_star - energy_baseline) / energy_baseline * 100
+
+                # Record results
+                upper_threshold_results.append((mass, size_scale, deviation, energy_star, energy_baseline))
+
+# Convert results to a DataFrame
+threshold_df = pd.DataFrame(upper_threshold_results, columns=[
+    "Mass (kg)", "Size Scale", "Deviation (%)", "Refined Energy (J)", "E=mc^2 Energy (J)"
+])
+
+# Identify the upper threshold: the size scale where deviation starts increasing consistently
+threshold_by_mass = threshold_df.groupby("Mass (kg)").apply(
+    lambda group: group[group["Deviation (%)"] > 10]["Size Scale"].min()
+).reset_index()
+threshold_by_mass.columns = ["Mass (kg)", "Upper Threshold Size Scale"]
+
+# Plot E=mc^2 vs Refined Formula and Threshold Points
+plt.figure(figsize=(12, 8))
+for mass in np.unique(threshold_df["Mass (kg)"]):
+    subset = threshold_df[threshold_df["Mass (kg)"] == mass]
+    plt.plot(subset["Size Scale"], subset["Refined Energy (J)"], label=f"Refined (Mass={mass:.1e} kg)")
+    plt.plot(subset["Size Scale"], subset["E=mc^2 Energy (J)"], linestyle='--', label=f"E=mc^2 (Mass={mass:.1e} kg)")
+
+plt.scatter(threshold_by_mass["Upper Threshold Size Scale"], [1e45] * len(threshold_by_mass),
+            color='red', label='Upper Threshold', zorder=5)
+plt.axvline(0.35, color='green', linestyle='--', label="Lower Threshold = 0.35")
+plt.xlabel("Size Scale")
+plt.ylabel("Energy (J)")
+plt.title("Comparison of Refined Formula and E=mc^2 with Thresholds")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Display results for upper threshold by mass
+tools.display_dataframe_to_user(name="Upper Threshold Size Scale by Mass", dataframe=threshold_by_mass)

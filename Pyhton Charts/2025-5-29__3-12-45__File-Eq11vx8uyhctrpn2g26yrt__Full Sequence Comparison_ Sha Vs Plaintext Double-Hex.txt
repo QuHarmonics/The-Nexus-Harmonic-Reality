@@ -1,0 +1,26 @@
+Conversation URL:
+https://chatgpt.com/c/682b72fa-b7fc-8011-bfe6-d774ab0155b0
+
+Title:
+Full Sequence Comparison: SHA vs Plaintext Double-Hex
+
+Prompt:
+# Updated full digit sequences from user
+sha_full_str = "3339363533393332363136333336363636313338333936353339333836323635363233383332333233313335333336353631333033333633363333383633363136353338363533383635333333383632363633333334333433383332333236333332333736343337333633363632333333393339333533363337333236343331"
+plaintext_full_str = "3334334333363339333733333337333333323330333733393634"
+
+# Convert to integer lists
+sha_full_digits = [int(d) for d in sha_full_str if d.isdigit()]
+plaintext_full_digits = [int(d) for d in plaintext_full_str if d.isdigit()]
+
+# Create plot
+plt.figure(figsize=(14, 6))
+plt.plot(sha_full_digits, label='SHA Transformed (Full)', marker='o', linestyle='-', alpha=0.7)
+plt.plot(plaintext_full_digits, label='Plaintext Double-Hex (Full)', marker='x', linestyle='-', alpha=0.7)
+plt.title('Full Sequence Comparison: SHA vs Plaintext Double-Hex')
+plt.xlabel('Digit Index')
+plt.ylabel('Digit Value')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

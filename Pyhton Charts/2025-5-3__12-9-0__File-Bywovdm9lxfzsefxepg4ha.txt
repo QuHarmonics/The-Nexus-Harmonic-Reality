@@ -1,0 +1,62 @@
+Conversation URL:
+https://chatgpt.com/c/681601af-d6c4-8011-821d-815f35f6d7ab
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+# Correct first several bytes of π (after decimal)
+byte1 = [1, 4, 1, 5, 9, 2, 6, 5]  # Bits 1–8
+byte2 = [3, 5, 8, 9, 7, 9, 3, 2]  # Bits 9–16
+byte3 = [3, 8, 4, 6, 2, 6, 4, 3]  # Bits 17–24
+byte4 = [3, 8, 3, 2, 7, 9, 5, 0]  # Bits 25–32
+byte5 = [2, 8, 8, 4, 1, 9, 7, 1]  # Bits 33–40
+byte6 = [6, 9, 3, 9, 9, 3, 7, 5]  # Bits 41–48
+byte7 = [1, 0, 5, 8, 2, 0, 9, 7]  # Bits 49–56
+byte8 = [4, 5, 9, 2, 3, 0, 7, 8]  # Bits 57–64
+
+bytes_list = [byte1, byte2, byte3, byte4, byte5, byte6, byte7, byte8]
+colors = plt.cm.tab10(np.linspace(0, 1, len(bytes_list)))
+
+base_bits = np.arange(1, 9)
+
+fig, ax = plt.subplots(figsize=(14, 6))
+
+# plot each byte with fill
+for idx, (byte, color) in enumerate(zip(bytes_list, colors)):
+    offset = idx * 8
+    x = base_bits + offset
+    ax.step(x, byte, where='mid', color=color, linewidth=2, alpha=0.8)
+    ax.fill_between(x, byte, alpha=0.1, color=color)
+
+# light grid
+ax.grid(True, color='gray', linestyle='--', alpha=0.3)
+
+# annotate Byte4 region (bits 25–32)
+start, end = 25, 32
+rect = patches.Rectangle((start - 0.5, -1), end - start + 1, 11,
+                         fill=False, edgecolor='black', linewidth=2)
+ax.add_patch(rect)
+
+# horizontal lock lines at Byte4 crest/mid/trough
+for y in [9, 5, 0]:
+    ax.hlines(y, start - 0.5, end + 0.5, colors='black',
+              linestyles='dashdot', alpha=0.7)
+
+# labels and title
+ax.set_xlim(0.5, 64.5)
+ax.set_ylim(-1, 10)
+ax.set_xlabel('Overall Bit Position (1–64)')
+ax.set_ylabel('Digit Value (0–9)')
+ax.set_title('Nexus π Byte Waveform – Highlighting Byte 4 Lock')
+
+# legend
+ax.legend([f'Byte {i+1}' for i in range(8)],
+          ncol=4, bbox_to_anchor=(1.05, 1), loc='upper left')
+
+plt.tight_layout()
+plt.show()

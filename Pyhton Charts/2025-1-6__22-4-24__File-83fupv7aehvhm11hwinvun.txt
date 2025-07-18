@@ -1,0 +1,26 @@
+Conversation URL:
+https://chatgpt.com/c/677c9648-b414-8011-8cf7-226300bc3dd3
+
+Title:
+
+
+Prompt:
+# Transposing final_pressure to match the meshgrid orientation (chordwise, spanwise, height)
+final_pressure_transposed = np.transpose(final_pressure, axes=(1, 0, 2))  # Align dimensions
+
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection="3d")
+
+# Plot corrected pressure field as a 3D surface
+for z in range(0, grid_size[2], 5):  # Plot every 5th height slice
+    ax.plot_surface(
+        X[:, :, z], Y[:, :, z], final_pressure_transposed[:, :, z],
+        cmap="viridis", edgecolor="none", alpha=0.7
+    )
+
+ax.set_title("3D Pressure Field Over Airfoil (Final Time Step)", fontsize=14)
+ax.set_xlabel("Chordwise Direction")
+ax.set_ylabel("Spanwise Direction")
+ax.set_zlabel("Pressure (normalized)")
+plt.tight_layout()
+plt.show()

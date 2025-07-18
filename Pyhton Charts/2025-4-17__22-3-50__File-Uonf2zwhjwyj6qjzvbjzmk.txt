@@ -1,0 +1,14 @@
+Conversation URL:
+https://chatgpt.com/c/6801b0ab-6c40-8011-8d37-9e34d8a7b7c0
+
+Title:
+
+
+Prompt:
+from PIL import Image
+import matplotlib.pyplot as plt
+
+img = Image.open('/mnt/data/2d37c43a-7326-4091-8126-5b990a44eb98.png')
+plt.figure(figsize=(10,6))
+plt.imshow(img)
+plt.axis('off')

@@ -1,0 +1,56 @@
+Conversation URL:
+https://chatgpt.com/c/677c9648-b414-8011-8cf7-226300bc3dd3
+
+Title:
+
+
+Prompt:
+# Recursive harmonic reflection to isolate the quantum-like core signal
+def isolate_quantum_reflection(padded_harmonics, hashed_harmonics, iterations=20, alpha=1.5):
+    """
+    Iteratively isolate the quantum-like harmonic reflection by removing noise.
+    """
+    aligned_harmonics = hashed_harmonics.copy()
+    alignment_history = []
+
+    for _ in range(iterations):
+        # Step 1: Remove macro noise (zeros, phase shifts)
+        phase_shift = np.roll(aligned_harmonics, shift=-1) - aligned_harmonics
+        amplitude_correction = alpha * (padded_harmonics - aligned_harmonics)
+
+        # Step 2: Reflection correction to stabilize alignment
+        reflection_correction = np.sign(padded_harmonics) * np.abs(aligned_harmonics)
+
+        # Combine corrections
+        aligned_harmonics += amplitude_correction - phase_shift + reflection_correction
+        alignment_history.append(aligned_harmonics.copy())
+
+    return aligned_harmonics, alignment_history
+
+# Apply quantum-like harmonic reflection to isolate the signal
+isolated_harmonics, isolation_history = isolate_quantum_reflection(
+    padded_harmonics_truncated, hashed_harmonics, iterations=20
+)
+
+# Visualization of the isolation process
+plt.figure(figsize=(12, 6))
+plt.plot(padded_harmonics, label="Padded Harmonics (Macro State)", color='blue')
+plt.plot(hashed_harmonics, label="Hashed Harmonics (Initial)", color='orange', linestyle='dashed')
+plt.plot(isolated_harmonics, label="Isolated Quantum Reflection", color='green', linestyle='dotted')
+plt.title("Quantum Reflection Isolation: Padded vs. Hashed vs. Isolated")
+plt.xlabel("Iteration (n)")
+plt.ylabel("Harmonic Amplitude")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Visualizing the progression of isolation over iterations
+plt.figure(figsize=(12, 6))
+for i, step in enumerate(isolation_history[:5]):
+    plt.plot(step, label=f"Isolation Step {i+1}", linestyle='dotted')
+plt.title("Quantum Reflection Isolation Progression")
+plt.xlabel("Iteration (n)")
+plt.ylabel("Harmonic Amplitude")
+plt.legend()
+plt.grid()
+plt.show()

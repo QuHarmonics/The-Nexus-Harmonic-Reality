@@ -1,0 +1,74 @@
+Conversation URL:
+https://chatgpt.com/c/67eeee49-e180-8011-9eec-77f3faa1e930
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+import hashlib
+
+# === Helper Functions ===
+
+def hex_string_to_bytes(hex_str):
+    hex_str = hex_str.replace(' ', '').replace('\n', '')
+    return bytes.fromhex(hex_str)
+
+def hex_to_rgb_array(hex_str):
+    hex_str = hex_str.replace('\n', '').replace(' ', '')
+    bytes_array = [hex_str[i:i+2] for i in range(0, len(hex_str), 2)]
+    rgb_array = []
+    for i in range(0, len(bytes_array), 3):
+        if i+2 < len(bytes_array):
+            r = int(bytes_array[i], 16)
+            g = int(bytes_array[i+1], 16)
+            b = int(bytes_array[i+2], 16)
+            rgb_array.append((r, g, b))
+    return rgb_array
+
+def byte_to_bit_array(byte_val):
+    return [(byte_val >> i) & 1 for i in reversed(range(8))]
+
+def hex_to_binary_grid(hex_str):
+    byte_vals = [int(hex_str[i:i+2], 16) for i in range(0, len(hex_str), 2)]
+    bit_grid = np.array([byte_to_bit_array(b) for b in byte_vals])
+    return bit_grid
+
+# === Real Block Header: Bitcoin Block #125552 ===
+
+block_components = {
+    'Version': "01000000",
+    'PrevHash': "81cd02ab7e569e8bcd9317e2fe99f2de44d49ab2b8851ba4a308000000000000",
+    'MerkleRoot': "e320b6c2fffc8d750423db8b1eb942ae710e951ed797f7affc8892b0f1fc122b",
+    'Time': "c7f5d74d",
+    'Bits': "f2b9441a",
+    'Nonce': "42a14695"  # Actual working nonce for block #125552
+}
+
+# Concatenate full block header
+full_header_hex = ''.join(block_components.values())
+
+# Convert header to bytes and hash it
+header_bytes = hex_string_to_bytes(full_header_hex)
+sha256_1 = hashlib.sha256(header_bytes).digest()
+sha256_2 = hashlib.sha256(sha256_1).digest()
+
+# Create binary grids for each section
+binary_grids = {
+    'Header (Full)': hex_to_binary_grid(full_header_hex),
+    'Nonce': hex_to_binary_grid(block_components['Nonce']),
+    'SHA256 - First Pass': hex_to_binary_grid(sha256_1.hex()),
+    'SHA256 - Second Pass (Final Hash)': hex_to_binary_grid(sha256_2.hex())
+}
+
+# === Plotting Binary Grids ===
+fig, axs = plt.subplots(len(binary_grids), 1, figsize=(16, 2.2 * len(binary_grids)))
+
+for i, (label, grid) in enumerate(binary_grids.items()):
+    axs[i].imshow(grid, cmap='gray', aspect='auto')
+    axs[i].set_title(label, fontsize=12)
+    axs[i].axis('off')
+
+plt.tight_layout()
+plt.show()

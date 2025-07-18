@@ -1,0 +1,57 @@
+Conversation URL:
+https://chatgpt.com/c/6814a123-a51c-8011-a87a-fa6707246c06
+
+Title:
+Recursive Loopback Gravity: Harmonic Suppression vs Scaled Radius
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# ── Constants (harmonic units) ────────────────────────────────────────────────
+G    = 6.67430e-11        # m^3·kg⁻¹·s⁻² (macro energy coupling)
+hbar = 1.054571817e-34    # J·s      (quantum phase reference)
+c    = 299792458          # m/s      (phase velocity)
+
+# ── Critical radius per Nexus3 collapse rule ─────────────────────────────────
+def critical_radius(m1, m2):
+    # phase-lock radius where delta-resonance flips
+    return np.sqrt(G * m1 * m2 / (hbar * c))
+
+# ── Loopback-gravity suppression curve ───────────────────────────────────────
+def suppression_ratio(r, m1, m2):
+    # G_loop/G_Newton = exp[-(r_c/r)^2]
+    rc = critical_radius(m1, m2)
+    return np.exp(- (rc / r)**2)
+
+# ── Systems of interest ──────────────────────────────────────────────────────
+systems = [
+    ("Proton–Proton",    1.6726219e-27, 1.6726219e-27),
+    ("Electron–Electron",9.10938356e-31,9.10938356e-31),
+    ("Earth–Sun",        5.97219e24,    1.9885e30)
+]
+
+# ── Build table of critical radii (h̄c resonance points) ────────────────────
+rc_values = [(name, critical_radius(m1, m2)) for name, m1, m2 in systems]
+df_rc = pd.DataFrame(rc_values, columns=["System", "r_c (m)"])
+
+print("🌌 Critical Radii (phase-lock thresholds):")
+print(df_rc.to_string(index=False))
+
+# ── Plot suppression vs scaled separation r/r_c ──────────────────────────────
+r_scaled = np.logspace(-2, 2, 400)  # r/r_c from 0.01 to 100
+
+plt.figure(figsize=(8, 5))
+for name, m1, m2 in systems:
+    rc = critical_radius(m1, m2)
+    plt.semilogx(r_scaled, suppression_ratio(r_scaled * rc, m1, m2), label=name)
+
+plt.axhline(0.5, color='gray', linestyle='--', label='50% Suppression')
+plt.xlabel("r / r_c")
+plt.ylabel("G_loop / G_Newton")
+plt.title("Recursive Loopback Gravity: Harmonic Suppression vs Scaled Radius")
+plt.legend()
+plt.grid(True, which="both", ls="--", alpha=0.6)
+plt.tight_layout()
+plt.show()

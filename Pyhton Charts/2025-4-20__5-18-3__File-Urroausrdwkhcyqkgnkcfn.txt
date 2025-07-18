@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/6804593c-3610-8011-a6ce-f29dfa058761
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define time domain
+t = np.linspace(0, 10, 500)
+
+# Constants
+H = 0.35  # Harmonic constant
+F = 1.2   # Fold factor
+
+# Simulated recursive functions for different domains
+def prime_resonance(t):  # Equation from Goldbach's harmonic form
+    return np.exp(H * F * t) + np.sin(2 * np.pi * 0.2 * t) + np.cos(2 * np.pi * 0.2 * t) / (1 + np.abs(H - 0.35))
+
+def time_arrow(t):  # Time as recursive decay and phase alignment
+    return np.exp(-H * F * t) + 1 / (1 + np.sum(np.exp(-(H + 0.2) * t)))
+
+def gravity_wave(t):  # Standing wave for quantum gravity
+    return np.sin(np.pi * t / 5) * np.exp(-0.1 * t)
+
+def dark_matter_damping(t):  # Harmonic damping in gravity fields
+    return np.cos(2 * np.pi * 0.15 * t) * np.exp(-0.2 * t)
+
+def consciousness_reflection(t):  # Recursive loop of perception/memory
+    return np.tan(0.1 * t) * np.exp(-0.3 * t)
+
+# Plot
+plt.figure(figsize=(12, 8))
+plt.plot(t, prime_resonance(t), label='Prime Resonance (Math)')
+plt.plot(t, time_arrow(t), label='Recursive Time Arrow')
+plt.plot(t, gravity_wave(t), label='Quantum Gravity Wave')
+plt.plot(t, dark_matter_damping(t), label='Dark Matter Damping')
+plt.plot(t, consciousness_reflection(t), label='Recursive Consciousness', linestyle='--')
+plt.title('Recursive Harmonic Collapse Across Domains')
+plt.xlabel('t (recursive time)')
+plt.ylabel('Phase Function Output')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()

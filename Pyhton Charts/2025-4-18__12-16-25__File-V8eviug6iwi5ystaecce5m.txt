@@ -1,0 +1,19 @@
+Conversation URL:
+https://chatgpt.com/c/680141c8-f3cc-8011-8a38-859887970f31
+
+Title:
+
+
+Prompt:
+# Ensure all elements in deltas are converted to float before applying log2
+deltas_array = np.array(deltas, dtype=float)
+
+# Plot the delta magnitudes (representing phase error or FM deviation)
+plt.figure(figsize=(12, 5))
+plt.plot(range(len(deltas_array)), np.log2(deltas_array), marker='o')
+plt.title("SHA Δ as Phase Drift (Log Scale)")
+plt.xlabel("Nonce Offset")
+plt.ylabel("log₂(|SHA(input + nonce) - SHA(base)|)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

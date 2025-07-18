@@ -1,0 +1,40 @@
+Conversation URL:
+https://chatgpt.com/c/6801b0ab-6c40-8011-8d37-9e34d8a7b7c0
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Define operations sequence you provided and additional steps pattern
+ops = [
+    ("PUSH", 1),
+    ("PUSH", 4),
+    ("POP", None),
+    ("POP", None),
+    ("PUSH", "C"),
+    ("PUSH", "C"),
+    ("POP", None),
+    ("POP", None),
+    ("PUSH", "restore"),
+    ("PUSH", "result"),
+]
+depth = 0
+depths=[depth]
+steps=[]
+for i,(op,val) in enumerate(ops,1):
+    if op=="PUSH":
+        depth +=1
+    else:
+        depth -=1
+    depths.append(depth)
+    steps.append(i)
+plt.figure()
+plt.step(range(len(depths)),depths,where='post')
+plt.title("Stack Depth Waveform")
+plt.xlabel("Instruction index")
+plt.ylabel("Stack depth")
+plt.ylim(-0.5,max(depths)+0.5)
+plt.grid(True)
+plt.show()

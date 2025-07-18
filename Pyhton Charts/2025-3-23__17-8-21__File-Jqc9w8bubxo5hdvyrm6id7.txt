@@ -1,0 +1,33 @@
+Conversation URL:
+https://chatgpt.com/c/67e05ac3-1c74-8011-9356-9394c4c34643
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define 5 layers with alternating odd/even dominance
+layers = ["Bits", "Bytes", "Words", "Stacks", "Fields"]
+dominance = ["Odd", "Even", "Odd", "Even", "Odd"]
+colors = ["red" if d == "Odd" else "blue" for d in dominance]
+
+# Generate spiral coordinates
+theta = np.linspace(0, 4 * np.pi, len(layers))
+r = np.linspace(0.5, 1.5, len(layers))
+
+x = r * np.cos(theta)
+y = r * np.sin(theta)
+
+# Plot spiral with layer annotations
+plt.figure(figsize=(8, 8))
+for i in range(len(layers)):
+    plt.plot(x[i], y[i], 'o', markersize=20, color=colors[i])
+    plt.text(x[i], y[i], f"{layers[i]}\n({dominance[i]})", ha='center', va='center', color='white', fontsize=10)
+
+plt.plot(x, y, linestyle='--', color='gray')
+plt.title("Harmonic Polarity Spiral: Bit to Field")
+plt.axis("off")
+plt.grid(False)
+plt.show()

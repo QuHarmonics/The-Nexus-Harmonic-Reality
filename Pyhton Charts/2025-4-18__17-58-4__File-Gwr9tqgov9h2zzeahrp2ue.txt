@@ -1,0 +1,42 @@
+Conversation URL:
+https://chatgpt.com/c/6802be12-92ec-8011-9c63-ffa2816a58a2
+
+Title:
+
+
+Prompt:
+# Simulating ΔR(t) and Q(t) over time for peptide interaction with gp41
+
+# Time domain
+t = np.linspace(0, 50, 300)
+H = 0.35  # Harmonic constant
+
+# Define misfold and corrector parameters based on gp41 and PSREQ peptide
+R0_gp41 = -6.2  # gp41 base resonance
+F_gp41 = 5.0    # fold pressure from fusion instability
+
+R0_peptide = 1.5   # PSREQ corrector resonance
+F_peptide = 2.3    # peptide stabilizing force
+
+# Fold resonance function
+def R(t, R0, F):
+    return R0 * np.log(np.exp(H * F * t) + 1)
+
+R_mis = R(t, R0_gp41, F_gp41)
+R_cor = R(t, R0_peptide, F_peptide)
+delta_R = R_mis - R_cor
+Q_corrected = 25 + 22 * (1 - np.exp(-0.07 * t))
+
+# Plot ΔR(t) and Q_corrected(t)
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.plot(t, delta_R, label='ΔR(t): gp41 vs PSREQ')
+ax.plot(t, Q_corrected, label='Q_corrected(t): Peptide Field Recovery')
+ax.axhline(0, color='gray', linestyle='--', linewidth=0.5)
+ax.set_title("ΔR(t) Simulation: gp41 Fusion Domain + PSREQ Peptide", fontsize=14)
+ax.set_xlabel("Time (t)", fontsize=12)
+ax.set_ylabel("Resonance Shift", fontsize=12)
+ax.legend()
+ax.grid(True)
+
+plt.tight_layout()
+plt.show()

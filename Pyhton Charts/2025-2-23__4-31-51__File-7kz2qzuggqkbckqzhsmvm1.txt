@@ -1,0 +1,29 @@
+Conversation URL:
+https://chatgpt.com/c/67ba20ad-33f4-8011-a348-55e187caeb29
+
+Title:
+
+
+Prompt:
+# Refining entropy reversal to extract possible input bits
+
+# Extracting the most stable entropy regions from inverse entropy mapping
+stable_threshold = np.percentile(inverse_entropy_map, 90)  # Top 10% most stable regions
+stable_regions = np.where(inverse_entropy_map >= stable_threshold)
+
+# Create a binary reconstruction grid
+binary_reconstruction = np.zeros((512, 512))
+
+# Use stable entropy regions to estimate original input bit values
+for i in range(len(stable_regions[0])):
+    x, y = stable_regions[0][i], stable_regions[1][i]
+    
+    # Estimate binary representation based on entropy consistency
+    binary_reconstruction[x, y] = 1 if inverse_entropy_map[x, y] > (stable_threshold / 2) else 0
+
+# Plot the estimated binary pattern
+plt.figure(figsize=(10, 10))
+plt.imshow(binary_reconstruction, cmap='gray', interpolation='nearest')
+plt.title("Estimated Binary Reconstruction from SHA-256 Entropy Reversal")
+plt.colorbar(label="Estimated Bit Presence (0 = Low, 1 = High)")
+plt.show()

@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Expand to 3D visualization of interference patterns
+z = np.linspace(-grid_range, grid_range, grid_size)
+X3D, Y3D, Z3D = np.meshgrid(x, y, z)
+
+# Evaluate the combined wavefunction in 3D
+def evaluate_combined_wavefunction_3D(objects, spread, X, Y, Z):
+    grid_combined_amplitude = np.zeros(X.shape)
+    for obj in objects:
+        grid_combined_amplitude += stats.norm.pdf(
+            np.sqrt(
+                (X - obj["position"][0])**2 +
+                (Y - obj["position"][1])**2 +
+                (Z - obj["position"][2])**2
+            ),
+            loc=0, scale=spread
+        )
+    return grid_combined_amplitude
+
+# Calculate the 3D wavefunction interference pattern
+interference_pattern_3D = evaluate_combined_wavefunction_3D(wavefunction_particles, wavefunction_spread, X3D, Y3D, Z3D)
+
+# Summarize interference pattern for visualization: maximum intensity on each 2D plane
+interference_2D_slices = {
+    "XY Slice (Z=0)": interference_pattern_3D[:, :, grid_size // 2],
+    "XZ Slice (Y=0)": interference_pattern_3D[:, grid_size // 2, :],
+    "YZ Slice (X=0)": interference_pattern_3D[grid_size // 2, :, :],
+}
+
+# Plot the 2D slices from the 3D pattern
+fig, axs = plt.subplots(1, 3, figsize=(18, 6))
+
+for ax, (title, slice_data) in zip(axs, interference_2D_slices.items()):
+    c = ax.contourf(x, x, slice_data, levels=100, cmap="viridis")
+    plt.colorbar(c, ax=ax, label="Wavefunction Amplitude")
+    ax.set_title(title)
+    ax.set_xlabel("Position (m)")
+    ax.set_ylabel("Position (m)")
+
+plt.suptitle("3D Wavefunction Interference Pattern (2D Slices)")
+plt.show()

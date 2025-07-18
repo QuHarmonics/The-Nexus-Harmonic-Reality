@@ -1,0 +1,28 @@
+Conversation URL:
+https://chatgpt.com/c/682b72fa-b7fc-8011-bfe6-d774ab0155b0
+
+Title:
+Digit Distribution: SHA vs Plaintext Double-Hex
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Extracted numeric sequences as one long string for plotting
+sha_sequence_str = "3339335333933337333230373963463753323036434636463336"  # SHA-like data (digits only)
+plaintext_sequence_str = "3334334333363339333733333337333333323330333733393634"  # Plaintext double-hex (digits only)
+
+# Convert string to integer digit list
+sha_digits = [int(d) for d in sha_sequence_str if d.isdigit()]
+plaintext_digits = [int(d) for d in plaintext_sequence_str if d.isdigit()]
+
+# Plotting
+plt.figure(figsize=(14, 6))
+plt.plot(sha_digits, label='SHA-Transformed Digits', marker='o')
+plt.plot(plaintext_digits, label='Plaintext Double-Hex Digits', marker='x')
+plt.title('Digit Distribution: SHA vs Plaintext Double-Hex')
+plt.xlabel('Digit Index')
+plt.ylabel('Digit Value')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

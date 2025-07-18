@@ -1,0 +1,44 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7eec-8011-8c71-398f12a6c9d1
+
+Title:
+
+
+Prompt:
+# Simulating fractal growth within a 2D container
+def fractal_growth(container, iterations=5, seed_position=None):
+    """Simulate fractal growth within a 2D container."""
+    grid_size = container.shape[0]
+    if seed_position is None:
+        # Start fractal growth in the center of the container
+        seed_position = (grid_size // 2, grid_size // 2)
+    container[seed_position] = 1  # Mark the seed
+
+    for _ in range(iterations):
+        # Expand fractal growth from current points
+        new_points = []
+        for i in range(grid_size):
+            for j in range(grid_size):
+                if container[i, j] == 1:  # Fractal grows from "active" points
+                    # Activate neighboring points based on fractal rules
+                    for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                        ni, nj = i + di, j + dj
+                        if 0 <= ni < grid_size and 0 <= nj < grid_size and container[ni, nj] == 0:
+                            new_points.append((ni, nj))
+        for point in new_points:
+            container[point] = 1  # Mark new points as part of the fractal
+
+    return container
+
+# Initialize a 2D container
+container = np.zeros((20, 20))  # Empty grid
+
+# Grow fractals in the container
+fractal_container = fractal_growth(container, iterations=5)
+
+# Visualize the fractal growth
+plt.figure(figsize=(6, 6))
+plt.imshow(fractal_container, cmap="viridis", origin="upper")
+plt.title("Fractal Growth in 2D Container")
+plt.colorbar(label="Fractal Density")
+plt.show()

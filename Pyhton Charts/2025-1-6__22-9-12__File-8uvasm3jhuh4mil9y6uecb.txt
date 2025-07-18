@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/677c9648-b414-8011-8cf7-226300bc3dd3
+
+Title:
+
+
+Prompt:
+# Zero removal with compression to restore harmonic waveform
+def remove_zeros_and_compress(padded_data, original_length):
+    """
+    Remove zero padding and compress the remaining data to align with the original harmonic waveform.
+    """
+    # Identify and remove zeros
+    compressed_data = padded_data[padded_data != 0]  # Remove zeros
+    # Compress the remaining data to fit the original length
+    compressed_data = np.interp(
+        np.linspace(0, len(compressed_data) - 1, original_length),  # Target length
+        np.arange(len(compressed_data)),  # Original index positions
+        compressed_data  # Original data values
+    )
+    return compressed_data
+
+# Apply zero removal with compression
+compressed_reconstructed_data = remove_zeros_and_compress(padded_data, len(original_binary_data))
+
+# Compare harmonics before and after compression
+compressed_harmonics = np.sin(2 * np.pi * np.arange(len(compressed_reconstructed_data)) / len(compressed_reconstructed_data)) * (compressed_reconstructed_data - 0.5)
+
+# Visualization of original, padded, and compressed harmonics
+plt.figure(figsize=(12, 6))
+plt.plot(y_original, label="Original Harmonics", color='blue')
+plt.plot(np.sin(2 * np.pi * np.arange(len(padded_data)) / len(padded_data)) * (padded_data - 0.5), label="Padded Harmonics", color='orange', linestyle='dashed')
+plt.plot(compressed_harmonics, label="Compressed Reconstruction", color='green', linestyle='dotted')
+plt.title("Harmonic Analysis: Original vs. Padded vs. Compressed Reconstruction")
+plt.xlabel("Iteration (n)")
+plt.ylabel("H(n)")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Validate compressed reconstruction
+compressed_length_match = len(compressed_reconstructed_data) == len(original_binary_data)
+compressed_data_match = np.array_equal(original_binary_data, np.round(compressed_reconstructed_data).astype(int))
+
+compressed_length_match, compressed_data_match

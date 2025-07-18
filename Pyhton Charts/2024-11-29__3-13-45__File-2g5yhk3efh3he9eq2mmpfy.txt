@@ -1,0 +1,49 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-d7c0-8011-bfbf-fe8f85f3b90a
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+def neutron_half_life_harmonics(bottle_half_life=879.4, beam_half_life=888.0, time_steps=100, harmonic_constant=0.35):
+    """
+    Simulate harmonic reconciliation between bottle and beam neutron half-lives.
+    Args:
+    - bottle_half_life: Half-life measured in bottle experiments.
+    - beam_half_life: Half-life measured in beam experiments.
+    - time_steps: Number of iterations for harmonization.
+    - harmonic_constant: Governs the sinusoidal adjustments.
+    Returns:
+    - times: Array of time steps.
+    - reconciled_half_life: Simulated harmonized half-life over time.
+    """
+    times = np.linspace(0, 10, time_steps)
+    harmonized_half_life = []
+
+    for t in times:
+        # Harmonic adjustments for bottle and beam experiments
+        harmonic_bottle = bottle_half_life + harmonic_constant * np.sin(t)
+        harmonic_beam = beam_half_life + harmonic_constant * np.cos(t)
+        # Recursive reconciliation
+        reconciled_value = (harmonic_bottle + harmonic_beam) / 2
+        harmonized_half_life.append(reconciled_value)
+
+    return times, harmonized_half_life
+
+# Simulate neutron half-life harmonics
+times, harmonized_half_life = neutron_half_life_harmonics()
+
+# Plot the results
+plt.figure(figsize=(10, 6))
+plt.plot(times, harmonized_half_life, label="Harmonized Neutron Half-Life", color="blue")
+plt.axhline(879.4, color="green", linestyle="--", label="Bottle Half-Life (879.4s)")
+plt.axhline(888.0, color="red", linestyle="--", label="Beam Half-Life (888.0s)")
+plt.title("Harmonic Reconciliation of Neutron Half-Lives Using Mark 1 Principles")
+plt.xlabel("Time (arbitrary units)")
+plt.ylabel("Half-Life (seconds)")
+plt.grid()
+plt.legend()
+plt.show()

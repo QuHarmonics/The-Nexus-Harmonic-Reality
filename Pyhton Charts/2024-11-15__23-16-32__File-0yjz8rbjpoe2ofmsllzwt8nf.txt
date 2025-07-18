@@ -1,0 +1,33 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7eec-8011-8c71-398f12a6c9d1
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Prepare data for 3D visualization of modular residues
+x_vals, y_vals, z_vals = [], [], []
+
+for idx, (modulus, twin_primes) in enumerate(modular_candidates_3d):
+    for twin in twin_primes:
+        x_vals.append(twin[0])  # Twin prime starting number
+        y_vals.append(modulus)  # Modulus
+        z_vals.append(twin[1])  # Twin prime ending number
+
+# Create 3D scatter plot
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection='3d')
+scatter = ax.scatter(x_vals, y_vals, z_vals, c=z_vals, cmap='viridis', marker='o', alpha=0.7)
+
+# Add labels and title
+ax.set_title("3D Visualization of Twin Prime Candidates by Modulus", fontsize=14)
+ax.set_xlabel("Twin Prime Start (x-axis)", fontsize=12)
+ax.set_ylabel("Modulus (y-axis)", fontsize=12)
+ax.set_zlabel("Twin Prime End (z-axis)", fontsize=12)
+plt.colorbar(scatter, label="Twin Prime End Value")
+
+# Show the plot
+plt.show()

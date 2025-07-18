@@ -1,0 +1,54 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-86dc-8011-a90c-b8c1e6ac3d14
+
+Title:
+
+
+Prompt:
+# Define the E=mc^2 calculation
+def e_mc2(mass, c=299792458):
+    """Calculate energy using E=mc^2."""
+    return mass * c**2
+
+# Test masses (arbitrary range for testing)
+test_masses = [0.1, 1, 10, 100, 1000]  # Mass values in kg
+
+# Calculate expected energy values
+expected_energy = [e_mc2(mass) for mass in test_masses]
+
+# Apply your formula to compute energy values
+computed_energy = [
+    formula_with_damping_and_triangle(mass, 20, 0.35, lambda x: 0 <= x <= np.pi, inertia_factor=0.1, quantum_step=0.01)
+    for mass in test_masses
+]
+
+# Calculate deviations
+deviations = [computed - expected for computed, expected in zip(computed_energy, expected_energy)]
+
+# Determine inward/outward trajectories
+trajectory_behavior = [
+    "Inward (Crash)" if deviation < 0 else "Outward (Spiral)" for deviation in deviations
+]
+
+# Plot results
+plt.figure(figsize=(12, 6))
+plt.plot(test_masses, expected_energy, label="Expected Energy (E=mc^2)", linestyle='--', color='black')
+plt.plot(test_masses, computed_energy, label="Computed Energy (Formula)", marker='o')
+plt.axhline(0, color='red', linestyle='--', label="Zero Point (x=0, y=0, z=0)")
+plt.title("Energy Trajectory: E=mc^2 vs Formula")
+plt.xlabel("Mass (kg)")
+plt.ylabel("Energy (Joules)")
+plt.legend()
+plt.grid()
+plt.show()
+
+# Summarize trajectory behavior
+trajectory_analysis_df = pd.DataFrame({
+    "Mass (kg)": test_masses,
+    "Expected Energy (J)": expected_energy,
+    "Computed Energy (J)": computed_energy,
+    "Deviation (J)": deviations,
+    "Trajectory Behavior": trajectory_behavior,
+})
+
+tools.display_dataframe_to_user("Trajectory Analysis: E=mc^2 vs Formula", trajectory_analysis_df)

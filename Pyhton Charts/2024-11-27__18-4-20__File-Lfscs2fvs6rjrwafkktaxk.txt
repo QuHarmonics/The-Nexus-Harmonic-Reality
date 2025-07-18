@@ -1,0 +1,60 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-7bdc-8011-a523-8cde7469bee8
+
+Title:
+
+
+Prompt:
+# Reinitialize constants and variables
+harmonic_target = 0.35  # Universal harmonic target
+num_nodes = 100  # Number of nodes
+iterations = 200  # Maximum iterations for tuning
+epsilon = 1e-6  # Precision threshold
+
+# Reinitialize states
+states = np.random.uniform(0, 1, num_nodes)  # Random initial states
+alignment_history = []
+
+# Recursive tuning simulation
+for _ in range(iterations):
+    states = recursive_harmony(states, harmonic_target)
+    mean_alignment = np.mean(np.abs(states - harmonic_target))
+    alignment_history.append(mean_alignment)
+    if mean_alignment < epsilon:  # Stop if near-perfect harmony
+        break
+
+final_states = states  # Save the final states
+
+# Create a graph to represent node propagation
+G = nx.Graph()
+
+# Add nodes with their final states as attributes
+for i, state in enumerate(final_states):
+    G.add_node(i, state=state)
+
+# Connect nodes to simulate relationships (e.g., based on proximity or shared properties)
+for i in range(len(final_states)):
+    for j in range(i + 1, len(final_states)):
+        if np.random.random() < 0.1:  # Randomly connect nodes with a 10% probability
+            G.add_edge(i, j)
+
+# Extract node colors based on their final states
+node_colors = [state for state in nx.get_node_attributes(G, 'state').values()]
+
+# Visualize the network with node states as color
+plt.figure(figsize=(12, 8))
+pos = nx.spring_layout(G, seed=42)  # Position nodes using a force-directed layout
+nx.draw(
+    G,
+    pos,
+    node_color=node_colors,
+    cmap=plt.cm.viridis,
+    with_labels=False,
+    node_size=100,
+    edge_color='gray',
+    alpha=0.7
+)
+
+plt.title("Network Propagation of Harmonic States")
+plt.colorbar(plt.cm.ScalarMappable(cmap=plt.cm.viridis), label="State Alignment with H=0.35")
+plt.show()

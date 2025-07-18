@@ -1,0 +1,37 @@
+Conversation URL:
+https://chatgpt.com/c/67e05ac3-1c74-8011-9356-9394c4c34643
+
+Title:
+
+
+Prompt:
+# Manually extract the segments from pi based on byte lengths: 4, 8, 16, 32, ..., 2048
+byte_lengths = [2 ** i for i in range(2, 12)]
+odd_ratios_specific = []
+even_ratios_specific = []
+odd_counts_specific = []
+even_counts_specific = []
+
+for length in byte_lengths:
+    segment = [int(d) for d in extended_pi_digits_str[:length]]
+    odd = sum(1 for d in segment if d % 2 != 0)
+    even = length - odd
+    odd_counts_specific.append(odd)
+    even_counts_specific.append(even)
+    odd_ratios_specific.append(odd / length)
+    even_ratios_specific.append(even / length)
+
+# Display as bar chart of ratios for clear comparison
+bar_width = 0.35
+x = range(len(byte_lengths))
+
+plt.figure(figsize=(14, 6))
+plt.bar(x, odd_ratios_specific, width=bar_width, label="Odd Ratio")
+plt.bar([i + bar_width for i in x], even_ratios_specific, width=bar_width, label="Even Ratio")
+plt.xticks([i + bar_width / 2 for i in x], [str(l) for l in byte_lengths])
+plt.xlabel("Byte Size (Number of Pi Digits)")
+plt.ylabel("Ratio")
+plt.title("Odd vs Even Ratios in Pi by Expanding Byte Lengths (From 0.1415...)")
+plt.legend()
+plt.grid(True)
+plt.show()

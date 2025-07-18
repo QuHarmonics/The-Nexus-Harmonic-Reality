@@ -1,0 +1,83 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Function to represent a particle physics scenario (e.g., energy of particles in an accelerator)
+def particle_physics_energy(mass, velocity):
+    """
+    Energy calculation for particles at relativistic velocities.
+    :param mass: Rest mass of the particle (kg).
+    :param velocity: Velocity as a fraction of the speed of light (c).
+    :return: Relativistic energy (J).
+    """
+    c = 3e8  # Speed of light in m/s
+    gamma = 1 / np.sqrt(1 - velocity**2)  # Lorentz factor
+    return mass * c**2 * gamma  # Relativistic energy
+
+# Refined formula with scaling factor
+def refined_particle_formula(mass, velocity, potential):
+    """
+    Refined energy formula incorporating feedback and a reactive scaling factor.
+    :param mass: Rest mass of the particle (kg).
+    :param velocity: Velocity as a fraction of the speed of light (c).
+    :param potential: Hypothetical potential or interaction energy (arbitrary units).
+    :return: Refined energy estimate (J).
+    """
+    c = 3e8  # Speed of light in m/s
+    gamma = 1 / np.sqrt(1 - velocity**2)  # Lorentz factor
+    feedback = 1 + (potential / mass)**2  # Feedback adjustment
+    scaling_factor = (1 + 0.1 * feedback) / (1 + 0.01 * (mass / potential)**2)  # Reactive scaling
+    return mass * c**2 * gamma * scaling_factor
+
+# Test data: Particle masses, velocities, and potentials
+particle_masses = np.linspace(1e-27, 1e-24, 20)  # Masses in kg (range for subatomic particles)
+particle_velocities = np.linspace(0.1, 0.99, 20)  # Fractions of the speed of light
+particle_potentials = np.linspace(1e-5, 1e-2, 20)  # Arbitrary potentials
+
+# Calculate energies using both formulas
+relativistic_energies = [
+    particle_physics_energy(m, v) for m, v in zip(particle_masses, particle_velocities)
+]
+refined_energies = [
+    refined_particle_formula(m, v, p)
+    for m, v, p in zip(particle_masses, particle_velocities, particle_potentials)
+]
+
+# Calculate deviation between the two models
+particle_deviation = np.abs(np.array(refined_energies) - np.array(relativistic_energies)) / np.array(relativistic_energies) * 100
+
+# Plot results
+plt.figure(figsize=(14, 7))
+
+# Energy comparison
+plt.subplot(1, 2, 1)
+plt.plot(particle_masses, relativistic_energies, label="Relativistic Energy (E=mc^2)", color="blue")
+plt.plot(particle_masses, refined_energies, label="Refined Formula", color="orange", linestyle="--")
+plt.xlabel("Particle Mass (kg)")
+plt.ylabel("Energy (J)")
+plt.xscale("log")
+plt.title("Comparison: Relativistic Energy vs Refined Formula")
+plt.legend()
+
+# Deviation plot
+plt.subplot(1, 2, 2)
+plt.plot(particle_masses, particle_deviation, label="Deviation (%)", color="red")
+plt.xlabel("Particle Mass (kg)")
+plt.ylabel("Deviation (%)")
+plt.xscale("log")
+plt.title("Deviation Between Refined Formula and Relativistic Energy")
+plt.axhline(y=5, color="green", linestyle="--", label="Acceptable Deviation Threshold")
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Display deviation summary
+{
+    "Max Deviation (%)": np.max(particle_deviation),
+    "Min Deviation (%)": np.min(particle_deviation),
+    "Average Deviation (%)": np.mean(particle_deviation),
+}

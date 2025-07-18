@@ -1,0 +1,33 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Analyze deviations between predicted intensity and expected behavior for hurricanes
+historical_hurricanes["Expected Intensity"] = [70, 80, 60, 130, 110]  # Hypothetical expected intensities based on historical impacts
+historical_hurricanes["Intensity Deviation"] = (
+    historical_hurricanes["Predicted Intensity"] - historical_hurricanes["Expected Intensity"]
+)
+
+# Highlight anomalies where the deviation exceeds a threshold
+deviation_threshold = 15  # Set an arbitrary threshold for significant anomalies
+anomalies = historical_hurricanes[abs(historical_hurricanes["Intensity Deviation"]) > deviation_threshold]
+
+# Display anomalies and overall comparison
+import ace_tools as tools; tools.display_dataframe_to_user(name="Hurricane Intensity Anomalies", dataframe=anomalies)
+
+# Visualize anomalies in predictions
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12, 6))
+plt.bar(historical_hurricanes["Name"], historical_hurricanes["Intensity Deviation"], color="orange")
+plt.axhline(deviation_threshold, color="red", linestyle="--", label="Positive Threshold")
+plt.axhline(-deviation_threshold, color="blue", linestyle="--", label="Negative Threshold")
+plt.xlabel("Hurricane Name")
+plt.ylabel("Intensity Deviation")
+plt.title("Deviation Between Predicted and Expected Hurricane Intensities")
+plt.legend()
+plt.grid()
+plt.show()

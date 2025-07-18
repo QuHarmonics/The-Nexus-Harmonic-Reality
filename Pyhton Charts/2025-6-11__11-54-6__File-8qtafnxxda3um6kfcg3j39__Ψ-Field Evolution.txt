@@ -1,0 +1,57 @@
+Conversation URL:
+https://chatgpt.com/c/6840417b-3ca0-8011-84eb-5ae1cdae78dd
+
+Title:
+Ψ-Field Evolution
+
+Prompt:
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Parameters
+k = 5
+time_steps = 50
+L = np.zeros(time_steps)
+D = np.zeros(time_steps)
+psi_L = np.zeros(time_steps)
+psi_D = np.zeros(time_steps)
+harmonic_ratio = np.zeros(time_steps)
+
+# Initial conditions
+L[0] = 0.501
+D[0] = 0.499
+
+# Simulation
+for t in range(time_steps - 1):
+    L[t+1] = L[t] + k * L[t] * (L[t] - D[t])
+    D[t+1] = D[t] + k * D[t] * (D[t] - L[t])
+    total = L[t+1] + D[t+1]
+    psi_L[t+1] = L[t+1] / total
+    psi_D[t+1] = D[t+1] / total
+    harmonic_ratio[t+1] = min(L[t+1], D[t+1]) / max(L[t+1], D[t+1])
+
+# Plotting
+plt.figure(figsize=(14, 6))
+
+# Ψ-field plot
+plt.subplot(1, 2, 1)
+plt.plot(psi_L, label='$\\Psi_L$')
+plt.plot(psi_D, label='$\\Psi_D$')
+plt.title('Ψ-Field Evolution')
+plt.xlabel('Time Step')
+plt.ylabel('Ψ Value')
+plt.legend()
+plt.grid(True)
+
+# Harmonic ratio plot
+plt.subplot(1, 2, 2)
+plt.plot(harmonic_ratio, label='Harmonic Ratio $H$', color='purple')
+plt.axhline(0.35, color='red', linestyle='--', label='0.35 Harmonic Threshold')
+plt.title('Harmonic Ratio Over Time')
+plt.xlabel('Time Step')
+plt.ylabel('H = min(L, D) / max(L, D)')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()

@@ -1,0 +1,33 @@
+Conversation URL:
+https://chatgpt.com/c/683b3e84-3748-8011-829e-a71c8b872f9e
+
+Title:
+Triangle Wave Pattern of Pi Resonance
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Define the triangles based on user input
+# First triangle set: 1, 4, 3
+# Second triangle set: 3, 4, 1
+
+tri1 = [1, 4, 3]
+tri2 = [3, 4, 1]
+
+# Create x values to separate visually
+x_tri1 = [0, 1, 2]
+x_tri2 = [3, 4, 5]
+
+# Plotting the triangle waves
+plt.figure(figsize=(10, 5))
+plt.plot(x_tri1, tri1, marker='o', label='Triangle 1: [1, 4, 3]')
+plt.plot(x_tri2, tri2, marker='o', label='Triangle 2: [3, 4, 1]')
+
+# Add labels and legend
+plt.title('Triangle Wave Pattern of Pi Resonance')
+plt.xlabel('Position')
+plt.ylabel('Value')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

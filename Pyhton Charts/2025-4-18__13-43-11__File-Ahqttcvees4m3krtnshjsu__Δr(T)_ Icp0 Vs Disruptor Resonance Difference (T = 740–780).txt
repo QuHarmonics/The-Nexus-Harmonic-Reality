@@ -1,0 +1,22 @@
+Conversation URL:
+https://chatgpt.com/c/680279c9-d658-8011-8e23-7040afdea1dd
+
+Title:
+ΔR(t): ICP0 vs Disruptor Resonance Difference (t = 740–780)
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Prepare the time steps and delta resonance
+time_steps = list(window_range)
+delta_resonance = [icp0 - disruptor for icp0, disruptor in zip(safe_windowed_resonance, disruptor_resonance)]
+
+# Plotting Delta R(t)
+plt.figure(figsize=(10, 6))
+plt.plot(time_steps, delta_resonance, linewidth=2)
+plt.title("ΔR(t): ICP0 vs Disruptor Resonance Difference (t = 740–780)")
+plt.xlabel("Time Step (t)")
+plt.ylabel("ΔR(t) = R_ICP0 - R_Disruptor")
+plt.grid(True)
+plt.tight_layout()
+plt.show()

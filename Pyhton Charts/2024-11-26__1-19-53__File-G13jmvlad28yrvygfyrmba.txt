@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8e-6ee8-8011-bad6-30248ce2e5af
+
+Title:
+
+
+Prompt:
+# Create a class map tree visualization for the interface structure
+class_tree_graph = nx.DiGraph()
+
+# Recursive function to structure nodes and edges for a class map style
+def add_class_map_edges(graph, parent, children, depth=0, horizontal_shift=0, pos=None, depth_increment=1):
+    if pos is None:
+        pos = {}
+    if parent not in pos:
+        pos[parent] = (depth, horizontal_shift)
+    for i, child in enumerate(children):
+        child_shift = horizontal_shift + (i - len(children) // 2)
+        if isinstance(children[child], list):  # Base methods
+            for j, method in enumerate(children[child]):
+                method_shift = child_shift + j * 0.5
+                graph.add_edge(parent, method)
+                pos[method] = (depth + depth_increment, method_shift)
+        elif isinstance(children[child], dict):  # Subcategories
+            graph.add_edge(parent, child)
+            pos[child] = (depth + depth_increment, child_shift)
+            add_class_map_edges(graph, child, children[child], depth + depth_increment, child_shift, pos, depth_increment)
+    return pos
+
+# Build the class map tree graph
+class_map_pos = add_class_map_edges(class_tree_graph, "Interfaces", interfaces_structure["Interfaces"], depth_increment=1.5)
+
+# Extract positions for plotting
+x_class_map, y_class_map = zip(*[pos for node, pos in class_map_pos.items()])
+
+# Map positions to nodes for plotting
+node_positions_class_map = {node: (x_class_map[i], y_class_map[i]) for i, node in enumerate(class_map_pos)}
+
+# Create a 2D plot for the class map tree
+plt.figure(figsize=(16, 12))
+nx.draw(
+    class_tree_graph, pos=node_positions_class_map, with_labels=True, node_size=3000, 
+    node_color="lightcoral", font_size=10, font_weight="bold", edge_color="gray"
+)
+
+plt.title("Class Map Style Tree for Universe 000 Interfaces", fontsize=16)
+plt.show()

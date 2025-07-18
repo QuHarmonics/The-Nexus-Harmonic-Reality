@@ -1,0 +1,35 @@
+Conversation URL:
+https://chatgpt.com/c/67cae028-273c-8011-acb0-380fae052b17
+
+Title:
+
+
+Prompt:
+# Define colors for different word sizes
+colors = {"8-bit": "red", "16-bit": "blue", "32-bit": "green"}
+
+# Adjust segmentation to only take 16 total 8-bit samples, 8 total 16-bit samples, and 4 total 32-bit samples
+pi_bytes_8bit_limited = [pi_digits_limited[i:i+8] for i in range(0, len(pi_digits_limited), 8)][:16]
+pi_bytes_16bit_limited = [pi_digits_limited[i:i+16] for i in range(0, len(pi_digits_limited), 16)][:8]
+pi_bytes_32bit_limited = [pi_digits_limited[i:i+32] for i in range(0, len(pi_digits_limited), 32)][:4]
+
+# Create categorized data for each word length
+odd_even_8bit_limited = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_8bit_limited]
+odd_even_16bit_limited = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_16bit_limited]
+odd_even_32bit_limited = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_32bit_limited]
+
+# Plot with proper segmentation
+plt.figure(figsize=(8, 5))
+
+plt.scatter(range(1, 17), odd_even_8bit_limited, color=colors["8-bit"], label="8-bit Bytes", s=100)
+plt.scatter(range(1, 9), odd_even_16bit_limited, color=colors["16-bit"], label="16-bit Words", s=100)
+plt.scatter(range(1, 5), odd_even_32bit_limited, color=colors["32-bit"], label="32-bit Words", s=100)
+
+plt.xlabel("Index")
+plt.ylabel("Dominance (1 = Odd-dominant, 0 = Even-dominant)")
+plt.title("Odd vs. Even Dominance in Pi's 8-bit, 16-bit, and 32-bit Samples")
+plt.legend()
+plt.grid(True)
+
+# Display the plot
+plt.show()

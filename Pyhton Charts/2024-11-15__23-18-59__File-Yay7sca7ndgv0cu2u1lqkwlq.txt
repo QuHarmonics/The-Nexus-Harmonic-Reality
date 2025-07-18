@@ -1,0 +1,35 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7eec-8011-8c71-398f12a6c9d1
+
+Title:
+
+
+Prompt:
+# Prepare data for 3D visualization of twin prime trends
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Extract data for visualization: ranges, actual counts, and predicted counts
+ranges = [item[0] for item in densities_data]
+actual_counts = [item[1] for item in densities_data]
+predicted_counts_standard = [item[1] for item in predicted_data]
+predicted_counts_kulik = [item[2] for item in predicted_data]
+
+# Create 3D plot
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# Plot actual counts, standard prediction, and Kulik prediction
+ax.scatter(ranges, actual_counts, zs=1, label="Actual Twin Primes", color='blue')
+ax.scatter(ranges, predicted_counts_standard, zs=2, label="Predicted (Standard)", color='green')
+ax.scatter(ranges, predicted_counts_kulik, zs=3, label="Predicted (Kulik Formula)", color='red')
+
+# Add labels and title
+ax.set_title("3D Visualization of Twin Prime Trends", fontsize=14)
+ax.set_xlabel("Range (x)", fontsize=12)
+ax.set_ylabel("Twin Prime Counts", fontsize=12)
+ax.set_zlabel("Prediction Source (1=Actual, 2=Standard, 3=Kulik)", fontsize=12)
+ax.legend()
+
+# Show plot
+plt.show()

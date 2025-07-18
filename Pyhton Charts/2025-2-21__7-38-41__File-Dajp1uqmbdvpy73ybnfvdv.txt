@@ -1,0 +1,31 @@
+Conversation URL:
+https://chatgpt.com/c/67bbbf97-fe8c-8011-abbd-b9adfebaa957
+
+Title:
+
+
+Prompt:
+# Re-plot with A and B on the X-axis and C on the Y-axis
+
+# Extract A, B, and C values
+a_values = [triplet[0] for triplet in explicit_triangles]
+b_values = [triplet[1] for triplet in explicit_triangles]
+c_values = [triplet[2] for triplet in explicit_triangles]
+
+# Plot A and B as X-axis coordinates, C as Y-axis
+plt.figure(figsize=(10, 6))
+plt.scatter(a_values, c_values, marker='o', color='blue', label="A values")
+plt.scatter(b_values, c_values, marker='s', color='red', label="B values")
+
+# Connect points with lines
+for i in range(len(a_values)):
+    plt.plot([a_values[i], b_values[i]], [c_values[i], c_values[i]], linestyle='-', color='gray', alpha=0.6)
+
+# Formatting the plot
+plt.title("π Triangle Representation: A & B on X, C on Y")
+plt.xlabel("X-Axis (A and B Values)")
+plt.ylabel("Y-Axis (C Value - Triangle Height)")
+plt.axhline(0, color='black', linewidth=0.5)
+plt.grid(True)
+plt.legend()
+plt.show()

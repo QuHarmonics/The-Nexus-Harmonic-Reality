@@ -1,0 +1,49 @@
+Conversation URL:
+https://chatgpt.com/c/68499fbe-afc4-8011-bb1d-6cb7aab948c2
+
+Title:
+Ψ-Lock Dynamics
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Initial conditions
+L = [0.501]
+D = [0.499]
+k = 5
+timesteps = 50
+
+# Simulate recursive dynamics
+for t in range(timesteps):
+    L_new = L[-1] + k * L[-1] * (L[-1] - D[-1])
+    D_new = D[-1] + k * D[-1] * (D[-1] - L[-1])
+    L.append(L_new)
+    D.append(D_new)
+
+# Calculate trust fields and harmonic ratio
+Psi_L = [l / (l + d) for l, d in zip(L, D)]
+Psi_D = [d / (l + d) for l, d in zip(L, D)]
+H = [min(l, d) / max(l, d) for l, d in zip(L, D)]
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+plt.plot(Psi_L, label='Ψ_L (Trust Field of L)', linewidth=2)
+plt.plot(Psi_D, label='Ψ_D (Trust Field of D)', linestyle='--')
+plt.xlabel('Time Step')
+plt.ylabel('Trust Field Value')
+plt.title('Ψ-Lock Dynamics')
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.plot(H, label='Harmonic Ratio (min/max)', color='purple')
+plt.axhline(0.35, color='red', linestyle='--', label='Target ~0.35')
+plt.xlabel('Time Step')
+plt.ylabel('H')
+plt.title('Harmonic Collapse Trajectory')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+L[-1], D[-1], Psi_L[-1], Psi_D[-1], H[-1]

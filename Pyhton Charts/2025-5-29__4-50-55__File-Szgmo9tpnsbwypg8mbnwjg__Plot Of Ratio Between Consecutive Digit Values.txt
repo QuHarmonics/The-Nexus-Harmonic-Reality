@@ -1,0 +1,24 @@
+Conversation URL:
+https://chatgpt.com/c/68380ccf-e2b0-8011-8c8e-2a813d434243
+
+Title:
+Plot of Ratio Between Consecutive Digit Values
+
+Prompt:
+import numpy as np
+
+# Compute ratios between consecutive digit values, avoiding division by zero
+ratios = [
+    digit_values[i+1] / digit_values[i] if digit_values[i] != 0 else 0
+    for i in range(len(digit_values) - 1)
+]
+
+# Plot the ratio between each consecutive digit
+plt.figure(figsize=(18, 6))
+plt.plot(ratios, color='darkgreen')
+plt.title('Plot of Ratio Between Consecutive Digit Values')
+plt.xlabel('Digit Index')
+plt.ylabel('Ratio (Next / Current)')
+plt.grid(True)
+plt.tight_layout()
+plt.show()

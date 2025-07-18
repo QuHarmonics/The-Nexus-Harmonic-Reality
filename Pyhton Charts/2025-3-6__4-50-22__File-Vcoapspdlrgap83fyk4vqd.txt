@@ -1,0 +1,27 @@
+Conversation URL:
+https://chatgpt.com/c/67c1a60d-a910-8011-81fb-bb809464311a
+
+Title:
+
+
+Prompt:
+import numpy as np
+
+# Define x values (index positions)
+x_vals = np.linspace(0, 10, 500)  # Range from 0 to 10
+
+# Compute the recursive compression function
+H = 0.35  # Harmonic resonance constant
+F = 1.5  # Feedback factor
+compression_function = H * np.exp(-F * x_vals) + (1 / (1 + 33.115 * np.exp(-10 * x_vals)))
+
+# Plot the Recursive Compression Function
+plt.figure(figsize=(12, 6))
+plt.plot(x_vals, compression_function, label="Recursive Compression Function", color='b')
+plt.axhline(y=H, color='r', linestyle='--', label="Harmonic Baseline (0.35)")
+plt.xlabel("Iteration Index (x)")
+plt.ylabel("Compression Output")
+plt.title("Recursive Harmonic Compression Formula: Balancing Remainder Oscillations")
+plt.legend()
+plt.grid(True)
+plt.show()

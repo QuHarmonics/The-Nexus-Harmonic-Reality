@@ -1,0 +1,17 @@
+Conversation URL:
+https://chatgpt.com/c/68380ccf-e2b0-8011-8c8e-2a813d434243
+
+Title:
+Sequential Byte Value Transition
+
+Prompt:
+# Create a simple plot that draws a line from one number to the next without markers or extras
+
+plt.figure(figsize=(14, 5))
+plt.plot(bytes_data, linestyle='-', color='darkred')
+plt.title('Sequential Byte Value Transition')
+plt.xlabel('Step')
+plt.ylabel('Value')
+plt.grid(True)
+plt.tight_layout()
+plt.show()

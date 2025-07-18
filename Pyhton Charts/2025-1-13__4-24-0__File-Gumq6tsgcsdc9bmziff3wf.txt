@@ -1,0 +1,138 @@
+Conversation URL:
+https://chatgpt.com/c/6783e51d-5e68-8011-b329-8a8024db41fb
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+def calculate_recursive_cubes(frame_size, recursion_depth=3):
+    """
+    Recursively calculates cube dimensions and centers.
+
+    Args:
+        frame_size (int): The size of the initial data cube (smallest).
+        recursion_depth (int): Number of recursive layers.
+
+    Returns:
+        list: A list of dictionaries containing dimensions and centers for each cube.
+    """
+    cubes = []
+
+    # Initialize the innermost cube
+    size = frame_size
+    center = (0, 0, 0)  # Center all cubes at origin for proper alignment
+
+    for _ in range(recursion_depth):
+        # Append cube properties
+        cubes.append({"size": size, "center": center})
+
+        # Recursively calculate the next cube
+        size *= 2  # Double the size
+
+    return cubes
+
+
+def create_cube_vertices(size, center):
+    """
+    Creates vertices dynamically for a cube based on its size and center.
+
+    Args:
+        size (float): The edge length of the cube.
+        center (tuple): The (x, y, z) coordinates of the cube's center.
+
+    Returns:
+        np.array: Vertices of the cube.
+    """
+    cx, cy, cz = center
+    half_size = size / 2
+    return np.array([
+        [cx - half_size, cy - half_size, cz - half_size],  # Bottom-left-front
+        [cx + half_size, cy - half_size, cz - half_size],  # Bottom-right-front
+        [cx + half_size, cy + half_size, cz - half_size],  # Top-right-front
+        [cx - half_size, cy + half_size, cz - half_size],  # Top-left-front
+        [cx - half_size, cy - half_size, cz + half_size],  # Bottom-left-back
+        [cx + half_size, cy - half_size, cz + half_size],  # Bottom-right-back
+        [cx + half_size, cy + half_size, cz + half_size],  # Top-right-back
+        [cx - half_size, cy + half_size, cz + half_size],  # Top-left-back
+    ])
+
+
+def plot_cubes(cubes):
+    """
+    Visualizes nested cubes using their calculated data.
+
+    Args:
+        cubes (list): List of dictionaries containing cube properties.
+    """
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection='3d')
+
+    def plot_single_cube(ax, vertices, color, alpha, label):
+        """
+        Plots a single cube using its vertices.
+
+        Args:
+            ax: Matplotlib 3D axis.
+            vertices (np.array): Vertices of the cube.
+            color (str): Color of the cube.
+            alpha (float): Transparency of the cube.
+            label (str): Label for the cube.
+        """
+        faces = [
+            [vertices[i] for i in [0, 1, 2, 3]],  # Bottom face
+            [vertices[i] for i in [4, 5, 6, 7]],  # Top face
+            [vertices[i] for i in [0, 1, 5, 4]],  # Side face
+            [vertices[i] for i in [2, 3, 7, 6]],  # Side face
+            [vertices[i] for i in [1, 2, 6, 5]],  # Side face
+            [vertices[i] for i in [0, 3, 7, 4]],  # Side face
+        ]
+        ax.add_collection3d(Poly3DCollection(faces, color=color, alpha=alpha, edgecolor="k"))
+        ax.text(
+            np.mean(vertices[:, 0]),
+            np.mean(vertices[:, 1]),
+            np.mean(vertices[:, 2]),
+            label,
+            color=color,
+        )
+
+    # Assign colors and labels
+    colors = ['red', 'blue', 'green', 'purple', 'orange']
+    alpha_values = [0.4, 0.3, 0.2, 0.1, 0.05]
+
+    for i, cube in enumerate(cubes):
+        size = cube["size"]
+        center = cube["center"]
+
+        # Generate vertices dynamically
+        vertices = create_cube_vertices(size, center)
+
+        # Plot cube
+        color = colors[i % len(colors)]
+        alpha = alpha_values[i % len(alpha_values)]
+        plot_single_cube(ax, vertices, color, alpha, label=f"Cube {i + 1}")
+
+    # Set plot limits based on the largest cube
+    max_size = cubes[-1]["size"]
+    ax.set_xlim(-max_size, max_size)
+    ax.set_ylim(-max_size, max_size)
+    ax.set_zlim(-max_size, max_size)
+    ax.set_xlabel("X-axis")
+    ax.set_ylabel("Y-axis")
+    ax.set_zlabel("Z-axis")
+    ax.set_title("Recursive Nested Cubes (Centered and Corrected)")
+    plt.show()
+
+
+# Input frame size and recursion depth
+frame_size = 256  # Initial cube size
+recursion_depth = 4  # Number of recursive layers
+
+# Calculate cube properties recursively
+cubes = calculate_recursive_cubes(frame_size, recursion_depth)
+
+# Visualize cubes
+plot_cubes(cubes)

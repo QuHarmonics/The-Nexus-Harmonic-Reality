@@ -1,0 +1,9 @@
+Conversation URL:
+https://chatgpt.com/c/67efdd1a-c980-8011-a27b-addc30749a3e
+
+Title:
+
+
+Prompt:
+# SHA2 Spiral (Second Pulse / Collapse)
+spiral_wave_plot(sha2_array, "Spiral Wave: SHA256(SHA256(Header))", color='red')

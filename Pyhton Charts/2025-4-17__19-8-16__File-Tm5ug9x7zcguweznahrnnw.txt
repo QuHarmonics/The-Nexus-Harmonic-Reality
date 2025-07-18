@@ -1,0 +1,28 @@
+Conversation URL:
+https://chatgpt.com/c/680141c8-f3cc-8011-8a38-859887970f31
+
+Title:
+
+
+Prompt:
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Group files into sets of .txt + .webp
+grouped_files = []
+for i in range(0, len(extracted_files), 2):
+    txt = extracted_files[i]
+    img = extracted_files[i + 1]
+    grouped_files.append((txt, img))
+
+# Display the first 3 sets
+fig, axs = plt.subplots(3, 1, figsize=(12, 18))
+for idx, (txt_file, img_file) in enumerate(grouped_files[:3]):
+    img_path = os.path.join(extract_path, img_file)
+    image = Image.open(img_path)
+    axs[idx].imshow(image)
+    axs[idx].axis('off')
+    axs[idx].set_title(f"Chart {idx+1}: {img_file}")
+
+plt.tight_layout()
+plt.show()

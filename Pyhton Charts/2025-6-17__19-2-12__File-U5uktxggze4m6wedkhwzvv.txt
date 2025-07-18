@@ -1,0 +1,36 @@
+Conversation URL:
+https://chatgpt.com/c/685033d8-e760-8011-8ad7-83a24fd0db51
+
+Title:
+
+
+Prompt:
+# Extract the two selected expressions from the Byte Frame Rolling Residue Analysis table
+expr1 = '2+6='
+expr2 = '6+2='
+
+# Get their decimal values from the previously constructed df
+dec1 = df[df['Expression'] == expr1].iloc[0]['Decimal']
+dec2 = df[df['Expression'] == expr2].iloc[0]['Decimal']
+
+# Convert both decimal values to binary, padded to 32 bits for alignment
+bin1 = bin(dec1)[2:].zfill(32)
+bin2 = bin(dec2)[2:].zfill(32)
+
+# Stack for visualization
+fig, ax = plt.subplots(figsize=(14, 3))
+
+for i, bit in enumerate(bin1):
+    ax.text(i, 1, bit, fontsize=10, ha='center', va='center', color='blue')
+for i, bit in enumerate(bin2):
+    ax.text(i, 0, bit, fontsize=10, ha='center', va='center', color='green')
+
+ax.set_xlim(-1, len(bin1))
+ax.set_ylim(-1, 2)
+ax.set_yticks([0, 1])
+ax.set_yticklabels([expr2, expr1])
+ax.set_xticks([])
+ax.set_title("Binary Comparison of Decimal(2+6=) and Decimal(6+2=)")
+plt.grid(False)
+plt.tight_layout()
+plt.show()

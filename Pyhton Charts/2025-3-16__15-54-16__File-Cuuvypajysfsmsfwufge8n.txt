@@ -1,0 +1,43 @@
+Conversation URL:
+https://chatgpt.com/c/67cae028-273c-8011-acb0-380fae052b17
+
+Title:
+
+
+Prompt:
+# Adjust segmentation to match 128 total bytes, meaning:
+# - 128 bytes in 8-bit form → 128 segments of 8 digits each
+# - 128 bytes in 16-bit form → 64 segments of 16 digits each
+# - 128 bytes in 32-bit form → 32 segments of 32 digits each
+
+# Ensure correct number of Pi digits (128 bytes total = 1024 digits)
+mp.dps = 1024 + 2  # Extra 2 for "3."
+
+# Get first 1024 digits of Pi (excluding "3.")
+pi_digits_limited = str(mp.pi)[2:2 + 1024]
+
+# Segment into proper word lengths (without over-packing)
+pi_bytes_8bit_fixed = [pi_digits_limited[i:i+8] for i in range(0, len(pi_digits_limited), 8)][:128]
+pi_bytes_16bit_fixed = [pi_digits_limited[i:i+16] for i in range(0, len(pi_digits_limited), 16)][:64]
+pi_bytes_32bit_fixed = [pi_digits_limited[i:i+32] for i in range(0, len(pi_digits_limited), 32)][:32]
+
+# Create categorized data for each word length
+odd_even_8bit_fixed = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_8bit_fixed]
+odd_even_16bit_fixed = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_16bit_fixed]
+odd_even_32bit_fixed = [categorize_byte(count_odd_even(byte)[0], count_odd_even(byte)[1]) for byte in pi_bytes_32bit_fixed]
+
+# Plot with proper segmentation
+plt.figure(figsize=(12, 6))
+
+plt.plot(range(1, 129), odd_even_8bit_fixed, marker='o', linestyle='-', label="8-bit Bytes", alpha=0.7)
+plt.plot(range(1, 65), odd_even_16bit_fixed, marker='s', linestyle='--', label="16-bit Words", alpha=0.7)
+plt.plot(range(1, 33), odd_even_32bit_fixed, marker='d', linestyle='-.', label="32-bit Words", alpha=0.7)
+
+plt.xlabel("Index")
+plt.ylabel("Dominance (1 = Odd-dominant, 0 = Even-dominant)")
+plt.title("Odd vs. Even Dominance in Pi's 8-bit, 16-bit, and 32-bit Word Segments")
+plt.legend()
+plt.grid(True)
+
+# Display the plot
+plt.show()

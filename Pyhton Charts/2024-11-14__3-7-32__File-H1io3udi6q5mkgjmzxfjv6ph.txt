@@ -1,0 +1,22 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-6f7c-8011-895c-28cb2adac5f4
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Define the outcomes for plotting
+quantum_levels = ["Initial Small Scale", "Larger Scale", "Much Larger Scale"]
+energy_values = [3.54e-44, 3.16e-39, 1.0e-34]  # Energy outcomes from each calculation in Joules
+
+# Plot the outcomes on a line plot
+plt.figure(figsize=(10, 6))
+plt.plot(quantum_levels, energy_values, marker='o', linestyle='-', markersize=8)
+plt.yscale('log')  # Log scale to better visualize the differences
+plt.xlabel("Quantum System Scale")
+plt.ylabel("Energy (Joules)")
+plt.title("Energy Calculations at Increasing Quantum Scales")
+plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+plt.show()

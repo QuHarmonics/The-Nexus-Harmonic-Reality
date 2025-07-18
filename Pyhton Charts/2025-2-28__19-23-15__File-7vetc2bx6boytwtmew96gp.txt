@@ -1,0 +1,18 @@
+Conversation URL:
+https://chatgpt.com/c/67c2374f-0760-8011-84e1-c8581b612173
+
+Title:
+
+
+Prompt:
+import matplotlib.pyplot as plt
+
+# Display extracted symbols in a grid
+fig, axes = plt.subplots(10, 12, figsize=(12, 10))  # Adjusting for 120 symbols
+
+for ax, symbol in zip(axes.flat, symbol_images):
+    ax.imshow(symbol, cmap='gray')
+    ax.axis('off')
+
+plt.suptitle("Extracted Symbols from the 90-Foot Stone", fontsize=14)
+plt.show()

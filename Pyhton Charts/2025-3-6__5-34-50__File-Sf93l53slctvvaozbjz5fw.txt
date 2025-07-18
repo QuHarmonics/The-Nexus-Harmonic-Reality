@@ -1,0 +1,45 @@
+Conversation URL:
+https://chatgpt.com/c/67c1a60d-a910-8011-81fb-bb809464311a
+
+Title:
+
+
+Prompt:
+# Floating-Point Precision Loss Simulation
+# This test will check if floating-point precision loss follows our compression function
+
+# Define a function to simulate floating-point precision loss over recursive multiplications
+def floating_point_precision_loss(x_values):
+    base_value = 1.0  # Start with an exact floating-point value
+    results = []
+
+    for x in x_values:
+        # Multiply by a slightly imprecise factor to simulate computational drift
+        base_value *= (1 - 1.5 * 10**-x)
+        results.append(base_value)
+
+    return results
+
+# Generate x values to simulate precision loss over iterations
+x_vals_simulation = np.linspace(0, 10, 50)
+precision_loss_values = floating_point_precision_loss(x_vals_simulation)
+
+# Compute values from the recursive compression function for comparison
+compression_function_values = 0.7 * np.exp(-1.5 * x_vals_simulation) + (2 / (1 + np.exp(-2 * x_vals_simulation)))
+
+# Plot the results
+plt.figure(figsize=(12, 6))
+plt.plot(x_vals_simulation, precision_loss_values, label="Floating-Point Precision Loss", color='r', linestyle="--")
+plt.plot(x_vals_simulation, compression_function_values, label="Recursive Compression Function", color='b')
+plt.xlabel("Iteration (x)")
+plt.ylabel("Value Loss Over Time")
+plt.title("Floating-Point Precision Loss vs. Recursive Compression Function")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Compute similarity between the two curves
+correlation = np.corrcoef(precision_loss_values, compression_function_values)[0, 1]
+
+# Return the correlation coefficient to see how well they align
+correlation

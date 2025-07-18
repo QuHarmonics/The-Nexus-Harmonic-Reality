@@ -1,0 +1,20 @@
+Conversation URL:
+https://chatgpt.com/c/67c40c27-881c-8011-9de3-364712c8e071
+
+Title:
+
+
+Prompt:
+# Reshape the harmonic shift data to properly visualize it in 2D space
+
+# Convert 1D harmonic shift arrays into 2D matrices for visualization
+harmonic_shifts_hello_matrix = np.reshape(harmonic_shifts_hello[-1], (8, -1))  # Reshape into a viewable format
+harmonic_shifts_goodbye_matrix = np.reshape(harmonic_shifts_goodbye[-1], (8, -1))
+
+# Visualizing harmonic shifts across SHA rounds
+fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+ax[0].imshow(np.log1p(harmonic_shifts_hello_matrix), cmap="inferno", interpolation="nearest")
+ax[0].set_title("Harmonic Shifts Across SHA-512 Rounds (Hello)")
+ax[1].imshow(np.log1p(harmonic_shifts_goodbye_matrix), cmap="inferno", interpolation="nearest")
+ax[1].set_title("Harmonic Shifts Across SHA-512 Rounds (Goodbye)")
+plt.show()

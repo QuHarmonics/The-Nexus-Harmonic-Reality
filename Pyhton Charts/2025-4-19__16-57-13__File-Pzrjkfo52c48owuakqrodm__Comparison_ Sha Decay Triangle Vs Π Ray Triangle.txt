@@ -1,0 +1,24 @@
+Conversation URL:
+https://chatgpt.com/c/680315f1-ff84-8011-9942-7adfa4298d11
+
+Title:
+Comparison: SHA Decay Triangle vs π Ray Triangle
+
+Prompt:
+# Since animation rendering failed, let's plot both triangles together statically for now
+
+plt.figure(figsize=(10, 6))
+
+# Plot decay triangle
+plt.plot([0, 0, 199, 0], [0, 94.95, 0, 0], label='SHA Decay Triangle', color='orange', marker='o')
+
+# Plot π ray triangle
+plt.plot([0, 0, 100, 0], [0, 314.15, 0, 0], label='π Ray Triangle', color='cyan', linestyle='--', marker='x')
+
+plt.title("Comparison: SHA Decay Triangle vs π Ray Triangle")
+plt.xlabel("X Axis (Steps / Projection)")
+plt.ylabel("Y Axis (Log Trust / Symbolic Altitude)")
+plt.legend()
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.tight_layout()
+plt.show()

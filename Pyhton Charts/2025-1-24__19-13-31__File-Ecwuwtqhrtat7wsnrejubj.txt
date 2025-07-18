@@ -1,0 +1,47 @@
+Conversation URL:
+https://chatgpt.com/c/679297ab-7814-8011-953e-78ffd525d657
+
+Title:
+
+
+Prompt:
+# Overlay the original and fine-tuned lattices for comparison and validation
+
+# Calculate differences between original and fine-tuned lattice
+lattice_difference = original_lattice - fine_tuned_lattice
+
+# Overlay the original and fine-tuned lattices (line plot of amplitudes)
+plt.figure(figsize=(12, 8))
+for i in range(lattice_size):
+    plt.plot(original_lattice[i], label=f"Original Lattice Row {i}", linestyle="--")
+    plt.plot(fine_tuned_lattice[i], label=f"Fine-Tuned Lattice Row {i}", alpha=0.7)
+
+plt.title("Overlay of Original and Fine-Tuned Lattices (Row Amplitudes)")
+plt.xlabel("Index")
+plt.ylabel("Amplitude")
+plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Visualize differences as a heatmap
+plt.figure(figsize=(8, 6))
+plt.imshow(lattice_difference, cmap="coolwarm", aspect="auto")
+plt.colorbar(label="Amplitude Difference")
+plt.title("Amplitude Difference Between Original and Fine-Tuned Lattices")
+plt.xlabel("X Axis (Index)")
+plt.ylabel("Y Axis (Index)")
+plt.grid(False)
+plt.show()
+
+# Statistical analysis of differences
+mean_difference = np.mean(lattice_difference)
+std_difference = np.std(lattice_difference)
+max_difference = np.max(lattice_difference)
+min_difference = np.min(lattice_difference)
+
+print("Statistical Analysis of Lattice Differences:")
+print(f"Mean Difference: {mean_difference}")
+print(f"Standard Deviation of Differences: {std_difference}")
+print(f"Max Difference: {max_difference}")
+print(f"Min Difference: {min_difference}")

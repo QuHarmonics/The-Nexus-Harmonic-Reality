@@ -1,0 +1,44 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-916c-8011-b0eb-c4189c52736a
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define parameters for universal complexity thresholds
+# Complexity factors: energy source, chemical diversity, and system stability
+
+# Simulated range of values for each factor (normalized to 0-1 scale)
+energy_source = np.linspace(0, 1, 100)  # Energy availability
+chemical_diversity = np.linspace(0, 1, 100)  # Chemical richness
+system_stability = np.linspace(0, 1, 100)  # Dynamic stability of the system
+
+# Create a meshgrid to simulate combinations
+energy, chemical, stability = np.meshgrid(energy_source, chemical_diversity, system_stability)
+
+# Define a universal complexity threshold function
+# Complexity = weighted sum of factors with a non-linear term for interaction
+complexity_threshold = (
+    0.4 * energy + 0.4 * chemical + 0.4 * stability +
+    0.2 * (energy * chemical * stability)  # Interaction term
+)
+
+# Identify points that exceed a critical complexity value for life to emerge
+critical_threshold = 0.7
+life_potential = complexity_threshold >= critical_threshold
+
+# Sum over one dimension to project the data into a 2D plot
+complexity_projection = np.sum(life_potential, axis=2)
+
+# Visualize the projected complexity thresholds
+plt.figure(figsize=(12, 8))
+plt.contourf(energy_source, chemical_diversity, complexity_projection, levels=20, cmap="viridis")
+plt.colorbar(label="Life Potential Count (Normalized)")
+plt.title("Projected Universal Complexity Thresholds for Life", fontsize=14)
+plt.xlabel("Energy Source Availability", fontsize=12)
+plt.ylabel("Chemical Diversity", fontsize=12)
+plt.grid(alpha=0.3)
+plt.show()

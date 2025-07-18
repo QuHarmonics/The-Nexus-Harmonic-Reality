@@ -1,0 +1,76 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-c95c-8011-9d11-5493451b98f0
+
+Title:
+
+
+Prompt:
+# Function to recursively traverse child nodes and map proximity-based encapsulation
+def recursive_encapsulation(graph, start_node, max_depth, current_depth=0, parent_position=None, encapsulation_map=None):
+    if current_depth > max_depth:
+        return
+    
+    # Initialize the encapsulation map if not provided
+    if encapsulation_map is None:
+        encapsulation_map = {}
+
+    # Generate a position for the current node
+    current_position = (
+        parent_position[0] + np.random.uniform(-0.5, 0.5) if parent_position else 0,
+        parent_position[1] + np.random.uniform(-0.5, 0.5) if parent_position else 0,
+        parent_position[2] + np.random.uniform(-0.5, 0.5) if parent_position else 0,
+    )
+
+    # Store the position of the current node
+    encapsulation_map[start_node] = current_position
+
+    # Traverse child nodes
+    for child in graph.successors(start_node):
+        recursive_encapsulation(
+            graph,
+            child,
+            max_depth,
+            current_depth + 1,
+            current_position,
+            encapsulation_map
+        )
+
+    return encapsulation_map
+
+# Perform the recursion with child nodes
+encapsulation_map = recursive_encapsulation(G_3d_atom, "Quantum Fields", max_depth=20)
+
+# Extract positions for nodes
+xyz_encapsulation = np.array(list(encapsulation_map.values()))
+node_names = list(encapsulation_map.keys())
+
+# Extract edges for visualization
+edges_encapsulation = [
+    (encapsulation_map[parent], encapsulation_map[child])
+    for parent, child in G_3d_atom.edges()
+    if parent in encapsulation_map and child in encapsulation_map
+]
+
+# Set up 3D plot for encapsulation mapping
+fig = plt.figure(figsize=(14, 12))
+ax = fig.add_subplot(111, projection='3d')
+ax.grid(False)
+
+# Plot nodes
+ax.scatter(xyz_encapsulation[:, 0], xyz_encapsulation[:, 1], xyz_encapsulation[:, 2], s=100, c='green', label='Nodes')
+
+# Plot edges
+for edge in edges_encapsulation:
+    x_edge, y_edge, z_edge = zip(*edge)
+    ax.plot(x_edge, y_edge, z_edge, color='blue', alpha=0.6)
+
+# Label nodes
+for i, (x, y, z) in enumerate(xyz_encapsulation):
+    ax.text(x, y, z, node_names[i], fontsize=8, ha='center', va='center')
+
+# Set plot appearance
+ax.set_title("3D Encapsulation Mapping with Proximity-Based Morphing", fontsize=16)
+ax.set_xlabel("X-axis")
+ax.set_ylabel("Y-axis")
+ax.set_zlabel("Z-axis")
+plt.show()

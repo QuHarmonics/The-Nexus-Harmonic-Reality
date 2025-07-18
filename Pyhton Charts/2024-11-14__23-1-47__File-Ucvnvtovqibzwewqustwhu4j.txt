@@ -1,0 +1,29 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Correct the plotting structure for 2D projections of interaction likelihood and energy states
+
+fig, axs = plt.subplots(2, 3, figsize=(18, 12))
+slices = ["XY Slice (Z=0)", "XZ Slice (Y=0)", "YZ Slice (X=0)"]
+slice_data = [
+    (interaction_likelihood_3D[:, :, grid_size // 2], "Interaction Likelihood", "viridis"),
+    (interaction_likelihood_3D[:, grid_size // 2, :], "Interaction Likelihood", "viridis"),
+    (interaction_likelihood_3D[grid_size // 2, :, :], "Interaction Likelihood", "viridis"),
+    (energy_state_transitions_3D[:, :, grid_size // 2], "Energy State Level", "plasma"),
+    (energy_state_transitions_3D[:, grid_size // 2, :], "Energy State Level", "plasma"),
+    (energy_state_transitions_3D[grid_size // 2, :, :], "Energy State Level", "plasma")
+]
+
+for ax, (data, label, cmap), title in zip(axs.flatten(), slice_data, slices * 2):
+    c = ax.contourf(x, x, data, levels=100, cmap=cmap)
+    plt.colorbar(c, ax=ax, label=label)
+    ax.set_title(title + (" (Energy States)" if "Energy" in label else ""))
+    ax.set_xlabel("Position (m)")
+    ax.set_ylabel("Position (m)")
+
+plt.suptitle("3D Interaction Likelihood and Energy State Transitions (2D Projections)")
+plt.show()

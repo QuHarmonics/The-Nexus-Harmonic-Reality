@@ -1,0 +1,17 @@
+Conversation URL:
+https://chatgpt.com/c/68380ccf-e2b0-8011-8c8e-2a813d434243
+
+Title:
+Bar Chart of Digit Values with Individual Index Ticks
+
+Prompt:
+# Plot the corrected bar chart with ticks on the x-axis for each digit index
+plt.figure(figsize=(16, 6))
+plt.bar(range(len(digit_sequence)), digit_sequence, color='crimson', width=1.0)
+plt.title('Bar Chart of Digit Values with Individual Index Ticks')
+plt.xlabel('Digit Index')
+plt.ylabel('Digit Value (Height)')
+plt.xticks(ticks=range(len(digit_sequence)), labels=range(len(digit_sequence)), rotation=90)
+plt.grid(True, axis='y')
+plt.tight_layout()
+plt.show()

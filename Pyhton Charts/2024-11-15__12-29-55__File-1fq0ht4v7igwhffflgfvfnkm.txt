@@ -1,0 +1,74 @@
+Conversation URL:
+https://chatgpt.com/c/674ada8d-7990-8011-a5b4-1474d46314a2
+
+Title:
+
+
+Prompt:
+# Define extreme cases for testing the adjusted formula
+extreme_cases = pd.DataFrame({
+    "Name": ["Extreme Hurricane Alpha", "Extreme Typhoon Omega", "Micro Storm Beta", "Super Storm Gamma"],
+    "Pressure (hPa)": [850, 880, 1015, 870],  # Extremely low to normal pressure
+    "Wind Speed (m/s)": [100, 120, 10, 90],  # Extremely high and low wind speeds
+    "Rainfall (mm/h)": [300, 250, 20, 200],  # Extreme and mild rainfall rates
+    "Size Scale": [2.5, 3.0, 0.1, 2.0],  # Large and small scale extremes
+    "Expected Intensity": [200, 190, 15, 180]  # Hypothetical expected intensities
+})
+
+# Adjusted formula with decay energy balancing
+def balanced_decay_model(pressure, wind_speed, rainfall, size_scale):
+    """
+    Adjusted model using decay energy as a balancing weight for extreme cases.
+    """
+    # Calculate Decay Energy: Reflects how wrong the macro law is
+    decay_energy = np.exp(-10 * (size_scale - 0.35)**2)  # High decay near extremes
+
+    # Quantum Influence - Increases with decay energy
+    quantum_pressure_pull = np.exp(-pressure / 900) * (1 + decay_energy)
+    quantum_wind_energy = (wind_speed**1.5) / (1 + size_scale) * (1 + decay_energy)
+    quantum_rainfall_contribution = (rainfall / (1 + quantum_pressure_pull)) * (1 + decay_energy)
+
+    # Macro Influence - Decreases with decay energy
+    macro_pressure_pull = np.exp(-pressure / 920) * (1 - decay_energy)
+    macro_wind_energy = (wind_speed**1.8) / (1 + size_scale**1.3) * (1 - decay_energy)
+    macro_rainfall_contribution = (rainfall**1.2) / (1 + macro_pressure_pull) * (1 - decay_energy)
+
+    # Combine quantum and macro components with decay correction
+    corrected_pressure_pull = quantum_pressure_pull + macro_pressure_pull
+    corrected_wind_energy = quantum_wind_energy + macro_wind_energy
+    corrected_rainfall_contribution = quantum_rainfall_contribution + macro_rainfall_contribution
+
+    # Adjusted size factor using decay as a stabilizing weight
+    size_factor = size_scale**(1.3 + 0.1 * decay_energy) / (1 + corrected_wind_energy**(0.8 + 0.2 * decay_energy))
+
+    # Combined intensity estimate
+    hurricane_intensity = corrected_pressure_pull * corrected_wind_energy * corrected_rainfall_contribution * size_factor
+    return hurricane_intensity
+
+# Apply the balanced decay model to extreme cases
+extreme_cases["Balanced Predicted Intensity"] = extreme_cases.apply(
+    lambda row: balanced_decay_model(
+        row["Pressure (hPa)"], row["Wind Speed (m/s)"], row["Rainfall (mm/h)"], row["Size Scale"]
+    ),
+    axis=1
+)
+
+# Calculate deviations with the balanced decay model
+extreme_cases["Balanced Intensity Deviation"] = (
+    extreme_cases["Balanced Predicted Intensity"] - extreme_cases["Expected Intensity"]
+)
+
+# Display the results for extreme cases with decay correction applied
+import ace_tools as tools; tools.display_dataframe_to_user(name="Extreme Case Predictions with Balanced Decay Model", dataframe=extreme_cases)
+
+# Visualize deviations for extreme cases
+plt.figure(figsize=(14, 8))
+plt.bar(extreme_cases["Name"], extreme_cases["Balanced Intensity Deviation"], color="orange")
+plt.axhline(15, color="red", linestyle="--", label="Positive Threshold")
+plt.axhline(-15, color="blue", linestyle="--", label="Negative Threshold")
+plt.xlabel("Storm Name")
+plt.ylabel("Balanced Intensity Deviation")
+plt.title("Deviation Analysis for Extreme Cases with Decay-Based Balancing")
+plt.legend()
+plt.grid()
+plt.show()

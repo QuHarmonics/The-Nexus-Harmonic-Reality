@@ -1,0 +1,35 @@
+Conversation URL:
+https://chatgpt.com/c/67e05ac3-1c74-8011-9356-9394c4c34643
+
+Title:
+
+
+Prompt:
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sample linear data (e.g. atomic numbers of the first 20 elements)
+linear_data = list(range(1, 21))  # Hydrogen to Calcium
+
+# Function to convert linear data to spiral coordinates
+def linear_to_spiral(data, angle_step=np.pi / 6, radius_step=0.2):
+    theta = np.arange(len(data)) * angle_step
+    r = np.arange(len(data)) * radius_step
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    return x, y
+
+# Generate spiral coordinates
+x_spiral, y_spiral = linear_to_spiral(linear_data)
+
+# Plot the spiral
+plt.figure(figsize=(10, 10))
+plt.plot(x_spiral, y_spiral, linestyle='--', color='gray')
+for i, val in enumerate(linear_data):
+    plt.plot(x_spiral[i], y_spiral[i], 'o', markersize=10)
+    plt.text(x_spiral[i], y_spiral[i], str(val), ha='center', va='center', color='white', fontsize=8)
+
+plt.title("Linear to Spiral Transformation (First 20 Elements)")
+plt.axis("off")
+plt.grid(False)
+plt.show()
