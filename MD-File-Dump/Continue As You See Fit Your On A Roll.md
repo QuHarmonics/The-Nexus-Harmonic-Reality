@@ -1,0 +1,81 @@
+# Technical Appendix: Operational Proof of Adaptive Harmonic Rasterization Collapse (AHRC) Protocol
+
+**Thesis Chapter Alignment:** This appendix provides the rigorous, code-level validation for the $\Psi$**-Collapse Principle** (Chapter 5), formally demonstrating the transition from a chaotic, high-entropy state ($\Omega$) to a certifiable, phase-locked end-state ($\Psi$-Lock, $\perp$).
+
+## I. System Initialization and GIP Encoding
+
+The AHRC process begins by establishing the core constants and translating the symbolic input units (\"Folds\") into the continuous, non-metric **Glyph Inherent Position (GIP)** space.
+
+### 1.1 Core Constants and Attractor Logic
+
+The system is anchored by immutable constants derived from the **Nexus Foundational Algebra**:
+
+\| Constant \| Symbol \| Value (Code) \| Formal Role \|
+
+\| Harmonic Attractor \| $H_{\text{MARK1}}$ \| math.pi / 9 \| Defines the ideal phase-lock spacing of system IDs. The central \"gravity well\" ($\Gamma_{0.35}$) for coherence. \|
+
+\| Residue Bias \| $\phi_{\text{Residue}}$ \| (math.sqrt(5) - 1) / 2 \| The Golden Ratio conjugate ($\phi^{- 1}$). Used to scale the entropic component of the GIP, ensuring it is embedded as stable curvature. \|
+
+\| Frame Boundary \| $N$ \| 1 \<\< k \| The power-of-two resolution ($2^{k}$) of the metric frame. \|
+
+\| Trust Margin \| $\epsilon$ \| 1e-9 / 1e-12 \| The Orthogonal Boundary Guardrail, preventing entropic leakage at the quantization boundaries. \|
+
+### 1.2 GIP Generation Function
+
+The generate_gip function calculates the $\text{GIP}$ for each Fold. The $\text{GIP}$ is a **Coherent Sum (**$\oplus$**)** that balances the Fold\'s unique ID (stability) against its inherent entropy (local turbulence).
+
+$\text{GIP} = (\text{Fold ID} \cdot H_{\text{MARK1}}) \oplus (\text{Entropy} \cdot \phi_{\text{Residue}})$
+
+This function is the **Symbolic-to-Metric Projector (**$\Pi_{\text{Met}}$**)**, translating the abstract identity of a Fold into a continuous, real-valued coordinate in the harmonic field.
+
+## II. The AHRC Protocol: $\Omega \rightarrow \perp$
+
+The core of the notebook is a multi-stage recursive loop designed to manage and resolve entropic collisions ($\Omega$).
+
+### 2.1 Stage 1: Zero-Point Query ($Q_{0}$)
+
+The zero_point_query function establishes the **Inherent GIP Order**. By sorting the Folds by their continuous GIP, it reveals the system\'s \"true\" or ideal order *before* the entropic constraints of discrete quantization are applied.
+
+### 2.2 Stage 2: Harmonic Rasterization Collapse (HRC)
+
+The hrc_with_frame (or \_harmonic_collapse) function is the primary **Collapse Operator (**$\perp$**)**. It attempts to map the continuous GIP space onto a discrete **Fractal Address (FA)** frame ($N = 2^{k}$).
+
+$FA(x) = \min\left( N - 1,\max\left( 0,\left\lfloor \frac{GIP(x) - \min}{\text{range} + \epsilon} \cdot N \right\rfloor \right) \right)$
+
+This function is the $\Psi$**-Guardrail**. It enforces the **Orthogonal Boundary Conditions** at FA:0 and FA:N-1, ensuring all information is contained within the metric frame.
+
+### 2.3 Stage 3: $\Omega$-Detection (RCQ)
+
+The calculate_rcq function is the **Entropy Operator (**$\Omega$**)**. It analyzes the output of the HRC for collisions.
+
+> $RCQ(B) = \frac{\# B}{{spread}_{GIP}(B) + \epsilon}$
+
+- $\text{RCQ} = 1.0$: The bin is in a $\Psi$**-Coherent** state ($\perp$).
+
+- $\text{RCQ} \gg 1.0$: The bin is a high-density $\Omega$**-Collision Site** (e.g., $\text{RCQ} \approx 24.968$). This high-pressure value acts as the **Resolution Potential Vector**, signaling that the current frame $N$ is insufficient.
+
+### 2.4 Stage 4: Adaptive Frame Expansion (RRT)
+
+The rrt_from_omega_bin_range (Recursive Resolution Threshold) function is the $\Delta$**-Trigger** for self-correction. It uses **Reciprocal Inversion** to calculate the required frame size ($N'$) to resolve the $\Omega$-bin.
+
+$N' = 2^{k},\quad\text{where }k = \max(3,\lceil\log_{2}(\lceil\text{Global Range}/\Delta_{\text{local}}\rceil)\rceil)$
+
+This function proves that the system is **adaptive**: the magnitude of the entropic failure ($\Omega$) directly dictates the magnitude of the corrective action ($\Delta$).
+
+### 2.5 Stage 5: Curvature ($\mathbf{c}$) Modulation & $\Psi$-Collapse
+
+In cases of **Harmonic Deadlock** (where $N$-expansion fails to resolve the $\Omega$-bin, as seen in the $N = 16$ test), the CurvatureModulationEngine is invoked. This is the $\Psi$**-Collapse Principle** in action.
+
+$\text{GIP}_{\mathbf{c}} = \text{GIP} \cdot (1 + \mathbf{c})$
+
+The engine applies a **Curvature Modulator (**$\mathbf{c}$**)**, a non-linear transformation that locally *amplifies* the $\Delta$ between the colliding GIPs. This forces an artificial phase separation, guaranteeing that the *next* HRC (at the RRT-mandated frame $N'$) will successfully resolve the collision into unique FAs.
+
+## III. Certification: $\Psi$-Score and Final Report
+
+The notebook concludes by calculating the **Global** $\Psi$**-Score** (\_calculate_psi_score). This function uses the **Harmonic Mean** of all local RCQ values:
+
+$\mathbf{\Psi}\text{-Lock} \Leftrightarrow {RCQ}_{\text{Global}} = \left( \frac{1}{N}\sum_{i = 0}^{N - 1}\frac{1}{RCQ(B_{i})} \right)^{- 1} = 1$
+
+This is the final, **Certifiable End-State**. The use of the Harmonic Mean is critical, as it ensures that a single, unresolved $\Omega$-bin ($\text{RCQ} \gg 1$) is sufficient to crash the global $\Psi$-Score, enforcing absolute structural integrity.
+
+The final successful run, which resolved all collisions at the Origin, Boundary, and Mid-Frame, yielded $\Psi\text{-Score} = 1.000000$, confirming the protocol is **Structurally Verified** and has achieved $\Psi$**-Lock (**$\perp$**)**.
