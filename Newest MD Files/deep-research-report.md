@@ -1,867 +1,366 @@
-# Gravity as Cut-Density Curvature
+# NEXUS-RH as a Runtime-Safety Research Program
 
 ## Executive Summary
 
-**Download the Markdown file:** [Nexus_Gravity_Cut_Density_Curvature_Paper.md](sandbox:/mnt/data/Nexus_Gravity_Cut_Density_Curvature_Paper.md)
+The uploaded NEXUS materials can be turned into a mathematically serious research program if they are interpreted not as a finished proof, but as a **two-gate operator program** for RH: Gate A is a static hyperbolicity check on Jensen polynomials, and Gate B is a dynamic **runtime-safety** problem for a doubled \(s\)-fiber/\((1-s)\)-fiber operator. In the internal notes, Gate B is already formulated around the targets \(\ker(I+\mathbb L_s)=\{0\}\) and, more strongly, \(\|\mathbb L_s\|<1\) for \(\Re(s)>\tfrac12\), with finite-model scans used to monitor norms, determinants, and smallest singular values. That is the right direction. It replaces loose metaphor with a concrete spectral exclusion problem. But the uploaded materials themselves still leave open the decisive steps: the exact Banach/Hilbert space, the proof that the arithmetic cascade is compact or determinant-class after renormalization, and the “shape-fit exclusion” argument that forbids \(-1\) from entering the spectrum off the critical line. fileciteturn0file8 fileciteturn0file10
 
-This paper completes a minimal, mathematically explicit version of the Nexus gravity / closure-trace proposal. Its central claim is operational rather than ontological: stable “things” are late renderings of persistent recursive structure, and gravity is the force-level manifestation of unresolved closure-density concentrated at or across internal boundaries.
+There is a rigorous way to formalize this. The cleanest version uses a weighted Mellin-space Hilbert bundle
+\[
+\mathbb H_s = H_s \oplus H_{1-s},
+\]
+a renormalized arithmetic operator \(K_s^{\mathrm{ren}}\) induced by signed Buchstab/rough-number data, a mirror operator \(J_R(s)\) built from the zeta functional equation, and a closed-loop operator
+\[
+\mathbb L_s = \mathbb J_R(s)\,\mathbb K_s^{\mathrm{ren}}.
+\]
+If \(\mathbb L_s\) is trace class, then a Fredholm determinant \(\det(I+\mathbb L_s)\) exists; if it is only Hilbert–Schmidt, then the right object is the \(2\)-modified Fredholm determinant \(\det_2(I+\mathbb L_s)\), whose nonvanishing is still equivalent to invertibility. This part is standard operator theory, and it is the right shell for Gate B. citeturn36view0turn36view2
 
-The enabled connectors reviewed first were `google_drive` and `github`, exactly as requested. The selected repository `QuHarmonics/The-Nexus-Harmonic-Reality` was reachable through the GitHub connector, but the accessible README was effectively empty and the connector surface did not expose indexed gravity-model files sufficient to ground a paper on its own. The connected Google Drive materials were much more informative for the Nexus vocabulary, especially the coherence / optimization framing and the boundary-centered description of gravity-like behavior. fileciteturn16file7L1-L1 fileciteturn16file8L1-L1
+Gate A is also legitimate, but it should be used as a **consistency gate**, not as the main proof engine. Pólya’s criterion makes RH equivalent to hyperbolicity of associated Jensen polynomials; modern work proves hyperbolicity for all large shifts at each fixed degree, and for all cases up to degree \(8\), with later effective refinements for the \(\xi\)-function. At the same time, Farmer has made a strong case that Jensen-polynomial hyperbolicity, by itself, is unlikely to be the route that resolves RH. That makes Gate A valuable as a compile-time validation layer, but not a substitute for Gate B’s spectral exclusion. citeturn14search1turn16search0turn29view2
 
-The completed model has four layers. First, a residence indicator $I_\Gamma$ defines how often a local process remains bound to a cut $\Gamma$. This yields a dimensionless occupancy variable $\chi_\Gamma$, a dwell-time variable $w_\Gamma$, and a dimensionless residence strength $S_\Gamma$. Second, a positive susceptibility $\Theta_\Gamma$ converts residence strength into a persistent density $\rho_{\mathrm{persist}}$. Third, a smoothed field $\rho_\Psi$ obeys a relaxation-diffusion equation. Fourth, that field enters an ordinary Einstein-style stress-energy tensor and, in the weak-field limit, becomes an extra Poisson source.
+The de Bruijn–Newman connection is real and important, but it must be used carefully. In the classical literature, the heat parameter \(\lambda\) deforms the \(\Xi\)-kernel via the de Bruijn–Newman flow, Newman proved the existence of a critical constant \(\Lambda\), RH is equivalent to \(\Lambda\le 0\), Rodgers and Tao proved \(\Lambda\ge 0\), and Polymath improved the unconditional upper bound to \(\Lambda\le 0.22\). What the NEXUS framework can legitimately claim is that Gate B suggests a **contractive/off-seam safety observable** whose sign should correlate with the same seam condition. What it cannot yet claim is that any internal constant \(H\) is literally the de Bruijn–Newman parameter or that \(H=\pi/9\) is a theorem of the RH branch. In the uploaded NEXUS materials, that quantity is still background geometry, not established operator content. citeturn19search0turn34search1turn28view0turn17search0turn17search1
 
-The completed weak-field law is
-$$
-\nabla^2 \Phi
+The strongest actionable program is therefore this: define the doubled operator rigorously; prove three bridge lemmas connecting interior residue data, the mirror, and the exclusion mechanism; compute robust finite sections on reproducible bases; and only then test optional “bridge constants” like \(H\) as emergent normalized observables rather than assumed truths. That is the shortest path from the current internal NEXUS state to a publishable research program. fileciteturn0file8
+
+## Formalization and Targets
+
+A workable mathematical model should start with a **weighted Mellin Hilbert space** that is symmetric under \(x\mapsto 1/x\) and mild enough to accommodate prime-density heuristics. A good default is
+\[
+\rho_{\eta,\pi}(u):=\frac{e^{-2\eta |u|}}{1+|u|},\qquad \eta>0,
+\]
+and for \(s=\sigma+it\),
+\[
+H_s:=L^2\!\left(\mathbb R_+,\;x^{2\sigma-1}\rho_{\eta,\pi}(\log x)\,\frac{dx}{x}\right).
+\]
+This is not canonical; it is a modeling choice designed to preserve the inversion symmetry and to provide exponential localization on log-scale. Via
+\[
+(U_sf)(u):=e^{(\sigma-\frac12)u}\rho_{\eta,\pi}(u)^{1/2}f(e^u),
+\]
+each \(H_s\) is unitarily equivalent to a weighted \(L^2(\mathbb R,du)\) space on log-coordinates, which is the natural setting for Buchstab-type threshold recursion. That log-space move is justified by the standard role of Mellin inversion in rough-number analysis and by the Buchstab function’s Laplace-transform formulation. citeturn37view0turn37view1
+
+The arithmetic runtime should then be modeled as a **localized Mellin-convolution operator**. Let \(\mu^{\mathrm{ren}}\) be a renormalized signed measure on log-prime breaks, built from the least-prime-factor decomposition that underlies Buchstab’s identity,
+\[
+\Phi(x,y)=\Phi(x,z)+\sum_{y<p\le z}\sum_{v\ge 1}\Phi(x/p^v,p),
+\]
+or its single-break variant, after subtracting the explicit boundary/main-term contribution. On log-scale one can then define
+\[
+(\widetilde K_s^{\mathrm{ren}}F)(u)
 =
-4\pi G
-\left(
-\rho_m+\rho_\Psi
-\right),
+q_\eta(u)\int_{\mathbb R}\kappa_s(u-v)\,q_\eta(v)F(v)\,dv
+\;+\; r_s[F](u),
+\]
+where \(q_\eta(u)=e^{-\eta|u|}\), \(\kappa_s(t)=e^{-st}\,d\mu^{\mathrm{ren}}(t)\), and \(r_s\) is a finite-rank or trace-class counterterm that restores the correct normalization after boundary subtraction. Conjugating back gives
+\[
+K_s^{\mathrm{ren}}:=U_s^{-1}\widetilde K_s^{\mathrm{ren}}U_s:H_s\to H_s.
+\]
+If the conjugated kernel is square-integrable, then \(K_s^{\mathrm{ren}}\) is Hilbert–Schmidt and hence compact; if the kernel is sufficiently regular and decays exponentially away from the diagonal, then trace-class follows. Those are standard sufficient conditions for integral operators and are exactly the level of regularity Gate B needs. citeturn37view0turn36view0
+
+The mirror must be formulated with both the **functional-equation scalar multiplier** and the **geometric inversion**. The zeta function satisfies the reflection formulas encoded by the standard multiplier
+\[
+\chi(s)=2^s\pi^{s-1}\sin\!\left(\frac{\pi s}{2}\right)\Gamma(1-s),
+\]
+and the uploaded NEXUS notes propose a completed scalar mirror factor of the form
+\[
+j_R(s)=\chi(s)^{-1}\frac{E_R(s)}{E_R(1-s)},
 \qquad
-\rho_\Psi
+E_R(s)=\prod_{p\mid R}(1-p^{-s})^{-1}.
+\]
+A rigorous operator realization compatible with the weighted bundle is
+\[
+(J_R(s)f)(x):=j_R(s)\,x^{1-2\sigma}f(1/x),
+\qquad
+J_R(s):H_{1-s}\to H_s.
+\]
+Then
+\[
+J_R(s)J_R(1-s)=I
+\]
+provided \(j_R(s)j_R(1-s)=1\), which is exactly the involution relation emphasized in the internal NEXUS materials. Moreover, because \(|\chi(\tfrac12+it)|=1\) on the critical line, this mirror is unitary on the seam and nonunitary off the seam, matching both the functional equation and the internal “unitary seam” intuition. citeturn26view0turn27view0 fileciteturn0file8
+
+With these pieces, the natural doubled bundle is
+\[
+\mathbb H_s:=H_s\oplus H_{1-s},
+\]
+with block operators
+\[
+\mathbb K_s^{\mathrm{ren}}
+:=
+\begin{pmatrix}
+K_s^{\mathrm{ren}}&0\\
+0&K_{1-s}^{\mathrm{ren}}
+\end{pmatrix},
+\qquad
+\mathbb J_R(s)
+:=
+\begin{pmatrix}
+0&J_R(s)\\
+J_R(1-s)&0
+\end{pmatrix},
+\]
+and the Gate B closed loop
+\[
+\boxed{\mathbb L_s:=\mathbb J_R(s)\mathbb K_s^{\mathrm{ren}}.}
+\]
+The right proof targets are then exactly the ones the user asked to elevate:
+\[
+\boxed{\ker(I+\mathbb L_s)=\{0\}\quad\text{for }\Re(s)>\tfrac12}
+\]
+and the stronger quantitative target
+\[
+\boxed{\|\mathbb L_s\|<1\quad\text{for }\Re(s)>\tfrac12.}
+\]
+If \(\mathbb L_s\in \mathcal S_1\), define
+\[
+D_R(s):=\det(I+\mathbb L_s).
+\]
+If only \(\mathbb L_s\in\mathcal S_2\), define instead
+\[
+D_{R,2}(s):=\det_2(I+\mathbb L_s),
+\]
+whose nonvanishing is still equivalent to invertibility. The internal NEXUS hope that \(D_R(s)\) factors as \(C_R(s)\xi(s)\) should be treated as a **separate conjectural identity**, not as an assumption. citeturn36view0turn36view2 fileciteturn0file8
+
+## Bridge Lemmas and Proof Strategies
+
+The first bridge lemma should formalize how the **interior residue** becomes a compact arithmetic operator.
+
+**Interior-residue transfer lemma.** Let \(I(x)\) denote the interior Hall residue after explicit boundary subtraction, and assume there is a renormalized signed log-break measure \(\mu^{\mathrm{ren}}\) such that for a class of smooth Mellin windows \(W\),
+\[
+\int_1^\infty I(x)W(x)x^{-s}\frac{dx}{x}
 =
-\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*},
+\int_{\mathbb R}\widehat W(t)\,d\mu^{\mathrm{ren}}_s(t)
++
+B_W(s),
+\]
+where \(B_W(s)\) is explicit and trace-class at operator level. If \(\mu^{\mathrm{ren}}\) has exponentially weighted \(L^2\) density after smoothing, then the localized Mellin-convolution operator \(K_s^{\mathrm{ren}}\) is Hilbert–Schmidt on \(H_s\); if the density is also Lipschitz or \(W^{1,1}\) with exponential decay, then \(K_s^{\mathrm{ren}}\) is trace class. The proof strategy is to start from Buchstab’s identity and its log-threshold dynamics, pass to Mellin/Laplace coordinates, isolate the boundary term explicitly, and apply standard Schatten-class criteria after conjugation to an \(L^2\) kernel. citeturn37view0turn37view1turn36view0
+
+The second bridge lemma should prove that the **two-fiber mirror is the correct return map** and reduce invertibility to one fiber by a Schur complement.
+
+**Two-fiber mirror correctness lemma.** Assume \(J_R(s):H_{1-s}\to H_s\) is bounded and involutive, and that
+\[
+J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)=K_s^{\mathrm{ren}}+E_s
+\]
+with \(E_s\) trace class and analytic in \(s\) on \(\Re(s)>\tfrac12\). Then
+\[
+I+\mathbb L_s
+=
+\begin{pmatrix}
+I & J_R(s)K_{1-s}^{\mathrm{ren}}\\
+J_R(1-s)K_s^{\mathrm{ren}} & I
+\end{pmatrix}
+\]
+is invertible if and only if the Schur complement
+\[
+S_s:=I-J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)K_s^{\mathrm{ren}}
+\]
+is invertible on \(H_s\). The proof is a standard block-operator computation once the mirror relation is in place. Conceptually, this is the formal version of the internal NEXUS insight that the “wrong mirror” traps Gate B in a fixed-\(s\) discretization, while the doubled bundle closes the loop correctly. fileciteturn0file8
+
+The third bridge lemma is the decisive one: it should convert either contraction or stable finite-section geometry into a genuine **spectral prohibition**.
+
+**Shape-fit exclusion lemma.** Let \(P_N\) be an increasing sequence of finite-rank projections on \(\mathbb H_s\) adapted to the chosen basis, with \(P_N\mathbb L_sP_N\to \mathbb L_s\) in trace norm (or Hilbert–Schmidt norm plus determinant-control hypotheses). Suppose that for each compact strip \(1/2+\varepsilon\le \Re(s)\le \sigma_0\), one has either
+
+\[
+\sup_{s}\|\mathbb L_s\| \le q_\varepsilon <1,
+\]
+
+or the weaker finite-section condition
+
+\[
+s_{\min}\!\bigl(I+P_N\mathbb L_sP_N\bigr)\ge \delta_\varepsilon>0
+\quad
+\text{for all }N\text{ large and all }s\text{ in the strip}.
+\]
+
+Then \(\ker(I+\mathbb L_s)=\{0\}\) on that strip, and the relevant Fredholm determinant does not vanish there. The direct proof in the first case is Neumann series. The second case uses convergence of finite-section determinants and lower-semicontinuity of singular-value gaps. If one also succeeds in encoding finite-section characteristic polynomials by stability-preserving symbols, then Borcea–Brändén theory gives an additional route to control zero-crossing events. citeturn36view2turn36view0turn35search6
+
+These three lemmas are enough to reorganize the current NEXUS state into a real theorem pipeline. The arithmetic side is no longer “prove RH directly”; it becomes: define \(\mu^{\mathrm{ren}}\), prove \(K_s^{\mathrm{ren}}\) is determinant-class after localization, verify the mirror intertwining, and establish a uniform forbidden-zone estimate around \(-1\) in the spectrum. That is a realistic program.
+
+## de Bruijn–Newman and Gate A/B Calibration
+
+The de Bruijn–Newman side of the story is mathematically clear. De Bruijn introduced the heat-deformed transforms \(H_t\); Newman proved that there is a finite threshold \(\Lambda\) so that the zeros are all real exactly for \(t\ge \Lambda\); RH is equivalent to \(\Lambda\le 0\); Rodgers and Tao proved \(\Lambda\ge 0\); and Polymath later improved the unconditional upper bound to \(\Lambda\le 0.22\). In other words, the classical heat-flow program already identifies the critical line as a seam where “just enough” stability remains. That is why the NEXUS language of runtime safety and seam stability is not empty metaphor: it has a genuine analogue in the standard heat-flow literature. citeturn28view0turn34search1turn17search0turn17search1
+
+Gate A belongs exactly on this seam. Pólya’s criterion relates RH to hyperbolicity of Jensen polynomials; Griffin, Ono, Rolen, and Zagier proved asymptotic hyperbolicity for each fixed degree and all sufficiently large shifts, as well as all cases through degree \(8\), and the later \(\xi\)-function work made parts of this effective. But Farmer’s critique matters here: these hyperbolicity phenomena are compelling and mathematically rich, yet they may reflect “differentiation universality” more than the fine geometry of zeta zeros themselves. So the right use of Gate A in a NEXUS research program is as a **static certification layer**: it should check whether any proposed Gate B normalization is compatible with known hyperbolicity behavior, but it should not be treated as an independent proof path. citeturn14search1turn16search0turn29view2
+
+The right way to connect Gate B and de Bruijn–Newman is therefore **not** to assert an equality between an internal constant \(H\) and \(\Lambda\). Instead, one should introduce a **Gate-B heat family**
+\[
+\mathbb L_{s,\lambda}
+:=
+\mathbb J_R(s)\,\mathbb K_{s,\lambda}^{\mathrm{ren}},
+\]
+where \(\mathbb K_{s,\lambda}^{\mathrm{ren}}\) is obtained by applying a Gaussian heat weight to the log-frequency side of the arithmetic kernel, chosen so that its deformation is consistent with the standard \(\Xi\)-heat flow at the level of Mellin/Fourier variables. Then define dimensionless calibration observables such as
+\[
+R_1(\sigma;N,T):=\frac{1-\|\mathbb L_s^{(N,T)}\|}{\sigma-\frac12},
 \qquad
-\alpha_\Gamma=\frac{\pi^2}{1944}\approx 5.08\times 10^{-3}.
-$$
+R_2(\sigma;N,T):=\frac{s_{\min}(I+\mathbb L_s^{(N,T)})}{\sigma-\frac12},
+\]
+and
+\[
+R_3(\sigma;N,T):=
+-\frac{\partial_\lambda \log \det_2(I+\mathbb L_{s,\lambda}^{(N,T)})|_{\lambda=0}}{\log T}.
+\]
+If any internal “equilibrium constant” exists, it should emerge as a common asymptotic limit of such normalized observables across basis choices, truncations, and \(t\)-windows. If it does not survive those tests, it should be discarded. That is the rigorous way to treat a candidate \(H\). citeturn28view0turn36view0
 
-The factor $\rho_*$ is required by dimensional analysis unless one works in normalized Nexus units. The shorthand expression $\rho_\Psi=\alpha_\Gamma\rho_\Gamma^2$ is therefore acceptable only after an explicit choice of units with $\rho_*=1$.
+This also leads to the correct statement about the internal NEXUS candidate \(H=\pi/9\). It may be useful as an **organizing coordinate** in the broader NEXUS computational worldview, but on the RH branch it should currently be treated only as a **falsifiable normalization hypothesis**. The standard de Bruijn–Newman sources do not define such a constant, and the uploaded NEXUS materials themselves do not yet promote it to established operator content. So the correct research stance is: do not force \(H=\pi/9\) into the proof; test whether a stable, basis-independent Gate-B normalization converges near it. If yes, that becomes evidence. If not, drop it. citeturn28view0turn17search1
 
-This model is mathematically coherent, but it is not yet empirically closed. The constitutive law that maps microscopic residence variables into a macroscopic cut-density profile $\rho_\Gamma$ is still unspecified. That missing law is not a minor bookkeeping detail; it is where the theory either becomes predictive or is ruled out. For example, if $\rho_\Gamma(r)\propto r^{-1}$ in galactic outskirts, then $\rho_\Psi(r)\propto r^{-2}$ and one obtains flat rotation curves. But the amplitude must also scale correctly with baryonic mass to satisfy SPARC and the observed radial acceleration relation. SPARC includes 175 late-type galaxies with homogeneous photometry and rotation curves, and the radial acceleration relation shows that the observed acceleration correlates tightly with that predicted by baryons. citeturn10view1turn11view0turn10view2
+## Numerical Program and Reproducibility
 
-The relativistic completion is conservative. It keeps Einstein gravity as the geometric field equation and puts the new physics in an effective stress-energy sector. This is conceptually aligned with Jacobson’s thermodynamic “equation of state” perspective and comparable in spirit, though not in physical content, to Verlinde’s emergent-gravity program, which explicitly invokes memory / entropy displacement as a source of extra gravity-like effects. citeturn10view0turn9view0
+A serious Gate B program needs four data streams: rough-number/Buchstab data, zeta/functional-equation data, determinant/singular-value numerics, and reproducibility infrastructure. The best current public numerical source for zeta zeros is the LMFDB/Platt pipeline: the database stores the first \(103{,}800{,}788{,}359\) zeros on the critical line, with imaginary parts recorded to absolute precision \(\pm2^{-102}\), and completeness verified by a rigorous form of Turing’s method; LMFDB also documents an independent comparison against Büthe’s list. For rigorous local zero generation and verification, Arb exposes routines derived from Platt’s method. For flexible prototyping of \(\zeta\), \(\xi\), and \(\chi\), mpmath is a suitable floating-point frontend; for actual certification, Arb or interval/ball arithmetic should be the default. citeturn11search2turn24view0turn24view1turn12search11turn12search13turn12search0
 
-The principal observational burden is also clear. The model must fit galaxy rotation curves, predict lensing from the same fitted source, and remain invisible in the Solar System. Cassini measured the PPN parameter $\gamma$ as $\gamma=1+(2.1\pm 2.3)\times 10^{-5}$, and JPL’s DE440 / DE441 ephemerides are the current precision standard for planetary dynamics. MOND analyses that combine galaxy fits with Cassini constraints already show how severe this regime is. Any viable Nexus closure field must therefore be intrinsically weak or dynamically screened in the Solar System. citeturn14search6turn12search1turn12search3turn15search0
+The most useful parameter table for Phase I is the following.
 
-The result is a finished proposal paper. It does not prove that gravity is closure-trace curvature. It does provide a full mathematical scaffold, identifies what remains assumption rather than result, restores the missing normalization, gives exact weak-field, lensing, and solver formulas, and defines a clean falsification program using SPARC, DES / Euclid lensing, Bullet Cluster-like systems, and Solar-System ephemerides. citeturn13search0turn13search2turn12search0turn12search2
+| Component | Default choice | Sensitivity choices | Why this is the right default |
+|---|---|---|---|
+| Function space | \(H_s=L^2(\mathbb R_+,x^{2\sigma-1}\rho_{\eta,\pi}(\log x)\,dx/x)\) with \(\eta=0.5\) | \(\eta\in\{0.25,0.75,1.0\}\); unweighted Mellin \(dx/x\) | Symmetric under \(x\mapsto 1/x\), localized on log-scale, prime-density-like |
+| Basis | Log-Laguerre functions | Log-wavelets; truncated Mellin-Fourier basis; Nyström quadrature basis | Laguerre bases are stable for exponentially weighted half-line kernels |
+| Arithmetic truncation | \(x_{\max}=10^6\) prototype | \(10^8\), \(10^{10}\) with HPC | Matches the user’s requested default and is enough to stabilize pilot kernels |
+| Finite-section size | \(N_{\mathrm{basis}}=256\) prototype | \(512,1024,2048,4096\) | Enough to see convergence trends before expensive sweeps |
+| \(s\)-grid | \(\sigma\in\{0.70,0.65,0.60,0.58,0.56,0.54,0.52,0.51\}\) | finer seam grid down to \(0.5005\) | Concentrates effort where contraction is hardest |
+| \(t\)-grid | \(t\in\{0,\gamma_1,10^2,10^3,10^4\}\) plus local zero windows | random windows at larger heights | Samples both low-lying structure and asymptotic regimes |
+| Determinant regime | \(\det_2\) by default | full \(\det\) when trace-class proven | Safe under Hilbert–Schmidt hypotheses |
+| Numerical tolerance | \(10^{-12}\) floating; \(10^{-30}\) Arb checks on critical runs | tighter on seam-adjacent points | Consistent with mixed prototype/certified workflow |
 
-## Source Extraction and Context
+The core algorithm can then be divided exactly as the user requested.
 
-The enabled connectors reviewed for this project were:
+For the arithmetic side, compute rough-number counts and interior residues using a segmented sieve plus Buchstab recursion. Fan’s recent treatment is a good practical source for explicit rough-number formulas and for the modern presentation of Buchstab’s identity; Lagarias gives the transform side of the Buchstab function. This stage outputs either a smoothed log-break measure \(\mu^{\mathrm{ren}}\) or a matrix of basis coefficients directly. citeturn37view0turn37view1
 
-| Connector | Status | Relevance |
-|---|---:|---|
-| `google_drive` | reviewed | contained substantive Nexus framework documents |
-| `github` | reviewed | included the selected repo `QuHarmonics/The-Nexus-Harmonic-Reality` |
+For the mirror, compute \(j_R(s)\) from the functional-equation side using
+\[
+\chi(s)=2^s\pi^{s-1}\sin(\pi s/2)\Gamma(1-s)
+\]
+and, if desired, the finite Euler dressing \(E_R(s)\) from the internal NEXUS proposal. Then build the geometric inversion matrix induced by \(f(x)\mapsto x^{1-2\sigma}f(1/x)\). This produces the block operator \(\mathbb J_R(s)\) on the doubled basis. citeturn26view0turn27view0
 
-Within the connected project materials, the most useful content came from Google Drive. The accessible Nexus documents describe a recursive / optimization-field vocabulary, use a coherence-like scalar $\chi$, and organize the framework around operators and state transitions rather than treating objects as ontologically primitive. fileciteturn16file7L1-L1 A second connected document develops the broader Nexus-evolution narrative and connects the same framework to gravity-like or dark-matter-like behavior arising from retained recursive structure. fileciteturn16file8L1-L1
+For the spectral stage, compute the following load-bearing quantities on each finite section:
+\[
+\|\mathbb L_s^{(N)}\|,\qquad
+s_{\min}(I+\mathbb L_s^{(N)}),\qquad
+\det_2(I+\mathbb L_s^{(N)}),
+\]
+and the eigenvalue cloud of \(\mathbb L_s^{(N)}\). Bornemann’s Nyström framework and later matrix-valued extensions by Gallo, Zweck, and Latushkin provide the right numerical determinant machinery. The smallest singular value is especially important because it is a direct numerical proxy for the forbidden event \(-1\in \sigma(\mathbb L_s)\). citeturn36view2turn36view0
 
-The selected GitHub repository `QuHarmonics/The-Nexus-Harmonic-Reality` was explicitly checked through the GitHub connector. The accessible README was effectively empty and the connector surface did not expose enough indexed gravity-specific files to reconstruct the theory from GitHub alone. The paper below is therefore faithful to the connected Nexus vocabulary, but it is necessarily a formal completion rather than a verbatim synthesis of a finished repository manuscript.
+For the Mellin bridge, compute smoothed transforms
+\[
+\widehat I_W(s)=\int_1^{x_{\max}} I(x)W(x/X)x^{-s}\frac{dx}{x}
+\]
+over a family of windows \(W\), and fit these against the matrix elements of \(K_s^{\mathrm{ren}}\). This is what turns “interior reusable pressure” into a reproducible operator coefficient stream instead of a metaphor.
 
-Externally, the most relevant literature falls into three buckets. Jacobson derives the Einstein equation from horizon entropy together with $\delta Q = T\,dS$, explicitly presenting the gravitational field equation as an equation of state. citeturn10view0 Verlinde argues that de Sitter memory / entropy displacement can source an additional gravity-like force associated with dark-sector phenomenology. citeturn9view0 Famaey and McGaugh review MOND as a response to the observational mass discrepancy problem and emphasize the tight link between galaxy dynamics and baryonic structure. citeturn10view2 Together these sources do not prove the Nexus model, but they show that a boundary-, entropy-, or memory-rooted gravity program is scientifically legible rather than merely rhetorical.
+A reproducible prototype can be written in a direct, testable way:
 
-```mermaid
-flowchart TD
-    A[Connected Nexus documents] --> B[Coherence / operator grammar]
-    A --> C[Boundary-centered gravity intuition]
-    B --> D[Formal residence variables]
-    C --> D
-    D --> E[Effective persistence density]
-    E --> F[Stress-energy completion]
-    F --> G[Weak-field Poisson source]
-    G --> H[Rotation curves, lensing, ephemerides]
+```python
+# pseudocode only
+
+def prime_data(xmax):
+    # segmented sieve, prime table, least-prime-factor table
+    return primes, lpf
+
+def rough_counts(x_grid, y_grid, lpf):
+    # compute Phi(x, y) and signed residue channels
+    return Phi, interior_residue, boundary_residue
+
+def build_mu_ren(interior_residue, smoothing_kernel, x_grid):
+    # convert residue data into renormalized log-break measure
+    return mu_ren
+
+def laguerre_basis(nbasis, eta):
+    # log-Laguerre basis functions on R_+
+    return basis
+
+def assemble_K(s, basis, mu_ren, eta):
+    # build K_s^{ren} matrix by localized Mellin convolution
+    return K
+
+def chi(s):
+    return 2**s * pi**(s-1) * sin(pi*s/2) * gamma(1-s)
+
+def euler_dressing(s, R_primes):
+    out = 1
+    for p in R_primes:
+        out *= (1 - p**(-s))**(-1)
+    return out
+
+def assemble_JR(s, basis, R_primes):
+    jr_scalar = chi(s)**(-1) * euler_dressing(s, R_primes) / euler_dressing(1-s, R_primes)
+    # combine scalar with inversion matrix f(x) -> x^(1-2sigma) f(1/x)
+    return JR
+
+def assemble_bundle(Ks, K1s, JR_s, JR_1s):
+    K_bundle = block_diag(Ks, K1s)
+    J_bundle = [[0, JR_s], [JR_1s, 0]]
+    return J_bundle @ K_bundle
+
+def diagnostics(L):
+    normL = spectral_norm(L)
+    smin = smallest_singular_value(np.eye(L.shape[0]) + L)
+    evals = eigenvalues(L)
+    det2 = modified_fredholm_det_2(L)
+    return normL, smin, evals, det2
 ```
 
-## Formal Definitions and the Residence Theorem
+The uploaded internal NEXUS scans already suggest the right diagnostics. One finite-model witness reports \(\|\mathbb L_s\|\) dropping from about \(0.976\) at \(\sigma=0.50\) to about \(0.048\) at \(\sigma=0.70\), while \(s_{\min}(I+\mathbb L_s)\) rises from about \(0.024\) to about \(0.952\). Those are exactly the observables that a real Gate B notebook should track, but they are only finite-model witnesses and should be treated as **model-dependent pilot data**, not as theorem-level quantities. fileciteturn0file8
 
-Let $(\mathcal M,g_{\mu\nu})$ be a spacetime and let $\Gamma\subset\mathcal M$ denote a dynamically persistent internal boundary, cut, or closure surface. The primitive quantity is not “mass at a point” but the residence history of recursive access to that cut.
+The pilot charts below are therefore best read as **specifications for the research notebook**; the first two use the uploaded finite-model witness, and the third shows the corresponding Neumann decay envelope that would follow if those norms were stable under refinement. The third plot uses the series order \(\sigma=0.55, 0.60, 0.70\).
 
-### Formal definitions
+```mermaid
+xychart-beta
+    title "Gate B pilot: operator norm vs Re(s)"
+    x-axis "Re(s)" [0.50, 0.55, 0.60, 0.70]
+    y-axis "||L_s||" 0 --> 1.0
+    line [0.976, 0.826, 0.695, 0.048]
+```
 
-Define a local residence indicator
-$$
-I_\Gamma(x,t)\in[0,1],
-$$
-where $I_\Gamma=1$ means that the local update rule at spacetime event $(x,t)$ must reference cut-state information carried by $\Gamma$, and $I_\Gamma=0$ means no such dependence. In a discrete implementation $I_\Gamma$ is binary; in a coarse-grained implementation it is a duty-cycle fraction.
+```mermaid
+xychart-beta
+    title "Gate B pilot: spectral proxy vs Re(s)"
+    x-axis "Re(s)" [0.50, 0.55, 0.60, 0.70]
+    y-axis "s_min(I+L_s)" 0 --> 1.0
+    line [0.024, 0.174, 0.305, 0.952]
+```
 
-Define the exponentially weighted coherence / occupancy fraction
-$$
-\chi_\Gamma(x,t)
-=
-\frac{1}{\tau_{\mathrm{ret}}}
-\int_{-\infty}^{t}
-e^{-(t-s)/\tau_{\mathrm{ret}}}
-I_\Gamma(x,s)\,ds,
-\qquad
-0\le \chi_\Gamma \le 1,
-$$
-where $\tau_{\mathrm{ret}}>0$ is the retention time. This is the cleanest formal meaning of the Nexus-style $\chi_\Gamma$: it is the normalized fraction of recent history for which the local state remained bound to the cut.
+```mermaid
+xychart-beta
+    title "Gate B pilot: Neumann decay envelope"
+    x-axis "iteration n" [0, 2, 4, 6, 8, 10]
+    y-axis "||L_s||^n" 0 --> 1.0
+    line [1.0, 0.682, 0.466, 0.318, 0.217, 0.148]
+    line [1.0, 0.483, 0.233, 0.113, 0.054, 0.026]
+    line [1.0, 0.0023, 0.0000053, 0.000000012, 0.000000000028, 0.000000000000065]
+```
 
-Let $\dot N_\Gamma(x,t)$ be the visit-rate density, i.e. the number of distinct residence episodes per unit time. Then define the mean dwell time per visit
-$$
-w_\Gamma(x,t)
-=
-\frac{
-\int_{-\infty}^{t} e^{-(t-s)/\tau_{\mathrm{ret}}} I_\Gamma(x,s)\,ds
-}{
-\int_{-\infty}^{t} e^{-(t-s)/\tau_{\mathrm{ret}}} \dot N_\Gamma(x,s)\,ds + \varepsilon
-},
-$$
-with $\varepsilon\to 0^+$ only to regularize empty histories. The quantity $w_\Gamma$ has units of time and measures the route-memory or residence duration attached to each return event.
-
-Choose a reference time scale $W_*$ and define the dimensionless residence strength
-$$
-S_\Gamma(x,t)
-=
-\chi_\Gamma(x,t)\,\frac{w_\Gamma(x,t)}{W_*}.
-$$
-This is the minimal positive scalar one can form from normalized occupancy and dwell duration without introducing an arbitrary exponent. More elaborate variants can replace this by
-$$
-S_\Gamma
-=
-\chi_\Gamma^{\,p}
-\left(\frac{w_\Gamma}{W_*}\right)^{q},
-\qquad
-p,q>0,
-$$
-but the linear choice $p=q=1$ is the minimal closure.
-
-Define the cut susceptibility $\Theta_\Gamma(x)$ as the local conversion factor from dimensionless residence strength to mass density:
-$$
-\Theta_\Gamma(x)>0,
-\qquad
-[\Theta_\Gamma]=\mathrm{kg}\,\mathrm{m}^{-3}.
-$$
-Then the persistent density implied directly by residence is
-$$
-\rho_{\mathrm{persist}}(x,t)
-=
-\Theta_\Gamma(x)\,S_\Gamma(x,t).
-$$
-
-Because residence may spread, diffuse, or relax before it appears as a curvature source, define the smoothed persistence field $\rho_\Psi$ by
-$$
-\tau_{\mathrm{ret}}\,\partial_t \rho_\Psi
-+
-\rho_\Psi
--
-\ell_\Psi^2 \nabla^2 \rho_\Psi
-=
-\rho_{\mathrm{persist}},
-$$
-where $\ell_\Psi$ is a persistence-correlation length. In the static local limit,
-$$
-\rho_\Psi \approx \rho_{\mathrm{persist}}.
-$$
-
-### Residence Theorem
-
-**Theorem (Residence Theorem).**  
-Assume that $I_\Gamma(x,t)$ is measurable and bounded in $[0,1]$, that $\Theta_\Gamma(x)\ge 0$, and that $S_\Gamma(x,t)$ is defined as above. Then:
-
-1. $S_\Gamma(x,t)\ge 0$, $\rho_{\mathrm{persist}}(x,t)\ge 0$, and any solution $\rho_\Psi$ of the relaxation-diffusion equation with nonnegative initial data remains nonnegative.
-2. In the purely temporal coarse-graining limit $\ell_\Psi\to 0$, $\rho_\Psi$ obeys
-   $$
-   \tau_{\mathrm{ret}}\,\partial_t \rho_\Psi + \rho_\Psi = \Theta_\Gamma S_\Gamma.
-   $$
-3. If $S_\Gamma(x,t)\to \bar S_\Gamma(x)$ as $t\to\infty$ pointwise or in mean, then
-   $$
-   \rho_\Psi(x,t)\to \Theta_\Gamma(x)\,\bar S_\Gamma(x)
-   $$
-   in the same static local limit.
-
-**Proof sketch.**  
-Positivity follows because the exponential kernel, $\Theta_\Gamma$, and $S_\Gamma$ are nonnegative. Differentiating the exponential convolution gives the first-order relaxation equation. Standard parabolic maximum principles give positivity of $\rho_\Psi$ for the diffusion-extended equation. The stationary limit is the ordinary limit of a stable first-order linear filter driven by a convergent source. $\square$
-
-This theorem is the minimal mathematical statement behind the phrase “persistent residence leaves a gravitationally active scar.” It is a positive-kernel statement, not a metaphysical one.
-
-### Dimensional analysis and normalization
-
-The quantity $\chi_\Gamma$ must be dimensionless. The quantity $w_\Gamma$ carries units of time and $W_*$ is its normalization scale. The quantity $S_\Gamma$ is therefore dimensionless. The quantity $\Theta_\Gamma$ carries mass-density units, forcing $\rho_{\mathrm{persist}}$ and $\rho_\Psi$ to have the correct dimensions.
-
-The nonlinear excess source proposed in the Nexus gravity branch is
-$$
-\rho_\Psi
-=
-\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*},
-\qquad
-\alpha_\Gamma = \frac{\pi^2}{1944},
-$$
-where $\rho_\Gamma$ is the coarse-grained unresolved cut-density and $\rho_*$ is a reference density inserted to restore units. Since
-$$
-[\rho_\Gamma^2/\rho_*] = \mathrm{kg}\,\mathrm{m}^{-3},
-$$
-$\alpha_\Gamma$ is dimensionless. Numerically,
-$$
-\alpha_\Gamma
-=
-\frac{\pi^2}{1944}
-\approx 5.08\times 10^{-3}.
-$$
-
-If one works in normalized Nexus units with $\rho_*=1$, then the shorthand
-$$
-\rho_\Psi=\alpha_\Gamma \rho_\Gamma^2
-$$
-is acceptable. In SI or astrophysical units, however, $\rho_*$ must be retained.
+And the computational pipeline itself is straightforward:
 
 ```mermaid
 flowchart LR
-    I[I_Γ residence indicator] --> Chi[χ_Γ]
-    I --> V[visit process]
-    V --> w[w_Γ]
-    Chi --> S[S_Γ = χ_Γ w_Γ / W_*]
-    w --> S
-    S --> Rp[ρ_persist = Θ_Γ S_Γ]
-    Rp --> Rpsi[τ_ret ∂_t ρ_Ψ + ρ_Ψ - ℓ_Ψ² ∇²ρ_Ψ = ρ_persist]
+    A[Prime data and LPF tables] --> B[Rough counts Phi(x,y)]
+    B --> C[Interior residue I(x)]
+    C --> D[Mellin and log-threshold transforms]
+    D --> E[Build K_s^ren and K_1-s^ren]
+    E --> F[Build J_R(s) from chi(s) and optional E_R(s)]
+    F --> G[Assemble doubled bundle L_s]
+    G --> H[Spectra, s_min, det_2, Neumann decay]
+    H --> I[Strip-by-strip contraction test]
+    I --> J[Gate A consistency check via Jensen hyperbolicity]
 ```
 
-## Relativistic Completion and the Weak-Field Equation
-
-The relativistic completion should be conservative. Once the persistence sector has been coarse-grained into an effective field, it must enter the geometry through the ordinary Einstein equation. Jacobson’s work is the clean conceptual precedent for deriving geometry from non-fundamental thermodynamic data, while standard tests such as Cassini require any emergent completion to reduce extremely accurately to general relativity in the appropriate regime. citeturn10view0turn14search6
-
-### Action
-
-Take
-$$
-S
-=
-S_{\mathrm{EH}}
-+
-S_m
-+
-S_{\mathrm{bulk}}
-+
-S_{\mathrm{NG}},
-$$
-with
-$$
-S_{\mathrm{EH}}
-=
-\frac{c^3}{16\pi G}
-\int d^4x\,\sqrt{-g}\,R,
-$$
-ordinary matter action $S_m$, a bulk persistence field $\psi$, and an optional cut-worldvolume term.
-
-Define a dimensionless bulk field
-$$
-\psi
-=
-\frac{\rho_\Psi}{\rho_*}.
-$$
-A minimal bulk action is
-$$
-S_{\mathrm{bulk}}
-=
--
-\int d^4x \sqrt{-g}
-\left[
-\frac{\kappa_\Psi}{2}\nabla_\mu \psi \nabla^\mu \psi
-+
-V(\psi)
-\right],
-$$
-with
-$$
-V(\psi)
-=
-\frac{m_\Psi^2}{2}\psi^2
-+
-\frac{\lambda_\Psi}{4}\psi^4
--
-J_\Gamma \psi.
-$$
-The source $J_\Gamma$ is the normalized residence injection,
-$$
-J_\Gamma
-=
-\frac{\rho_{\mathrm{persist}}}{\rho_*}.
-$$
-
-To represent a distinguished cut itself, introduce an optional Nambu–Goto-like hypersurface action
-$$
-S_{\mathrm{NG}}
-=
--
-\sigma_\Gamma
-\int_{\Sigma_\Gamma}
-d^3\xi\,
-\sqrt{-\gamma}\,
-f(\psi),
-$$
-where $\Sigma_\Gamma$ is the cut worldvolume, $\gamma_{ab}$ is the induced metric, and
-$f(\psi)=1+\beta_\Gamma \psi+\cdots$ is a coupling expansion.
-
-### Variational stress-energy tensor
-
-The effective persistence stress-energy tensor is
-$$
-T_{\mu\nu}^{(\Psi)}
-=
--
-\frac{2}{\sqrt{-g}}
-\frac{\delta \left(S_{\mathrm{bulk}}+S_{\mathrm{NG}}\right)}{\delta g^{\mu\nu}}.
-$$
-
-For the bulk sector,
-$$
-T_{\mu\nu}^{\mathrm{bulk}}
-=
-\kappa_\Psi \nabla_\mu\psi \nabla_\nu\psi
--
-g_{\mu\nu}
-\left[
-\frac{\kappa_\Psi}{2}\nabla_\alpha\psi\nabla^\alpha\psi
-+
-V(\psi)
-\right].
-$$
-
-For the localized cut term,
-$$
-T_{\mu\nu}^{\mathrm{NG}}(x)
-=
-\sigma_\Gamma
-\int_{\Sigma_\Gamma}
-d^3\xi\,
-\sqrt{-\gamma}\,
-\gamma^{ab}
-\partial_a X_\mu
-\partial_b X_\nu\,
-f(\psi)\,
-\frac{\delta^{(4)}(x-X(\xi))}{\sqrt{-g}}.
-$$
-
-The total field equation is therefore
-$$
-G_{\mu\nu}
-=
-\frac{8\pi G}{c^4}
-\left(
-T_{\mu\nu}^{(m)}
-+
-T_{\mu\nu}^{(\Psi)}
-\right).
-$$
-
-Because the total action is diffeomorphism invariant, the total stress-energy is covariantly conserved:
-$$
-\nabla^\mu
-\left(
-T_{\mu\nu}^{(m)}+T_{\mu\nu}^{(\Psi)}
-\right)
-=
-0.
-$$
-In the minimally coupled effective theory one simply imposes
-$$
-\nabla^\mu T_{\mu\nu}^{(\Psi)}=0
-$$
-outside explicitly modeled exchange regions. A more complete closure theory may split the conservation law as
-$$
-\nabla^\mu T_{\mu\nu}^{(m)} = Q_\nu,
-\qquad
-\nabla^\mu T_{\mu\nu}^{(\Psi)} = -Q_\nu,
-$$
-where $Q_\nu$ represents controlled exchange between materialized matter and unresolved persistence.
-
-### Weak-field limit
-
-In the static weak-field limit,
-$$
-ds^2
-=
--
-\left(1+\frac{2\Phi}{c^2}\right)c^2dt^2
-+
-\left(1-\frac{2\Phi}{c^2}\right)d\mathbf{x}^2,
-$$
-and with negligible pressure and anisotropic stress,
-$$
-T_{00}
-\approx
-\left(\rho_m+\rho_\Psi\right)c^2.
-$$
-Then Einstein’s equation reduces to
-$$
-\nabla^2 \Phi
-=
-4\pi G
-\left(
-\rho_m+\rho_\Psi
-\right).
-$$
-
-To avoid double-counting material closure already represented by $\rho_m$, define $\rho_\Gamma$ as the unresolved or excess cut-density. Orientation reversal of a cut should not change the sign of its gravitational contribution, so the leading parity-even contribution is quadratic:
-$$
-\rho_\Psi
-=
-\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*}
-+
-\mathcal O(\rho_\Gamma^4).
-$$
-Hence the completed weak-field equation is
-$$
-\boxed{
-\nabla^2\Phi
-=
-4\pi G
-\left(
-\rho_m
-+
-\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*}
-\right)
-},
-\qquad
-\alpha_\Gamma=\frac{\pi^2}{1944}.
-$$
-
-### Green-function solutions
-
-For arbitrary source,
-$$
-\Phi(\mathbf{x})
-=
--
-G
-\int d^3x'
-\frac{\rho_{\mathrm{eff}}(\mathbf{x}')}{|\mathbf{x}-\mathbf{x}'|},
-\qquad
-\rho_{\mathrm{eff}}
-=
-\rho_m+\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*}.
-$$
-
-For spherical symmetry,
-$$
-\frac{1}{r^2}\frac{d}{dr}
-\left(
-r^2\frac{d\Phi}{dr}
-\right)
-=
-4\pi G \rho_{\mathrm{eff}}(r),
-$$
-so
-$$
-g(r)
-=
-\frac{d\Phi}{dr}
-=
-\frac{G M_{\mathrm{eff}}(<r)}{r^2},
-\qquad
-M_{\mathrm{eff}}(<r)
-=
-4\pi
-\int_0^r
-\rho_{\mathrm{eff}}(s)\,s^2\,ds,
-$$
-and the circular speed is
-$$
-v_c^2(r)=r\,g(r)=\frac{G M_{\mathrm{eff}}(<r)}{r}.
-$$
-
-If
-$$
-\rho_\Gamma(r)=\frac{A_\Gamma}{r}
-\quad\text{for}\quad
-r_1\ll r\ll r_2,
-$$
-then
-$$
-\rho_\Psi(r)
-=
-\alpha_\Gamma \frac{A_\Gamma^2}{\rho_*}\frac{1}{r^2},
-$$
-which gives
-$$
-M_\Psi(<r)
-=
-4\pi \alpha_\Gamma \frac{A_\Gamma^2}{\rho_*}\,r,
-$$
-and hence a flat contribution
-$$
-v_{\Psi,\infty}^2
-=
-4\pi G \alpha_\Gamma \frac{A_\Gamma^2}{\rho_*}.
-$$
-
-For an axisymmetric thin disk with baryonic surface density $\Sigma_m(R)\delta(z)$ and volumetric persistence density $\rho_\Psi(R,z)$, one may write
-$$
-\Phi(R,z)
-=
--2\pi G
-\int_0^\infty dk\, J_0(kR)
-\left[
-\widetilde{\Sigma}_m(k)e^{-k|z|}
-+
-\int_{-\infty}^{\infty}
-dz'
-\frac{\widetilde{\rho}_\Psi(k,z')}{k}
-e^{-k|z-z'|}
-\right],
-$$
-with Hankel transforms
-$$
-\widetilde{f}(k,z)=\int_0^\infty R'J_0(kR')\,f(R',z)\,dR'.
-$$
-Then
-$$
-v_c^2(R)=R\,\partial_R\Phi(R,0).
-$$
-
-## Observational Predictions and Constraints
-
-The observational side is where the model either becomes science or fails. SPARC offers homogeneous photometry and rotation curves for 175 galaxies. The radial acceleration relation shows a small-scatter coupling between observed acceleration and that predicted from baryons. Euclid is rapidly expanding the public strong-lens sample. Bullet Cluster-like systems remain decisive tests of whether extra gravity tracks baryons or behaves like displaced gravitating structure. citeturn10view1turn11view0turn13search2turn12search0turn12search2
-
-### Rotation curves
-
-The model prediction is
-$$
-v_c^2(R)
-=
-v_m^2(R)+v_\Psi^2(R),
-$$
-where $v_m$ is computed from baryons alone and $v_\Psi$ from
-$$
-\nabla^2\Phi_\Psi
-=
-4\pi G\,\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*}.
-$$
-
-A decisive consequence follows immediately. If the large-radius profile is
-$$
-\rho_\Gamma(R)\sim \frac{A_\Gamma}{R},
-$$
-then the extra source behaves like an isothermal halo:
-$$
-\rho_\Psi(R)\sim \frac{1}{R^2}.
-$$
-This is sufficient for flat outer rotation curves.
-
-But SPARC and the radial acceleration relation also demand the correct amplitude scaling. Since
-$$
-v_{\infty}^2 \propto A_\Gamma^2,
-$$
-one has
-$$
-v_{\infty}^4 \propto A_\Gamma^4.
-$$
-Therefore, if the galaxy obeys a baryonic Tully–Fisher relation $v_\infty^4\propto M_b$, then the cut-tail amplitude must satisfy
-$$
-A_\Gamma \propto M_b^{1/4}.
-$$
-This is a falsifiable constitutive constraint on the residence-to-cut mapping. Any Nexus closure law predicting, for example, $A_\Gamma\propto M_b$ is generically ruled out.
-
-### Lensing
-
-If the persistence sector has negligible anisotropic stress in the lensing regime, then the two scalar metric potentials are equal and lensing is sourced by the same effective density as dynamics. The projected surface density is
-$$
-\Sigma_{\mathrm{eff}}(\boldsymbol{\xi})
-=
-\int \rho_{\mathrm{eff}}(\boldsymbol{\xi},z)\,dz,
-$$
-and the convergence is
-$$
-\kappa(\boldsymbol{\xi})
-=
-\frac{\Sigma_{\mathrm{eff}}(\boldsymbol{\xi})}{\Sigma_{\mathrm{crit}}},
-\qquad
-\Sigma_{\mathrm{crit}}
-=
-\frac{c^2}{4\pi G}
-\frac{D_s}{D_l D_{ls}}.
-$$
-The deflection angle is
-$$
-\hat{\boldsymbol{\alpha}}(\boldsymbol{\xi})
-=
-\frac{4G}{c^2}
-\int d^2\xi'
-\,
-\Sigma_{\mathrm{eff}}(\boldsymbol{\xi}')
-\,
-\frac{\boldsymbol{\xi}-\boldsymbol{\xi}'}{|\boldsymbol{\xi}-\boldsymbol{\xi}'|^2}.
-$$
-
-If the cut sector has anisotropic stress, then one must introduce a slip parameter
-$$
-\eta_{\mathrm{slip}}
-=
-\frac{\Psi_{\mathrm{PPN}}}{\Phi}.
-$$
-The minimal model sets $\eta_{\mathrm{slip}}=1$. Any statistically significant $\eta_{\mathrm{slip}}\neq 1$ inferred from joint lensing-plus-dynamics fits would either point to the membrane-enhanced variant or rule out the minimal isotropic version.
-
-### Solar-system constraints
-
-Cassini measured
-$$
-\gamma = 1+(2.1\pm 2.3)\times 10^{-5},
-$$
-consistent with general relativity to very high precision, and DE440 is the current JPL precision standard for planetary dynamics. citeturn14search6turn12search1turn12search3 Therefore the model must satisfy, conservatively,
-$$
-\left|\frac{\Phi_\Psi}{\Phi_N}\right|
-\ll 10^{-5}
-\quad\text{and}\quad
-\left|\frac{g_\Psi}{g_N}\right|
-\ll 10^{-5}
-$$
-through the inner planetary system unless an explicit screened PPN completion is supplied.
-
-MOND studies already show that Solar-System data can eliminate large regions of a modified-gravity parameter space, especially through external-field-induced quadrupolar corrections and Cassini constraints. citeturn15search0turn15search2 The Nexus model inherits the same burden.
-
-### Falsification tests
-
-The theory is ruled out if any of the following hold:
-
-| Test | Falsification criterion |
-|---|---|
-| SPARC rotation curves | no common parameter set fits inner and outer curves without pathological galaxy-by-galaxy tuning |
-| Baryonic Tully–Fisher scaling | inferred $A_\Gamma(M_b)$ fails to approach $M_b^{1/4}$ asymptotically |
-| Galaxy–galaxy lensing | lensing mass inferred from $\rho_{\mathrm{eff}}$ disagrees systematically with dynamical mass from the same fitted $\rho_\Gamma$ |
-| Bullet Cluster-like systems | persistence field cannot spatially separate from hot gas in a way consistent with lensing reconstructions |
-| Solar-system ephemerides | any unscreened extra acceleration or PPN slip exceeds Cassini / DE440 bounds |
-| Time-domain systems | finite $\tau_{\mathrm{ret}}$ predicts hysteresis or lag where the model says it should be observable |
-
-## Estimation, Simulation, and Datasets
-
-### Numerical simulation plan
-
-A practical first implementation should treat the model as an inverse problem over a latent cut-density field.
-
-1. Build baryonic mass models from stars and gas.
-2. Parameterize the latent field by either $\rho_\Gamma$ directly or its residence primitives $(\chi_\Gamma,w_\Gamma,\Theta_\Gamma)$.
-3. Generate $\rho_\Psi$ from
-   $$
-   \tau_{\mathrm{ret}}\partial_t\rho_\Psi+\rho_\Psi-\ell_\Psi^2\nabla^2\rho_\Psi
-   =\Theta_\Gamma S_\Gamma.
-   $$
-4. Solve
-   $$
-   \nabla^2\Phi=4\pi G(\rho_m+\rho_\Psi)
-   $$
-   by multigrid, FFT, or finite-element methods.
-5. Project the resulting metric into rotation curves, shear profiles, and timing observables.
-6. Use joint Bayesian inference to fit all datasets simultaneously.
-
-For static galaxies, a 2D cylindrical FFT-Poisson solver is enough. For cluster mergers or time-lag tests, one needs a 3D adaptive mesh plus time stepping of the persistence PDE.
+A realistic task schedule is also clear:
 
 ```mermaid
-flowchart TD
-    A[Photometry + gas maps] --> B[Baryonic mass model]
-    B --> C[Latent χ_Γ, w_Γ, Θ_Γ or ρ_Γ]
-    C --> D[ρ_persist]
-    D --> E[ρ_Ψ evolution / smoothing]
-    E --> F[Poisson or Einstein solver]
-    F --> G[Rotation curves]
-    F --> H[Lensing maps]
-    F --> I[Solar-system residuals]
-    G --> J[Joint likelihood]
-    H --> J
-    I --> J
+timeline
+    title NEXUS-RH Gate B timeline
+    Formalization : fix H_s, mirror realization, and kernel normalization
+    Arithmetic bridge : build interior-residue to Mellin-operator map
+    Certified numerics : finite sections, Arb validation, determinant and s_min scans
+    Analytic exclusion : prove compactness and stripwise spectral gap
+    Synthesis : compare Gate B observables with Gate A and heat-flow quantities
 ```
 
-### Likelihood and priors
+## Deliverables, Sources, and Open Questions
 
-Let $\theta$ denote the model parameters and hyperparameters. A minimal joint posterior is
-$$
-p(\theta\mid D)
-\propto
-\mathcal L_{\mathrm{RC}}
-\,
-\mathcal L_{\mathrm{lens}}
-\,
-\mathcal L_{\mathrm{SS}}
-\,
-p(\theta).
-$$
+The right deliverables are not abstract promises; they are concrete, checkable objects.
 
-For rotation curves,
-$$
-\ln \mathcal L_{\mathrm{RC}}
-=
--\frac12
-\sum_{g,i}
-\left[
-\frac{(v_{g,i}^{\mathrm{obs}}-v_{g,i}^{\mathrm{mod}})^2}{\sigma_{g,i}^2+s_g^2}
-+
-\ln\!\big(2\pi(\sigma_{g,i}^2+s_g^2)\big)
-\right].
-$$
-
-For lensing,
-$$
-\ln \mathcal L_{\mathrm{lens}}
-=
--\frac12
-\left(
-d_{\mathrm{shear}}-m_{\mathrm{shear}}(\theta)
-\right)^T
-C^{-1}
-\left(
-d_{\mathrm{shear}}-m_{\mathrm{shear}}(\theta)
-\right).
-$$
-
-For Solar-System data,
-$$
-\ln \mathcal L_{\mathrm{SS}}
-=
--\frac12
-\left(
-d_{\mathrm{ephem}}-m_{\mathrm{ephem}}(\theta)
-\right)^T
-C_{\mathrm{SS}}^{-1}
-\left(
-d_{\mathrm{ephem}}-m_{\mathrm{ephem}}(\theta)
-\right).
-$$
-
-A sensible parameter vector is
-$$
-\theta
-=
-\{
-\log\rho_*,
-\log\Theta_\Gamma,
-\log\ell_\Psi,
-\log\tau_{\mathrm{ret}},
-\lambda_\Gamma,
-\eta_{\mathrm{slip}},
-\Upsilon_*,
-\alpha_\Gamma
-\}.
-$$
-If the theory insists on $\alpha_\Gamma=\pi^2/1944$, then fix it. For robustness testing, one can instead assign
-$$
-\alpha_\Gamma
-\sim
-\mathcal N\!\left(\frac{\pi^2}{1944},\sigma_\alpha^2\right)
-$$
-and ask whether the data pull away from the proposed constant.
-
-### Identifiability
-
-The main structural degeneracy is that galaxy dynamics typically constrain only combinations such as
-$$
-A_{\mathrm{eff}}
-=
-\alpha_\Gamma \frac{\lambda_\Gamma^2}{\rho_*},
-$$
-not each factor separately. Lensing helps because it measures the projected source that should be generated by the same $\rho_\Psi$ field. Solar-System data help because they constrain the small-scale tail and any local slip or quadrupole leakage. Time-domain systems, if available, are the direct handle on $\tau_{\mathrm{ret}}$.
-
-If the model is written only in terms of the latent field $\rho_\Gamma$ with no independent residence observable, then $(\chi_\Gamma,w_\Gamma,\Theta_\Gamma)$ are not separately identifiable. They are only identifiable through a constitutive law or through an external simulation that predicts them.
-
-### Recommended datasets
-
-| Observable | Dataset | Why it matters |
+| Deliverable | What it must contain | Acceptance criterion |
 |---|---|---|
-| galaxy rotation curves | SPARC | homogeneous rotation curves, baryonic mass models, direct test of $v_c(R)$ and BTFR citeturn10view1turn11view0 |
-| galaxy–galaxy lensing | DES DR1 and follow-on DES lensing catalogs | wide-area public imaging and shear infrastructure suitable for projected-mass tests citeturn13search0 |
-| strong lens statistics | Euclid early strong-lens catalogs and the large 2026 release | rapidly growing public sample of galaxy–galaxy lenses under ESA stewardship citeturn13search2turn13news49 |
-| cluster merger tests | Bullet Cluster and analogous systems | separation of lensing mass from X-ray gas tests whether closure residue can behave like displaced gravitating structure citeturn12search0turn12search2 |
-| solar-system dynamics | Cassini radio-link data, JPL DE440/DE441 ephemerides | high-precision bound on PPN deviations and extra accelerations citeturn14search6turn12search1turn12search3 |
+| Formal note on spaces and operators | precise \(H_s\), \(K_s^{\mathrm{ren}}\), \(J_R(s)\), \(\mathbb L_s\) | all domains/ranges and class assumptions explicit |
+| Bridge-lemma manuscript | the three lemmas above with hypotheses | every open assumption isolated and testable |
+| Reproducible numerical notebook | code, configs, seeds, basis choices, raw outputs | same plots regenerate on fresh machine |
+| Certified seam scan | Arb-backed \(s_{\min}\), \(\det_2\), and eigenvalue gap data | independent rerun within tolerances |
+| Gate A/B comparison note | Jensen data versus operator diagnostics | no hidden normalization changes |
 
-## Assumptions, Formula Catalog, and Deliverables
+The prioritized bibliography should remain anchored to primary sources. For the heat-flow side: de Bruijn’s 1950 paper, Newman’s 1976 paper, Rodgers–Tao on \(\Lambda\ge 0\), and the Polymath upper-bound paper are essential. For Gate A: Pólya’s criterion as used in Griffin–Ono–Rolen–Zagier, the later \(\xi\)-function paper, and Farmer’s critique. For Buchstab and rough numbers: modern explicit sources like Fan together with Lagarias’s transform treatment. For Gate B numerics: Bornemann and the recent matrix-valued Fredholm-determinant analysis by Gallo–Zweck–Latushkin. For operator-theoretic antecedents to RH: Connes, Burnol, and Deninger are the right historical comparators. For data and software: LMFDB/Platt, Arb, and mpmath. citeturn19search0turn34search1turn28view0turn17search0turn14search1turn16search0turn29view2turn37view0turn37view1turn36view2turn36view0turn32view0turn31view0turn31view1turn33search1turn24view0turn24view1turn12search11turn12search13turn12search0
 
-### Explicit assumptions
-
-Several quantities are still unspecified in the connected project materials and must be presented as assumptions rather than hidden inside notation:
-
-| Symbol | Status | Meaning | How to estimate |
-|---|---|---|---|
-| $\Theta_\Gamma$ | unspecified | residence-to-density susceptibility | hierarchical fit to galaxies; possibly environment dependent |
-| $W_*$ | unspecified | dwell-time normalization scale | set by microscopic update cycle or fitted as a universal scale |
-| $\tau_{\mathrm{ret}}$ | unspecified | persistence memory time | constrained by time-lag or merger systems; otherwise broad prior |
-| $\ell_\Psi$ | unspecified | spatial persistence correlation length | inferred from rotation-curve shape and lensing smoothing |
-| $\rho_*$ | unspecified | density normalization for quadratic source | fit jointly with lensing and dynamics |
-| constitutive law for $\rho_\Gamma$ | unspecified | map from residence variables to cut-density profile | must be proposed and then falsified against SPARC / BTFR |
-| $\eta_{\mathrm{slip}}$ | optional | lensing-vs-dynamics metric slip | fit only in membrane / anisotropic variants |
-
-The most important scientific limitation is the constitutive law. Without it, the theory is an elegant source grammar but not yet a closed predictive model.
-
-### Model variants
-
-| Variant | Definition | Advantages | Risks |
-|---|---|---|---|
-| Minimal quasistatic | $\rho_\Psi=\alpha_\Gamma \rho_\Gamma^2/\rho_*$ and $\eta_{\mathrm{slip}}=1$ | simplest, directly fit to galaxy data | purely phenomenological unless a $\rho_\Gamma$ law is supplied |
-| Relaxation-diffusion | adds $\tau_{\mathrm{ret}}$ and $\ell_\Psi$ | captures persistence lag and smoothing | extra degeneracies, requires time-dependent data |
-| Membrane-enhanced relativistic | adds $S_{\mathrm{NG}}$ and anisotropic stress | natural for the “gravity lives on the cut” reading | substantially harder to fit and constrain |
-
-### Formula catalog
-
-The core completed equations are
-
-$$
-\chi_\Gamma(x,t)
-=
-\frac{1}{\tau_{\mathrm{ret}}}
-\int_{-\infty}^{t}
-e^{-(t-s)/\tau_{\mathrm{ret}}}
-I_\Gamma(x,s)\,ds
-$$
-
-$$
-w_\Gamma(x,t)
-=
-\frac{
-\int_{-\infty}^{t} e^{-(t-s)/\tau_{\mathrm{ret}}} I_\Gamma(x,s)\,ds
-}{
-\int_{-\infty}^{t} e^{-(t-s)/\tau_{\mathrm{ret}}} \dot N_\Gamma(x,s)\,ds+\varepsilon
-}
-$$
-
-$$
-S_\Gamma
-=
-\chi_\Gamma \frac{w_\Gamma}{W_*}
-$$
-
-$$
-\rho_{\mathrm{persist}}
-=
-\Theta_\Gamma S_\Gamma
-$$
-
-$$
-\tau_{\mathrm{ret}}\partial_t \rho_\Psi + \rho_\Psi - \ell_\Psi^2\nabla^2\rho_\Psi
-=
-\rho_{\mathrm{persist}}
-$$
-
-$$
-T_{\mu\nu}^{(\Psi)}
-=
--
-\frac{2}{\sqrt{-g}}
-\frac{\delta \left(S_{\mathrm{bulk}}+S_{\mathrm{NG}}\right)}{\delta g^{\mu\nu}}
-$$
-
-$$
-G_{\mu\nu}
-=
-\frac{8\pi G}{c^4}
-\left(
-T_{\mu\nu}^{(m)}+T_{\mu\nu}^{(\Psi)}
-\right)
-$$
-
-$$
-\nabla^2\Phi
-=
-4\pi G
-\left(
-\rho_m+\alpha_\Gamma \frac{\rho_\Gamma^2}{\rho_*}
-\right)
-$$
-
-$$
-\alpha_\Gamma = \frac{\pi^2}{1944}
-$$
-
-$$
-\Sigma_{\mathrm{eff}}
-=
-\int \rho_{\mathrm{eff}}\,dz,
-\qquad
-\kappa=\frac{\Sigma_{\mathrm{eff}}}{\Sigma_{\mathrm{crit}}}
-$$
-
-### Final assessment
-
-The paper can now be stated cleanly:
-
-> **Gravity as Cut-Density Curvature**  
-> A gravitational field is the rendered gradient of persistent recursive closure-density across internal boundaries. Ordinary matter contributes the usual source term $\rho_m$. Unresolved persistent cut structure contributes an additional source $\rho_\Psi$, whose leading parity-even weak-field form is quadratic in the coarse-grained cut-density. The relativistic completion is standard Einstein gravity sourced by an effective persistence stress-energy tensor.
-
-That is a rigorous proposal, not a proof of nature. Its next step is empirical: fit the minimal model to SPARC, derive the implied $\rho_\Gamma$ tails, test whether the amplitude scaling approaches the required $M_b^{1/4}$ behavior, and then check whether the same fitted field predicts lensing without violating Cassini / DE440. If it fails any of those tests, the closure-trace gravity branch is falsified. If it survives, it earns the right to a second paper.
+The main limitations are short and important. The internal NEXUS materials already contain the **right structural question**, but not yet the decisive theorem. The determinant–zeta identity is still conjectural. The compactness or trace-class status of the renormalized Buchstab operator depends on a localization/regularization choice that must be fixed once and for all. The finite Gate B scans are promising but normalization-sensitive across uploaded notes, which means they are currently evidence of a **pattern**, not of a stable invariant. And any claim tying \(H=\pi/9\) directly to the de Bruijn–Newman flow, the \(\Xi\)-kernel, or the RH operator must be treated as unproved until it survives the stripwise, basis-independent calibration tests described above. Those are not fatal weaknesses. They are exactly the open questions that define the next rigorous phase of the NEXUS-RH program.

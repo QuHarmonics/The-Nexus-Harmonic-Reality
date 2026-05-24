@@ -1,182 +1,419 @@
-# Executive Summary
+# NEXUS-RH as a Runtime-Safety Research Program
 
-This report systematically integrates the **Nexus** components (AHRC, SILR, Glyph Reader, ARCH, KRRB, WSW) into an executable experiment suite. We start by extracting concrete definitions and interfaces from the Nexus documentation and code. We then map each module to its role, inputs, and outputs (see **Mapping Table** below). Next, we identify runnable scripts (e.g. `phase_526_rpc.py` in *AI_Repository*) and list exact commands to run them with expected inputs/outputs. We implement and run the key experiments:  
-- **Phase-526 Test (baseline)**: reproduces the SHA-256 fold trace and computes T1/T2 phase-angle metrics, coupling CV, and seed premium.  
-- **AHRC Control (Mark1 Search)**: applies frame-expansion control to drive the mean phase toward $H=\pi/9\approx0.35$ (the Mark1 rail).  
-- **ARCH/KRRB Debug**: fixes script inconsistencies (ac_peak vs ac_lag) using control invariants.  
-- **SILR/Glyph Integration**: gates “hot bits” via SILR z-scores and visualizes coupling patterns with a Spiral Glyph Reader.  
+## Executive summary
 
-For each experiment we present numeric results, charts (generated with Matplotlib and mermaid), and short diagnostics (pass/fail vs hypothesis). Finally, we propose minimal code changes (with diff patches) and new helper scripts to automate these workflows in both repos. All findings are grounded in the Nexus framework’s primary sources and the actual codebase.
+The cleanest rigorous translation of the NEXUS-RH “computational metabolism” picture is not “compute \(\zeta(s)\) and look for scalar zeroes,” but “build a doubled arithmetic-reflection operator and prove that no off-seam runtime closes into a self-sustaining loop.” In ordinary operator language, that means choosing a weighted Mellin/log-space Hilbert bundle, defining a renormalized arithmetic cascade from Buchstab/rough-number data, defining a functional-equation mirror with inversion, and proving that the resulting round-trip operator has no eigenvalue \(1\) for \(\Re(s)>\tfrac12\). The one-step target
+\[
+\ker(I+\mathbb L_s)=\{0\}
+\]
+is equivalent, by Schur complement, to
+\[
+1\notin \operatorname{Spec}(R_s),
+\]
+where \(R_s\) is the round-trip \(J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)K_s^{\mathrm{ren}}\). The stronger bound \(\|\mathbb L_s\|<1\) is useful as a stripwise sufficient condition, but it should not be elevated to the main theorem target near the seam. That shift from raw contraction to spectral exclusion is mathematically appropriate and matches the operator-theoretic direction already implicit in NEXUS. ([arxiv.org](https://arxiv.org/abs/math/0202141))
 
-# What to Learn (Info Needs)
+The program is viable because each ingredient has a strong classical counterpart. Buchstab identities and rough-number counts admit Mellin/Laplace representations, including explicit one-sided Laplace transforms of the Buchstab function. Fredholm determinant numerics are well developed for scalar kernels and now also for matrix-valued kernels on the real line under trace-class and Hilbert–Schmidt hypotheses. Heat deformation of \(\Xi\) is already the core of the de Bruijn–Newman program. And Hilbert-space/operator approaches to RH have mature antecedents in Nyman–Beurling–Báez-Duarte, Burnol’s Sonine/de Branges work, Connes’s trace-formula program, Deninger’s dynamical analogies, and Suzuki’s de Branges/canonical-system constructions. citeturn12view0turn12view1turn17view0turn13view3turn17view4turn14view6turn12view5turn4search9turn14view5turn14view7
 
-1. **Module Definitions & Algorithms:** Formal descriptions of AHRC, SILR, Glyph Reader, ARCH, KRRB, WSW. Key equations (e.g. AHRC’s $H=\pi/9$ attractor, SILR’s $z$-score gating) and design intent from Nexus docs.  
-2. **Interfaces & Entry Points:** Identify code modules/functions that implement these concepts (e.g. `phase_526_rpc.py`, any Mark1 search code, SILR test script).  
-3. **Mapping Table Construction:** Roles, inputs, outputs, and key functions/files for each component (AHRC, SILR, etc.), plus dependencies.  
-4. **Scripts/Commands:** Which Python scripts/notebooks exist (in repos or Drive) and how to run them (environment, parameters, expected outcomes).  
-5. **Experiment Design:** Exact procedures to measure: (a) phase-angle, coupling CV, seed premium in phase-526; (b) AHRC-Mark1 search; (c) use ARCH/KRRB to fix issues; (d) apply SILR gating and Glyph visualization.  
-6. **Results & Diagnostics:** How to compute and interpret results; charts to produce; criteria for success (e.g. phase-band narrowing, CV reduction, Ψ-lock conditions).  
+The de Bruijn–Newman connection is the right calibration layer. De Bruijn introduced the heat-family setting, Newman proved existence of a threshold constant \(\Lambda\), Rodgers and Tao proved \(\Lambda\ge 0\), and Polymath 15 proved the unconditional upper bound \(\Lambda\le 0.22\). Thus fixed mathematics already identifies RH with an exact seam condition: if RH is true, then \(\Lambda=0\). In NEXUS language, \(\lambda\) is a mathematically honest “fold-pressure” parameter. But any internal NEXUS constant \(H\) — including a conjectural value such as \(\pi/9\) — must be treated only as a calibration observable extracted from Gate-B data, never as a theorem-level identity with \(\Lambda\). citeturn0search0turn0search1turn0search7turn14view0turn14view1
 
-# Files & Actions
+The numerical program should therefore prioritize four concrete tasks. It should construct \(K_s^{\mathrm{ren}}\) and \(K_{1-s}^{\mathrm{ren}}\) from segmented-sieve and rough-number data, assemble \(\mathbb J_R(s)\) from the zeta functional equation and inversion, compute \(s_{\min}(I-R_s)\), \(\operatorname{dist}(1,\operatorname{Spec}(R_s))\), \(\|\mathbb L_s\|\), and determinant surrogates \(\det_2(I-R_s)\), and then map smoothed residue data \(I(x)\) to operator coefficients by Mellin windows. For public validation data, the strongest current stack is LMFDB/Platt for zeta zeros, together with Arb/FLINT for rigorous certification and mpmath for prototyping. LMFDB states that its zeta-zero database contains the first \(103{,}800{,}788{,}359\) zeros above the real axis, all with real part \(1/2\), while Platt and Trudgian rigorously verified RH up to height \(3\cdot 10^{12}\) using interval arithmetic. Arb provides rigorous ball arithmetic and explicit support for zeta/L-function work, and mpmath provides arbitrary-precision floating-point and interval-style prototyping. citeturn1search3turn13view4turn14view2turn10view5turn14view3
 
-**Files to read:**  
-- *Drive:* Nexus conceptual docs (AHRC, SILR thesis, KRRB/WSW notes, Glyph Reader docs). (We already have key excerpts in our analysis.)  
-- *AI_Repository:* `phase_526_rpc.py`, any Mark1 search scripts, utility modules.  
-- *The-Nexus-Harmonic-Reality:* (Archived Nexus research; likely none immediate, but check for relevant scripts.)
+## NEXUS lens and formalization
 
-**Sequence of actions:**  
+In a strict NEXUS interpretation, a **domain** is not a collection of scalar values but a structured state space together with valid query protocols and admissible return maps. A **nexus** is the structural interface linking two such domains. For RH, the arithmetic domain is the prime/rough-number ledger, the analytic domain is the functional-equation mirror, and the runtime-safety question is whether the closed arithmetic-reflection loop can sustain an illegal off-seam mode. This interpretation does not replace analysis; it tells us what kind of object to build.
 
-1. **Review docs:** Skim Nexus docs for definitions and equations (AHRC protocol, SILR gating formula, etc.). Note pages/lines for citation.  
-2. **Inspect code:** Use GitHub search (`repo:QuHarmonics/AI_Repository`) to find scripts (e.g. `phase_526_rpc.py`) and key functions.  
-3. **Environment Setup:** Assume Linux with Python 3.10+, install `numpy`, `scipy`, `matplotlib`, `mpmath`.  
-4. **Run baseline:** `python phase_526_rpc.py`. Collect output table and figure data.  
-5. **Compute metrics:** From that output, calculate mean phase, min/max, coupling CV, seed premium.  
-6. **Fix bug:** Modify `phase_526_rpc.py` to fix ac_lag as per ARCH (see patch below). Re-run to verify consistency.  
-7. **AHRC Mark1:** Implement a Mark1 target search (either by modifying `phase_526_rpc.py` or separate script). Run to find $W_0$ that aligns to $\pi/9$.  
-8. **SILR & Glyph:** Write a small script that computes z-scores of coupling (SILR gate) and uses the Glyph reader (spiral mapping) on the carry-heatmap.  
-9. **Plot results:** Use Matplotlib and mermaid (for flowcharts) to produce labeled charts of each experiment.  
-10. **Generate patches:** Prepare diffs (below) for any code changes, and outline a new integrated experiment script.
+A mathematically workable default is a weighted Mellin/log-space Hilbert space
+\[
+H_s
+:=
+L^2\!\left(\mathbb R_+,\;x^{2\sigma-1}\rho_\eta(\log x)\,\frac{dx}{x}\right),
+\qquad
+s=\sigma+it,\quad \eta>0,
+\]
+with
+\[
+\rho_\eta(u):=e^{-2\eta |u|}.
+\]
+The log-space unitary
+\[
+(U_sf)(u):=e^{(\sigma-\frac12)u}\rho_\eta(u)^{1/2}f(e^u)
+\]
+identifies \(H_s\) with a weighted \(L^2(\mathbb R,du)\) space. This is a model choice, not a canonical theorem, but it is natural because Mellin inversion is the native transform for multiplicative/arithmetic dynamics and because Buchstab recursions are threshold processes on log-scale. The Nyman–Beurling criterion, Burnol’s Hilbert-space/Sonine work, and Suzuki’s Weil-distribution/de Branges constructions all make clear that weighted Hilbert-space reformulations are a legitimate RH strategy class. citeturn17view4turn14view6turn14view5turn14view7
 
-# Module Mapping Table
+The arithmetic cascade should be a renormalized Mellin-type integral operator
+\[
+K_s^{\mathrm{ren}}:H_s\to H_s,
+\]
+defined on log-space by
+\[
+(\widetilde K_s^{\mathrm{ren}}F)(u)
+=
+\int_{\mathbb R}\widetilde k_s^{\mathrm{ren}}(u,v)\,F(v)\,dv,
+\]
+with a kernel of the schematic form
+\[
+\widetilde k_s^{\mathrm{ren}}(u,v)
+=
+q_\eta(u)\,q_\eta(v)\,\mathbf 1_{v\le u}\,e^{-s(u-v)}\kappa^{\mathrm{ren}}(u-v),
+\qquad q_\eta(u)=e^{-\eta|u|}.
+\]
+Here \(\kappa^{\mathrm{ren}}\) is not assumed; it is the **open modeling object** extracted from signed Buchstab/least-prime-factor data after explicit subtraction of boundary/main terms. The arithmetic justification is standard: Fan’s modern treatment of rough numbers records Buchstab’s identity
+\[
+\Phi(x,y)=\Phi(x,z)+\sum_{y<p\le z}\sum_{v\ge 1}\Phi(x/p^v,p),
+\]
+and Lagarias records both the defining differential-difference equation for the Buchstab function and its meromorphic one-sided Laplace transform. Those are exactly the classical ingredients needed to turn rough-number recursion into a Mellin/log-space runtime operator. citeturn12view0turn12view1
 
-| Module        | Role                                        | Inputs                         | Outputs                            | Key Code/Files            | Dependencies         |
-|---------------|---------------------------------------------|--------------------------------|------------------------------------|---------------------------|----------------------|
-| **AHRC**      | Adaptive frame expansion; guides toward $H=\pi/9$ attractor. | Raw fold history (phase angles), $\Omega$ tolerance. | $\Psi$-lock status, final frame, alignment score. | (Protocol in Nexus collatz notes) | numpy (metrics)     |
-| **SILR**      | Scale-invariant gating of “outliers.”       | Observed $\hat\alpha_t$ series, target $\alpha_*$, $SE_t$. | z-scores and gate probability $p_t$. | SILR test script (Paper Zero, Drive) | scipy.stats        |
-| **Glyph Reader** | Encodes spatial coupling into a Fourier/spiral glyph. | Coupling matrix or vector (e.g. bit→coupling). | Glyph spec/plot (frequency spiral). | Spiral Glyph code (Drive Zenodo) | numpy, matplotlib |
-| **ARCH**      | Architectural invariants enforcer. (Ensures dual seam, $H\approx0.35$ hold.) | Fold state, control flags.    | Corrections or failure tags (Ω). | Nexus framework docs (Mark9, collatz) | –                    |
-| **KRRB**      | Multiplicative drift & variance stability checks. | Growth factors or resonance amplitudes. | Drift $\lambda$, var, stability metrics. | KRRB notes (Drive) | numpy             |
-| **WSW**       | Wave-state propagation and turbulence detector. | Current reflectance $R_n$, threshold. | Next $R_{n+1}$, turbulence flag. | WSW notes (Drive) | –                |
+The mirror is a bounded map
+\[
+J_R(s):H_{1-s}\to H_s,
+\qquad
+(J_R(s)f)(x):=j_R(s)\,x^{1-2\sigma}f(1/x),
+\]
+where
+\[
+j_R(s):=\chi(s)^{-1}\frac{E_R(s)}{E_R(1-s)}.
+\]
+The fixed part is the standard functional-equation multiplier \(\chi(s)\), defined by the zeta reflection law; DLMF gives the reflection formulas and the completed \(\xi\)-function
+\[
+\xi(s)=\tfrac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad
+\xi(s)=\xi(1-s).
+\]
+The optional finite Euler dressing
+\[
+E_R(s)=\prod_{p\mid R}(1-p^{-s})^{-1}
+\]
+is a NEXUS-style finite-wheel compensation; it is useful experimentally, but in a continuum proof it should be treated as an open choice until justified analytically. The structural requirement is
+\[
+J_R(s)J_R(1-s)=I.
+\]
+This is the rigorous way to encode the NEXUS claim that the “mirror” must be a genuine reflection/inversion and not merely a scalar multiplier. citeturn18search2
 
-# Runnable Scripts & Commands
+The doubled bundle is then
+\[
+\mathbb H_s:=H_s\oplus H_{1-s},
+\]
+with
+\[
+\mathbb K_s:=
+\begin{pmatrix}
+K_s^{\mathrm{ren}}&0\\
+0&K_{1-s}^{\mathrm{ren}}
+\end{pmatrix},
+\qquad
+\mathbb J_R(s):=
+\begin{pmatrix}
+0&J_R(s)\\
+J_R(1-s)&0
+\end{pmatrix},
+\]
+and
+\[
+\mathbb L_s:=\mathbb J_R(s)\mathbb K_s.
+\]
+The one-step targets requested in your specification are
+\[
+\ker(I+\mathbb L_s)=\{0\},
+\qquad
+\|\mathbb L_s\|<1,
+\qquad
+\Re(s)>\tfrac12.
+\]
+The more robust NEXUS/Gate-B target is the round-trip operator
+\[
+R_s:=J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)K_s^{\mathrm{ren}}:H_s\to H_s,
+\]
+because Schur complement gives
+\[
+-1\in \operatorname{Spec}(\mathbb L_s)
+\iff
+1\in \operatorname{Spec}(R_s).
+\]
+So the runtime-safety theorem should ultimately be stated as
+\[
+1\notin \operatorname{Spec}(R_s)\qquad(\Re(s)>\tfrac12),
+\]
+or, more strongly, as a weighted coercive estimate
+\[
+(I-R_s)^*W_s(I-R_s)\ge c_s\,W_s.
+\]
+This is the right formal landing place for the NEXUS idea that “off-seam the runtime should not admit self-consistent closure.” No scalar-zero language is needed at the proof target. 
 
-- **Phase-526 (SHA fold)** – *AI_Repository/phase_526_rpc.py.*  
-  **Run:** `python phase_526_rpc.py`  
-  **Env:** Python 3.10+, numpy.  
-  **Out:** Prints round-by-round phase angles and carries; produces autocorrelation stats.  
+The operator-class conditions are precise. If \(\widetilde k_s^{\mathrm{ren}}\in L^2(\mathbb R^2)\), then \(K_s^{\mathrm{ren}}\) is Hilbert–Schmidt and hence compact. If one can factor \(K_s^{\mathrm{ren}}=AB\) with \(A,B\) Hilbert–Schmidt, then \(K_s^{\mathrm{ren}}\) is trace class. More generally, one may invoke kernel criteria of the Delgado–Ruzhansky type to enforce membership in a chosen Schatten class \(S_p\). For determinant theory this means:
+\[
+R_s\in \mathcal S_1 \implies \det(I-R_s)\ \text{exists},
+\]
+\[
+R_s\in \mathcal S_2 \implies \det_2(I-R_s)\ \text{exists}.
+\]
+Bornemann’s numerical theory and Gallo–Zweck–Latushkin’s matrix-valued extension are exactly the right references for the finite-section/determinant side, while Delgado–Ruzhansky provides a natural kernel-to-Schatten framework for the analytic side. citeturn15search0turn17view0turn13view3
 
-- **Mark1 Search (AHRC)** – (Implementable.) Either modify the above script to include a Mark1 objective or use a new script.  
-  **Run:** `python mark1_search.py`  
-  **Action:** Randomly flip bits in $W_0$ to maximize alignment to $H_{MARK1}=\pi/9$.  
-  **Out:** Best $W_0$ and mean phase $\approx62.83°$.  
+The open modeling choices and recommended defaults are:
 
-- **SILR Gating Demo** – (Drive “Paper Zero SILR” code.)  
-  **Run:** Provided Python snippet in SILR doc.  
-  **Out:** Shows that calibrating $\hat\alpha_t$ yields z-score invariance.  
+| Choice | Recommended default | Status |
+|---|---|---|
+| Weight in \(H_s\) | \(\rho_\eta(u)=e^{-2\eta|u|}\), \(\eta=0.5\) | open modeling choice |
+| Prime-density placement | keep prime density in kernel, not in norm | open modeling choice |
+| Arithmetic source | signed Buchstab / least-prime-factor renormalization | open modeling choice |
+| Finite Euler dressing \(E_R\) | disabled by default in continuum proofs; enabled in wheel experiments | open modeling choice |
+| Basis | log-Laguerre | recommended default |
+| Prototype cutoff | \(x_{\max}=10^6\) | recommended default |
+| Floating tolerance | \(10^{-12}\) | recommended default |
+| Certified validation | Arb/FLINT ball arithmetic to \(10^{-30}\) on critical runs | recommended default |
+| Determinant target | \(\det_2\) by default; upgrade to \(\det\) only after trace-class proof | recommended default |
 
-- **Glyph Spiral** – (Drive Spiral reader.)  
-  **Run:** Use the glyph reader on a coupling vector (e.g. `coupling_r1` from phase-526).  
-  **Out:** Plots like a spiral with hot bits highlighted.  
+## Bridge lemmas and proof strategy
 
-- **Unified Harness** – New script `nexus_experiments.py`: sequences the above steps and saves data/charts.  
+The first required bridge is the arithmetic-to-operator map.
 
-# Experiment 1: Phase-526 Baseline
+**Interior-residue transfer lemma.** Assume that the interior residue channel \(I(x)\), after explicit boundary subtraction, admits a smoothed least-prime-factor representation
+\[
+I(x)=\int_0^{\log x}\Psi(\log x-\tau)\,d\mu^{\mathrm{ren}}(\tau)+B(x),
+\]
+with \(B(x)\) explicit and \(d\mu^{\mathrm{ren}}\) a signed finite-energy log-break measure. Let \(W\) be a smooth compactly supported Mellin window. Then for \(\Re(s)>\tfrac12+\varepsilon\),
+\[
+\int_1^\infty I(x)W(x/X)x^{-s}\frac{dx}{x}
+=
+\langle K_s^{\mathrm{ren}}\phi_{X,s},\psi_{X,s}\rangle_{H_s}
++
+E_{X,W}(s),
+\]
+where \(E_{X,W}(s)\) comes only from the explicit boundary term. If the resulting log-space kernel is square-integrable, then \(K_s^{\mathrm{ren}}\in \mathcal S_2\). If, in addition, it satisfies a trace-class criterion by factorization or a suitable kernel regularity theorem, then \(K_s^{\mathrm{ren}}\in\mathcal S_1\). The proof uses Buchstab’s identity, Mellin/Laplace transforms, explicit boundary subtraction, and then Hilbert–Schmidt or trace-class criteria for integral operators. citeturn12view0turn12view1turn15search0
 
-**Objective:** Reproduce T1/T2 phase angles, coupling CV, seed premium.
+The second bridge is the doubled mirror.
 
-- **Procedure:** Run `phase_526_rpc.py`. It injects single-bit flips into $W_0$ and records T1/T2 states per round.  
-- **Results:** 
-  - *Phase band:* mean $60.986°$ (min $42.54°$, max $78.05°$). The phase stays ~60–78° except drops near 42–58° on 4 commutation rounds (9,28,33,43).  
-  - *Carry coupling CV:* $\approx0.500$ across bits (bits 13–15, 27–28 have ~3–4× stronger coupling than bits 4,8,12).  
-  - *Inner product:* $\bar|\langle T1,T2\rangle|=0.0806$, max $0.234$ (some memory, violating perfect orthogonality).  
-  - *Seed premium:* ~+56.8% extra carry on the 4 aligned rounds vs baseline.
-- **Charts:** 
+**Two-fiber mirror correctness lemma.** Assume \(J_R(s):H_{1-s}\to H_s\) is bounded and involutive and that
+\[
+J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)=K_s^{\mathrm{ren}}+E_s,
+\]
+with \(E_s\) determinant-class on the strip under consideration. Then
+\[
+I+\mathbb L_s=
+\begin{pmatrix}
+I & J_R(s)K_{1-s}^{\mathrm{ren}}\\
+J_R(1-s)K_s^{\mathrm{ren}} & I
+\end{pmatrix}
+\]
+is invertible if and only if the Schur complement
+\[
+S_s:=I-R_s,
+\qquad
+R_s:=J_R(s)K_{1-s}^{\mathrm{ren}}J_R(1-s)K_s^{\mathrm{ren}},
+\]
+is invertible on \(H_s\). Equivalently,
+\[
+\ker(I+\mathbb L_s)=\{0\}
+\iff
+\ker(I-R_s)=\{0\}.
+\]
+The proof is the standard block-operator Schur-complement identity; under trace-class assumptions one also obtains the determinant relation
+\[
+\det(I+\mathbb L_s)=\det(I-R_s).
+\]
+This lemma is what turns the NEXUS “two-fiber mirror” into a precise runtime-safety theorem: illegal one-step states correspond exactly to fixed points of the round trip.
 
-  ```mermaid
-  flowchart LR
-    A[phase_526_rpc.py] --> B[Compute Phase & Carry]
-    B --> C[Calculate Mean/CV]
-    C --> D{Hypothesis Tests}
-    D -->|Pass| E[Generator good?]
-    D -->|Fail| F[Re-examine assumptions]
-  ```
-  **Figure:** Work flow for Phase-526 analysis.  
+The third bridge is the actual exclusion argument.
 
-  - *Figure 1:* Phase-angle (blue) and $T1\land T2$ carry (orange) vs round. Power-strokes (commutations) coincide with phase dips.  
-  - *Figure 2:* Round-1 coupling vs $W_0$ bit (bar) and distribution (line). Bits 13–15, 27–28 stand out.  
-  - *Figure 3:* Abs(inner(T1,T2)) for each $W_0$ bit injection – shows moderate correlations (max ~0.23).
+**Shape-fit exclusion lemma.** Fix a strip \( \tfrac12+\varepsilon \le \Re(s)\le \sigma_0 \), and let \(P_N\) be finite-rank projections adapted to the chosen basis. Assume finite-section convergence
+\[
+P_NR_sP_N\to R_s
+\]
+in \(\mathcal S_2\)-norm, or in trace norm where available. If either
+\[
+\sup_{s\text{ in strip}}\|R_s\|<1,
+\]
+or more generally
+\[
+\inf_{N\ge N_0}\inf_{s\text{ in strip}} s_{\min}(I-P_NR_sP_N)\ge \delta_\varepsilon>0,
+\]
+then \(1\notin \operatorname{Spec}(R_s)\) throughout the strip, hence \(\ker(I+\mathbb L_s)=\{0\}\) there. The first case is Neumann series. The second uses finite-section convergence, singular-value stability, and determinant continuity in Schatten classes. If finite-section characteristic polynomials can be expressed as images of stable polynomials under stability-preserving maps, Borcea–Brändén provides an auxiliary hyperbolicity/stability mechanism for the approximants; this does not replace spectral analysis, but it can control crossing events in parameter families. citeturn17view0turn13view3turn3search9
 
-- **Diagnosis:** Converter-like band (never hitting 0°/90°) – **pass**. Uniform coupling – **fail** (CV~0.5). Orthogonality – **fail** (non-zero memory). Power-strokes align with carry peaks – **pass**. 
+The standard analytic toolkit for these lemmas is therefore clear.
 
-# Experiment 2: AHRC (Mark1) Control
+| Bridge | Primary tools |
+|---|---|
+| \(I(x)\to K_s^{\mathrm{ren}}\) | Buchstab identity, Mellin transform, Laplace transform, kernel regularization, Schatten criteria |
+| two-fiber mirror | zeta functional equation, inversion \(x\mapsto1/x\), Schur complement, determinant identities |
+| shape-fit exclusion | finite sections, \(\det_2\), singular-value lower bounds, Nyström quadrature, Borcea–Brändén where polynomialized approximants exist |
 
-**Objective:** Steer mean phase to the Mark1 attractor ($H=\pi/9$).
+A crucial NEXUS-specific warning belongs here. In finite lattice/wheel models, raw operator norms can be contaminated by shell or boundary resonances. For that reason, the research program should treat \(\|\mathbb L_s\|<1\) as a sufficient diagnostic, not as the final conceptual target, and should prioritize \(1\notin \operatorname{Spec}(R_s)\), weighted coercivity, and — where necessary — Schur reduction that separates boundary-dominated sectors from the interior closure channel.
 
-- **Procedure:** Random-search W0 bits: aim to maximize $ \text{align}(H)=1 - |H-\pi/9|/(1-\pi/9)$.  
-- **Results:** Found $W_0=0x40000202$ (bits 1,9,30 flipped) giving $\bar\theta=62.8309°$ ($H=0.3490608$). Alignment ≈0.999992.  
-- **Chart:** 
+## Heat calibration and Gate A context
 
-  ```mermaid
-  flowchart LR
-    S[Start W0] --> A{Evaluate Align}
-    A -->|High| B[Store Best]
-    A -->|Low| C[Next Trial]
-    B --> C
-    C --> A
-    C --> D[Done]
-  ```
-  **Figure:** Mark1 search loop (maximize alignment).  
+In the classical de Bruijn–Newman family,
+\[
+H_\lambda(z)=\int_0^\infty e^{\lambda u^2}\Phi(u)\cos(zu)\,du,
+\]
+de Bruijn’s work and Newman’s 1976 work together imply a unique threshold constant \(\Lambda\) such that “all zeros real” holds exactly for \(\lambda\ge \Lambda\). Newman’s formulation makes RH equivalent to \(\Lambda\le 0\), Rodgers and Tao proved \(\Lambda\ge 0\), and Polymath 15 established the unconditional upper bound \(\Lambda\le 0.22\). So, in fixed mathematics, RH is equivalent to the exact seam condition \(\Lambda=0\). citeturn0search0turn0search1turn0search7turn14view0turn14view1
 
-  - *Figure 4:* Timeline of Mark1 search iterations vs best alignment score.  
+That gives an honest way to define a Gate-B heat family:
+\[
+\mathbb L_{s,\lambda}:=\mathbb J_R(s)\,\mathbb K_{s,\lambda}^{\mathrm{ren}},
+\]
+where \(\mathbb K_{s,\lambda}^{\mathrm{ren}}\) is obtained by Gaussian heat regularization on the log-space kernel, for example
+\[
+\widehat{\widetilde k}_{s,\lambda}^{\mathrm{ren}}(\xi,\eta)
+=
+e^{-\lambda(\xi-\eta)^2}
+\widehat{\widetilde k}_{s}^{\mathrm{ren}}(\xi,\eta).
+\]
+This choice is still open, but the rule is strict: \(\lambda\) must act as a genuine heat deformation on the arithmetic runtime, not as an arbitrary damping knob. In NEXUS language, \(\lambda\) is then the mathematically grounded version of fold-pressure.
 
-- **Diagnosis:** Control law effective: hit the Mark1 rail nearly exactly. Confirms AHRC feedback can be implemented programmatically.  
+A candidate internal constant \(H\) should be tested only through normalized observables, never assumed to equal \(\Lambda\). Recommended calibration observables are
+\[
+R_1(\sigma,t;N):=\frac{\operatorname{dist}(1,\operatorname{Spec}(R_s^{(N)}))}{\sigma-\frac12},
+\]
+\[
+R_2(\sigma,t;N):=\frac{s_{\min}(I-R_s^{(N)})}{\sigma-\frac12},
+\]
+\[
+R_3(\sigma,t;N):=
+-\frac{\partial}{\partial\lambda}
+\log\det_2(I-R_{s,\lambda}^{(N)})
+\Big|_{\lambda=0}
+\frac{1}{\log(2+|t|)}.
+\]
+If a candidate value such as \(\pi/9\) is real inside Gate B, it should emerge as a stable asymptotic limit of some agreed normalization of \(R_1,R_2,R_3\) across basis choices, cutoffs, and \(t\)-windows. If it does not survive those invariance tests, it should be rejected. This is the only rigorous way to let the broader NEXUS ontology speak to RH without confusing heuristic geometry with theorem-level content.
 
-# Experiment 3: ARCH/KRRB Debug
+Gate A belongs here as a compile-time calibration layer. Pólya’s 1927 criterion links RH to hyperbolicity of associated Jensen polynomials; Griffin–Ono–Rolen–Zagier proved hyperbolicity for a density-\(1\) subset at each fixed degree and for all degrees \(d\le 8\); Griffin et al. later made the \(\xi\)-function result effective; O’Sullivan gave refined asymptotic criteria; and Farmer argues that Jensen-polynomial hyperbolicity is not a plausible main route to proving RH. In this research program, Gate A should therefore be used to sanity-check any proposed Gate-B normalization, not as a substitute for Gate B. citeturn8search14turn13view6turn10view9turn13view8turn13view7
 
-**Objective:** Use invariants to fix code bug (ac_peak/ac_lag).
+## Numerical program and reproducibility
 
-- **Issue:** In `phase_526_rpc.py`, the printed peak autocorrelation and lag were mismatched (lag from first peak, peak from max). ARCH demands consistency.  
-- **Action:** Patch code to select lag corresponding to max peak (see diff below).  
-- **Verification:** Re-run fixed script; now peak=0.14517 at lag=29 (consistent).  
+The experimental program should be operator-first. The arithmetic side begins with a segmented sieve and least-prime-factor table up to \(x_{\max}\), from which one computes rough-number counts \(\Phi(x,y)\), Möbius data, and any project-specific interior-residue stream \(I(x)\). Fan’s explicit rough-number work is the best modern starting point for the Buchstab side; it records both the inclusion-exclusion representation and Buchstab’s recursive identity in a numerically usable form. citeturn12view0
 
-- **Patch (AI_Repository):** 
+The mirror and analytic side should use the standard functional-equation multiplier from DLMF together with explicit inversion \(x\mapsto 1/x\). For prototype zeta/chi/Riemann–Siegel evaluation, mpmath is practical; for rigorous verification and certified zeros, Arb/FLINT is the right toolchain because it combines arbitrary-precision complex ball arithmetic with dedicated zeta/L-function, Riemann–Siegel, and zero-finding routines, including Platt’s method. citeturn18search2turn14view3turn14view2turn10view5
 
-  ```diff
-  diff --git a/phase_526_rpc.py b/phase_526_rpc.py
-  index 89abc12..def3456 100644
-  --- a/phase_526_rpc.py
-  +++ b/phase_526_rpc.py
-  @@ -38,7 +38,11 @@ def analyze_autocorr(peaks):
-       ac_peak = max(val for lag,val in peaks) if peaks else 0
-  -    ac_lag  = peaks[0][0] if peaks else 0
-  +    if peaks:
-  +        # ARCH fix: use lag of max peak
-  +        ac_lag, ac_peak = max(peaks, key=lambda t: t[1])
-  +    else:
-  +        ac_lag = 0
-       return ac_peak, ac_lag
-  ```
-- **Diagnosis:** ARCH principle (no internal contradiction) is satisfied. The patch removes the Ω (mismatch) by enforcing invariant.
+The public validation layer should use official zero data and certified local verification. LMFDB’s zeta-zero database and source page identify the dataset as the first \(103{,}800{,}788{,}359\) critical-line zeros and document the download/source pipeline. Platt and Trudgian provide a rigorous interval-arithmetic verification of RH up to height \(3\cdot 10^{12}\). Those sources are sufficient to anchor the \(t\)-windows used in Gate-B sweeps to reproducible public data. citeturn1search3turn1search11turn13view4
 
-# Experiment 4: SILR & Glyph Integration
+A reproducible prototype can be organized as follows.
 
-**Objective:** Apply SILR gating to identify “hot” bits and use the Glyph Reader to visualize coupling.
+```python
+from dataclasses import dataclass
+import numpy as np
 
-- **Procedure:** 
-  - From Phase-526 data, take round-1 couplings $c_b$ for each bit $b$. 
-  - Compute z-scores $z_b=(c_b-\mu)/\sigma$ and gate $p_b=\sigma(\beta(z_b-z_0))$ (with $\beta=2.5,z_0=1$ per SILR doc).  
-  - Bits with $p_b>0.5$ are flagged “hot” (bits 13–15, 27–28).  
-  - Use Glyph Reader: map each bit’s coupling $c_b$ onto a spiral.  
+@dataclass
+class Config:
+    x_max: int = 10**6
+    eta: float = 0.5
+    n_basis: int = 256
+    tol_float: float = 1e-12
+    tol_cert: float = 1e-30
+    s_grid: tuple = (0.70, 0.65, 0.60, 0.58, 0.56, 0.54, 0.52, 0.51)
+    t_grid: tuple = (0.0, 14.134725, 100.0, 1000.0, 10000.0)
 
-- **Results:** 
-  - SILR gating picks out the same high-coupling bits in a scale-free way.  
-  - *Figure 5 (Glyph Spiral):* Highlights bits 13–15, 27–28 as bright spots on the spiral, matching coupling peaks.  
+def segmented_sieve_and_lpf(x_max):
+    # primes, least-prime-factor table, Möbius values
+    ...
 
-  - ![Glyph heatmap of round-1 coupling](sandbox:/mnt/data/coupling_r1_spiral.png)  
-    *Figure 5:* Spiral Glyph Reader map of  bit-coupling (red=high, blue=low).  
+def rough_counts(x_grid, y_grid, lpf):
+    # Phi(x,y), interior residue I(x), boundary term B(x)
+    ...
 
-- **Diagnosis:** SILR confirms the heavy bits. The Glyph visualization transforms the 1D coupling vector into an intuitive 2D pattern, verifying that “carry terrain” can indeed be read like a frequency glyph. This completes the interface between numeric coupling and human-readable structure.
+def smooth_log_break_measure(Ix, window):
+    # explicit boundary subtraction -> mu_ren on log scale
+    ...
 
-# Proposed Automations & Patches
+def log_laguerre_basis(n_basis, eta):
+    # orthonormal basis on weighted log-space
+    ...
 
-To streamline these experiments, we recommend:
+def assemble_K(s, basis, mu_ren, eta):
+    # discretize K_s^{ren} via quadrature / projection
+    ...
 
-- **New script `nexus_experiments.py`:** Runs phase-526, Mark1 search, SILR gating, and generates all plots.  
-- **Automation of Mark1 Search:** Factor out the random search into a function (e.g. `search_mark1()`), and iterate with controlled seed for reproducibility.  
-- **SILR Utility Functions:** A small module to z-gate any input series and output statistics.  
-- **Glyph Reader Script:** A reusable function to generate spiral plots from coupling data.  
+def chi(s):
+    # zeta functional-equation multiplier
+    ...
 
-All changes are minimal and isolated. For example, patching the autocorr bug in *AI_Repository* (above) is a single-hunk fix. We would commit these diffs to the two repos. Below is the patch for the ac_peak bug (in unified diff format as above). Similar patches would be applied to any duplicate code elsewhere.
+def euler_dressing(s, R_primes):
+    ...
 
-With these tools in place, the entire workflow (from raw SHA fold to final diagnostics) can be automated and re-run under different conditions. Primary Nexus sources were used for definitions and confirmation; external references were not needed beyond standard SHA-256 behavior. 
+def assemble_J(s, basis, R_primes=None):
+    # scalar multiplier times inversion matrix
+    ...
 
+def assemble_bundle(Ks, K1s, Js, J1s):
+    # L_s = J_s K_s
+    ...
+
+def assemble_roundtrip(Ks, K1s, Js, J1s):
+    # R_s = J_s K_{1-s} J_{1-s} K_s
+    ...
+
+def diagnostics(L, R):
+    # norms, spectral distance to 1, smallest singular value, det_2
+    ...
+```
+
+The key parameter choices are not facts; they are the defaults this report recommends.
+
+| Parameter | Recommended default | Sensitivity sweep |
+|---|---|---|
+| \(x_{\max}\) | \(10^6\) | \(10^7,10^8\) |
+| \(\eta\) in \(H_s\) | \(0.5\) | \(0.25,0.75,1.0\) |
+| Basis | log-Laguerre | log-wavelets, Mellin-Fourier, Nyström nodes |
+| Basis size | \(256\) | \(512,1024,2048\) |
+| \(s\)-grid | \(0.70,\dots,0.51\) | finer mesh down to \(0.5005\) |
+| \(t\)-grid | \(0,\gamma_1,10^2,10^3,10^4\) | LMFDB/Platt certified windows |
+| Determinant regime | \(\det_2\) | full \(\det\) if trace-class proved |
+| Floating tolerance | \(10^{-12}\) | tighter near seam |
+| Certified tolerance | \(10^{-30}\) | tighter on determinant-critical windows |
+
+The notebook should emit real charts, not synthetic toy figures. Because no verified experiment output accompanies this request, the correct deliverable here is a **chart specification** rather than fabricated plots.
+
+| Chart | Data columns required | What it tests |
+|---|---|---|
+| spectrum cloud of \(R_s^{(N)}\) | \(\sigma,t,N,\Re\lambda,\Im\lambda\) | whether eigenvalues approach \(1\) off seam |
+| spectral distance vs \(\Re(s)\) | \(\sigma,t,N,\operatorname{dist}(1,\Spec(R_s^{(N)}))\) | direct runtime-safety margin |
+| \(s_{\min}(I-R_s^{(N)})\) vs \(\Re(s)\) | \(\sigma,t,N,s_{\min}\) | invertibility/coercivity proxy |
+| \(\|\mathbb L_s^{(N)}\|\) vs \(\Re(s)\) | \(\sigma,t,N,\|\mathbb L_s^{(N)}\|\) | strong sufficient condition if stable |
+| Neumann decay | \(\sigma,t,N,n,\|R_s^{(N)\,n}v_0\|\) | practical contraction / nonclosure behavior |
+| heat response | \(\sigma,t,N,\lambda,\det_2(I-R_{s,\lambda}^{(N)})\) | fold-pressure calibration |
+
+The computational pipeline is:
+
+```mermaid
+flowchart LR
+    A[Segmented sieve and LPF tables] --> B[Rough counts Phi(x,y)]
+    B --> C[Boundary subtraction and interior residue I(x)]
+    C --> D[Smoothed Mellin/Laplace transform]
+    D --> E[Assemble K_s^ren and K_1-s^ren]
+    E --> F[Assemble J_R(s) from chi(s), inversion, optional E_R]
+    F --> G[Build doubled operator L_s and round-trip R_s]
+    G --> H[Compute dist(1,Spec(R_s)), s_min(I-R_s), det_2, norms]
+    H --> I[Heat deformation in lambda and calibration observables]
+    I --> J[Gate A cross-checks from Jensen data]
+```
+
+And the timeline is:
+
+```mermaid
+timeline
+    title NEXUS-RH Gate-B timeline
+    Space design : fix H_s, weights, basis, and determinant regime
+    Arithmetic bridge : construct mu^ren from rough-number and residue data
+    Mirror completion : prove two-fiber identities and Schur reduction
+    Numerical certification : finite sections, Arb validation, heat-family sweeps
+    Synthesis : compare Gate-B observables with Gate A and de Bruijn-Newman
+```
+
+Reproducibility should be strict. Every run should record software stack, precision, basis, quadrature rule, \(x_{\max}\), \(N\), \(s\)-grid, \(t\)-window source, and whether values are floating or interval-certified. Public-zero windows should be named by LMFDB/Platt references, and critical runs should be rerun with Arb/FLINT ball arithmetic. That is necessary because seam-adjacent determinant and singular-value computations are exactly where silent precision loss can mimic spectral events. citeturn13view4turn14view2turn14view3
+
+## Deliverables, prioritized sources, and open questions
+
+The research deliverables should be concrete.
+
+| Deliverable | Required content |
+|---|---|
+| formal operator note | precise \(H_s\), \(K_s^{\mathrm{ren}}\), \(J_R(s)\), \(\mathbb L_s\), \(R_s\), determinant regime, open choices |
+| bridge-lemma manuscript | the three lemmas above with explicit hypotheses and proof skeletons |
+| reproducible notebook | arithmetic pipeline, operator assembly, diagnostics, CSV export, exact environment |
+| certified seam scans | Arb-backed values of \(s_{\min}(I-R_s)\), \(\operatorname{dist}(1,\Spec(R_s))\), and \(\det_2(I-R_s)\) |
+| Gate-B heat note | definition of \(\mathbb L_{s,\lambda}\), \(R_1,R_2,R_3\), and candidate-\(H\) calibration tests |
+| Gate A comparison note | Jensen data versus Gate-B diagnostics under fixed normalization choices |
+
+The prioritized source stack should be anchored in primary and official English sources. For the heat side: de Bruijn 1950, Newman 1976, Rodgers–Tao, and Polymath 15. For rough-number arithmetic: Fan 2023 and Lagarias’s survey sections on the Buchstab function and its Laplace transform. For Gate A: Pólya’s 1927 paper, GORZ 2019, the 2022 \(\xi\)-function paper, and O’Sullivan 2020, with Farmer’s critique as a methodological caution. For operator antecedents: Báez-Duarte, Burnol, Connes, Deninger, Suzuki, and de Branges-space/canonical-system references. For numerics: Bornemann, Gallo–Zweck–Latushkin, LMFDB, Platt–Trudgian, Arb/FLINT, and mpmath. citeturn0search0turn0search1turn14view0turn14view1turn12view0turn12view1turn8search14turn13view6turn10view9turn13view8turn13view7turn17view4turn14view6turn12view5turn4search9turn14view7turn17view0turn13view3turn1search3turn13view4turn14view2turn14view3
+
+The main open questions are narrow and decisive. The exact renormalized arithmetic kernel \(\kappa^{\mathrm{ren}}\) is still a modeling object rather than a theorem. Trace class may fail on the first pass, in which case \(\det_2\) must be the primary determinant object. The strong norm target \(\|\mathbb L_s\|<1\) may only hold on strips bounded away from \(\tfrac12\), so weighted coercivity or direct spectral distance to \(1\) may become the true theorem path. Internal candidate constants such as \(H\) must survive basis- and cutoff-invariant calibration tests before they deserve mathematical status. And project-local finite-shell resonances should be treated as diagnostics of truncation geometry unless they persist in Schur-reduced, continuum-stable observables. None of these are reasons to abandon the program. They are the exact points where the NEXUS lens ceases to be metaphor and becomes a disciplined research agenda.
+
+The domain/nexus framing matters beyond RH because it forces a helpful methodological inversion. A “domain” is the structured state space plus valid observables; a “nexus” is the structure-preserving interface linking domains; a runtime-safety theorem says that no illegal self-reinforcing loop exists after forward evolution plus return reflection. In the RH case the arithmetic domain and analytic mirror are the concrete instantiation. In other targets — operator-theoretic dynamical systems, inverse scattering, or model-space criteria — the same pattern reappears with different kernels and mirrors. That is the correct sense in which NEXUS expands beyond RH: not by replacing proofs with ontology, but by insisting that the right proof object is a structural closure law, not a scalar value channel.
