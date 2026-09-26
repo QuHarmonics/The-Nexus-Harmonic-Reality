@@ -1,0 +1,101 @@
+{
+  "exported_at": "2026-09-10T09:37:28.171Z",
+  "chat_count": 4,
+  "chats": [
+    {
+      "title": "Finding direction in programming fundamentals",
+      "uuid": "df0fe312-dfb5-4736-84ef-c3bfa7af106e",
+      "url": "https://claude.ai/chat/df0fe312-dfb5-4736-84ef-c3bfa7af106e",
+      "folder": "Finding direction in programming fundamentals",
+      "messages": 72,
+      "artifacts": 0,
+      "uploaded_files": 32,
+      "generated_files": 10,
+      "warnings": [
+        "Could not download uploaded file: The Resolution of Hydrodynamic Singularities via Recursive Harmonic Architecture_ A Comprehensive Treatise on the Application of the KRRB Framework to the Navier-Stokes Existence and Smoothness Problem.docx",
+        "Could not download uploaded file: Recursive_Harmonic_Analysis_of_Navier–Stokes_Smoothness.md",
+        "Could not obtain generated file: ns_engine.py",
+        "Could not obtain generated file: fig1_locked_fraction_scaling.png",
+        "Could not obtain generated file: ns_tests.py",
+        "Could not obtain generated file: fig1_threshold_dependence.png",
+        "Could not obtain generated file: ns_engine_thresholds.py"
+      ]
+    },
+    {
+      "title": "Getting back on track",
+      "uuid": "a259d91d-3a45-464c-9ea6-68c94a30880b",
+      "url": "https://claude.ai/chat/a259d91d-3a45-464c-9ea6-68c94a30880b",
+      "folder": "Getting back on track",
+      "messages": 274,
+      "artifacts": 0,
+      "uploaded_files": 73,
+      "generated_files": 6,
+      "warnings": [
+        "Could not download uploaded file: The Boundary Is the Locus.docx",
+        "Could not download uploaded file: So what are the full law set now.docx",
+        "Could not download uploaded file: Two Origins.docx",
+        "Could not download uploaded file: The Sphere Is an Orbit.docx",
+        "Could not download uploaded file: The Universal Aperture Transport System.docx",
+        "Could not download uploaded file: Microsoft Word - Constraint, Dual Wave, and Reality.docx.docx",
+        "Could not download uploaded file: The Phase Hairpin_ Projective Geometry of SHA-256 Round Dynamics and the Dual-Wave Rotation Quantum.docx",
+        "Could not download uploaded file: The Unified Substrate Inverting the Universe as a Closed-Loop Transistor Tri-Array.md",
+        "Could not download uploaded file: tri_transistor_stream_kernel_complete (1).md",
+        "Could not download uploaded file: The Unified Substrate_ Inverting the Universe as a Closed-Loop Transistor Tri-Array.docx",
+        "Could not download uploaded file: tri_transistor_stream_kernel_complete (1).docx",
+        "Could not download uploaded file: Tri-Transistor Stream Kernel and Residue Route Symmetry.docx",
+        "Could not obtain generated file: Reader_Surplus_Section_X_What_the_Reader_Recovers.docx",
+        "Could not obtain generated file: verify_section_X.py"
+      ]
+    },
+    {
+      "title": "Untitled chat",
+      "uuid": "1ccd0278-c09e-4868-a9a0-732c4fdcee99",
+      "url": "https://claude.ai/chat/1ccd0278-c09e-4868-a9a0-732c4fdcee99",
+      "folder": "Untitled chat",
+      "messages": 125,
+      "artifacts": 0,
+      "uploaded_files": 33,
+      "generated_files": 2,
+      "warnings": [
+        "Could not download uploaded file: The_Boundary_Is_The_Locus (2).docx",
+        "Could not download uploaded file: The_Sphere_Is_An_Orbit (3).docx",
+        "Could not download uploaded file: The Universal Aperture Transport System.docx",
+        "Could not download uploaded file: The Boundary Is the Locus.docx",
+        "Could not download uploaded file: So what are the full law set now.docx",
+        "Could not download uploaded file: Two Origins.docx",
+        "Could not download uploaded file: The Sphere Is an Orbit.docx"
+      ]
+    },
+    {
+      "title": "From potential to matter through transformation and boundary",
+      "uuid": "66b9b1f2-4821-4d22-ba0d-9a8e417becfb",
+      "url": "https://claude.ai/chat/66b9b1f2-4821-4d22-ba0d-9a8e417becfb",
+      "folder": "From potential to matter through transformation and boundary",
+      "messages": 290,
+      "artifacts": 0,
+      "uploaded_files": 139,
+      "generated_files": 15,
+      "warnings": [
+        "Could not download uploaded file: The Topological Architecture of Computational Transformations1.docx",
+        "Could not download uploaded file: The Architecture of Continuation.docx",
+        "Could not download uploaded file: The Implicit State Space Paradigm.docx",
+        "Could not download uploaded file: A Unified Algebraic.docx",
+        "Could not download uploaded file: The Topological Architecture of Hexadecimal Space.docx",
+        "Could not download uploaded file: Understanding language through contextual intent_Byte1-9.md",
+        "Could not download uploaded file: The_Nesus_4_Framework - Byte1 - The_First_Fold_Of_Identity_–_A_Unified_Recursive_Identity_System.md",
+        "Could not download uploaded file: Geometry, Cognition, and Universal Memory.docx",
+        "Could not download uploaded file: Byte 5 · Phase Reflection and Scar Memory.docx",
+        "Could not download uploaded file: Breakthrough realization_Memory_by_Collapse_Engines_18-24.docx",
+        "Could not download uploaded file: Memory loss and universal entropy_The_Read_Budget_of_an_L_Function_ChristoffelRankRead.docx",
+        "Could not download uploaded file: Memory loss and universal entropy_The_Clock_Is_in_the_Frame_the_Wall_Is_Not_v1.docx",
+        "Could not download uploaded file: Memory loss and universal entropy_Christoffel_Rank_Read_PartIIB_Wall_Model_v1.docx",
+        "Could not download uploaded file: Memory by Collapse_ One-Fold Writing, Settling Recall, and the Direction of Thought.docx",
+        "Could not download uploaded file: The Boundary Is the Locus.docx",
+        "Could not download uploaded file: The Universal Aperture Transport System.docx",
+        "Could not download uploaded file: The_Sphere_Is_An_Orbit (2).docx",
+        "Could not obtain generated file: horizon.py",
+        "Could not obtain generated file: local.py"
+      ]
+    }
+  ]
+}
