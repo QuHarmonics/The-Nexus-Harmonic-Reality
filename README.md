@@ -15,7 +15,7 @@ A living research program exploring computation as a self-organizing, reversible
 [![Academia](https://img.shields.io/badge/Academia-Research_Profile-414141?style=for-the-badge)](https://independent.academia.edu/ClaudReins)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--3128--8828-A6CE39?style=for-the-badge)](https://orcid.org/0009-0003-3128-8828)
 
-**[Read the research](#where-to-start)** · **[Explore the code](#browse-the-current-archive)** · **[Access the full Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing)** · **[Repository roadmap](docs/REPOSITORY_MAP.md)**
+**[Start with the core](The%20Nexus%20Domain/)** · **[Explore research areas](#browse-the-research-areas)** · **[Public Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing)**
 
 </div>
 
@@ -64,13 +64,11 @@ Predictions, source code, correction logs, and execution traces are retained whe
 
 ## Where to start
 
-**If you are new to NEXUS:** begin with the [reader's guide](docs/START_HERE.md). It gives a path through the ring, clock, reader–field machine, and compiler without requiring you to read the entire publication history first.
+**Start with the native machine, not the archive.** The [NEXUS Domain](The%20Nexus%20Domain/) contains the rings-forward research path. Its [published papers](The%20Nexus%20Domain/Published%20Papers/) include *Only Addressable*, *Against Its Own Reverse*, *One Inverter*, *Retained Continuation*, and *Exact Algebra of Retained Continuation*.
 
-**If you want the technical record:** use the [published paper archive](Published%20Papers%20PDF) and [Markdown paper collection](Published%20Papers%20-%20MD). The canonical publication record is the DOI-bearing version of each paper where available; repository copies may be working exports or historical snapshots.
+Explore the [nine research areas](#browse-the-research-areas) by subject. Each area is organized the same way—**Published Papers, Code, Markdown, Transcripts**—so papers, working sources, implementations and research history have clear roles.
 
-**If you want to run something:** start in the [newer Jupyter notebooks](Jupyter-Notebooks-Newest) or [Python programs](Python%20Code). Individual notebooks vary in dependencies and completeness: an exploratory notebook is not automatically a reproducibility certificate.
-
-**If you want to follow the evolution of the framework:** the [notebook dump](Jupyter-Notebook-Dump), [earlier notebooks](Jupyter-Notebooks-Sorted), [thematic theses](Mini%20Thesis), and [research transcripts](Transcripts) preserve the investigation as it unfolded.
+For the broader historical corpus and earlier investigations, use the [public Google Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing). The current GitHub tree is a curated structure, not a complete copy of every old working file.
 
 ## A center-out picture
 
@@ -87,27 +85,27 @@ flowchart LR
 
 The native step is the core operation. Adapters observe it through declared interfaces rather than changing its laws to force an external match.
 
-## Browse the current archive
+## Browse the research areas
 
-This repository began as an **open research archive**. Its existing folders are retained during the first consolidation pass so historical links and evidence are not broken.
+The repository is now organized by **research domain**, not file age or format. Each area has dedicated sections for **Published Papers · Code · Markdown · Transcripts**. Sections may begin as empty, documented entry points; content is added deliberately.
 
-| Current folder | What it contains | Long-term destination |
-|:--|:--|:--|
-| [`Published Papers PDF`](Published%20Papers%20PDF) | PDF manuscript copies | `papers/published/` and DOI index |
-| [`Published Papers - MD`](Published%20Papers%20-%20MD) | Markdown manuscripts and exports | `papers/sources/` |
-| [`Jupyter-Notebooks-Newest`](Jupyter-Notebooks-Newest) | More recent notebooks | `projects/` or `lab/active/` |
-| [`Jupyter-Notebooks-Sorted`](Jupyter-Notebooks-Sorted) | Earlier categorized notebooks | `archive/notebooks/` and selected `projects/` |
-| [`Jupyter-Notebook-Dump`](Jupyter-Notebook-Dump) | Raw notebook history | `archive/raw/` |
-| [`Python Code`](Python%20Code) | Scripts, runners and prototypes | `projects/*/src/` and `lab/` |
-| [`Newest MD Files`](Newest%20MD%20Files) | Notes, evolving manuscripts and reports | `lab/working/` |
-| [`Mini Thesis`](Mini%20Thesis) | Subject-based research documents | `research/topics/` |
-| [`Transcripts`](Transcripts) | Recorded research dialogue | `records/dialogue/` / Drive |
+| Research area | Scope |
+|:--|:--|
+| [**The Nexus Domain**](The%20Nexus%20Domain/) | The native machine: structure, continuation, memory, closure, and return. |
+| [**Artificial Inteligence**](Artificial%20Inteligence/) | AI as an interface to a deterministic, auditable compiler. |
+| [**Computation**](Computation/) | Algorithms read as reversible transformations and constrained routes. |
+| [**Cryptography**](Cryptography/) | SHA-256 and related systems studied through algebra, carries, and geometry. |
+| [**Physics**](Physics/) | Physical comparators for a domain defined without physical constants. |
+| [**Quantum Computation**](Quantum%20Computation/) | Reversibility, phase, operator structure, and information flow. |
+| [**Biology**](Biology/) | Constraint, sequence, and return paths in living systems. |
+| [**Chemistry**](Chemistry/) | Patterns of transformation in molecular and reaction systems. |
+| [**Material Science**](Material%20Science/) | Structure, defects, phases, and the cost of transformation. |
 
-The proposed organization and migration rules are in [**Repository Map**](docs/REPOSITORY_MAP.md). **Nothing in the archive is automatically discarded because it is old.**
+**Start here:** [The Nexus Domain](The%20Nexus%20Domain/) is the foundational layer. The other subjects are related constructions and applications; they should not be mistaken for the core's proof obligations.
 
 ## Publications, notebooks, and raw history
 
-NEXUS was developed through iterative, high-velocity exploration. The papers are milestones of that unfolding, not a claim that every earlier draft is the current formulation. The archive deliberately keeps old work, failed routes, corrections, code, notebooks, and AI-assisted research dialogue accessible for inspection.
+NEXUS was developed through iterative, high-velocity exploration. The papers are milestones of that unfolding, not a claim that every earlier draft is the current formulation. Earlier work, failed routes, correction logs, code, notebooks, and AI-assisted research dialogue are part of the traceable record; some remain in Git history or the linked Drive archive rather than the current curated tree.
 
 - **Published record:** use the paper's permanent DOI/Zenodo entry when citing a specific version.
 - **Executable record:** code and traces show exactly which inputs and domains were checked.
