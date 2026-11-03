@@ -1,0 +1,7 @@
+NEXUS SEALED STRUCTURAL PREDICTION — PLANAR WRAPPER
+
+Prediction: Keep the same ordered Dirac transformation D F D and replace only the spherical wrapper F(r) with a planar wrapper F(z). The generated orientation remainder is proportional to F'(z)(-sigma_x p_y + sigma_y p_x); it is not a central L dot S operator. If F is constant, the commutator remainder vanishes.
+
+Way home: From the transverse spin-momentum coefficient, identify grad(F) cross p; infer the wrapper orientation; reconstruct F' and integrate only after retaining the boundary anchor. Do not substitute eigenvalue or spectrum data for the operator map.
+
+Scope: exact symbolic prediction from D = sigma dot p and [D,F] = -i hbar sigma dot grad(F). No dataset linked; not a prediction of a measured nuclear energy.

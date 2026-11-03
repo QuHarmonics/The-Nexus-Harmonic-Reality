@@ -1,0 +1,12 @@
+NEXUS sealed prediction — BBP lane and SHA round in difference coordinates
+Seal written before the run on 2026-10-17.
+
+P1. The 16-bit BBP lane tuple (q1,q4,q5,q6) -> 7-bit two's-complement contribution 4*q1 - 2*q4 - q5 - q6 will have a Boolean Möbius table whose second transform reconstructs all 65,536 inputs exactly. Evaluating the ANF coefficients on every lane tuple used by the finite BBP rational-ring stack will reproduce the same column totals as direct weighted contributions; the propagated base-16 digits will match 64 fractional hexadecimal digits from an independent Machin computation.
+
+P2. The truth-table compiler M, M^2=I, will compile Ch, Maj, full-adder, and full-subtractor bit operators exactly. Lookup tables reconstructed from the difference coefficients will match their defining truth tables on all 8 local inputs each.
+
+P3. The compiled bit operators will produce the same SHA-256 round as an independent reference implementation on 1,000 deterministic random (state, W_t, K_t) cases. For a fixed one-block padded message, the compiled 64-round state path plus feed-forward will match hashlib, and the compiled inverse round path with known W_t/K_t will return each of 256 selected initial-state variants exactly.
+
+P4. For the actual SHA-256 state map restricted to an eight-difference subdomain (one selected bit from each of its eight 32-bit state words), direct state tables after 0, 1, 2, 4, 8, 16, 32, and 64 rounds and after feed-forward will be transformed to coefficient space and reconstructed exactly. Coefficient degree is bounded by input LEN=8; the report will retain the full per-layer support/leak readouts rather than claiming a digest-only inverse.
+
+P5. This run does not enumerate the full 256-bit SHA state truth table and does not claim that the digest alone identifies the original message. It does run the same exact difference transform at the BBP lane-fold and local SHA-gate levels, with the real operators composed forward and unwound where their drivers are retained.

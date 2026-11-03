@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "finite_widths": 19,
+  "finite_palindrome_addresses": 4090,
+  "finite_dp_spot_checks": 122,
+  "wide_scalar_dp_checks": 40,
+  "seconds": 9.899682979999852,
+  "results": "/mnt/data/palindrome_half_width_independent_review/results/independent_placement_crosscheck_results.json"
+}

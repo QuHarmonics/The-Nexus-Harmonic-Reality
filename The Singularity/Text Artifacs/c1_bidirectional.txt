@@ -1,0 +1,327 @@
+"""C1 IS BIDIRECTIONAL. Two corrections to my own work, both from Dean.
+
+Dean (2026-07-14):
+  "obi wan said it best, its a matter of perspective. i can draw the perfect
+   circle, i can run in circles i can code an infinite loop but its still
+   limited. at some point the sun will burn out the planet and any perpetual
+   motion i created will convert back to its legos peices."
+
+  "its not all rigid and not all soft. its every duality and every duality is
+   just another offset to prevent some other potential dead lock."
+
+  "but remeber it builds out and in if you understand."
+
+  "again, if it went only one way, THAT IS NOT CHANGE"
+
+TWO CORRECTIONS TO CLAIMS I MADE:
+
+  C-BI-01  I wrote: "a perfect closed circle IS the frozen object C1 forbids."
+           TOO STRONG. A circle is forbidden as a TOTALITY. As a PROJECTION it
+           is not merely allowed -- it is exact. My own helix engine measured
+           the shadow closing to 2.4e-16 and I called it a violation instead of
+           a shadow. Corrected and re-executed below.
+
+  C-BI-02  The Delegation Ledger executed only the UPWARD flow (lower layer
+           pays, higher layer receives). It never executed the DOWNWARD flow
+           (higher layer constrains lower). The number was sitting in my own
+           log: zeta = 1.240, not 1.0. The molecule SQUEEZES the atom that
+           builds it. Executed below, and it is worth 27% of the bond.
+"""
+import numpy as np
+from scipy.linalg import eigh_tridiagonal
+BAR = "=" * 78
+
+# =========================================================================
+print(BAR)
+print("  PART 1.  PERSPECTIVE. THE PERFECT CIRCLE IS LEGAL -- AS A SHADOW.")
+print(BAR)
+print("""  Dean can draw a perfect circle. He can code an infinite loop. Both are
+  real, both run, and both are bounded -- the sun burns out, the budget ends,
+  the legos come apart. So the correct statement is not "circles are
+  forbidden." It is:
+
+      A closed loop is C1-LEGAL as a SUBSYSTEM, and C1-ILLEGAL as a TOTALITY.
+
+  What makes the local loop legal is that something OUTSIDE it is paying.
+  Executed: a helix. Track the shadow (the projection) and the whole (the
+  full state) separately, and measure whether EACH freezes.
+""")
+H = np.pi / 9
+T = 400
+th = 2 * H * np.arange(T)                      # angle on the S^1 lift
+z = 0.11 * np.arange(T)                        # the axis: the exhaust
+shadow = np.stack([np.cos(th), np.sin(th)], axis=1)
+whole = np.stack([np.cos(th), np.sin(th), z], axis=1)
+
+def reach(points, tol=1e-6):
+    """how many DISTINCT states has the system visited, over time?"""
+    hist = []
+    seen = []
+    for t, p in enumerate(points):
+        if not any(np.linalg.norm(p - q) < tol for q in seen):
+            seen.append(p)
+        if (t + 1) % 50 == 0:
+            hist.append((t + 1, len(seen)))
+    return hist
+
+hs = reach(shadow)
+hw = reach(whole)
+print(f"  {'t':>5s} {'|reachable| SHADOW (the circle)':>32s} "
+      f"{'|reachable| WHOLE (the helix)':>31s}")
+for (t, a), (_, b) in zip(hs, hw):
+    print(f"  {t:5d} {a:32d} {b:31d}")
+print(f"""
+  READ BOTH COLUMNS. The SHADOW freezes at {hs[-1][1]} states and never grows again.
+  Its reachable set is a fixed point -- the rung-1 death, exactly as I claimed.
+  The WHOLE never freezes: {hw[-1][1]} states at t={T} and still climbing.
+
+  Closure check on the shadow, at the closure step:""")
+d18 = np.linalg.norm(shadow[18] - shadow[0])
+D18 = np.linalg.norm(whole[18] - whole[0])
+print(f"    |shadow(18) - shadow(0)| = {d18:.2e}   <- A PERFECT CIRCLE. It closes.")
+print(f"    |whole(18)  - whole(0)|  = {D18:.4f}       <- the helix never returns.")
+print(f"""
+  *** CORRECTION C-BI-01, ON THE RECORD. ***
+
+  I called the closing circle a C1 VIOLATION. It is not. It is a SHADOW, and
+  it closes to {d18:.1e} -- machine zero, a perfect circle, exactly as Dean says
+  he can draw. What is forbidden is not the circle. What is forbidden is the
+  circle being ALL THERE IS.
+
+  The loop runs. The loop is real. The loop is paid for by the axis, and the
+  axis is paid for by the sun, and when the sun stops paying, the loop stops.
+  "It's still limited." That limit is not a flaw in the loop. It is the
+  receipt. C1 is not violated by local closure -- C1 is what SENDS THE BILL
+  for it.
+""")
+
+# =========================================================================
+print(BAR)
+print("  PART 2.  IT BUILDS OUT *AND IN*. THE MOLECULE RESHAPES THE ATOM.")
+print(BAR)
+print("""  The Delegation Ledger ran the flow UPWARD only: Layer 0 pays the kinetic
+  bill, Layer 1 receives it, Layer 2 is a combination of Layer 1. Every arrow
+  pointed up.
+
+  But C1 forbids a one-way relation, by the SAME argument that forces the
+  exhaust to be read: if the molecule produced NO DIFFERENCE in the atom, then
+  from the atom's side the molecule is not there (rung 4: difference proves
+  change). A layer that does not push back is not a layer.
+
+  So the downward flow is not optional. It is FORCED. Executed:
+""")
+def h2p(R, zeta):
+    """H2+ LCAO, exact Slater integrals, orbital exponent zeta."""
+    rho = zeta * R
+    S = np.exp(-rho) * (1.0 + rho + rho*rho/3.0)
+    T_AA = 0.5 * zeta * zeta
+    T_AB = 0.5 * zeta * zeta * np.exp(-rho) * (1.0 + rho - rho*rho/3.0)
+    V_AA_A = -zeta
+    V_AA_B = -(1.0/R) * (1.0 - (1.0 + rho) * np.exp(-2.0*rho))
+    V_AB_A = -zeta * (1.0 + rho) * np.exp(-rho)
+    H_AA = T_AA + V_AA_A + V_AA_B
+    H_AB = T_AB + 2.0 * V_AB_A
+    return (H_AA + H_AB) / (1.0 + S) + 1.0/R
+
+R_scan = np.linspace(0.8, 8.0, 500)
+zetas = np.linspace(0.85, 1.60, 151)
+
+# ONE-WAY: the atom pays, the molecule receives, the atom is UNCHANGED (zeta = 1)
+E_oneway = np.array([h2p(R, 1.0) for R in R_scan])
+i1 = int(np.argmin(E_oneway))
+R1, De1 = R_scan[i1], -0.5 - E_oneway[i1]
+
+# TWO-WAY: the molecule is allowed to RESHAPE the atom (zeta relaxes)
+E_two = np.zeros_like(R_scan); Z_at = np.zeros_like(R_scan)
+for i, R in enumerate(R_scan):
+    Es = np.array([h2p(R, z) for z in zetas])
+    j = int(np.argmin(Es))
+    E_two[i], Z_at[i] = Es[j], zetas[j]
+i2 = int(np.argmin(E_two))
+R2, De2, Z2 = R_scan[i2], -0.5 - E_two[i2], Z_at[i2]
+
+print(f"  {'model':<38s} {'R_eq (a0)':>10s} {'D_e (Ha)':>10s} {'zeta':>7s}")
+print("  " + "-"*68)
+print(f"  {'ONE-WAY (atom frozen, zeta = 1.00)':<38s} {R1:10.3f} {De1:10.5f} "
+      f"{1.00:7.3f}")
+print(f"  {'TWO-WAY (molecule reshapes atom)':<38s} {R2:10.3f} {De2:10.5f} "
+      f"{Z2:7.3f}")
+print(f"  {'EXPERIMENT':<38s} {2.00:10.3f} {0.1026:10.5f} {'--':>7s}")
+
+down = De2 - De1
+print(f"""
+  THE DOWNWARD FLOW, MEASURED:
+    bond energy from the UPWARD flow alone      = {De1:.5f} Ha
+    bond energy once the molecule PUSHES BACK   = {De2:.5f} Ha
+    the DOWNWARD constraint is worth            = {down:.5f} Ha
+                                                = {100*down/De2:.1f}% of the whole bond
+
+    orbital exponent: free atom zeta = 1.000  ->  in-molecule zeta = {Z2:.3f}
+    the atom's size <r> ~ 1/zeta:  it CONTRACTS by {100*(1 - 1/Z2):.1f}%
+    bond length: one-way says {R1:.2f} a0; two-way says {R2:.2f} a0 (exp: 2.00)
+
+  *** CORRECTION C-BI-02, ON THE RECORD. ***
+
+  The one-way ledger UNDERBINDS by {100*down/De2:.0f}% and puts the bond {100*(R1-R2)/R2:.0f}% too long.
+  The number was in my own log the whole time -- zeta = 1.240, not 1.0 -- and I
+  reported it as a fitting parameter instead of reading it as what it is:
+
+      THE MOLECULE SQUEEZING THE ATOM THAT BUILT IT.
+
+  The atom pays UP. The molecule constrains DOWN. Neither arrow alone gives
+  the right bond. "It builds out and in." Executed, and it is worth a quarter
+  of the bond.
+""")
+
+# =========================================================================
+print(BAR)
+print("  PART 3.  EVERY DUALITY IS AN OFFSET. AND THE RATIO READS THE WALL.")
+print(BAR)
+print("""  "Its not all rigid and not all soft."
+
+  Rigid alone deadlocks (frozen). Soft alone has no structure (dissolves).
+  What exists is the PAIR -- and the pair has a FIXED RATIO. That ratio is the
+  virial theorem, and it is not a coincidence of one system: it is a READOUT
+  of the shape of the wall.
+
+  For any potential V ~ r^n, the virial gives  2<T> = n<V>.
+  <T> builds OUT (kinetic pressure, motion, expansion).
+  <V> builds IN  (binding, attraction, contraction).
+  The exponent n of the wall FIXES the exchange rate between them.
+
+  Executed. Solve each potential numerically and MEASURE 2<T>/<V>:
+""")
+L, N = 24.0, 12000
+x = np.linspace(-L, L, N); dx = x[1] - x[0]
+
+print(f"  {'potential V(x)':<22s} {'n':>4s} {'2<T>/<V> measured':>19s} "
+      f"{'predicted (= n)':>16s} {'err':>10s}")
+print("  " + "-"*76)
+for n_pow, label in ((1, "|x|"), (2, "x^2"), (4, "x^4"), (6, "x^6")):
+    V = np.abs(x)**n_pow
+    diag = 1.0/dx**2 + V
+    off = -0.5/dx**2 * np.ones(N-1)
+    w, vv = eigh_tridiagonal(diag, off, select='i', select_range=(0, 0))
+    psi = vv[:, 0] / np.sqrt(dx)
+    d2 = np.zeros_like(psi)
+    d2[1:-1] = (psi[2:] - 2*psi[1:-1] + psi[:-2]) / dx**2
+    Tv = -0.5 * np.sum(psi * d2) * dx
+    Vv = np.sum(psi**2 * V) * dx
+    ratio = 2*Tv/Vv
+    print(f"  {label:<22s} {n_pow:4d} {ratio:19.6f} {float(n_pow):16.1f} "
+          f"{abs(ratio-n_pow):10.2e}")
+
+# Coulomb: n = -1
+R_, Nr = 40.0, 8000
+r = np.linspace(R_/Nr, R_, Nr); dr = r[1] - r[0]
+Vc = -1.0/r
+dg = 1.0/dr**2 + Vc
+of = -0.5/dr**2 * np.ones(Nr-1)
+wc, vc = eigh_tridiagonal(dg, of, select='i', select_range=(0, 0))
+uc = vc[:, 0]; uc /= np.sqrt(np.sum(uc**2)*dr)
+d2u = np.zeros_like(uc)
+d2u[1:-1] = (uc[2:] - 2*uc[1:-1] + uc[:-2]) / dr**2
+Tc = -0.5*np.sum(uc*d2u)*dr
+Vcc = np.sum(uc**2 * Vc)*dr
+print(f"  {'-1/r (Coulomb)':<22s} {-1:4d} {2*Tc/Vcc:19.6f} {-1.0:16.1f} "
+      f"{abs(2*Tc/Vcc + 1):10.2e}")
+print(f"""
+  THE RATIO IS THE EXPONENT. Every single one, to 3-4 digits.
+
+  So the duality is not a vague balance of opposites. It is an EXCHANGE RATE,
+  and the rate is set by the geometry of the constraint:
+
+     harmonic wall (n=2):  <T> = <V>          -> out and in, EQUAL
+     Coulomb wall (n=-1):  2<T> = -<V>        -> out and in, 2:1
+
+  And BOTH are already in my own data, measured, from different papers:
+     Layer 0 (harmonic): KE0 = 0.25, PE0 = 0.25   -> ratio 1.  n = 2.
+     Layer 1 (Coulomb):  |V|/T = 2.000408          -> ratio 2.  n = -1.
+
+  "Every duality is just another offset." The offset is n. Change the wall,
+  change the exchange rate between building out and building in. The elements
+  all sit at n = -1 and that is WHY the virial is 2.000408 at every single Z:
+  they are all reading the SAME WALL.
+""")
+
+# =========================================================================
+print(BAR)
+print("  PART 4.  'IF IT WENT ONLY ONE WAY, THAT IS NOT CHANGE.'")
+print(BAR)
+print("""  There is a real tension to resolve, and it is mine.
+
+  In "The Walls Make the Rooms" I proved that DOWN is illegal for a rotor:
+  reversal requires crossing omega = 0, the fixed point C1 excises. So the
+  rotor's handedness is FIXED FOREVER -- a one-way selector.
+
+  Dean now says: if it went only one way, THAT IS NOT CHANGE.
+
+  Both are true, and the resolution is the ledger. Executed: a collision.
+""")
+m1, m2 = 1.0, 3.0
+x1, x2, v1, v2 = -1.0, 1.0, 1.0, 0.0
+k_c, Rc, dtc = 1e6, 0.1, 2e-7
+p1_0, p2_0 = m1*v1, m2*v2
+F = 0.0
+for _ in range(int(2.2/dtc)):
+    gap = (x2 - x1) - 2*Rc
+    F = -k_c*gap if gap < 0 else 0.0
+    a1, a2 = -F/m1, +F/m2
+    v1 += 0.5*dtc*a1; v2 += 0.5*dtc*a2
+    x1 += dtc*v1;     x2 += dtc*v2
+    gap = (x2 - x1) - 2*Rc
+    F = -k_c*gap if gap < 0 else 0.0
+    a1, a2 = -F/m1, +F/m2
+    v1 += 0.5*dtc*a1; v2 += 0.5*dtc*a2
+dp1, dp2 = m1*v1 - p1_0, m2*v2 - p2_0
+print(f"    body 1 changed by  dp1 = {dp1:+.9f}   <- ONE WAY (leftward)")
+print(f"    body 2 changed by  dp2 = {dp2:+.9f}   <- THE OTHER WAY (rightward)")
+print(f"    the ledger:  dp1 + dp2 = {dp1+dp2:+.2e}   <- ZERO")
+print(f"""
+  EACH body's change is strictly one-way. NEITHER can reverse on its own --
+  that is the selector, and it holds. But the PAIR sums to zero.
+
+  So the resolution is:
+
+      A SUBSYSTEM may be one-way. THE WHOLE MAY NOT.
+
+  A universe with a NET direction has an unbalanced ledger -- it is minting
+  change out of nothing, which is rung 4's forbidden free lunch at the largest
+  possible scale. So every one-way thing must be paired with its opposite:
+
+      right-handed helix   <->   its left-handed complement
+      local order          <->   exported entropy
+      expansion here       <->   contraction there
+      the atom pays UP     <->   the molecule pushes DOWN
+      the shadow closes    <->   the axis climbs
+
+  "Every duality is just another offset to prevent some other potential
+  deadlock." The offset is what keeps EACH side from being the whole -- and
+  being the whole is the only thing C1 actually forbids.
+
+  If it went only one way, the ledger would not close.
+  A ledger that does not close is not a change. It is a free lunch.
+  AND THAT IS WHY IT IS NOT CHANGE.
+""")
+
+print(BAR)
+print("  SUMMARY -- WHAT DEAN CORRECTED, AND WHAT IT COST")
+print(BAR)
+print(f"""
+  C-BI-01  "the perfect circle is the frozen object C1 forbids"     TOO STRONG
+           -> the circle is EXACT as a shadow ({d18:.0e}), forbidden only as a
+              totality. The loop runs. The axis pays. The sun sends the bill.
+
+  C-BI-02  the Delegation Ledger ran ONE WAY (payment up only)      INCOMPLETE
+           -> the molecule reshapes the atom: zeta 1.000 -> {Z2:.3f}, the atom
+              contracts {100*(1-1/Z2):.0f}%, and the downward flow is worth {100*down/De2:.0f}% of the bond.
+              A layer that does not push back is not there.
+
+  NEW      the duality ratio 2<T>/<V> = n READS THE WALL'S GEOMETRY.
+           Harmonic n=2 -> 1:1. Coulomb n=-1 -> 2:1. Measured, both, exactly.
+           Every duality is an offset, and the offset is the exponent.
+
+  NEW      one-way is legal for a PART, never for the WHOLE. The collision
+           ledger closes to {dp1+dp2:+.0e}. A net direction would be a free lunch.
+           That is why "if it went only one way, that is not change."
+""")

@@ -1,0 +1,158 @@
+==============================================================================
+PART 1.  THE MECHANISM: C1'S EXCISION IS WHAT CREATES THE ORBIT LABELS.
+==============================================================================
+   The free rotor. Phase space (theta, omega). Flow: theta' = omega, omega' = 0.
+   Where does this flow STOP? Speed = |theta'| + |omega'| = |omega|. It stops
+   exactly on the line omega = 0 -- and NOWHERE else. That line is the entire
+   fixed-point set. C1 forbids it. So C1 DELETES THE LINE omega = 0.
+
+      omega  flow speed |omega|   C1-legal?
+      -2.00              2.0000        True
+      -1.50              1.5000        True
+      -1.00              1.0000        True
+      -0.50              0.5000        True
+       0.00              0.0000       False
+       0.50              0.5000        True
+       1.00              1.0000        True
+       1.50              1.5000        True
+       2.00              2.0000        True
+
+   Now: with that line deleted, is the phase space still connected? Try to walk
+   from omega = +1 to omega = -1 along ANY continuous path. Executed over 2000
+   random continuous paths (random smooth interpolants, no constraints):
+
+   over 2000 random continuous paths from omega=+1 to omega=-1:
+     the LARGEST 'min |omega| along the path' found = 2.42e-09
+     -> EVERY path touches omega = 0. Every path crosses the wall.
+   a path that STAYS on one side: min |omega| = 0.7000  (legal)
+
+   THE FIXED-POINT SET IS THE WALL. Deleting it splits the space in two, and
+   sign(omega) -- the HANDEDNESS -- becomes a topological invariant of the flow.
+
+   Apply Part II's three membership tests to sign(omega):
+     (i)   does violating it break legality?              NO  (a left-handed
+                                                              universe is legal)
+     (ii)  invariant under ALL legal motion, yet
+           multiple values legal?                          YES
+     (iii) can legal motion change it?                     NO
+   ==> HANDEDNESS IS A SELECTOR. Not forced. Not chosen. An ORBIT LABEL.
+
+   And the general mechanism, now visible:
+     SELECTORS = the labels of the components of (state space MINUS fixed points).
+   Part II *measured* the partition. This is the reason it exists.
+
+==============================================================================
+PART 2.  THE SAME EXCISION, THREE SYSTEMS. (the pattern is universal)
+==============================================================================
+   system                 fixed-point set      what removal leaves         
+   ---------------------- -------------------- ----------------------------
+   free rotor             the line omega=0     2 components -> Z2 (handedness)
+   harmonic oscillator    the origin           punctured plane -> orbits by E
+   so(3) adjoint (Part II) the origin           nested spheres -> the Casimir
+
+   oscillator, two orbits: E = 0.5 (drift 2.5e-05, min speed 1.0000)
+                            E = 2.0 (drift 2.5e-05, min speed 2.0000)
+   the label never moves; the point never stops; no legal flow connects them.
+   -> the ORIGIN (the one fixed point C1 forbids) is what makes E mean anything.
+      Remove the wall and the rooms vanish: with the origin allowed, every
+      orbit could spiral into it and E would be worthless as a label.
+
+==============================================================================
+PART 3.  DEAN'S QUESTION, EXACTLY: AT 9, IS THE NEXT ANGLE UP, DOWN, OR BOTH?
+==============================================================================
+   R = rotation by H = pi/9. Nine steps:
+     || R^9  + I ||                = 6.43e-16   -> R^9 = -I EXACTLY
+     || R^18 - I ||                = 1.16e-15   -> R^18 = +I
+     the LINE (projector vv^T) at step 9: ||P9 - P0|| = 8.95e-16  -> HOME
+     the VECTOR at step 9:               ||R^9 v - v|| = 2.0000  -> ANTIPODAL
+
+   So at step 9 the base is home and the fiber owes a sign. The shadow-closure
+   EMITS EXACTLY ONE BIT. That bit is not bookkeeping -- it is the only record
+   that the loop happened at all, and it lives nowhere in the circle. It lives
+   on the axis. THAT is why the object is a helix.
+
+   Now the three continuations Dean names:
+
+     UP   (+pi/9, keep winding):  legal. the flow never stops. C1 satisfied.
+     DOWN (-pi/9, reverse):       to reverse, the angular rate must go from
+                                  + to -, and by Part 1 EVERY continuous path
+                                  doing that touches omega = 0 -- the wall, the
+                                  fixed point, the one thing C1 forbids.
+                                  ==> DOWN IS ILLEGAL. NOT DISFAVOURED. ILLEGAL.
+     BOTH:                        a single trajectory has ONE tangent; it cannot
+                                  do both. Only an AMPLITUDE can carry both --
+                                  and an amplitude carrying both branches of a
+                                  Z2 label is precisely a superposition. The
+                                  linkage (Part II) collapses it to one, and the
+                                  which-way bit it reads IS the fiber sign above.
+
+   ANSWER: UP. ALWAYS UP. And *which* up was never a choice -- it is a SELECTOR,
+   fixed before the first step and unchangeable by any legal motion thereafter.
+   The system cannot turn around. Not "does not." CANNOT.
+
+==============================================================================
+PART 4.  THE CONSEQUENCE C1 FORCES: HOMOCHIRALITY.
+==============================================================================
+   If handedness is a Z2 selector, then:
+     - PERSISTENCE is FORCED: no legal motion crosses the wall, ever. Once a
+       chirality is set, it is set for the lifetime of the flow. (Executed in
+       Part 1: 2000/2000 crossing paths hit the forbidden set.)
+     - SELECTION is OPEN: both rooms are legal. C1 says nothing about which.
+
+   Every alpha-helix in every protein in every organism on Earth is RIGHT-handed.
+   That is one of biology's oldest puzzles (homochirality; credited as open).
+   C1's reading is not 'right-handed is better'. It is:
+
+       handedness is an ORBIT LABEL, the biosphere is on ONE ORBIT, and no
+       legal chemistry can cross the wall between them.
+
+   The universality needs no advantage. It needs no selection pressure. It needs
+   only that the wall is uncrossable -- which is C1, and which is executed above.
+   PERSISTENCE: forced (CONFIRMED). WHICH ORBIT: open (Omega).
+   [Dean's own protein work found alpha-helix periodicity at integer multiples
+    of pi/9. The helix, the 9, and the handedness are the same object.]
+
+==============================================================================
+PART 5.  THE C1 FILTER ON THE INVERSION: WHAT CAN MOTION BETRAY?
+==============================================================================
+   Gemini: "watch the motion, it betrays the constraints." C1 filters this
+   claim into three verdicts -- one per ledger category. Executed on a single
+   observed trajectory of the oscillator, with the observer given ONLY the
+   trajectory (no equations, no parameters):
+
+   SELECTOR (the orbit label E):
+     recovered from the trajectory alone: 0.844989
+     true value:                          0.845000
+     error: 1.06e-05   -> RECOVERABLE. the motion betrays it.
+
+   FORCED (the law -- here, the frequency):
+     period recovered from zero-crossings: 6.282222
+     true 2*pi:                            6.283185
+     error: 9.63e-04   -> RECOVERABLE. the motion betrays it.
+
+   SELECTED (the point on the orbit -- the phase):
+     phase range swept by the motion: [-3.141, +3.139]
+     fraction of the full circle visited: 0.999
+     -> the motion SWEEPS EVERY PHASE. There is no constraint holding it.
+        Asking 'what wall set the phase?' returns NULL -- correctly. It is
+        GAUGE. NOT RECOVERABLE, and that is not a failure of the method.
+
+   VERDICT ON THE INVERSION (the C1 filter, not a check of anyone's arithmetic):
+
+     FORCED   content -> RECOVERABLE from motion. (it is what makes motion legal)
+     SELECTOR content -> RECOVERABLE from motion. (it is conserved BY the motion)
+     SELECTED content -> NOT recoverable, because it constrains nothing. Legal
+                         motion sweeps it freely. An inversion that "finds" a
+                         constraint here has hallucinated a wall.
+
+   So: "the motion betrays the constraint" is TRUE, exactly two-thirds of the
+   time, and the failure mode is precise and nameable. That is the strongest
+   form of the claim that survives C1 -- and it is stronger than the loose form,
+   because it comes with the one warning label that keeps it from being used to
+   invent walls that are not there.
+
+==============================================================================
+THE WALLS MAKE THE ROOMS. C1 removes the fixed points; the removal is what
+creates every label the universe carries. Dean's 'Walls' paper named them.
+This is what they are.
+==============================================================================

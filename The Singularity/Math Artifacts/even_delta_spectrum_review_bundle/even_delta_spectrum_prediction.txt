@@ -1,0 +1,21 @@
+Pre-run prediction — literal UTF-8 bytes including final newline.
+
+Definitions: N=2^n; chi_s(x)=(-1)^(s dot x); c_n(x)=sgn(rev_n(x)-x); Delta_n(p)=sum_{x<p} c_n(x) for p=0,...,N-1. Walsh transforms are unnormalized sums.
+
+For every nonzero mask s, let j=LSB(s), e_k=2^k, and w=popcount(s). The sparse prefix-kernel prediction is:
+  K(s,t)=1/2 for t=s;
+  K(s,t)=2^(j-1) for t=s xor e_j;
+  K(s,t)=-2^(k-1) for t=s xor e_k, k<j;
+  K(s,t)=0 otherwise,
+where K(s,t)=N^(-1) sum_x chi_t(x) S_s(x), S_s(x)=sum_{p=0}^x chi_s(p), and 2^(-1)=1/2.
+
+Combining this kernel with the sparse comparator Walsh support predicts, for s!=0:
+  if popcount(s) is odd: Delta_hat(s)=-c_hat(s)/2;
+  if popcount(s) is even: Delta_hat(s)=-2^(j-1)c_hat(s xor e_j)+sum_{k=0}^{j-1}2^(k-1)c_hat(s xor e_k).
+
+For the zero mask the predicted closed form is:
+  Delta_hat(0)=N*(N-1)/6 - floor(n/2)*N/4, n even;
+  Delta_hat(0)=N*(N-2)/6 - floor(n/2)*N/4, n odd.
+These expressions are expected to be integers.
+
+Audit scope: direct prefix and unnormalized FWHT comparison for all masks at n=2,...,12; direct kernel K(s,t) enumeration for all s!=0,t at n=2,...,8; direct zero-mode sum checks at n=2,...,20; independent sparse-support comparator coefficient comparison at n=2,...,12. No physical-spin or SHA claim.

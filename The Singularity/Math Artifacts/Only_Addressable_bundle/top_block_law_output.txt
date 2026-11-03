@@ -1,0 +1,21 @@
+LEMMA A  #reps with left half l  ==  mu*(2^h-1-l)   for all l >= 2^(h-1)
+  L= 3  left halves checked      1   holds
+  L= 4  left halves checked      2   holds
+  L= 9  left halves checked      8   holds
+  L=10  left halves checked     16   holds
+  L=15  left halves checked     64   holds
+  L=16  left halves checked    128   holds
+  L=19  left halves checked    256   holds
+  L=20  left halves checked    512   holds
+  Lemma A, L = 3..20 exhaustive: holds   (1s)
+
+BLOCK LAW  word(M+j) from blocks == word_at(M+j)  (exhaustive top region, L = 4..18)
+  L= 4  offsets 1..     0  (12.5% of the half-ring)  match
+  L= 5  offsets 1..     1  (12.5% of the half-ring)  match
+  L=10  offsets 1..   119  (23.4% of the half-ring)  match
+  L=11  offsets 1..   239  (23.4% of the half-ring)  match
+  L=17  offsets 1.. 16255  (24.8% of the half-ring)  match
+  L=18  offsets 1.. 32639  (24.9% of the half-ring)  match
+  block law: matches   (75s)
+
+THEOREM C  zero sets at seam offsets 2^s and 2^s+1 (s != L mod 2), L = 6..160

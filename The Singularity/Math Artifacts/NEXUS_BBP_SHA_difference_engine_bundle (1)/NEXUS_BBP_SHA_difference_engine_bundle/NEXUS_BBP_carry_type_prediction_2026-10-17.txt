@@ -1,0 +1,8 @@
+NEXUS follow-up seal — BBP carry type split
+Written before the follow-up run on 2026-10-17.
+
+P1. In the finite BBP stack with N=64 output fractional hex digits and G=12 guard layers, the carry propagated right-to-left while normalizing the whole column sum is a global carry and need not stay in [-4,3].
+
+P2. The source-defined layer-local J_k(m) is a different transformation coordinate. For every local layer/age pair actually used in this finite stack (k=1..N+G-1, age m=0..N+G-k-1), exact rational arithmetic will give J_k(m) in [-4,3] and will satisfy H_k(m)=w_k(m)+16J_k(m)-J_k(m+1).
+
+P3. The two carry objects will both be retained in the report with distinct names and scope, rather than transferring the local theorem's bound to the global column-normalization carry.

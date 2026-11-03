@@ -1,0 +1,89 @@
+{
+  "seal": "88618d1325d650d7c9e82dd9cf6c6dd0a2ce8ade3aae42d298bbf91290d10c0d",
+  "record_sha256": "a8b5d8239001f56a5b8b3ff047b10338b839329cf594aad36bfa4755a0dfb480",
+  "NC_000932": {
+    "length": 154478,
+    "non_ACGT": 0,
+    "lzma_raw": 41784,
+    "rc": {
+      "size": 34752,
+      "ratio": 0.8317059161401493,
+      "tokens": 1,
+      "token_bytes_raw": 9,
+      "coverage": 0.17001773715351054,
+      "longest": 26264,
+      "exact_decode": true,
+      "seconds": 0.20007729530334473,
+      "top_copies": [
+        {
+          "at": 128214,
+          "to": 154478,
+          "from": 84170,
+          "from_end": 110434,
+          "length": 26264
+        }
+      ]
+    },
+    "fwd": {
+      "size": 41736,
+      "ratio": 0.9988512349224583,
+      "tokens": 2,
+      "token_bytes_raw": 10,
+      "coverage": 0.00042077188984839263,
+      "longest": 33,
+      "exact_decode": true,
+      "seconds": 0.20807957649230957,
+      "top_copies": [
+        {
+          "at": 47860,
+          "to": 47893,
+          "from": 47828,
+          "from_end": 47861,
+          "length": 33
+        },
+        {
+          "at": 40952,
+          "to": 40984,
+          "from": 38728,
+          "from_end": 38760,
+          "length": 32
+        }
+      ]
+    }
+  },
+  "RANDOM": {
+    "length": 154478,
+    "non_ACGT": 0,
+    "lzma_raw": 43264,
+    "rc": {
+      "size": 43264,
+      "ratio": 1.0,
+      "tokens": 0,
+      "token_bytes_raw": 0,
+      "coverage": 0.0,
+      "longest": 0,
+      "exact_decode": true,
+      "seconds": 0.1770646572113037,
+      "top_copies": []
+    },
+    "fwd": {
+      "size": 43264,
+      "ratio": 1.0,
+      "tokens": 0,
+      "token_bytes_raw": 0,
+      "coverage": 0.0,
+      "longest": 0,
+      "exact_decode": true,
+      "seconds": 0.14799141883850098,
+      "top_copies": []
+    }
+  },
+  "P": {
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "P4": true,
+    "P5": true
+  },
+  "seconds": 1.5013704299926758
+}

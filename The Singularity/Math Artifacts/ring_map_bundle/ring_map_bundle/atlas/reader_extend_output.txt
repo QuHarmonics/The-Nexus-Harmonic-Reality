@@ -1,0 +1,8 @@
+seal acb799a49ce209b0b62b8534364795ff5c3faca34480d13c60b0e50b8a40d626
+n=17 fold done 4.3s
+n=17 face True [256] | address False [32] k=5 min 13.47385 first [0, 16, 1, 15, 2, 14, 3, 13, 4, 12, 11, 10, 9, 8, 7, 5, 6] | successor True [6] | partner True [10321920] | 4.5s
+n=18 fold done 9.6s
+n=18 face True [512] | address False [64] k=5 min 14.25062 first [0, 17, 1, 16, 2, 15, 3, 14, 4, 13, 5, 12, 11, 10, 9, 8, 7, 6] | successor True [6] | partner True [185794560] | 10.0s
+n=19 fold done 23.2s
+n=19 face True [512] | address False [64] k=5 min 15.00522 first [0, 18, 1, 17, 2, 16, 3, 15, 4, 14, 5, 13, 12, 11, 10, 9, 8, 7, 6] | successor True [6] | partner True [185794560] | 24.0s
+claims {'RA7a': True, 'RA7b': False, 'RA7c': True, 'RA7d': True} seconds 38.4 seal unchanged True

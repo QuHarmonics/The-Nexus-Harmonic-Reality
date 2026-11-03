@@ -1,0 +1,5 @@
+{
+  "policy": "Literal file bytes, including final newlines.",
+  "source_sha256": "2222f11b7eeace4d1a2086e9bb06639b0b8ae5f262ef62c0b52e5efe5a32840a",
+  "declaration_sha256": "1182cea83003b8dd9659f1cb7ac7ae15e272f793d6494fa2ac4fb18c4bd3aa8b"
+}

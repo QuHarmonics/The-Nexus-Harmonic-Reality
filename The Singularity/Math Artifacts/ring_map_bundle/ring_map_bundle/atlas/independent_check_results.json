@@ -1,0 +1,70 @@
+{
+ "readers_bruteforce": {
+  "6": {
+   "face": [
+    "27/8",
+    8
+   ],
+   "comparator": [
+    "7/2",
+    8
+   ],
+   "pal": [
+    "7/2",
+    48
+   ],
+   "successor": [
+    "475/96",
+    6
+   ],
+   "address": [
+    "39/8",
+    4
+   ]
+  },
+  "7": {
+   "face": [
+    "27/8",
+    8
+   ],
+   "comparator": [
+    "7/2",
+    8
+   ],
+   "pal": [
+    "7/2",
+    48
+   ],
+   "successor": [
+    "1191/224",
+    6
+   ],
+   "address": [
+    "629/112",
+    4
+   ]
+  }
+ },
+ "frames_slot_by_slot": {
+  "6": true,
+  "7": true,
+  "8": true,
+  "9": true,
+  "10": true,
+  "11": true,
+  "12": true,
+  "13": true
+ },
+ "witness_materialized": {
+  "13": true,
+  "14": true,
+  "15": true,
+  "16": true,
+  "17": true,
+  "18": true,
+  "19": true,
+  "20": true,
+  "21": true,
+  "22": true
+ }
+}

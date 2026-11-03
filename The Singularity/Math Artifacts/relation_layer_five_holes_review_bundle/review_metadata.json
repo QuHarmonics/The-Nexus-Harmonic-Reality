@@ -1,0 +1,23 @@
+{
+  "review_date": "2026-10-20",
+  "chosen_first_hole": "Hole 1: closed-form Walsh spectrum of latitude in ring coordinates",
+  "input_sha256": {
+    "/mnt/data/Pasted text(20261020-110317).txt": "bd526db8ad5fe02b169da35fb91ff47a71ff83d004e78f3f0773f190ba71b995",
+    "/mnt/data/Pasted text (2)(2).txt": "62114b0d9caad1b81908f4831e50d66a17b56c33273e1a2a69a429a787acb577",
+    "/mnt/data/notebooklm-chat-thoughts-expand-morein-the-relation-layer-framewor-2026-10-20.md": "cba943c9f2b06987c3b8888304e5d1f63eac3aa40319014f067c2050e741accd"
+  },
+  "status": {
+    "hole1": "OPEN: candidate finite block sum, evaluator and direct transform audit needed",
+    "hole2A": "STANDS as interval-preimage identity; compact block reduction OPEN",
+    "hole2B": "OPEN: common-suffix Myhill-Nerode proof not established",
+    "hole2C": "OPEN: partial offset arithmetic only",
+    "hole3": "OPEN",
+    "hole4": "OPEN",
+    "hole5": "PULL / OPEN",
+    "relation_layer": "methodological template; ring-specific module bridge not supplied"
+  },
+  "notes": [
+    "Pasted text (2)(2).txt ends part-way through Hole 2C.",
+    "The original uploaded running log was not modified; a review copy was created."
+  ]
+}

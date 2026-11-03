@@ -1,0 +1,25 @@
+Compiler Rings §22 — The song that plays both ways: bookends, twins, and the reader.
+Sealed 2026-10-20 before any run. Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828.
+
+Dean's claims, put in exact form, with the way home of each.
+
+S1 (bars fill from the centre out as pairs). A song of B bars of equal length is a palindrome iff bar B+1-k is the
+retrograde of bar k for every k (the middle bar a palindrome when B is odd). Chaining keeps a palindrome only as twins
+around the centre. Way home: exhaustive over binary songs, B = 1..4, bar length 1..3.
+S2 (every bar once cannot play the same both ways). For every L >= 1, no ordering of all 2^L distinct L-bit bars is a
+palindrome: a palindromic bar would have to face itself. The ring's tape played backward is the tape with exactly its
+palindromic bars inverted. Way home: every ordering for L = 1, 2, 3; the ring tapes L = 1..16.
+S3 (the crash is the twist). Rendered with notes symmetric about their own centres, c-d-e-d-c | e-d-c-d-e played
+backward equals the same song inverted about d, sample for sample (relative error < 1e-9). The R3 tape as a rhythm,
+played backward, equals the tape with its palindromic bars inverted. With attack-decay notes, c-d-e-d-c played backward
+differs from itself by more than half its norm, although its notes are a palindrome: palindrome at the note layer is
+not palindrome at the waveform layer unless every note is symmetric. Way home: rendered samples.
+S4 (the palindrome wave file, in frequency). The ring tape as a +-1 waveform, Fourier phase referenced to its centre:
+the real part of the spectrum is exactly the spectrum of the twin bars (non-palindromic words), the imaginary part
+exactly that of the self-symmetric bars (palindromic words); the imaginary energy share is 2^(ceil(L/2) - L).
+L = 1..16. Way home: FFT, max deviation below 1e-9 of the peak magnitude.
+S5 (the reader carries the hard part). Over all n! arrival orders, the least mean arrivals until the face is fixed is
+4 - 5·2^-h for n = 5..14, attained by exactly the 2^h orders that read the mirror pairs outermost first (either member
+first within a pair, middle bit last at odd n). At n = 4 the least value 11/4 is also attained by MSB-first.
+For the address, an outside-in order attains the least mean readiness over all n! orders, n = 5..12 (a sealed test,
+not derived). Way home: exact dynamic programme over all 2^n observed-bit sets.

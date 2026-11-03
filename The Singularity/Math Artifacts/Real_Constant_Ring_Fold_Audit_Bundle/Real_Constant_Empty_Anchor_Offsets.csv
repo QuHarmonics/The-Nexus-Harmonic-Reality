@@ -1,0 +1,4 @@
+constant,prefix_hex,ring_address,empty_anchor_hex,empty_anchor_address,signed_address_delta,reflected_constant_address,reflected_empty_anchor_address,reflected_signed_delta,offset_sign_reversal_pass
+pi,243F6A88,4013904055,E3B0C442,3328695580,685208475,281063240,966271715,-685208475,True
+phi,9E3779B9,2464615091,E3B0C442,3328695580,-864080489,1830352204,966271715,864080489,True
+e,B7E15162,3274529653,E3B0C442,3328695580,-54165927,1020437642,966271715,54165927,True

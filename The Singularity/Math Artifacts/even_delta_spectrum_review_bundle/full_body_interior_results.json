@@ -1,0 +1,262 @@
+{
+  "scope": "Full rank, full canonical block decomposition and exact Walsh-even body. Source is a new independent audit; external scripts and seals are not claimed as verified.",
+  "checks": [
+    {
+      "n": 2,
+      "all_rank_thresholds": 4,
+      "all_ring_words_predicted": 4,
+      "blocks": 1,
+      "palindrome_containing_blocks": 1,
+      "uncorrected_rank_failures_on_canonical_words": 0,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 3,
+      "all_rank_thresholds": 8,
+      "all_ring_words_predicted": 8,
+      "blocks": 1,
+      "palindrome_containing_blocks": 1,
+      "uncorrected_rank_failures_on_canonical_words": 0,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 4,
+      "all_rank_thresholds": 16,
+      "all_ring_words_predicted": 16,
+      "blocks": 3,
+      "palindrome_containing_blocks": 2,
+      "uncorrected_rank_failures_on_canonical_words": 1,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 5,
+      "all_rank_thresholds": 32,
+      "all_ring_words_predicted": 32,
+      "blocks": 3,
+      "palindrome_containing_blocks": 2,
+      "uncorrected_rank_failures_on_canonical_words": 2,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 6,
+      "all_rank_thresholds": 64,
+      "all_ring_words_predicted": 64,
+      "blocks": 7,
+      "palindrome_containing_blocks": 4,
+      "uncorrected_rank_failures_on_canonical_words": 6,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 7,
+      "all_rank_thresholds": 128,
+      "all_ring_words_predicted": 128,
+      "blocks": 7,
+      "palindrome_containing_blocks": 4,
+      "uncorrected_rank_failures_on_canonical_words": 12,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 8,
+      "all_rank_thresholds": 256,
+      "all_ring_words_predicted": 256,
+      "blocks": 15,
+      "palindrome_containing_blocks": 8,
+      "uncorrected_rank_failures_on_canonical_words": 28,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 9,
+      "all_rank_thresholds": 512,
+      "all_ring_words_predicted": 512,
+      "blocks": 15,
+      "palindrome_containing_blocks": 8,
+      "uncorrected_rank_failures_on_canonical_words": 56,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 10,
+      "all_rank_thresholds": 1024,
+      "all_ring_words_predicted": 1024,
+      "blocks": 31,
+      "palindrome_containing_blocks": 16,
+      "uncorrected_rank_failures_on_canonical_words": 120,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 11,
+      "all_rank_thresholds": 2048,
+      "all_ring_words_predicted": 2048,
+      "blocks": 31,
+      "palindrome_containing_blocks": 16,
+      "uncorrected_rank_failures_on_canonical_words": 240,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 12,
+      "all_rank_thresholds": 4096,
+      "all_ring_words_predicted": 4096,
+      "blocks": 63,
+      "palindrome_containing_blocks": 32,
+      "uncorrected_rank_failures_on_canonical_words": 496,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 13,
+      "all_rank_thresholds": 8192,
+      "all_ring_words_predicted": 8192,
+      "blocks": 63,
+      "palindrome_containing_blocks": 32,
+      "uncorrected_rank_failures_on_canonical_words": 992,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 14,
+      "all_rank_thresholds": 16384,
+      "all_ring_words_predicted": 16384,
+      "blocks": 127,
+      "palindrome_containing_blocks": 64,
+      "uncorrected_rank_failures_on_canonical_words": 2016,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 15,
+      "all_rank_thresholds": 32768,
+      "all_ring_words_predicted": 32768,
+      "blocks": 127,
+      "palindrome_containing_blocks": 64,
+      "uncorrected_rank_failures_on_canonical_words": 4032,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 16,
+      "all_rank_thresholds": 65536,
+      "all_ring_words_predicted": 65536,
+      "blocks": 255,
+      "palindrome_containing_blocks": 128,
+      "uncorrected_rank_failures_on_canonical_words": 8128,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 17,
+      "all_rank_thresholds": 131072,
+      "all_ring_words_predicted": 131072,
+      "blocks": 255,
+      "palindrome_containing_blocks": 128,
+      "uncorrected_rank_failures_on_canonical_words": 16256,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 18,
+      "all_rank_thresholds": 262144,
+      "all_ring_words_predicted": 262144,
+      "blocks": 511,
+      "palindrome_containing_blocks": 256,
+      "uncorrected_rank_failures_on_canonical_words": 32640,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 19,
+      "all_rank_thresholds": 524288,
+      "all_ring_words_predicted": 524288,
+      "blocks": 511,
+      "palindrome_containing_blocks": 256,
+      "uncorrected_rank_failures_on_canonical_words": 65280,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    },
+    {
+      "n": 20,
+      "all_rank_thresholds": 1048576,
+      "all_ring_words_predicted": 1048576,
+      "blocks": 1023,
+      "palindrome_containing_blocks": 512,
+      "uncorrected_rank_failures_on_canonical_words": 130816,
+      "full_body_prediction": true,
+      "all_block_sums": true
+    }
+  ],
+  "total_rank_thresholds": 2097148,
+  "total_predicted_ring_words": 2097148,
+  "total_blocks": 3049,
+  "total_palindrome_containing_blocks": 1534,
+  "rank_correction_example": {
+    "n": 4,
+    "representative": "1011",
+    "pi": 3,
+    "T": 2,
+    "Delta": 2,
+    "uncorrected_rank": 8,
+    "actual_rank": 7,
+    "physical_center_position": 8
+  },
+  "wide_checks": [
+    {
+      "n": 63,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 64,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 127,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 128,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 255,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 256,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 511,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 512,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 1023,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    },
+    {
+      "n": 1024,
+      "direct_word_address_cases": 12,
+      "independent_rank_thresholds": 9
+    }
+  ],
+  "seconds": 1.7360618060000022
+}

@@ -1,0 +1,9 @@
+{
+  "source_workbook": "nested_ring_beyond_2bit(1).xlsx",
+  "sheets_and_cells": {
+    "Ring 2!B3": "00100111",
+    "Ring 3!B3": "000001010110011101100111",
+    "Ring 4!B3": "0000000100100011010101100111110110111110100110101100010010001111"
+  },
+  "interpretation": "Flattened circular bit sequences as drawn in the uploaded workbook; Ring 2, Ring 3 and Ring 4 have 8, 24 and 64 slices respectively."
+}

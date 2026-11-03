@@ -1,0 +1,32 @@
+seal verified 2051041e...8fe6156
+RAND    1048576 words of 8 bits
+TEXT     382662 words of 8 bits
+IMAGE    307200 words of 8 bits
+RAND16   524288 words of 16 bits
+MRI       65536 words of 16 bits
+DEM      138632 words of 16 bits
+FIR      130560 words of 16 bits
+COV       65536 words of 16 bits
+
+bytes after coding (raw | ring | lift | route | side split), best coder marked
+RAND   in  1048576  raw: 1048688  ring: 1048688  lift: 1048688  route: 1048688  side_split: 1051317   H0 8.000 b/w   side-bit H 1.000
+TEXT   in   382662  raw:  103334  ring:  104816  lift:  103675  route:  105471  side_split:  148781   H0 4.872 b/w   side-bit H 1.000
+IMAGE  in   307200  raw:  199744  ring:  210341  lift:  200244  route:  213282  side_split:  238808   H0 7.088 b/w   side-bit H 0.883
+RAND16 in  1048576  raw: 1048688  ring: 1048688  lift: 1048688  route: 1048688  side_split: 1084892   H0 15.908 b/w   side-bit H 1.000
+MRI    in   131072  raw:   22192  ring:   25409  lift:   24799  route:   23627  side_split:   26263   H0 4.238 b/w   side-bit H 0.987
+DEM    in   277264  raw:  108482  ring:  109338  lift:  124685  route:  115912  side_split:  110766   H0 9.244 b/w   side-bit H 0.048
+FIR    in   261120  raw:  156100  ring:  172572  lift:  157680  route:  166492  side_split:  179772   H0 10.712 b/w   side-bit H 1.000
+COV    in   131072  raw:  109332  ring:  120797  lift:  109296  route:  119495  side_split:  126646   H0 13.290 b/w   side-bit H 0.941
+
+E1 pigeonhole (order-0 invariant everywhere; RAND, RAND16 never shrink): RUNS
+E2 no free compression of natural data: RUNS
+   TEXT   best transformed / best raw = 1.0033
+   IMAGE  best transformed / best raw = 1.0025;  ring lzma / raw lzma = 1.082
+   MRI    best transformed / best raw = 1.0647;  ring lzma / raw lzma = 1.092
+   DEM    best transformed / best raw = 1.0079;  ring lzma / raw lzma = 1.001
+E3 half index: exhaustive n = 2..20, wide {64: True, 256: True, 1024: True}, HalfTable(20) holds 524,288 entries: RUNS
+E4 mirror at the data's scale: DEAD END
+   FIR: raw lzma 156,100  lifted 91,108 (0.584)  bit-level lift 157,680 (1.010)  exact-mirror share 1.000
+   COV: raw lzma 116,708  lifted 58,728 (0.503)  bit-level lift 115,872 (0.993)  exact-mirror share 1.000
+
+(18.4s)  results -> ring_compression_results.json

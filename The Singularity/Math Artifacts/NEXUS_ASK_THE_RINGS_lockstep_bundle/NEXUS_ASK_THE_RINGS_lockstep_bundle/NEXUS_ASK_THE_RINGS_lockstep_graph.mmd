@@ -1,0 +1,11 @@
+flowchart TD
+    A[§121: Original rational ring y_t = a·16^t mod o] --> B[CRT split: o1 reader ring, o2 field ring]
+    B --> C[Project same y_t into alpha_t and beta_t]
+    C --> D{g = gcd(h1,h2)}
+    D -->|g = 1| E[Joint orbit fills A × B]
+    D -->|g > 1| F[Joint orbit uses phase-compatible pairs i ≡ j mod g]
+    E --> G[Average alpha − 1(beta < alpha)]
+    F --> G
+    G --> H[Exact lean = mu − 1/2]
+    H --> I[9/9 balanced lockstep cases return zero]
+    I --> J[Balance-density law remains OPEN]

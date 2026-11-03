@@ -1,0 +1,68 @@
+seal b41403660526c910f6e1b560a378d43446fac013b748c20f61794b4e50961623
+n= 4 face 2.7500 [12] law False | c 3.0000 [4] True | pal 3.0000 [8] True | address 3.0625 [2] two-wheel False core [[2, 3, 0, 1], [3, 2, 0, 1]] | decompile MSB-first optimal False | 0.0s
+      partner     per-bit min 3.2500 [8 orders] first [0, 3, 1, 2]  refs MSB 3.500 LSB 3.500 outside_in 3.250 centre_out 3.250 two_wheel_by_value 3.500
+      successor   per-bit min 3.3750 [4 orders] first [0, 1, 3, 2]  refs MSB 3.438 LSB 3.625 outside_in 3.625 centre_out 3.562 two_wheel_by_value 3.438
+      folded      per-bit min 3.2500 [4 orders] first [1, 3, 2, 0]  refs MSB 3.250 LSB 3.500 outside_in 3.375 centre_out 3.375 two_wheel_by_value 3.250
+      pair_index  per-bit min 3.4167 [12 orders] first [0, 1, 2, 3]  refs MSB 3.417 LSB 3.417 outside_in 3.583 centre_out 3.417 two_wheel_by_value 3.417
+n= 5 face 2.7500 [12] law False | c 3.0000 [4] True | pal 3.0000 [8] True | address 3.9000 [4] two-wheel False core [[0, 1, 2], [0, 2, 1]] | decompile MSB-first optimal False | 0.0s
+      partner     per-bit min 3.6000 [8 orders] first [0, 4, 1, 3, 2]  refs MSB 4.500 LSB 4.500 outside_in 3.600 centre_out 4.200 two_wheel_by_value 3.900
+      successor   per-bit min 3.9250 [2 orders] first [0, 1, 4, 3, 2]  refs MSB 4.225 LSB 4.425 outside_in 4.100 centre_out 4.450 two_wheel_by_value 4.375
+      folded      per-bit min 3.9000 [2 orders] first [3, 4, 1, 0, 2]  refs MSB 4.075 LSB 4.325 outside_in 3.950 centre_out 4.300 two_wheel_by_value 4.050
+      pair_index  per-bit min 4.0625 [8 orders] first [0, 1, 3, 4, 2]  refs MSB 4.219 LSB 4.219 outside_in 4.188 centre_out 4.312 two_wheel_by_value 4.281
+n= 6 face 3.3750 [8] law True | c 3.5000 [8] True | pal 3.5000 [48] True | address 4.8750 [4] two-wheel False core [[1, 4, 3, 2], [4, 1, 3, 2]] | decompile MSB-first optimal False | 0.0s
+      partner     per-bit min 4.4167 [48 orders] first [0, 5, 1, 4, 2, 3]  refs MSB 5.000 LSB 5.000 outside_in 4.417 centre_out 4.417 two_wheel_by_value 4.583
+      successor   per-bit min 4.9479 [6 orders] first [0, 1, 5, 4, 2, 3]  refs MSB 5.323 LSB 5.365 outside_in 5.042 centre_out 5.479 two_wheel_by_value 5.250
+      folded      per-bit min 4.8229 [8 orders] first [0, 5, 1, 4, 2, 3]  refs MSB 5.146 LSB 5.271 outside_in 4.823 centre_out 5.344 two_wheel_by_value 4.948
+      pair_index  per-bit min 5.0625 [16 orders] first [0, 1, 4, 5, 2, 3]  refs MSB 5.225 LSB 5.225 outside_in 5.112 centre_out 5.338 two_wheel_by_value 5.213
+n= 7 face 3.3750 [8] law True | c 3.5000 [8] True | pal 3.5000 [48] True | address 5.6161 [4] two-wheel True core [[4, 3, 2]] | decompile MSB-first optimal False | 0.1s
+      partner     per-bit min 4.7857 [48 orders] first [0, 6, 1, 5, 2, 4, 3]  refs MSB 5.964 LSB 5.964 outside_in 4.786 centre_out 5.286 two_wheel_by_value 4.964
+      successor   per-bit min 5.3170 [6 orders] first [0, 1, 6, 5, 2, 4, 3]  refs MSB 6.156 LSB 6.263 outside_in 5.393 centre_out 6.344 two_wheel_by_value 5.567
+      folded      per-bit min 5.5804 [8 orders] first [0, 6, 1, 5, 2, 4, 3]  refs MSB 5.987 LSB 6.112 outside_in 5.580 centre_out 6.268 two_wheel_by_value 5.603
+      pair_index  per-bit min 5.8802 [24 orders] first [0, 1, 3, 6, 5, 2, 4]  refs MSB 6.047 LSB 6.047 outside_in 5.938 centre_out 6.250 two_wheel_by_value 5.948
+n= 8 face 3.6875 [16] law True | c 3.7500 [16] True | pal 3.7500 [384] True | address 6.5000 [4] two-wheel True core [[5, 4, 2, 3]] | decompile MSB-first optimal True | 0.1s
+      partner     per-bit min 5.4062 [384 orders] first [0, 7, 1, 6, 2, 5, 3, 4]  refs MSB 6.344 LSB 6.344 outside_in 5.406 centre_out 5.406 two_wheel_by_value 5.500
+      successor   per-bit min 6.0020 [6 orders] first [0, 1, 7, 6, 2, 5, 3, 4]  refs MSB 7.086 LSB 7.006 outside_in 6.074 centre_out 7.182 two_wheel_by_value 6.223
+      folded      per-bit min 6.4512 [8 orders] first [0, 7, 1, 6, 2, 3, 4, 5]  refs MSB 6.969 LSB 7.031 outside_in 6.453 centre_out 7.264 two_wheel_by_value 6.451
+      pair_index  per-bit min 6.7902 [32 orders] first [0, 1, 6, 7, 3, 4, 2, 5]  refs MSB 6.991 LSB 6.991 outside_in 6.848 centre_out 7.239 two_wheel_by_value 6.828
+n= 9 face 3.6875 [16] law True | c 3.7500 [16] True | pal 3.7500 [384] True | address 7.2344 [8] two-wheel True core [[4, 5, 3]] | decompile MSB-first optimal True | 0.1s
+      partner     per-bit min 5.8056 [384 orders] first [0, 8, 1, 7, 2, 6, 3, 5, 4]  refs MSB 7.292 LSB 7.292 outside_in 5.806 centre_out 6.222 two_wheel_by_value 5.903
+      successor   per-bit min 6.3637 [6 orders] first [0, 1, 8, 7, 2, 6, 3, 5, 4]  refs MSB 7.878 LSB 7.888 outside_in 6.427 centre_out 7.959 two_wheel_by_value 6.523
+      folded      per-bit min 7.1571 [16 orders] first [0, 8, 1, 7, 2, 6, 4, 3, 5]  refs MSB 7.865 LSB 7.927 outside_in 7.201 centre_out 8.244 two_wheel_by_value 7.188
+      pair_index  per-bit min 7.5439 [40 orders] first [0, 1, 2, 8, 7, 6, 4, 3, 5]  refs MSB 7.879 LSB 7.879 outside_in 7.638 centre_out 8.220 two_wheel_by_value 7.616
+n=10 face 3.8438 [32] law True | c 3.8750 [32] True | pal 3.8750 [3840] True | address 8.0699 [8] two-wheel True core [[6, 5, 3, 4]] | decompile MSB-first optimal False | 0.2s
+      partner     per-bit min 6.3375 [3840 orders] first [0, 9, 1, 8, 2, 7, 3, 6, 4, 5]  refs MSB 7.625 LSB 7.625 outside_in 6.338 centre_out 6.338 two_wheel_by_value 6.388
+      successor   per-bit min 6.9059 [6 orders] first [0, 1, 9, 8, 2, 7, 3, 6, 4, 5]  refs MSB 8.680 LSB 8.514 outside_in 6.966 centre_out 8.659 two_wheel_by_value 7.045
+      folded      per-bit min 7.9988 [16 orders] first [0, 9, 1, 8, 2, 7, 3, 4, 5, 6]  refs MSB 8.844 LSB 8.875 outside_in 8.005 centre_out 9.218 two_wheel_by_value 7.999
+      pair_index  per-bit min 8.4175 [16 orders] first [0, 1, 8, 9, 2, 3, 4, 5, 6, 7]  refs MSB 8.840 LSB 8.840 outside_in 8.467 centre_out 9.190 two_wheel_by_value 8.454
+n=11 face 3.8438 [32] law True | c 3.8750 [32] True | pal 3.8750 [3840] True | address 8.8210 [16] two-wheel True core [[6, 5, 4]] | decompile MSB-first optimal False | 0.3s
+      partner     per-bit min 6.7614 [3840 orders] first [0, 10, 1, 9, 2, 8, 3, 7, 4, 6, 5]  refs MSB 8.562 LSB 8.562 outside_in 6.761 centre_out 7.114 two_wheel_by_value 6.812
+      successor   per-bit min 7.2896 [6 orders] first [0, 1, 10, 9, 2, 8, 3, 7, 4, 6, 5]  refs MSB 9.431 LSB 9.384 outside_in 7.344 centre_out 9.368 two_wheel_by_value 7.395
+      folded      per-bit min 8.7578 [8 orders] first [0, 10, 1, 9, 2, 8, 3, 4, 5, 6, 7]  refs MSB 9.772 LSB 9.803 outside_in 8.769 centre_out 10.208 two_wheel_by_value 8.769
+      pair_index  per-bit min 9.2086 [32 orders] first [0, 1, 9, 10, 2, 8, 3, 4, 5, 6, 7]  refs MSB 9.765 LSB 9.765 outside_in 9.261 centre_out 10.182 two_wheel_by_value 9.258
+n=12 face 3.9219 [64] law True | c 3.9375 [64] True | pal 3.9375 [46080] True | address 9.6377 [16] two-wheel True core [[7, 6, 5, 4]] | decompile MSB-first optimal False | 0.4s
+      partner     per-bit min 7.2552 [46080 orders] first [0, 11, 1, 10, 2, 9, 3, 8, 4, 7, 5, 6]  refs MSB 8.880 LSB 8.880 outside_in 7.255 centre_out 7.255 two_wheel_by_value 7.281
+      successor   per-bit min 7.7706 [6 orders] first [0, 1, 11, 10, 2, 9, 3, 8, 4, 7, 5, 6]  refs MSB 10.144 LSB 9.939 outside_in 7.821 centre_out 9.980 two_wheel_by_value 7.861
+      folded      per-bit min 9.5553 [16 orders] first [0, 11, 1, 10, 2, 9, 3, 4, 5, 6, 7, 8]  refs MSB 10.744 LSB 10.759 outside_in 9.589 centre_out 11.198 two_wheel_by_value 9.569
+      pair_index  per-bit min 10.0248 [32 orders] first [0, 1, 10, 11, 2, 9, 3, 4, 5, 6, 7, 8]  refs MSB 10.727 LSB 10.727 outside_in 10.104 centre_out 11.172 two_wheel_by_value 10.080
+n=13 face 3.9219 [64] law True | c 3.9375 [64] True | pal 3.9375 [46080] True | address 10.3859 [16] two-wheel False core [[6, 5, 4]] | decompile MSB-first optimal False | 0.7s
+      partner     per-bit min 7.6971 [46080 orders] first [0, 12, 1, 11, 2, 10, 3, 9, 4, 8, 5, 7, 6]  refs MSB 9.810 LSB 9.810 outside_in 7.697 centre_out 8.000 two_wheel_by_value 7.724
+      successor   per-bit min 8.1777 [6 orders] first [0, 1, 12, 11, 2, 10, 3, 9, 4, 8, 5, 7, 6]  refs MSB 10.868 LSB 10.802 outside_in 8.224 centre_out 10.641 two_wheel_by_value 8.251
+      folded      per-bit min 10.3187 [16 orders] first [0, 12, 1, 11, 2, 10, 3, 9, 4, 5, 6, 7, 8]  refs MSB 11.682 LSB 11.697 outside_in 10.354 centre_out 12.182 two_wheel_by_value 10.341
+      pair_index  per-bit min 10.8099 [32 orders] first [0, 1, 11, 12, 2, 10, 3, 4, 5, 6, 7, 8, 9]  refs MSB 11.663 LSB 11.663 outside_in 10.890 centre_out 12.157 two_wheel_by_value 10.875
+n=14 face 3.9609 [128] law False | c 3.9688 [128] False | pal 3.9688 [645120] True | address 11.1799 [16] two-wheel False core [[7, 6, 5, 4]] | decompile MSB-first optimal False | 1.3s
+      partner     per-bit min 8.1763 [645120 orders] first [0, 13, 1, 12, 2, 11, 3, 10, 4, 9, 5, 8, 6, 7]  refs MSB 10.125 LSB 10.125 outside_in 8.176 centre_out 8.176 two_wheel_by_value 8.190
+      successor   per-bit min 8.6369 [6 orders] first [0, 1, 13, 12, 2, 11, 3, 10, 4, 9, 5, 8, 6, 7]  refs MSB 11.520 LSB 11.312 outside_in 8.680 centre_out 11.201 two_wheel_by_value 8.700
+      folded      per-bit min 11.0978 [32 orders] first [0, 13, 1, 12, 2, 11, 3, 10, 4, 5, 6, 7, 8, 9]  refs MSB 12.652 LSB 12.660 outside_in 11.123 centre_out 13.166 two_wheel_by_value 11.118
+      pair_index  per-bit min 11.6149 [32 orders] first [0, 1, 12, 13, 2, 11, 3, 4, 5, 6, 7, 8, 10, 9]  refs MSB 12.629 LSB 12.629 outside_in 11.674 centre_out 13.141 two_wheel_by_value 11.667
+n=15 face 3.9609 [128] law False | c 3.9688 [128] False | pal 3.9688 [645120] True | address 11.9321 [32] two-wheel False core [[7, 6, 5]] | decompile MSB-first optimal False | 2.4s
+      partner     per-bit min 8.6312 [645120 orders] first [0, 14, 1, 13, 2, 12, 3, 11, 4, 10, 5, 9, 6, 8, 7]  refs MSB 11.049 LSB 11.049 outside_in 8.631 centre_out 8.896 two_wheel_by_value 8.645
+      successor   per-bit min 9.0632 [6 orders] first [0, 1, 14, 13, 2, 12, 3, 11, 4, 10, 5, 9, 6, 8, 7]  refs MSB 12.225 LSB 12.171 outside_in 9.104 centre_out 11.830 two_wheel_by_value 9.117
+      folded      per-bit min 11.8658 [16 orders] first [0, 14, 1, 13, 2, 12, 3, 11, 4, 5, 6, 7, 8, 9, 10]  refs MSB 13.611 LSB 13.618 outside_in 11.888 centre_out 14.160 two_wheel_by_value 11.887
+      pair_index  per-bit min 12.4009 [64 orders] first [0, 1, 13, 14, 2, 12, 3, 11, 4, 5, 6, 7, 8, 9, 10]  refs MSB 13.587 LSB 13.587 outside_in 12.454 centre_out 14.136 two_wheel_by_value 12.453
+n=16 face 3.9805 [256] law False | c 3.9844 [256] False | pal 3.9844 [10321920] True | address 12.7183 [32] two-wheel False core [[8, 7, 6, 5]] | decompile MSB-first optimal True | 5.1s
+      partner     per-bit min 9.1064 [10321920 orders] first [0, 15, 1, 14, 2, 13, 3, 12, 4, 11, 5, 10, 6, 9, 7, 8]  refs MSB 11.366 LSB 11.366 outside_in 9.106 centre_out 9.106 two_wheel_by_value 9.113
+      successor   per-bit min 9.5179 [6 orders] first [0, 1, 15, 14, 2, 13, 3, 12, 4, 11, 5, 10, 6, 9, 7, 8]  refs MSB 12.835 LSB 12.653 outside_in 9.556 centre_out 12.361 two_wheel_by_value 9.566
+      folded      per-bit min 12.6406 [32 orders] first [0, 15, 1, 14, 2, 13, 3, 12, 4, 5, 6, 7, 8, 9, 10, 11]  refs MSB 14.581 LSB 14.585 outside_in 12.685 centre_out 15.150 two_wheel_by_value 12.675
+      pair_index  per-bit min 13.1873 [64 orders] first [0, 1, 14, 15, 2, 13, 3, 12, 4, 5, 6, 7, 8, 9, 10, 11]  refs MSB 14.555 LSB 14.555 outside_in 13.265 centre_out 15.126 two_wheel_by_value 13.254
+adder {'min_mean': '175/18', 'min_mean_float': np.float64(9.722222222222221), 'optimal_count': 256, 'optimal_first': [0, 8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15], 'lsb_interleaved': 9.722222222222221, 'msb_interleaved': 11.00217013888889, 'ok': True, 'seconds': 0.9494774341583252}
+claims {'RA1': False, 'RA2': False, 'RA3': True, 'RA4': False, 'RA4_gemini_by_value': False, 'RA5': False, 'RA6': True} failures at n {'RA1': [], 'RA2': [14, 15, 16], 'RA3': [], 'RA4': [], 'RA4_gemini_by_value': [], 'RA5': [4, 5, 6, 7, 10, 11, 12, 13, 14, 15], 'RA6': []} seconds 11.8 seal unchanged True

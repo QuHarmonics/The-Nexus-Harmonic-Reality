@@ -1,0 +1,3 @@
+minimal unreadable extensions through depth 12: 101
+parents meeting 1/2/3/... runs of the surviving bit: {1: 76, 2: 19, 3: 6}
+meeting more than one run: 25

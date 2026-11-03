@@ -1,0 +1,56 @@
+order,width,items,max_hold,first_t_at_max,hold_at_seam,sum_hold,mean_hold_over_t,exact_profile_law
+address,2,4,2,2,2,4,1.000000000,"min(t, 2^n-t)"
+address,3,8,4,4,4,16,2.000000000,"min(t, 2^n-t)"
+address,4,16,8,8,8,64,4.000000000,"min(t, 2^n-t)"
+address,5,32,16,16,16,256,8.000000000,"min(t, 2^n-t)"
+address,6,64,32,32,32,1024,16.000000000,"min(t, 2^n-t)"
+address,7,128,64,64,64,4096,32.000000000,"min(t, 2^n-t)"
+address,8,256,128,128,128,16384,64.000000000,"min(t, 2^n-t)"
+address,9,512,256,256,256,65536,128.000000000,"min(t, 2^n-t)"
+address,10,1024,512,512,512,262144,256.000000000,"min(t, 2^n-t)"
+address,11,2048,1024,1024,1024,1048576,512.000000000,"min(t, 2^n-t)"
+address,12,4096,2048,2048,2048,4194304,1024.000000000,"min(t, 2^n-t)"
+value_counter,2,4,2,2,2,4,1.000000000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,3,8,4,4,4,16,2.000000000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,4,16,6,8,6,50,3.125000000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,5,32,12,16,12,212,6.625000000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,6,64,20,32,20,756,11.812500000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,7,128,40,64,40,3112,24.312500000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,8,256,72,128,72,11656,45.531250000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,9,512,144,256,144,47120,92.031250000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,10,1024,272,512,272,181520,177.265625000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,11,2048,544,1024,544,728608,355.765625000,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+value_counter,12,4096,1056,2048,1056,2854944,697.007812500,"Delta_n(t) + min(pi_n(t), 2*Hp - pi_n(t))"
+sheet,2,4,2,2,2,4,1.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,3,8,4,4,4,16,2.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,4,16,8,8,8,64,4.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,5,32,16,16,16,256,8.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,6,64,32,32,32,1024,16.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,7,128,64,64,64,4096,32.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,8,256,128,128,128,16384,64.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,9,512,256,256,256,65536,128.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,10,1024,512,512,512,262144,256.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,11,2048,1024,1024,1024,1048576,512.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+sheet,12,4096,2048,2048,2048,4194304,1024.000000000,"min(t, 2^n-t) under supplied W6 sheet construction"
+route_code,2,4,2,2,2,4,1.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,3,8,4,4,4,16,2.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,4,16,8,8,8,64,4.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,5,32,16,16,16,256,8.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,6,64,32,32,32,1024,16.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,7,128,64,64,64,4096,32.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,8,256,128,128,128,16384,64.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,9,512,256,256,256,65536,128.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,10,1024,512,512,512,262144,256.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,11,2048,1024,1024,1024,1048576,512.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+route_code,12,4096,2048,2048,2048,4194304,1024.000000000,"min(t, 2^n-t) for leading-side-bit E/G route-code order"
+half_table_pair_lift,2,4,1,1,0,2,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,3,8,1,1,0,4,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,4,16,1,1,0,8,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,5,32,1,1,0,16,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,6,64,1,1,0,32,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,7,128,1,1,0,64,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,8,256,1,1,0,128,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,9,512,1,1,0,256,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,10,1024,1,1,0,512,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,11,2048,1,1,0,1024,0.500000000,t mod 2 (representative followed by partner)
+half_table_pair_lift,12,4096,1,1,0,2048,0.500000000,t mod 2 (representative followed by partner)

@@ -1,0 +1,53 @@
+Compiler Rings §17 — Two wheels: the compile is instant, the hold is the gap.
+Sealed 2026-10-20 before any run. Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828.
+
+Gap, named by what must be there. One counter t runs 0, 1, ..., 2^L - 1: the wheel below, complete up to t.
+The ring R_L has already assigned every word a slot: the wheel above. A word compiles the instant it is counted:
+a representative takes slot r_L(x) (closed rank, §10); a partner takes the slot facing its representative's slot.
+The hold O_L(t) is the number of pairs {x, P(x)} with exactly one member among 0..t-1 (assigned, not yet filled).
+N = 2^L, M = N/2, Hp = 2^(ceil(L/2)-1), h = floor(L/2), pi_L(t) = #{palindromes < t}, Delta from §7.
+
+W1 (mechanism, no search). For every L >= 2, streaming 0..N-1 through R_L: each representative lands on the first
+empty left-face slot, except the largest representative, which lands at M while M-1 is still empty; each partner
+lands on the slot facing its representative's, which is always already filled. Exactly one frontier exception.
+Way home: simulated fill of the materialized ring, L = 2..20.
+
+W2 (the hold is twice where minus when). O_L(t) = 2 r_L(t) - t = Delta_L(t) + min(pi_L(t), 2Hp - pi_L(t)) for every
+0 <= t <= N. Way home: open-pair count in the simulated fill against closed Delta and closed pi, all t, L = 2..20.
+
+W3 (peak at the seam). max_t O_L(t) = 2^(L-2) + Hp, attained at t = M and at no other t, L = 2..20.
+Way home: argmax of the simulated hold profile.
+
+W4 (cascade: the wheel below completes when the wheel above holds most). At t = 2^L:
+O_n = 0 for n = L; O_n = 2^(L-1) + 2^(ceil((L+1)/2)-1), the peak of ring L+1, for n = L+1;
+0 < O_n < 2^L for L+1 <= n <= 2L-2; O_n = 2^L for every n >= 2L-1 (every counted word an open representative).
+W4b (every ring starts as a counter): R_n[i] = i for every i < 2^(ceil(n/2)), n >= 4, and R_n[2^(ceil(n/2))] = 2^(ceil(n/2)) + 1.
+(At odd n this extends §9 S1, which stated 2^(floor(n/2)).) Rings 15 and 16 open with the byte counter 0..255.
+Way home: closed Delta and pi at t = 2^L for L = 2..12, n = L..2L+4 and n in {64, 128}; simulated fill where n <= 20;
+materialized prefix n = 4..20, direct unrank n = 21..64.
+Correction logged before sealing: my first derivation gave the threshold n >= 2L; the odd middle bit is free, so all
+words below 2^(ceil(n/2)) are representatives and the threshold is n >= 2L-1.
+
+W5 (total and mean hold). Sum_{t=1..N} O_L(t) = Sum_pairs (P(r) - r) = S_J/2 + Hp (N/2 + 1), with
+S_J = Sum_x |J(x) - x| = N(N-1)/3 - hN/2 (L even), N(N-2)/3 - hN/2 (L odd). Mean hold per pair over N tends to 1/3.
+Way home: exact sums from the simulated fill, L = 2..20.
+
+W6 (the workbook beyond two bits). Sheet S_L = C(J(T_L)), C = L 2^L slices. For every ring L = 1..12, every row i and
+every width W = 1..min(C, 64): the window read counter-clockwise from slice C-1-i equals the window read clockwise from
+slice i with every slice of a palindromic sheet word complemented. Zero offset. No rotation of S_L equals its reversal
+for L >= 3; at L = 1 and L = 2 rotations 1 and 3 do, and agree with the twist. The workbook's rule "start where the first
+1^L lands" gives offset L 2^L - 2L + 1 for L >= 3, and 3 at L = 2. Offsets 19 (ring 3) and 57 (ring 4) were seen before
+this seal and are not landings; L = 5..14 are. Way home: rebuilt sheets for L <= 14; cached workbook cells, rings 2-4.
+
+W7 (the workbook rebuilds). Every cached cell of the Ring 2, 3 and 4 sheets in columns A-Q (window, Dec, Hex, Oct,
+Hex nib, counter-clockwise window and its Dec/Hex/Oct/Hex nib, Not/And/Nand/Or/Nor/Xor/Xnor) rebuilds from the rolling
+stack w_i(W+1) = 2^W s_i + w_(i+1)(W) = 2 w_i(W) + s_(i+W) and the declared offset; every DI-chain row (rings 1-10)
+rebuilds its facing position, partner, palindrome flag, frame, middle, provider type, provider position in ring L-2,
+residual, grey count, depth, root and root width from Route 3. Way home: cell-by-cell equality with cached values.
+
+W8 (the path, not the orbit: decompile without search). The direct unrank (one integer square root for the front half,
+then one O(1) count per back-half bit; no bisection) returns R_L[a] at every address for L = 1..16, and round-trips
+slot(word(a)) = a at 2,000 random addresses for each of L = 64, 256, 1024, 4096.
+Way home: materialized rings and the closed rank.
+
+Hand checks done during derivation (seen, not landings): L = 2, 3 for W2-W5; O_5(16) = 12 from the DI chain.

@@ -1,0 +1,7 @@
+NEXUS phase-wheel field lift — exact symbolic run
+Primes tested: 25 (2..97)
+Exact assertions passed: 175
+Identities: norm=1/p; phase=pi/(2p); phase ratio=zeta_(2p); w^(2p)=-1/p^p
+Degree floor: phi(2p); equals p-1 for odd p, while phi(4)=2 at p=2
+Quadratic phase field: only p=2,3; p>3 is a higher-field route, not nonexistence
+Results: NEXUS_phase_wheel_field_lift_results.json

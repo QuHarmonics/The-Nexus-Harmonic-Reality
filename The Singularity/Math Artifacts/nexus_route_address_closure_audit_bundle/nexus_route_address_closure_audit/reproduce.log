@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "route_to_physical_address_words": 8188,
+  "within_weight_band_rank_words": 2046,
+  "weight_bands": 65,
+  "route_seal_match": true,
+  "reflection_seal_match": true,
+  "results_file": "nexus_closure_cross_bundle_audit_results.json"
+}

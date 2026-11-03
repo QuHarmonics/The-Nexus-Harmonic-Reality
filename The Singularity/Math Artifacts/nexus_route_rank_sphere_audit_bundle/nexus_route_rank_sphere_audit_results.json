@@ -1,0 +1,465 @@
+{
+  "title": "NEXUS E/G route-rank and sphere-lift audit",
+  "status": "PASS for finite checks stated below; geometric interpretation qualified",
+  "route_definition": "Full route = side bit + canonical route. At odd widths append middle value m. At even widths append outer residual d to prior middle-value code; canonical route final pair is (m,d).",
+  "route_to_word": [
+    {
+      "width": 2,
+      "canonical_words": 2,
+      "route_code_bits": 1,
+      "bijection": true
+    },
+    {
+      "width": 3,
+      "canonical_words": 4,
+      "route_code_bits": 2,
+      "bijection": true
+    },
+    {
+      "width": 4,
+      "canonical_words": 8,
+      "route_code_bits": 3,
+      "bijection": true
+    },
+    {
+      "width": 5,
+      "canonical_words": 16,
+      "route_code_bits": 4,
+      "bijection": true
+    },
+    {
+      "width": 6,
+      "canonical_words": 32,
+      "route_code_bits": 5,
+      "bijection": true
+    },
+    {
+      "width": 7,
+      "canonical_words": 64,
+      "route_code_bits": 6,
+      "bijection": true
+    },
+    {
+      "width": 8,
+      "canonical_words": 128,
+      "route_code_bits": 7,
+      "bijection": true
+    },
+    {
+      "width": 9,
+      "canonical_words": 256,
+      "route_code_bits": 8,
+      "bijection": true
+    },
+    {
+      "width": 10,
+      "canonical_words": 512,
+      "route_code_bits": 9,
+      "bijection": true
+    },
+    {
+      "width": 11,
+      "canonical_words": 1024,
+      "route_code_bits": 10,
+      "bijection": true
+    },
+    {
+      "width": 12,
+      "canonical_words": 2048,
+      "route_code_bits": 11,
+      "bijection": true
+    },
+    {
+      "width": 13,
+      "canonical_words": 4096,
+      "route_code_bits": 12,
+      "bijection": true
+    },
+    {
+      "width": 14,
+      "canonical_words": 8192,
+      "route_code_bits": 13,
+      "bijection": true
+    },
+    {
+      "width": 15,
+      "canonical_words": 16384,
+      "route_code_bits": 14,
+      "bijection": true
+    },
+    {
+      "width": 16,
+      "canonical_words": 32768,
+      "route_code_bits": 15,
+      "bijection": true
+    },
+    {
+      "width": 17,
+      "canonical_words": 65536,
+      "route_code_bits": 16,
+      "bijection": true
+    },
+    {
+      "width": 18,
+      "canonical_words": 131072,
+      "route_code_bits": 17,
+      "bijection": true
+    }
+  ],
+  "rank_count_checks": [
+    {
+      "width": 2,
+      "canonical_words": 2,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 2
+    },
+    {
+      "width": 3,
+      "canonical_words": 4,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 4
+    },
+    {
+      "width": 4,
+      "canonical_words": 8,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 8
+    },
+    {
+      "width": 5,
+      "canonical_words": 16,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 16
+    },
+    {
+      "width": 6,
+      "canonical_words": 32,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 32
+    },
+    {
+      "width": 7,
+      "canonical_words": 64,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 64
+    },
+    {
+      "width": 8,
+      "canonical_words": 128,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 128
+    },
+    {
+      "width": 9,
+      "canonical_words": 256,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 256
+    },
+    {
+      "width": 10,
+      "canonical_words": 512,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 512
+    },
+    {
+      "width": 11,
+      "canonical_words": 1024,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 1024
+    },
+    {
+      "width": 12,
+      "canonical_words": 2048,
+      "rank_count_vs_sorted_list": true,
+      "rank_unrank_roundtrips": 2048
+    }
+  ],
+  "block_offset_checks": [
+    {
+      "width": 2,
+      "representatives": 2,
+      "mixed_block_formula_matches_rank": true
+    },
+    {
+      "width": 4,
+      "representatives": 8,
+      "mixed_block_formula_matches_rank": true
+    },
+    {
+      "width": 6,
+      "representatives": 32,
+      "mixed_block_formula_matches_rank": true
+    },
+    {
+      "width": 8,
+      "representatives": 128,
+      "mixed_block_formula_matches_rank": true
+    },
+    {
+      "width": 10,
+      "representatives": 512,
+      "mixed_block_formula_matches_rank": true
+    },
+    {
+      "width": 12,
+      "representatives": 2048,
+      "mixed_block_formula_matches_rank": true
+    }
+  ],
+  "physical_ring_checks": [
+    {
+      "width": 2,
+      "all_ring_positions": 4,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 3,
+      "all_ring_positions": 8,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 4,
+      "all_ring_positions": 16,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 5,
+      "all_ring_positions": 32,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 6,
+      "all_ring_positions": 64,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 7,
+      "all_ring_positions": 128,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 8,
+      "all_ring_positions": 256,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 9,
+      "all_ring_positions": 512,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    },
+    {
+      "width": 10,
+      "all_ring_positions": 1024,
+      "partner_reflection": true,
+      "route_to_position": true,
+      "position_to_word": true
+    }
+  ],
+  "wide_scalar_checks": [
+    {
+      "width": 64,
+      "route_bits": 64,
+      "route_roundtrip": true,
+      "rank_computed_without_ring_array": true,
+      "address_roundtrip": true,
+      "latitude_readout": 0.0
+    },
+    {
+      "width": 256,
+      "route_bits": 256,
+      "route_roundtrip": true,
+      "rank_computed_without_ring_array": true,
+      "address_roundtrip": true,
+      "latitude_readout": 3.0
+    },
+    {
+      "width": 512,
+      "route_bits": 512,
+      "route_roundtrip": true,
+      "rank_computed_without_ring_array": true,
+      "address_roundtrip": true,
+      "latitude_readout": 1.0
+    }
+  ],
+  "partner_latitude_checks": [
+    {
+      "width": 2,
+      "words": 4,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 3,
+      "words": 8,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 4,
+      "words": 16,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 5,
+      "words": 32,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 6,
+      "words": 64,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 7,
+      "words": 128,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 8,
+      "words": 256,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 9,
+      "words": 512,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 10,
+      "words": 1024,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 11,
+      "words": 2048,
+      "weight_latitude_law": true
+    },
+    {
+      "width": 12,
+      "words": 4096,
+      "weight_latitude_law": true
+    }
+  ],
+  "sphere_lift": {
+    "per_width": [
+      {
+        "source_even_width": 2,
+        "canonical_sources": 2,
+        "odd_step_children_checked": 4,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 8,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 1,
+        "sign_flip_transitions": 2,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 4,
+        "canonical_sources": 8,
+        "odd_step_children_checked": 16,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 32,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 2,
+        "sign_flip_transitions": 4,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 6,
+        "canonical_sources": 32,
+        "odd_step_children_checked": 64,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 128,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 4,
+        "sign_flip_transitions": 8,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 8,
+        "canonical_sources": 128,
+        "odd_step_children_checked": 256,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 512,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 8,
+        "sign_flip_transitions": 16,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 10,
+        "canonical_sources": 512,
+        "odd_step_children_checked": 1024,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 2048,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 16,
+        "sign_flip_transitions": 32,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 12,
+        "canonical_sources": 2048,
+        "odd_step_children_checked": 4096,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 8192,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 32,
+        "sign_flip_transitions": 64,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 14,
+        "canonical_sources": 8192,
+        "odd_step_children_checked": 16384,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 32768,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 64,
+        "sign_flip_transitions": 128,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 16,
+        "canonical_sources": 32768,
+        "odd_step_children_checked": 65536,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 131072,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 128,
+        "sign_flip_transitions": 256,
+        "all_checks_pass": true
+      },
+      {
+        "source_even_width": 18,
+        "canonical_sources": 131072,
+        "odd_step_children_checked": 262144,
+        "odd_step_failures": 0,
+        "E_G_even_step_children_checked": 524288,
+        "E_G_even_step_failures": 0,
+        "canonical_palindrome_cores": 256,
+        "sign_flip_transitions": 512,
+        "all_checks_pass": true
+      }
+    ],
+    "odd_children_total": 349524,
+    "E_G_children_total": 699048,
+    "sign_flip_transitions_total": 1022
+  },
+  "geometry_qualification": "With evenly spaced slot-center azimuth theta_i=2*pi*(i+1/2)/2^L and ring law pos(P(x))=2^L-1-pos(x), the partner map acts as theta -> 2*pi-theta (azimuthal reflection), not theta -> theta+pi (a half-turn). Palindrome partners also flip z to -z, but are not generally the geometric sphere antipode unless azimuth convention is redefined.",
+  "elapsed_seconds": 16.59776020199979
+}

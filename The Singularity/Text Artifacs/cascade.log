@@ -1,0 +1,243 @@
+==============================================================================
+RUNG 1.  C2 IS NOT AN ASSUMPTION. IT IS C1 APPLIED TO THE POTENTIALS.
+==============================================================================
+   C1 on STATES is cheap: a finite world can satisfy it (a derangement moves
+   every state). But point C1 one level up, at the degree of freedom 'the set
+   of still-reachable futures'. In a finite world that set FREEZES -- a fixed
+   point one level up. Exhaustive check on |S| = 6:
+
+   fixed-point-free maps on 6 states checked : 15625  (= 5^6, exhaustive)
+   image chain S > f[S] > f^2[S] ... stabilized : ALL of them
+   worst case steps to freeze                  : 4  (bound: |S|-1 = 5)
+
+   Every finite world -- even one where every STATE moves -- has a set E with
+   f[E] = E. The flow of potentials STOPS. C1, applied to the potentials
+   themselves, is violated by EVERY finite world. No exceptions: 15625/15625.
+
+   Contrast pair. FINITE successor (mod 12, a bijection) vs INFINITE successor
+   s(n) = n+1 on the naturals. Track the image chain of each:
+   cyclic successor mod 12 :  f[S] == S ?  True   -> frozen at step 0.
+                              every state moves; the POTENTIALS never do.
+   successor on the naturals: image floor after 1,000,000 steps = 1,000,000;
+                              strictly climbed EVERY step: True. never froze.
+   The infinite chain {t, t+1, ...} is strictly smaller every step, forever
+   (two-line proof: its minimum increases by 1 each application; executed above
+   as the climbing floor). No frozen set of potentials exists.
+   =>  C1 in every degree of freedom FORCES an inexhaustible state space.
+   C2 is not postulated. It is C1, one level up.
+   [finite case: theorem (descending chain on finite sets) + exhaustive check]
+
+==============================================================================
+RUNG 2.  LAW 2: NO LOCATION MAY BE HELD. THE HOLD HAS A DIVERGING PRICE.
+==============================================================================
+   Classical face already executed (c1_ground_state.py: min speed 1.0000 over
+   200k ticks -- nothing stops). Quantum face, executed fresh: the LOWEST state
+   available still moves. Discretize H = p^2/2 + x^2/2, solve exactly:
+
+   ground state energy E0        = 0.499999319221   (exact: 0.5 = hbar*omega/2)
+   |E0 - 1/2|                    = 6.81e-07   (grid error only)
+   <p^2> in the ground state     = 0.5000000000   ->  NOT ZERO. it moves.
+   sigma_x * sigma_p             = 0.4999993192   (floor: 0.5)
+
+   The GROUND state -- the least the universe will sell you -- has kinetic
+   energy 1/4. Zero-point motion is Law 2 paid in the quantum register.
+   And the price of TRYING to hold a location diverges. Squeeze sigma_x:
+
+      sigma_x   minimum <p^2>/2 (the hold tax)
+        1e-01                        1.250e+01
+        1e-03                        1.250e+05
+        1e-06                        1.250e+11
+   sigma_x -> 0 costs E -> infinity. A held location is not forbidden by fiat;
+   it is priced out of the universe. Law 2 is the statement of that price.
+
+==============================================================================
+RUNG 3.  MOVING IS A TRANSFORMATION, AND THE NEW LOCATION INHERITS THE
+         CONSTRAINT. INHERITANCE, EXECUTED, IS A CONSERVATION LAW.
+==============================================================================
+   'The new location must inherit C2, Law 2, Result 2' = the constraint is the
+   same at every location = translating the whole system changes nothing in the
+   law. Noether: that inheritance IS conservation of total momentum. Two bodies,
+   internal spring, leapfrog, 200,000 ticks:
+
+   law identical at every location (inheritance HOLDS):
+     max |P_total - P_0| over run  = 3.57e-14    (machine roundoff)
+     |L_z - L_z0| at end           = 2.64e-13    (direction ledger, rung 7)
+   pin a well to ONE place (inheritance BROKEN by hand):
+     max |P_total - P_0| over run  = 1.20e+00    (order unity: conservation gone)
+
+   Same integrator, same bodies. The ONLY difference is whether the new location
+   inherits the constraint. Inheritance <=> conservation. Not analogy: executed
+   both ways. [Noether 1918, credited; witnessed live above]
+
+==============================================================================
+RUNG 4.  THE PRICE IS A GRADIENT. A SINGLE VALUE CANNOT PROVE CHANGE.
+==============================================================================
+   (a) Add a constant 1000 to the potential everywhere -- a 'single value' of
+   price. Compute forces NUMERICALLY from V (central differences), integrate
+   both worlds, compare trajectories:
+
+   max |trajectory(V) - trajectory(V+1000)| over 50,000 ticks = 1.11e-08
+   The constant never reaches the dynamics. Only the DIFFERENCE of the price
+   between neighboring locations acts. The price is a gradient or it is nothing.
+
+   (b) And the gradient form is not decoration -- it is the LEDGER. A price
+   field with curl mints change from a closed loop (return to start, pocket
+   work, nothing differs = change without difference). Loop work, R = 1:
+
+   closed-loop work, gradient price field : -4.85e-19   (zero: ledger balances)
+   closed-loop work, curl price field     : +6.283185   (= 2*pi: free change!)
+   'Difference proves change' FORBIDS the curl field: it certifies change where
+   no difference exists. The exact (gradient) form is forced, not chosen.
+
+==============================================================================
+RUNG 5.  THE CURRENCY: m * a = COST TO TRANSFORM. TWO READOUTS, ONE PRICE.
+==============================================================================
+   (a) Measure it as a measurement: simulate x(t) under a known applied price
+   F(t) = sin(t) for three different masses, RECOVER a(t) by finite differences
+   of the trajectory alone, and check that m * a_measured collapses onto the one
+   applied F(t) -- the invariant currency:
+
+     m =   1 :  max | m * a_measured  -  F_applied | = 2.51e-07
+     m =   2 :  max | m * a_measured  -  F_applied | = 2.51e-07
+     m =   5 :  max | m * a_measured  -  F_applied | = 2.51e-07
+   Three masses, three accelerations, ONE product. The cost of transforming is
+   read off the world as m*a, and it equals the applied price. F = dp/dt is the
+   exchange rate between the ledger (momentum, rung 3) and the change (a).
+
+   (b) 'Mass must have a gradient or there is no need for the computation':
+   scale EVERY mass by 10 and the coupling by 1/10 in a 3-body gravitational
+   run -- if nothing differs, a uniform mass level is unobservable, exactly
+   like the constant potential of rung 4:
+
+     max |trajectory(m, G) - trajectory(10m, G/10)| = 0.00e+00
+     (bit-identical this run: every product G*m_j rounds to the same double.
+      the identity is exact in the algebra; floating point here agrees bitwise.)
+   A uniform rescaling of all mass is GAUGE -- it never reads. Only mass
+   DIFFERENCES (ratios, gradients) are physical. Dean's constraint, executed:
+   without a mass gradient the computation m*a denominates nothing.
+
+   (c) 'Acceleration must be measurable as a different force or it would be
+   mass': the two readouts separate ONLY because in gravity the price scales
+   with m so exactly that the PATH does not. Test masses 1 and 1000, same
+   external field, force computed as F = m*g then a = F/m (the honest order):
+
+     max |path(m=1) - path(m=1000)|  = 0.00e+00
+     (bit-identical this run: (m*g)/m returned g exactly at every tick.)
+   One currency, one path. The universality of the price (m_inertial =
+   m_gravitational; MICROSCOPE bounds violations below ~1e-15, credited) is
+   what later permits the geometric re-read of the whole price field. Here it
+   is the separator: vary m at fixed field -> a fixed, F varies. a is not m.
+
+==============================================================================
+RUNG 6.  THE WASH: BALANCE READS AS ABSENCE. THE PRICE FIELD IS SOURCED
+         ONLY BY THE MASS GRADIENT.
+==============================================================================
+   (a) A test point at the exact center of a uniform 9x9x9 lattice of equal
+   masses (728 sources, perfectly balanced):
+
+     |net force| in the uniform lattice          = 1.13e-15
+     remove ONE mass at (+1,0,0): net force      = (-1.000000, -3.80e-16, -5.55e-17)
+       exact prediction (linearity): (-1, 0, 0);  |error| = 3.46e-15
+     DOUBLE the mass at (+1,0,0): net force      = (+1.000000, -3.80e-16, -5.55e-17)
+     728 sources present and the readout is ZERO. Delete one -- create a
+     gradient -- and the full unit force appears, pointing at the hole's
+     opposite; add one and it flips sign. DIRECTION (rung 7) is the sign of
+     the imbalance. The lattice was never absent. It was BALANCED.
+
+   (b) Shell theorem, executed by quadrature (uniform shell R=1, sigma=1):
+
+     inside  (z0 = 0.5): F_z = -4.44e-16      (exact: 0. the whole shell, silent)
+     outside (z0 = 2.0): F_z = +3.1415926536   vs point-mass M/z0^2 = 3.1415926536
+       relative error   = 1.84e-15
+     Inside a uniform shell the price field cancels EXACTLY -- an entire
+     sky of mass reads as nothing. This is the constraint-priority sentence
+     executed: the object (force) is the settled readout of imbalance, and
+     balance reads as absence.
+     [Credited note, not executed here: for an INFINITE uniform medium the
+      Newtonian sum is conditionally convergent -- the uniform state has no
+      well-defined force coordinate at all. The query returns null until a
+      gradient breaks the tie.]
+
+==============================================================================
+RUNG 7.  DIRECTION IS FORCED, AND IT IS LEDGERED.
+==============================================================================
+   A gradient is a vector: rung 4 forced the price to be one, rung 6 showed
+   its sign flips with the sign of the imbalance (hole: -x, surplus: +x, live
+   above). And direction differences keep their own conserved book: in the
+   inheritance run of rung 3, |L_z drift| = 2.64e-13 over 200,000 ticks.
+   Isotropy of the constraint (no preferred direction IN THE LAW) = angular
+   momentum conservation. Direction exists in the states; it cannot exist in
+   the constraint. Same Noether coin, rotational face.
+
+==============================================================================
+RUNG 8.  COLLISION, AND C3: ALL CHANGE IS EQUAL. THE LEDGER AT THE EVENT.
+==============================================================================
+   Two movers with direction in a shared space can demand the same location:
+   collision is the potential rung 2 + rung 7 create. Executed as dynamics (a
+   stiff contact spring, not an algebraic shortcut), m1=1 -> m2=3 at rest:
+
+     change of body 1:  dp1 = -1.500000005
+     change of body 2:  dp2 = +1.500000005
+     dp1 + dp2 (the ledger)  = -8.88e-16   -> equal and opposite
+     energy in/out: |E_f - E_0|/E_0 = 9.99e-09
+     outgoing v1 = -0.500000 vs exact elastic -0.500000   (err 5.0e-09)
+     outgoing v2 = +0.500000 vs exact elastic +0.500000   (err 1.7e-09)
+
+   'All change is equal' -- forced from rung 3's inheritance, and it is the SAME
+   fact: dp1 = -dp2 at every event IS conservation of total momentum IS the
+   translation-inherited constraint IS Newton's third law. One coin, four
+   faces, all witnessed live. C3 is not a new axiom. It is the inheritance
+   constraint read at the collision.
+
+==============================================================================
+RUNG 9.  THE FORM OF THE PRICE FIELD: THE LEDGER + DIMENSION => 1/r^(d-1).
+==============================================================================
+   If all change is equal, the price flux leaving ANY closed surface around a
+   source must be the same -- otherwise change is created between surfaces with
+   no source between them (rung 4's forbidden free change, at field level).
+   Executed: source displaced 0.3 from sphere center (so the check is not a
+   symmetry freebie), Fibonacci quadrature, 200,000 points per sphere:
+
+        R    flux / 4pi  (1/r^2 field)    flux / 4pi  (1/r field)
+      1.0                  1.000000001                   0.969438
+      2.0                  1.000000001                   1.984932
+      4.0                  1.000000000                   3.992492
+   1/r^2: flux is 1.000000000 x 4pi at every radius -- the ledger closes.
+   1/r  : flux GROWS with R -- change appears between the spheres from nothing.
+   Same check in d = 2 (offset source, circles):
+
+        R    flux / 2pi  (1/r field)   flux / 2pi  (1/r^2 field)
+      1.0                1.000000000                    1.073742
+      2.0                1.000000000                    0.508619
+      4.0                1.000000000                    0.251060
+   The exponent is not free. Ledger + dimension d => |F| ~ 1/r^(d-1). The FORM
+   of gravity's fall-off is forced. The dimension d = 3 is the remaining
+   coordinate -- a selection, flagged in the status ledger.
+
+==============================================================================
+RUNG 10.  LAW 3: THERE IS NO END. BOTH FACES, LONG-RUN, EXECUTED.
+==============================================================================
+   Topological face: 1,000,000 ticks of the flow that started this series:
+
+     minimum speed over 10^6 ticks         = 0.999987   (never stops)
+     invariant drift, first 10% of run     = 2.50e-05
+     invariant drift, last  10% of run     = 2.50e-05   (no secular decay)
+     Measure-preserving, fixed-point-free: no terminal state exists and none
+     is being approached. The run does not END; we stop WATCHING it.
+
+   Logical face: the self-reader of c1_ground_state.py, extended to 10,000
+   rounds:
+
+     correct self-predictions: 0 / 10,000. the reader NEVER closes.
+     A closed self-read would be a fixed point (Lawvere face, executed in the
+     anchors). No close => always a next query => no end in the logical
+     register either.
+
+   And the loop seals: 'no end' + FINITE states would force eternal recurrence
+   (Poincare, credited) -- a frozen orbit, the rung-1 violation. So Law 3
+   re-forces C2. The cascade's last rung feeds its first. Not circular:
+   mutually forcing. The chain has no loose end BECAUSE it has no end.
+
+==============================================================================
+CASCADE COMPLETE. ONE AXIOM, TEN DEGREES OF FREEDOM, ZERO NEW POSTULATES.
+==============================================================================

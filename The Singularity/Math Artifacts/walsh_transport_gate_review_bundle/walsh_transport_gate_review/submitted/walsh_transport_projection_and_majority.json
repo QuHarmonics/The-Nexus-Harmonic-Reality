@@ -1,0 +1,119 @@
+{
+  "provenance": "Additional post-main-audit checks; not backdated into the initial prediction seal.",
+  "n5_exact_address_formula": "i5(u)=4u+2u2+Maj(1-u0,u1,u2), uj is bit j from LSB.",
+  "n5_truth_table": [
+    {
+      "halfword": "000",
+      "palindrome_address": 0,
+      "address_bits": "00000",
+      "majority_complement_lsb": 0
+    },
+    {
+      "halfword": "001",
+      "palindrome_address": 4,
+      "address_bits": "00100",
+      "majority_complement_lsb": 0
+    },
+    {
+      "halfword": "010",
+      "palindrome_address": 9,
+      "address_bits": "01001",
+      "majority_complement_lsb": 1
+    },
+    {
+      "halfword": "011",
+      "palindrome_address": 12,
+      "address_bits": "01100",
+      "majority_complement_lsb": 0
+    },
+    {
+      "halfword": "100",
+      "palindrome_address": 19,
+      "address_bits": "10011",
+      "majority_complement_lsb": 1
+    },
+    {
+      "halfword": "101",
+      "palindrome_address": 22,
+      "address_bits": "10110",
+      "majority_complement_lsb": 0
+    },
+    {
+      "halfword": "110",
+      "palindrome_address": 27,
+      "address_bits": "11011",
+      "majority_complement_lsb": 1
+    },
+    {
+      "halfword": "111",
+      "palindrome_address": 31,
+      "address_bits": "11111",
+      "majority_complement_lsb": 1
+    }
+  ],
+  "projection_checks": [
+    {
+      "n": 10,
+      "reader_channels": 5,
+      "recovered_twice_latitude_coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "all_full_address_carrier_coefficients_exact": true,
+      "projection_applied_without_N_by_N_matrix": true
+    },
+    {
+      "n": 11,
+      "reader_channels": 6,
+      "recovered_twice_latitude_coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "all_full_address_carrier_coefficients_exact": true,
+      "projection_applied_without_N_by_N_matrix": true
+    },
+    {
+      "n": 19,
+      "reader_channels": 10,
+      "recovered_twice_latitude_coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "all_full_address_carrier_coefficients_exact": true,
+      "projection_applied_without_N_by_N_matrix": true
+    },
+    {
+      "n": 20,
+      "reader_channels": 10,
+      "recovered_twice_latitude_coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "all_full_address_carrier_coefficients_exact": true,
+      "projection_applied_without_N_by_N_matrix": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+NEXUS reverse-the-gap execution seal — 2026-10-16
+
+Scope: execute only the three named gaps from the current NEXUS thread. No candidate scan and no new dataset. This seal is not a blind prediction seal: the gaps and their known boundary values were already supplied in the conversation/audit.
+
+WHAT 1 — Orientation fibre
+Type: finite-dimensional angular-momentum representation, highest-weight state |ell,ell>.
+Route: descend by J_- only while c(ell,m)^2=(ell+m)(ell-m+1)>0; record m and its ladder edge. Way home: reverse through the same nonzero edges with J_+.
+Prediction: the generated offsets terminate at -ell and have count 2ell+1 without that count serving as a loop bound. The physical spin-1/2 wrapper adds a separate 2-state factor. A mapping from that physical factor to NEXUS's two readings is not assumed as an algebraic identity.
+
+WHAT 2 — Channel magnitude
+Type: map from (S,V) to Sigma=V+S. Route: compute its nullspace, invert the extended map (Sigma,Delta), and write the field-equation dependency that could generate S(r),V(r).
+Prediction: Sigma alone has a one-dimensional null direction and cannot determine Delta. The provider must be an interaction wrapper specifying couplings, source densities, field equations, and boundary conditions. Way home: S=(Sigma-Delta)/2, V=(Sigma+Delta)/2 and recompute both Sigma and Delta.
+
+WHAT 3 — Copy order above 82
+Type: pseudospin pair (2f_7/2,1h_9/2) with the declared radial/pseudospin mapping.
+Route: infer orbital l,j and pseudospin-alignment types from labels; apply the recorded partner map; contrast the copy reader order with the supplied observed order without treating that already-seen order as a prediction.
+Prediction: 1h_9/2 is not the top-j h orbital; 1h_11/2 is. The pair-order issue is a pseudospin splitting/level-order question. The missing physical link is the radial pseudospin-splitting operator (associated with the radial derivative of Sigma=V+S) evaluated on the pair in a specified nuclear interaction wrapper. Way home: solve the same radial problem for both states and return the signed energy difference epsilon(1h_9/2)-epsilon(2f_7/2). If the wrapper/profile is not fully specified, leave the energy ordering OPEN.

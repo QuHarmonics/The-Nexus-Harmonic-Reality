@@ -1,0 +1,67 @@
+{
+  "exhaustive_palindrome_addresses": 4090,
+  "widths": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "wide": [
+    {
+      "n": 63,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 64,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 127,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 128,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 255,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 256,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 511,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 512,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 1023,
+      "scalar_address_checks": 4
+    },
+    {
+      "n": 1024,
+      "scalar_address_checks": 4
+    }
+  ],
+  "provenance": "Scalar closed form derived after the main sealed audit; separately tested against all finite positions and an independent rank counter."
+}

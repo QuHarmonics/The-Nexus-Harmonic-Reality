@@ -1,0 +1,9 @@
+NEXUS prediction seal — phase-wheel continuation beyond a quadratic field (corrected arithmetic wording before successful run)
+
+Query: when a pi/(2p), norm-1/p wheel cannot fit in an imaginary quadratic field, does the wheel disappear, or does its field of representation have to expand?
+
+Prediction: for every prime p, define w_p = p^(-1/2) zeta_(4p), where zeta_(4p)=exp(2 pi i/(4p)). Then |w_p|^2=1/p, arg(w_p)=pi/(2p), w_p/conj(w_p)=zeta_(2p), and w_p^(2p)=-1/p^p is rational. Any field containing w_p contains zeta_(2p), so its degree over Q is at least phi(2p); for odd prime p this equals p-1, while phi(4)=2 at p=2. Thus p=2 and p=3 can fit the phase ratio in quadratic fields, while p>3 requires a larger field; this is a route boundary, not universal nonexistence.
+
+The first harness run found a test assertion that incorrectly applied phi(2p)=p-1 to p=2; the known value phi(4)=2 was the counterexample. The harness condition and the seal wording were corrected before the successful run. This is a harness correction, not a mathematical counterexample to the prediction.
+
+This seal predicts exact symbolic identities; no numerical approximation is used.

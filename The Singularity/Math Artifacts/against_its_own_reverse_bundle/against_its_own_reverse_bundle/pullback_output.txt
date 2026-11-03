@@ -1,0 +1,67 @@
+seal verified 359b4d3e...1584bd
+
+PB1  route residual bits = mirror differences, innermost first; c = [d!=0](1-2e)
+  n= 2  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 3  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 4  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 5  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 6  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 7  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 8  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n= 9  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n=10  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n=11  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n=12  residual-order fails 0  comparator-sign fails 0  round-trip fails 0
+  n=13  residual-order fails 0  comparator-sign fails 0
+  n=14  residual-order fails 0  comparator-sign fails 0
+  n=15  residual-order fails 0  comparator-sign fails 0
+  n=16  residual-order fails 0  comparator-sign fails 0
+  n=17  residual-order fails 0  comparator-sign fails 0
+  n=18  residual-order fails 0  comparator-sign fails 0
+
+PB2  partner in lifted coordinates;  PB3  latitude = value half, bound, census;  PB4  orthogonality
+  n= 2  PB2 True  PB3 True  PB4 True
+  n= 3  PB2 True  PB3 True  PB4 True
+  n= 4  PB2 True  PB3 True  PB4 True
+  n= 5  PB2 True  PB3 True  PB4 True
+  n= 6  PB2 True  PB3 True  PB4 True
+  n= 7  PB2 True  PB3 True  PB4 True
+  n= 8  PB2 True  PB3 True  PB4 True
+  n= 9  PB2 True  PB3 True  PB4 True
+  n=10  PB2 True  PB3 True  PB4 True
+  n=11  PB2 True  PB3 True  PB4 True
+  n=12  PB2 True  PB3 True  PB4 True
+  n=13  PB2 True  PB3 True  PB4 True
+  n=14  PB2 True  PB3 True  PB4 True
+  n=15  PB2 True  PB3 True  PB4 True
+  n=16  PB2 True  PB3 True  PB4 True
+  n=17  PB2 True  PB3 True  PB4 True
+  n=18  PB2 True  PB3 True  PB4 True
+
+PB5  the ring makes the comparison one bit; P-parity -> Walsh parity
+  n= 2  C formula True  coef -2  share 0.500000  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 3  C formula True  coef 0  share 0.000000  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 4  C formula True  coef 8  share 0.333333  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 5  C formula True  coef 20  share 0.520833  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 6  C formula True  coef 52  share 0.754464  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 7  C formula True  coef 108  share 0.813616  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 8  C formula True  coef 236  share 0.906510  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n= 9  C formula True  coef 476  share 0.921940  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=10  C formula True  coef 988  share 0.960953  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=11  C formula True  coef 1980  share 0.964848  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=12  C formula True  coef 4028  share 0.982423  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=13  C formula True  coef 8060  share 0.983399  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=14  C formula True  coef 16252  share 0.991699  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=15  C formula True  coef 32508  share 0.991943  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=16  C formula True  coef 65276  share 0.995972  odd-degree only True  |z| even-only True  z*pal odd-only True
+  n=17  C formula True  coef 130556  share 0.996033  odd-degree only True
+  n=18  C formula True  coef 261628  share 0.998016  odd-degree only True
+  n=19  C formula True  coef 523260  share 0.998032  odd-degree only True
+  n=20  C formula True  coef 1047548  share 0.999016  odd-degree only True
+
+PB6  closed address
+  pi, 64 bits: position 2,427,008,858,123,944,441  partner at 16,019,735,215,585,607,174  expected 2,427,008,858,123,944,441: True
+  closed rank == DP rank on 60 random canonical words at widths 64, 255, 256, 512, 1024
+  closed position == materialized ring address at every position, n = 2..14
+
+all PB1-PB6 RUN   (9.9s)

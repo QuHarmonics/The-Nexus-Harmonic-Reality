@@ -1,0 +1,35 @@
+== 1  The across read factors through the angle's binary address ==
+  20,000 angles x rings 1..12: bit = ring_L[first L bits of u][floor(L * rest of u)]  ->  True
+  Every ring reads the same address. Ring L takes its first L bits as the word's location and the
+  remainder as the location inside the word. One angle is a location in all rings at once.
+
+== 2  The centre seam: what every ring reads just past u = 1/2 ==
+  LEN  1: word at the centre (index 2^(L-1)) = 1           
+  LEN  2: word at the centre (index 2^(L-1)) = 01          
+  LEN  3: word at the centre (index 2^(L-1)) = 011         
+  LEN  4: word at the centre (index 2^(L-1)) = 1011          = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN  5: word at the centre (index 2^(L-1)) = 10111         = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN  6: word at the centre (index 2^(L-1)) = 110111        = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN  7: word at the centre (index 2^(L-1)) = 1101111       = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN  8: word at the centre (index 2^(L-1)) = 11101111      = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN  9: word at the centre (index 2^(L-1)) = 111011111     = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN 10: word at the centre (index 2^(L-1)) = 1111011111    = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN 11: word at the centre (index 2^(L-1)) = 11110111111   = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  LEN 12: word at the centre (index 2^(L-1)) = 111110111111  = 1^(floor(L/2)-1) 0 1^(ceil(L/2)): True
+  For L >= 4 the twist puts the largest representative at the centre: one 0, just left of the middle.
+
+== 3  The first forbidden branch, read as a location ==
+  reachable prefixes by depth: [2, 4, 8, 16, 31, 62, 123, 239, 469, 924, 1827, 3606]
+  first forbidden: 10000; its parent sits at [('33/64', '17/32')], just past the centre seam u = 1/2
+  there rings 1-5 read their centre words 1, 01, 011, 1011, 10111; the parent reaches offsets 2-4 of 10111,
+  all 1s, so the fifth bit cannot be 0. The branch dies inside the run the twist placed at the centre.
+
+== 4  Every forbidden branch is a location set inside one run of the next ring ==
+  101 forbidden branches through depth 12: each parent location lies wholly in slices of one bit: True
+  parents within 1/16 of the centre seam: 38;  within 1/32 of the quarter seams: 1;  elsewhere: 62
+
+== 5  What the twist does to the across language ==
+  with twist:    reachable [2, 4, 8, 16, 31, 62, 123, 239, 469, 924, 1827, 3606]
+  without twist: reachable [2, 4, 8, 16, 32, 64, 125, 245, 483, 947, 1875, 3710]
+  forbidden through depth 12: with 101, without 93, shared 1; 10000 forbidden without twist: False
+  without the twist the centre holds 11101 at LEN 5 instead of 10111

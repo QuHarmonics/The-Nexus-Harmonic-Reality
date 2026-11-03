@@ -1,0 +1,14 @@
+{
+  "status": "RUNS",
+  "bbp_digits_match": 64,
+  "bbp_input_rows": 65536,
+  "bbp_actual_layer_terms_via_anf": 2926,
+  "sha_round_random_matches": 1000,
+  "sha_reader_routes_unwound": 256,
+  "sha_difference_round_layers": 66,
+  "first_SHA_difference_saturation_round": 4,
+  "compiled_adder_ticks": 4516000,
+  "compiled_subtractor_ticks": 3403424,
+  "report": "/mnt/data/NEXUS_BBP_SHA_difference_engine_run.md",
+  "results": "/mnt/data/NEXUS_BBP_SHA_difference_engine_results.json"
+}

@@ -1,0 +1,6 @@
+D:\@User Data\Downloads\bbp_modcell_ltspice.cir(45): Expected device instantiation or directive here.
+.probe V(ramp) V(comp_out) V(threshold)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\@User Data\Downloads\bbp_modcell_ltspice.cir(28): File not found.
+.lib LM311.lib
+     ^^^^^^^^^

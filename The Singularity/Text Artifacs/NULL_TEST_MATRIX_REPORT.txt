@@ -1,0 +1,282 @@
+
+================================================================================
+     SYMMETRY-BREAKING / NULL-TEST MATRIX — COMPLETION REPORT
+================================================================================
+
+Date: 2026-09-03
+Framework: SHA-256 as transformation T_SHA : {0,1}* → (Z_16)^64
+Measurement: Q(H) = H - H_∅ (displacement from empty-hash origin)
+Coordinate origin: H_∅ = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+================================================================================
+SECTION 1: WHAT THE EXPERIMENT ACTUALLY ESTABLISHES
+================================================================================
+
+1.1 AVALANCHE (Solid)
+---------------------
+For every tested input ensemble:
+    ∀ j ∈ [0,63], ∃ m : Δ_j(m) ≠ 0.
+
+No output nibble remained at zero displacement across the entire test matrix.
+This is consistent with SHA-256's design specification (avalanche criterion).
+It does NOT establish a 64-wheel mechanism. It establishes only that the
+displacement field is nowhere flat.
+
+1.2 NON-UNIFORM COORDINATE SENSITIVITY (Conditional)
+-----------------------------------------------------
+Under the repeat-character ensemble, carry frequencies differ substantially:
+    Slot 41: 97/432 ≈ 22.5%
+    Slot 58: 95/432 ≈ 22.0%
+    Slot 25: 92/432 ≈ 21.3%
+    ...
+    Slot 12: 89/432 ≈ 20.6%
+
+NULL TEST: Cross-ensemble carry stability.
+Result: Top-10 carry slot overlap between ensembles:
+    repeat_chars ↔ random_bytes:     2/10 slots
+    repeat_chars ↔ length_gradient:  0/10 slots
+    one_bit_mutations ↔ random_bytes: 0/10 slots
+    one_bit_mutations ↔ permutations: 4/10 slots
+
+CONCLUSION: The "exceptional slots" are PROPERTIES OF THE INPUT ENSEMBLE,
+not invariant properties of SHA-256. Under the random oracle null model,
+carry frequencies are uniform by construction. Under SHA-256 with diverse
+ensembles, the exceptional slots migrate.
+
+STATEMENT: Coordinate sensitivities exist, but they are ensemble-dependent.
+Do not call them "gear ratios" yet. Call them:
+    "coordinate sensitivities under a specified input ensemble."
+
+1.3 PAIRWISE CORRELATION STRUCTURE (Tested)
+--------------------------------------------
+For each ensemble, pairwise Pearson correlation was computed across four
+pair-selection strategies:
+    - schedule-linked (distances {2,7,15,16}, following W[t] dependencies)
+    - distance-matched (all pairs at distances {2,7,15,16})
+    - nearby (distances {1,3,6,8,14,17})
+    - random (uniform random pairs)
+
+RESULTS (mean correlation ± std):
+
+Ensemble            | Schedule      | Distance      | Nearby        | Random
+--------------------|---------------|---------------|---------------|---------------
+repeat_chars        | -0.0034±0.031 | -0.0039±0.031 | -0.0007±0.030 | +0.0009±0.032
+random_bytes        | +0.0089±0.045 | +0.0067±0.044 | +0.0016±0.044 | +0.0027±0.045
+one_bit_mutations   | -0.0084±0.053 | -0.0061±0.053 | -0.0038±0.054 | +0.0004±0.055
+block_structured    | +0.0001±0.091 | -0.0052±0.092 | -0.0007±0.089 | -0.0068±0.091
+permutations        | -0.0048±0.073 | -0.0050±0.070 | +0.0005±0.074 | +0.0017±0.071
+length_gradient     | -0.0059±0.063 | -0.0048±0.062 | +0.0007±0.067 | +0.0005±0.064
+empty_and_singletons| -0.0096±0.062 | -0.0079±0.064 | +0.0008±0.067 | -0.0057±0.063
+
+INTERPRETATION:
+- All mean correlations are O(10^-3) — effectively zero.
+- Standard deviations are O(10^-2) — individual pairs vary, but the mean
+  does not systematically favor schedule-linked pairs.
+- No strategy shows a statistically distinguishable mean from the others.
+- The schedule-linked pairs do NOT show stronger correlation than
+  distance-matched, nearby, or random controls.
+
+CONCLUSION: There is NO empirical evidence that the SHA message schedule
+induces visible covariance structure in the output-coordinate displacement
+field that survives null-model controls.
+
+1.4 PERMUTATION TEST
+--------------------
+Null hypothesis: Slot labels are arbitrary. Shuffling them should not
+change the mean schedule-linked correlation.
+
+Result (z-scores, n=100 permutations):
+    repeat_chars:        z = -1.47  (not significant)
+    random_bytes:        z = +2.17  (significant at p<0.05)
+    one_bit_mutations:   z = -2.31  (significant at p<0.05)
+    block_structured:    z = +0.24  (not significant)
+    permutations:        z = -1.29  (not significant)
+    length_gradient:     z = -1.37  (not significant)
+    empty_and_singletons: z = -1.78 (borderline)
+
+INTERPRETATION:
+- Effect sizes are tiny (true mean vs permuted mean differ by < 0.01).
+- Two ensembles show significance, but with OPPOSITE signs.
+- This is consistent with finite-sample fluctuation, not with a
+  systematic structure that survives label permutation.
+
+CONCLUSION: The permutation test does not support the existence of a
+schedule-induced geometric structure in the output coordinates.
+
+1.5 RANDOM ORACLE COMPARISON
+-----------------------------
+A simulated random oracle (uniform random 256-bit outputs, same Q transform)
+was compared against SHA-256 on identical input ensembles.
+
+Result: SHA-256 and the random oracle produce statistically indistinguishable
+correlation distributions across all pair-selection strategies.
+
+CONCLUSION: The observed statistics are consistent with the random oracle
+null model. No measurable relational geometry was detected that exceeds
+what a random function would produce.
+
+1.6 PERIOD DETECTION (4-Phase Claim)
+-------------------------------------
+Tested for periodicity in the average delta sequence across slots,
+and in individual delta sequences for the repeat-character ensemble.
+
+Result: No dominant period was detected. The highest autocorrelation
+scores were below the significance threshold (r < 0.5) for all tested
+periods 1-16.
+
+CONCLUSION: The "4-phase cycle" claim is NOT supported by autocorrelation
+analysis on the tested ensembles. It may have been a visual artifact of
+the repeat-character ensemble combined with hexadecimal representation.
+
+================================================================================
+SECTION 2: WHAT SURVIVES
+================================================================================
+
+2.1 THE COORDINATE TRANSFORMATION Q(H) = H - H_∅
+--------------------------------------------------
+This is mathematically sound and operationally clean. It is a chosen
+origin, not a discovered ground state. It allows us to study the
+displacement field rather than absolute hash values.
+
+STATEMENT: Q is a legitimate measurement method. It does not imply that
+H_∅ is "zero" in any intrinsic sense.
+
+2.2 THE EXISTENCE OF A DISPLACEMENT FIELD
+------------------------------------------
+For every message m, the vector Δ(m) ∈ (Z_16)^64 is well-defined.
+This is a genuine 64-dimensional finite algebraic space.
+
+STATEMENT: The output space (Z_16)^64 is a valid representation.
+The displacement field is a real mathematical object.
+
+2.3 ENSEMBLE-DEPENDENT STRUCTURE
+---------------------------------
+Different input ensembles produce different marginal distributions,
+carry frequencies, and correlation patterns. This is real and measurable.
+
+STATEMENT: T_SHA does not act like a uniform random oracle when restricted
+to structured input ensembles. The non-uniformity is real, but it is a
+property of the (ensemble, transformation) pair, not of the transformation
+alone.
+
+================================================================================
+SECTION 3: WHAT IS REJECTED
+================================================================================
+
+HYPOTHESIS: "SHA-256 has 64 wheels with distinct gear ratios."
+STATUS: REJECTED.
+The carry frequencies and variances are ensemble-dependent. They do not
+survive cross-ensemble testing. The "gear ratio" metaphor conflates
+input-ensemble structure with transformation structure.
+
+HYPOTHESIS: "Schedule-linked pairs show stronger correlation than controls."
+STATUS: REJECTED.
+No statistically significant difference was found between schedule-linked
+pairs and distance-matched, nearby, or random pairs.
+
+HYPOTHESIS: "Simple inputs render a 4-phase cycle in the output coordinates."
+STATUS: REJECTED.
+Autocorrelation analysis found no significant periodicity in the tested
+ensembles.
+
+HYPOTHESIS: "The hash induces a measurable relational geometry that exceeds
+a random oracle."
+STATUS: NOT REJECTED, BUT NOT CONFIRMED.
+The statistics are consistent with the random oracle null model. This does
+not prove SHA-256 IS a random oracle, but it means the current experiment
+did not detect structure above that baseline.
+
+================================================================================
+SECTION 4: THE CLEAN EXPERIMENTAL QUESTION
+================================================================================
+
+The correct question is:
+
+    T_SHA : message space → (Z_16)^64
+
+    Does T_SHA induce measurable relational geometry in its output space
+    that cannot be explained by the null model of a random oracle?
+
+Current answer: NOT DETECTED at the resolution of this experiment.
+
+This does not mean "no." It means "not yet found, at this sensitivity."
+
+Possible reasons:
+1. The structure exists but is below the noise floor of 10^3 samples.
+2. The structure exists in a subspace not captured by pairwise correlations.
+3. The structure exists but requires a different measurement method.
+4. The structure genuinely does not exist (SHA-256 approximates a random oracle).
+
+================================================================================
+SECTION 5: RECOMMENDED NEXT EXPERIMENTS
+================================================================================
+
+5.1 HIGHER-ORDER STATISTICS
+----------------------------
+Pairwise correlation may miss structure visible in:
+    - Triple correlations (Δ_i, Δ_j, Δ_k)
+    - Conditional correlations given input features
+    - Information-theoretic measures beyond MI
+
+5.2 DIFFERENTIAL ANALYSIS
+--------------------------
+Instead of comparing against H_∅, compare:
+    Δ(m_1, m_2) = H(m_1) - H(m_2)
+for pairs of related messages (one-bit flips, prefix changes, etc.).
+This removes the arbitrary origin and tests the transformation directly.
+
+5.3 ALGEBRAIC STRUCTURE
+------------------------
+Treat (Z_16)^64 as a module and test:
+    - Linearity approximations
+    - Subspace invariance
+    - Group-theoretic properties of T_SHA
+
+5.4 LARGER SAMPLE SIZES
+------------------------
+Current sample: ~3,000 inputs across 7 ensembles.
+Cryptographic structure may require 10^6+ samples to detect above noise.
+
+5.5 NON-PAIRWISE GEOMETRY
+--------------------------
+The current test matrix is pairwise. The "shape" queries (triangle, spiral,
+wave, etc.) from the odometer engine have not been subjected to null-model
+controls. Those trajectories may reveal structure invisible to pairwise
+statistics.
+
+================================================================================
+SECTION 6: FILES GENERATED
+================================================================================
+
+null_test_statistics.csv          — Main statistical summary
+null_test_permutation.csv         — Permutation test results
+null_test_oracle.csv              — Random oracle comparison
+null_test_schedule_vs_distance.csv — Strategy comparison
+null_test_carry_overlap.csv       — Cross-ensemble carry overlap matrix
+null_test_carry_by_slot.csv       — Per-slot carry frequencies per ensemble
+
+================================================================================
+SECTION 7: CONCLUSION
+================================================================================
+
+The odometer experiment produced a clean coordinate system and a set of
+measurable statistics. The null-test matrix shows that most of the
+"mechanical" interpretations (gear ratios, schedule coupling, 4-phase
+cycles) are not supported by controlled experiments.
+
+What survives:
+    1. The displacement field Δ(m) = H(m) - H_∅ is well-defined.
+    2. Ensemble-dependent structure is real and measurable.
+    3. The random oracle null model is consistent with current data.
+
+What does not survive:
+    1. Invariant "gear ratios" across ensembles.
+    2. Schedule-induced covariance in output coordinates.
+    3. 4-phase periodicity.
+
+The framework is now on solid ground: we have a measurement method (Q),
+a representation space ((Z_16)^64), a null model (random oracle), and
+a set of rejected hypotheses. The next step is either higher-resolution
+measurement or a different measurement geometry.
+
+================================================================================

@@ -1,0 +1,21 @@
+SEALED PREDICTION - Reader atlas, fresh widths 17-19 (RA7)
+Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828. 2026-10-20.
+
+Same setting and readiness predicate as seal_readers.txt. Positions: bit i = coefficient of 2^i; mirror
+pair j = {n-1-j, j}; h = floor(n/2). Readings below were measured at n = 4-16 (reader_output.txt) before
+this seal; the landings are n = 17, 18, 19.
+
+RA7a (face). Minimum mean readiness 4 - 5*2^-h, attained by exactly the 2^h outside-in orders.
+RA7b (address, two wheels, corrected form). The optimal address readers are exactly 2^k orders: the
+outer k mirror pairs from the outside in, either member first within each pair, then every remaining
+position in descending order (the core read by value). k = 2 + floor(log2(n - 7)) = 5 at n = 17, 18, 19.
+Provenance of k: a fit to the measured k = 2,3,3,4,4,4,4,5,5 at n = 8-16, extrapolated, not derived.
+RA7c (successor, the runtime step R[a] -> R[a+1]). Exactly 6 optimal orders: positions 0, 1 and n-1 in any
+order, then n-2, then the remaining mirror pairs from the outside in with the low member first
+(2, n-3, 3, n-4, ...), the middle bit last at odd n.
+RA7d (partner P(x)). Exactly h! * 2^h optimal orders, the mirror pairs read one complete pair at a time in
+any pair order, either member first, middle bit last at odd n (the palindrome flag's family).
+
+Way home: atlas/reader_extend.py verifies this file's SHA-256, folds the truth tables of face, address,
+successor and partner at n = 17, 18, 19 (3^n work), runs the exact dynamic programme over all 2^n arrived
+sets, enumerates the optimal orders (up to 5000) and counts them exactly, and reports RA7a-d per width.

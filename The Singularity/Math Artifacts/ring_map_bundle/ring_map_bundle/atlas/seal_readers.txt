@@ -1,0 +1,45 @@
+SEALED PREDICTION - Reader atlas: the best order to read a word, for each thing the ring computes (RA1-RA6)
+Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828. 2026-10-20.
+
+Setting. A word x of width n arrives one bit at a time in a fixed arrival order (a permutation of the n
+bit positions; position i is the coefficient of 2^i; mirror pair j is {n-1-j, j}, j = 0..h-1, h = floor(n/2);
+at odd n the middle bit is h). An output is ready when every completion of the unarrived bits gives the
+same value (the Section 19 predicate). The readiness time of an output for x is the number of arrivals
+until it is ready. Cost of an order = mean readiness over all 2^n words (and over the output's bits when the
+output is a bit vector read bit by bit). The minimum over all n! orders is computed exactly by a dynamic
+programme over the 2^n sets of arrived positions; the not-ready counts for every set come from folding the
+truth table along each unarrived position (3^n work).
+
+RA1 (face, fresh widths). Face = [x > P(x)]. For n = 15 and 16 the minimum mean readiness is 4 - 5*2^-h,
+attained by exactly the 2^h outside-in orders (pairs outermost to innermost, either member first, middle
+bit last). (Widths 5-14 already ran in Section 22; recomputed here as a route back, not landings.)
+
+RA2 (comparator). c(x) = sgn(J(x) - x) in {-1, 0, +1}, ready when its value is fixed. For every n = 4..16
+the minimum mean readiness is 4 - 4*2^-h, attained by exactly the 2^h outside-in orders (middle bit last).
+
+RA3 (palindrome flag). pal(x) = [J(x) = x]. For every n = 4..16 the minimum mean readiness is 4 - 4*2^-h,
+attained by exactly the h! * 2^h orders that read the mirror pairs one complete pair at a time, in any
+order of pairs, either member first, middle bit last.
+
+RA4 (address, two wheels). Address = ring slot of x, read bit by bit (mean over the n address bits).
+For n = 13, 14, 15, 16 the optimal orders are exactly 2^k orders with k = h-1 (n odd) or k = h-2 (n even):
+the outer k mirror pairs from the outside in, either member first within each pair, followed by one single
+fixed order of the remaining core (3 bits at odd n, 4 bits at even n). Counts 32, 32, 64, 64.
+Competing claim recorded for test, not endorsed (Gemini reply 30a0308d): the core is read by value
+(MSB first) - even n: outer h-2 pairs then the 4-bit core by value; odd n: outer h-1 pairs then the
+3-bit core by value. Section 22 data at n = 8, 9, 10 already disagree with by-value cores; n = 13-16 decide.
+
+RA5 (decompile). The address arrives instead of the word; outputs are the word bits R[a] (mean over the
+n bits). For every n = 4..16, MSB-first address arrival attains the minimum.
+
+RA6 (adder, the DI chain read from its own end). Two 8-bit operands, 16 input positions, 9 outputs
+(sum bits s0..s7 and carry c8), mean over the 9 outputs. The minimum over all 16! orders is 175/18
+(= 9.7222...), attained by exactly 256 orders: positions read in ascending significance, a_j and b_j
+adjacent in either order.
+
+Measured alongside, not sealed: partner P(x) bits, successor (next ring word) bits, pair index
+rank(canon x), folded depth, the address read as a whole (all bits), for n = 4..16.
+
+Way home: atlas/reader_atlas.py verifies this file's SHA-256, computes the exact optimum, the number of
+optimal orders, and the optimal orders themselves (enumerated up to 5000), for every output and width,
+and reports each claim RA1-RA6 separately.

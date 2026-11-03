@@ -1,0 +1,8 @@
+NEXUS §112 PRE-RUN PREDICTION — Recursive observer residual minimization
+
+1. A route-only schedule observer can omit the stored per-block 256-bit round_result and regenerate it from the retained schedule seed by a forward pass; the recursive reverse/verification pass must still return to the SHA IV.
+2. The schedule tail W[48..63] is sufficient to reconstruct W[0..63] exactly by applying the SHA schedule recurrence backward; it is a 512-bit reversible recoding of the block, not a compression of its information.
+3. A fully padding-only block is derivable from the fixed padding law and known message length, so its schedule seed need not be stored.
+4. A finite fold H(a,b)=a XOR b over 4-bit lanes has 16 members per fiber; retaining a as the residual is necessary and sufficient, exactly 4 bits.
+5. For a fixed-length L-byte unrestricted message domain, any pair (SHA-256 digest, residual of q bits) that identifies every message must satisfy q >= max(0, 8L-256). This is a counting lower bound; the exact minimum for the actual map is ceil(log2(max fiber size)) and may be larger.
+6. No claim of digest-only inversion or a non-scaling universal seed is predicted. If the observer stores the schedule in an equivalent reversible encoding, input information has been re-encoded, not removed.

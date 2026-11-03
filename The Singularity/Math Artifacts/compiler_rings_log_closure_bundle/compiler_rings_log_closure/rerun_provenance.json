@@ -1,0 +1,20 @@
+{
+  "audit_script_sha256_after_rerun": "5d5583fae11e6e2f75c6ab01ccefd63fb5370367efe9c3063d839294fe86be66",
+  "source_seal_match": true,
+  "prediction_sha256_literal_file": "c560fad25fe397675b789d10a357ed5fba0320804d62284f1b9a972e4422e393",
+  "prediction_sha256_without_terminal_newline": "21895d2da4a74d2338d00cfb5e79754ac42091a26262cfb14a5195cae221e0de",
+  "recorded_prediction_seal": "21895d2da4a74d2338d00cfb5e79754ac42091a26262cfb14a5195cae221e0de",
+  "prediction_seal_matches_after_terminal_newline_removal": true,
+  "result_summary": {
+    "finite_prefix_thresholds": 2097167,
+    "palindrome_addresses": 4090,
+    "wide_scalar_threshold_checks": 90,
+    "n20_tent_spot_checks": 64,
+    "width_scope": "n=2..20"
+  },
+  "coverage_qualifications": {
+    "borrow_cell_exhaustive_check": "n=2..16",
+    "complete_tent_reconstruction": "n=2..12 plus 64 scalar checks at n=20",
+    "flags_after_those_widths": "not executed, not failures"
+  }
+}

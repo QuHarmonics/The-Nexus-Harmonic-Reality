@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installer-gui-script authoringTool="Packages" authoringToolVersion="1.2.9" authoringToolBuild="603" minSpecVersion="1.0">
+    <options customize="always" allow-external-scripts="false"/>
+    <installation-check script="installation_check()"/>
+    <volume-check script="volume_check()"/>
+    <!--+==========================+
+        |       Presentation       |
+        +==========================+-->
+    <title>DISTRIBUTION_TITLE</title>
+    <background file="background" scaling="tofit" alignment="center"/>
+    <background-darkAqua file="background" scaling="tofit" alignment="center"/>
+    <welcome file="welcome.rtf"/>
+    <license file="license.txt"/>
+    <!--+==========================+
+        |         Installer        |
+        +==========================+-->
+    <choices-outline>
+        <line choice="installer_choice_1"/>
+        <line choice="installer_choice_2"/>
+    </choices-outline>
+    <choice id="installer_choice_1" title="INSTALLER_CHOICE_1_TITLE" description="INSTALLER_CHOICE_1_DESCRIPTION">
+        <pkg-ref id="com.marcmozart.mtfptstrips"/>
+    </choice>
+    <choice id="installer_choice_2" title="INSTALLER_CHOICE_2_TITLE" description="INSTALLER_CHOICE_2_DESCRIPTION">
+        <pkg-ref id="com.marcmozart.mtfptproject"/>
+    </choice>
+    <!--+==========================+
+        |    Package References    |
+        +==========================+-->
+    <pkg-ref id="com.marcmozart.mtfptstrips" version="1.2" auth="Root" installKBytes="3071">file:./Contents/Packages/MixTempleFree%20Presets.pkg</pkg-ref>
+    <pkg-ref id="com.marcmozart.mtfptstrips">
+        <must-close>
+            <app id="com.apple.logic10"/>
+        </must-close>
+    </pkg-ref>
+    <pkg-ref id="com.marcmozart.mtfptproject" version="1.2" auth="Root" installKBytes="101">file:./Contents/Packages/MixTempleFree%20Project.pkg</pkg-ref>
+    <pkg-ref id="com.marcmozart.mtfptproject">
+        <must-close>
+            <app id="com.apple.logic10"/>
+        </must-close>
+    </pkg-ref>
+    <!--+==========================+
+        |    JavaScript Scripts    |
+        +==========================+-->
+    <script>
+
+	const __IC_FLAT_DISTRIBUTION__=false;
+	const IC_OS_DISTRIBUTION_TYPE_ANY=0;
+	const IC_OS_DISTRIBUTION_TYPE_CLIENT=1;
+	const IC_DISK_TYPE_DESTINATION=0;
+	const IC_OS_DISTRIBUTION_TYPE_SERVER=2;
+	const IC_DISK_TYPE_STARTUP_DISK=1;
+
+	function IC_CheckOS(inDiskType,inMustBeInstalled,inMinimumVersion,inMaximumVersion,inDistributionType)
+	{
+		var tOSVersion=undefined;
+		
+		/* Check Version Constraints */
+		
+		if (inDiskType==IC_DISK_TYPE_DESTINATION)
+		{
+			if (my.target.systemVersion!=undefined)
+			{
+				tOSVersion=my.target.systemVersion.ProductVersion;
+			}
+			
+			/* Check if no OS is installed on the potential target */
+			
+			if (tOSVersion==undefined)
+			{
+				return (inMustBeInstalled==false);
+			}
+			
+			if (inMustBeInstalled==false)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			tOSVersion=system.version.ProductVersion;
+		}
+		
+		if (system.compareVersions(tOSVersion,inMinimumVersion)==-1)
+			return false;
+			
+		if (inMaximumVersion!=undefined &amp;&amp;
+			system.compareVersions(tOSVersion,inMaximumVersion)==1)
+			return false;
+		
+		/* Check Distribution Type */
+		
+		if (inDistributionType!=IC_OS_DISTRIBUTION_TYPE_ANY)
+		{
+			var tIsServer;
+			
+			if (system.compareVersions(tOSVersion,'10.8.0')==-1)
+			{
+				if (inDiskType==IC_DISK_TYPE_DESTINATION)
+				{
+					tIsServer=system.files.fileExistsAtPath(my.target.mountpoint+'/System/Library/CoreServices/ServerVersion.plist');
+				}
+				else
+				{
+					tIsServer=system.files.fileExistsAtPath('/System/Library/CoreServices/ServerVersion.plist');
+				}
+			}
+			else
+			{
+				if (inDiskType==IC_DISK_TYPE_DESTINATION)
+				{
+					tIsServer=system.files.fileExistsAtPath(my.target.mountpoint+'/Applications/Server.app');
+				}
+				else
+				{
+					tIsServer=system.files.fileExistsAtPath('/Applications/Server.app');
+				}
+			}
+			
+			if (inDistributionType==IC_OS_DISTRIBUTION_TYPE_CLIENT &amp;&amp; tIsServer==true)
+			{
+				return false;
+			}
+			
+			if (inDistributionType==IC_OS_DISTRIBUTION_TYPE_SERVER &amp;&amp; tIsServer==false)
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
+
+	function IC_CheckMinimumAvailableDiskSpace(inMinimumAvailableSpaceKB)
+	{
+		return (my.target.availableKilobytes&gt;=inMinimumAvailableSpaceKB);
+	}
+
+	function installation_check()
+	{
+		var tResult;
+
+		tResult=IC_CheckOS(IC_DISK_TYPE_STARTUP_DISK,true,'10.5',undefined,IC_OS_DISTRIBUTION_TYPE_ANY);
+
+		if (tResult==false)
+		{
+			my.result.title = system.localizedStandardStringWithFormat('InstallationCheckError', system.localizedString('DISTRIBUTION_TITLE'));
+			my.result.message = ' ';
+			my.result.type = 'Fatal';
+		}
+
+		return tResult;
+	}
+
+	function volume_check()
+	{
+		var tResult;
+
+		tResult=IC_CheckMinimumAvailableDiskSpace(62914560);
+
+		if (tResult==false)
+		{
+			my.result.message = system.localizedString('REQUIREMENT_FAILED_MESSAGE_VOLUME_CHECK_1');
+			my.result.type = 'Fatal';
+		}
+
+		return tResult;
+	}
+
+    </script>
+    <domains enable_currentUserHome="true" enable_localSystem="false" enable_anywhere="false"/>
+</installer-gui-script>

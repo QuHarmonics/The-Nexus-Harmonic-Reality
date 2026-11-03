@@ -1,0 +1,17 @@
+states: 000 001 010 011 100 101 110 111
+Walsh basis: 1, A, B, C, AB, AC, BC, ABC
+Transition matrix in Walsh coordinates M = W P^T W^-1:
+[ 1,  0,  0,  0,  0,  0,  0,  0]
+[ 0,  0,  0, -1,  0,  0,  0,  0]
+[ 0, -1,  0,  0,  0,  0,  0,  0]
+[ 0,  0, -1,  0,  0,  0,  0,  0]
+[ 0,  0,  0,  0,  0,  1,  0,  0]
+[ 0,  0,  0,  0,  0,  0,  1,  0]
+[ 0,  0,  0,  0,  1,  0,  0,  0]
+[ 0,  0,  0,  0,  0,  0,  0, -1]
+M^3 diagonal: [1, -1, -1, -1, 1, 1, 1, -1]
+P^6=I; M^6=I; F^3 complements every bit: PASS
+reader-orbit sizes parity/majority/choice: [2, 8, 24]
+combined nonconstant sign-reader span rank: 7
+Boolean-function orbit count: 22
+all checks: PASS (integer/rational arithmetic only)

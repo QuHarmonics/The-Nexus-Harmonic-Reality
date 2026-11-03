@@ -1,0 +1,702 @@
+{
+  "status": "PASS",
+  "scope": "Uploaded Walsh transport claims plus independent scalar palindrome placement check.",
+  "integrity": {
+    "source_sha256": "ae92dcb15998c4a9a32d60565ce2f16b89916efa610e3dd7d8f58f66a0037ce9",
+    "source_hash_matches_record": true,
+    "prediction_sha256_raw": "ab5237a0724d5580c1a4bb5c8c7247c9520783373df5c463782c98be9f68c166",
+    "prediction_sha256_without_one_terminal_LF": "6c81e47d5eeedbba509fa1faccd8ac30a4e09ce5572b338c9da0f91b00a96e0c",
+    "prediction_seal_matches_after_terminal_LF_removal": true,
+    "zip_contains_required_pairs_forced_dependency": false,
+    "rerun_dependency_note": "The rerun uses support/pairs_forced.py from the earlier ring audit; this file is not present in the submitted ZIP and is not authenticated as the original omitted dependency."
+  },
+  "ring_compatibility": {
+    "words_compared": 2046,
+    "widths": "1..10",
+    "status": "PASS"
+  },
+  "palindrome_scalar_placement": {
+    "widths": [
+      {
+        "n": 2,
+        "half_words_checked": 2,
+        "status": "PASS"
+      },
+      {
+        "n": 3,
+        "half_words_checked": 4,
+        "status": "PASS"
+      },
+      {
+        "n": 4,
+        "half_words_checked": 4,
+        "status": "PASS"
+      },
+      {
+        "n": 5,
+        "half_words_checked": 8,
+        "status": "PASS"
+      },
+      {
+        "n": 6,
+        "half_words_checked": 8,
+        "status": "PASS"
+      },
+      {
+        "n": 7,
+        "half_words_checked": 16,
+        "status": "PASS"
+      },
+      {
+        "n": 8,
+        "half_words_checked": 16,
+        "status": "PASS"
+      },
+      {
+        "n": 9,
+        "half_words_checked": 32,
+        "status": "PASS"
+      },
+      {
+        "n": 10,
+        "half_words_checked": 32,
+        "status": "PASS"
+      },
+      {
+        "n": 11,
+        "half_words_checked": 64,
+        "status": "PASS"
+      },
+      {
+        "n": 12,
+        "half_words_checked": 64,
+        "status": "PASS"
+      },
+      {
+        "n": 13,
+        "half_words_checked": 128,
+        "status": "PASS"
+      },
+      {
+        "n": 14,
+        "half_words_checked": 128,
+        "status": "PASS"
+      },
+      {
+        "n": 15,
+        "half_words_checked": 256,
+        "status": "PASS"
+      },
+      {
+        "n": 16,
+        "half_words_checked": 256,
+        "status": "PASS"
+      },
+      {
+        "n": 17,
+        "half_words_checked": 512,
+        "status": "PASS"
+      },
+      {
+        "n": 18,
+        "half_words_checked": 512,
+        "status": "PASS"
+      },
+      {
+        "n": 19,
+        "half_words_checked": 1024,
+        "status": "PASS"
+      },
+      {
+        "n": 20,
+        "half_words_checked": 1024,
+        "status": "PASS"
+      }
+    ],
+    "addresses_checked": 4090,
+    "wide_dp_crosscheck_from_prior_audit": 40,
+    "prior_crosscheck_widths_2_to_20_addresses": 4090,
+    "status": "PASS"
+  },
+  "complete_character_matrices": [
+    {
+      "n": 2,
+      "rows": 4,
+      "columns": 2,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 0,
+      "max_compressed_terms_in_any_row": 1
+    },
+    {
+      "n": 3,
+      "rows": 8,
+      "columns": 4,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 0,
+      "max_compressed_terms_in_any_row": 1
+    },
+    {
+      "n": 4,
+      "rows": 16,
+      "columns": 4,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 0,
+      "max_compressed_terms_in_any_row": 1
+    },
+    {
+      "n": 5,
+      "rows": 32,
+      "columns": 8,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 16,
+      "max_compressed_terms_in_any_row": 4
+    },
+    {
+      "n": 6,
+      "rows": 64,
+      "columns": 8,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 32,
+      "max_compressed_terms_in_any_row": 4
+    },
+    {
+      "n": 7,
+      "rows": 128,
+      "columns": 16,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 120,
+      "max_compressed_terms_in_any_row": 8
+    },
+    {
+      "n": 8,
+      "rows": 256,
+      "columns": 16,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 240,
+      "max_compressed_terms_in_any_row": 8
+    },
+    {
+      "n": 9,
+      "rows": 512,
+      "columns": 32,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 508,
+      "max_compressed_terms_in_any_row": 16
+    },
+    {
+      "n": 10,
+      "rows": 1024,
+      "columns": 32,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 1022,
+      "max_compressed_terms_in_any_row": 16
+    },
+    {
+      "n": 11,
+      "rows": 2048,
+      "columns": 64,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 2046,
+      "max_compressed_terms_in_any_row": 32
+    },
+    {
+      "n": 12,
+      "rows": 4096,
+      "columns": 64,
+      "exact_gram": true,
+      "opposite_parity_entries_zero": true,
+      "rows_with_degree_mixing": 4094,
+      "max_compressed_terms_in_any_row": 32
+    }
+  ],
+  "singleton_carrier_reconstruction": [
+    {
+      "n": 2,
+      "m": 1,
+      "columns_used": 1,
+      "coefficients": [
+        -2
+      ],
+      "coefficient_count": 4,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 2
+    },
+    {
+      "n": 3,
+      "m": 2,
+      "columns_used": 2,
+      "coefficients": [
+        -1,
+        -2
+      ],
+      "coefficient_count": 8,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 4
+    },
+    {
+      "n": 4,
+      "m": 2,
+      "columns_used": 2,
+      "coefficients": [
+        -2,
+        -2
+      ],
+      "coefficient_count": 16,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 8
+    },
+    {
+      "n": 5,
+      "m": 3,
+      "columns_used": 3,
+      "coefficients": [
+        -1,
+        -2,
+        -2
+      ],
+      "coefficient_count": 32,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 14
+    },
+    {
+      "n": 6,
+      "m": 3,
+      "columns_used": 3,
+      "coefficients": [
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 64,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 28
+    },
+    {
+      "n": 7,
+      "m": 4,
+      "columns_used": 4,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 128,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 62
+    },
+    {
+      "n": 8,
+      "m": 4,
+      "columns_used": 4,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 256,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 96
+    },
+    {
+      "n": 9,
+      "m": 5,
+      "columns_used": 5,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 512,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 243
+    },
+    {
+      "n": 10,
+      "m": 5,
+      "columns_used": 5,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 1024,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 467
+    },
+    {
+      "n": 11,
+      "m": 6,
+      "columns_used": 6,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 2048,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 988
+    },
+    {
+      "n": 12,
+      "m": 6,
+      "columns_used": 6,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 4096,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 1800
+    },
+    {
+      "n": 13,
+      "m": 7,
+      "columns_used": 7,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 8192,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 4015
+    },
+    {
+      "n": 14,
+      "m": 7,
+      "columns_used": 7,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 16384,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 7887
+    },
+    {
+      "n": 15,
+      "m": 8,
+      "columns_used": 8,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 32768,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 16159
+    },
+    {
+      "n": 16,
+      "m": 8,
+      "columns_used": 8,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 65536,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 31181
+    },
+    {
+      "n": 17,
+      "m": 9,
+      "columns_used": 9,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 131072,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 64948
+    },
+    {
+      "n": 18,
+      "m": 9,
+      "columns_used": 9,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 262144,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 128879
+    },
+    {
+      "n": 19,
+      "m": 10,
+      "columns_used": 10,
+      "coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 524288,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 260553
+    },
+    {
+      "n": 20,
+      "m": 10,
+      "columns_used": 10,
+      "coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "coefficient_count": 1048576,
+      "exact_reconstruction": true,
+      "orthogonal_columns": true,
+      "nonzero_carrier_coefficients": 512674
+    }
+  ],
+  "majority_n5_truth_table": [
+    {
+      "u": 0,
+      "word": "00000",
+      "address": 0,
+      "majority_inputs": [
+        1,
+        0,
+        0
+      ],
+      "majority_output": 0,
+      "status": "PASS"
+    },
+    {
+      "u": 1,
+      "word": "00100",
+      "address": 4,
+      "majority_inputs": [
+        0,
+        0,
+        0
+      ],
+      "majority_output": 0,
+      "status": "PASS"
+    },
+    {
+      "u": 2,
+      "word": "01010",
+      "address": 9,
+      "majority_inputs": [
+        1,
+        1,
+        0
+      ],
+      "majority_output": 1,
+      "status": "PASS"
+    },
+    {
+      "u": 3,
+      "word": "01110",
+      "address": 12,
+      "majority_inputs": [
+        0,
+        1,
+        0
+      ],
+      "majority_output": 0,
+      "status": "PASS"
+    },
+    {
+      "u": 4,
+      "word": "10001",
+      "address": 19,
+      "majority_inputs": [
+        1,
+        0,
+        1
+      ],
+      "majority_output": 1,
+      "status": "PASS"
+    },
+    {
+      "u": 5,
+      "word": "10101",
+      "address": 22,
+      "majority_inputs": [
+        0,
+        0,
+        1
+      ],
+      "majority_output": 0,
+      "status": "PASS"
+    },
+    {
+      "u": 6,
+      "word": "11011",
+      "address": 27,
+      "majority_inputs": [
+        1,
+        1,
+        1
+      ],
+      "majority_output": 1,
+      "status": "PASS"
+    },
+    {
+      "u": 7,
+      "word": "11111",
+      "address": 31,
+      "majority_inputs": [
+        0,
+        1,
+        1
+      ],
+      "majority_output": 1,
+      "status": "PASS"
+    }
+  ],
+  "factored_projector_checks": [
+    {
+      "n": 10,
+      "reader_channels": 5,
+      "recovered_coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "exact": true
+    },
+    {
+      "n": 11,
+      "reader_channels": 6,
+      "recovered_coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "exact": true
+    },
+    {
+      "n": 19,
+      "reader_channels": 10,
+      "recovered_coefficients": [
+        -1,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "exact": true
+    },
+    {
+      "n": 20,
+      "reader_channels": 10,
+      "recovered_coefficients": [
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2,
+        -2
+      ],
+      "exact": true
+    }
+  ],
+  "seconds": 3.8465297299999293
+}

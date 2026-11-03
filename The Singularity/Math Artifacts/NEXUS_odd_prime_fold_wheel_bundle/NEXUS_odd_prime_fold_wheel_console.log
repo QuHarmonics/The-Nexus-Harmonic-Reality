@@ -1,0 +1,87 @@
+PASS: 83 exact assertions
+PASS p=2 special wheel has norm 1/2
+PASS s^2 = i/2
+PASS s^4 = -1/4
+PASS s^8 = 1/16
+PASS p=3 special wheel has norm 1/3
+PASS t^2 = (1 + sqrt(-3))/6
+PASS t^3 = sqrt(-3)/9
+PASS t^6 = -1/27
+PASS t^12 = 1/729
+PASS p=3: generic half-turn norm 1/p
+PASS p=3: generic half-turn w^2=-1/p rational
+PASS p=3: generic half-turn nests in p
+PASS p=5: generic half-turn norm 1/p
+PASS p=5: generic half-turn w^2=-1/p rational
+PASS p=5: generic half-turn nests in p
+PASS p=7: generic half-turn norm 1/p
+PASS p=7: generic half-turn w^2=-1/p rational
+PASS p=7: generic half-turn nests in p
+PASS p=11: generic half-turn norm 1/p
+PASS p=11: generic half-turn w^2=-1/p rational
+PASS p=11: generic half-turn nests in p
+PASS p=13: generic half-turn norm 1/p
+PASS p=13: generic half-turn w^2=-1/p rational
+PASS p=13: generic half-turn nests in p
+PASS p=17: generic half-turn norm 1/p
+PASS p=17: generic half-turn w^2=-1/p rational
+PASS p=17: generic half-turn nests in p
+PASS p=19: generic half-turn norm 1/p
+PASS p=19: generic half-turn w^2=-1/p rational
+PASS p=19: generic half-turn nests in p
+PASS p=23: generic half-turn norm 1/p
+PASS p=23: generic half-turn w^2=-1/p rational
+PASS p=23: generic half-turn nests in p
+PASS p=29: generic half-turn norm 1/p
+PASS p=29: generic half-turn w^2=-1/p rational
+PASS p=29: generic half-turn nests in p
+PASS p=31: generic half-turn norm 1/p
+PASS p=31: generic half-turn w^2=-1/p rational
+PASS p=31: generic half-turn nests in p
+PASS p=37: generic half-turn norm 1/p
+PASS p=37: generic half-turn w^2=-1/p rational
+PASS p=37: generic half-turn nests in p
+PASS p=41: generic half-turn norm 1/p
+PASS p=41: generic half-turn w^2=-1/p rational
+PASS p=41: generic half-turn nests in p
+PASS p=43: generic half-turn norm 1/p
+PASS p=43: generic half-turn w^2=-1/p rational
+PASS p=43: generic half-turn nests in p
+PASS p=47: generic half-turn norm 1/p
+PASS p=47: generic half-turn w^2=-1/p rational
+PASS p=47: generic half-turn nests in p
+PASS p=53: generic half-turn norm 1/p
+PASS p=53: generic half-turn w^2=-1/p rational
+PASS p=53: generic half-turn nests in p
+PASS p=59: generic half-turn norm 1/p
+PASS p=59: generic half-turn w^2=-1/p rational
+PASS p=59: generic half-turn nests in p
+PASS p=61: generic half-turn norm 1/p
+PASS p=61: generic half-turn w^2=-1/p rational
+PASS p=61: generic half-turn nests in p
+PASS p=67: generic half-turn norm 1/p
+PASS p=67: generic half-turn w^2=-1/p rational
+PASS p=67: generic half-turn nests in p
+PASS p=71: generic half-turn norm 1/p
+PASS p=71: generic half-turn w^2=-1/p rational
+PASS p=71: generic half-turn nests in p
+PASS p=73: generic half-turn norm 1/p
+PASS p=73: generic half-turn w^2=-1/p rational
+PASS p=73: generic half-turn nests in p
+PASS p=79: generic half-turn norm 1/p
+PASS p=79: generic half-turn w^2=-1/p rational
+PASS p=79: generic half-turn nests in p
+PASS p=83: generic half-turn norm 1/p
+PASS p=83: generic half-turn w^2=-1/p rational
+PASS p=83: generic half-turn nests in p
+PASS p=89: generic half-turn norm 1/p
+PASS p=89: generic half-turn w^2=-1/p rational
+PASS p=89: generic half-turn nests in p
+PASS p=97: generic half-turn norm 1/p
+PASS p=97: generic half-turn w^2=-1/p rational
+PASS p=97: generic half-turn nests in p
+PASS sample set contains only odd primes
+PASS p=3 exceptional scale is exact
+Literal condition: a nested half-turn exists for every prime p
+Nontrivial phase pi/(2p): p=2 and p=3 only; odd p>3 ruled out by degree argument
+Wrote results JSON and report

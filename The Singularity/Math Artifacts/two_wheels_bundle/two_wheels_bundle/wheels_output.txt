@@ -1,0 +1,58 @@
+seal bf244a227e60e3c7fc4ffa531e2f9269186f698daef27595dae23570fefa61b8
+L= 2 W1 True W2 True W3 True (max 2 at [np.int64(2)]) W5 True mean/N 0.500000
+L= 3 W1 True W2 True W3 True (max 4 at [np.int64(4)]) W5 True mean/N 0.500000
+L= 4 W1 True W2 True W3 True (max 6 at [np.int64(8)]) W5 True mean/N 0.390625
+L= 5 W1 True W2 True W3 True (max 12 at [np.int64(16)]) W5 True mean/N 0.414062
+L= 6 W1 True W2 True W3 True (max 20 at [np.int64(32)]) W5 True mean/N 0.369141
+L= 7 W1 True W2 True W3 True (max 40 at [np.int64(64)]) W5 True mean/N 0.379883
+L= 8 W1 True W2 True W3 True (max 72 at [np.int64(128)]) W5 True mean/N 0.355713
+L= 9 W1 True W2 True W3 True (max 144 at [np.int64(256)]) W5 True mean/N 0.359497
+L=10 W1 True W2 True W3 True (max 272 at [np.int64(512)]) W5 True mean/N 0.346222
+L=11 W1 True W2 True W3 True (max 544 at [np.int64(1024)]) W5 True mean/N 0.347427
+L=12 W1 True W2 True W3 True (max 1056 at [np.int64(2048)]) W5 True mean/N 0.340336
+L=13 W1 True W2 True W3 True (max 2112 at [np.int64(4096)]) W5 True mean/N 0.340700
+L=14 W1 True W2 True W3 True (max 4160 at [np.int64(8192)]) W5 True mean/N 0.337006
+L=15 W1 True W2 True W3 True (max 8320 at [np.int64(16384)]) W5 True mean/N 0.337113
+L=16 W1 True W2 True W3 True (max 16512 at [np.int64(32768)]) W5 True mean/N 0.335220
+L=17 W1 True W2 True W3 True (max 33024 at [np.int64(65536)]) W5 True mean/N 0.335251
+L=18 W1 True W2 True W3 True (max 65792 at [np.int64(131072)]) W5 True mean/N 0.334291
+L=19 W1 True W2 True W3 True (max 131584 at [np.int64(262144)]) W5 True mean/N 0.334300
+L=20 W1 True W2 True W3 True (max 262656 at [np.int64(524288)]) W5 True mean/N 0.333817
+W4 L= 2 t=2^L holds by ring n: 2:0 3:4 4:4 5:4 6:4 7:4 8:4 64:4 128:4
+W4 L= 3 t=2^L holds by ring n: 3:0 4:6 5:8 6:8 7:8 8:8 9:8 10:8 64:8 128:8
+W4 L= 4 t=2^L holds by ring n: 4:0 5:12 6:14 7:16 8:16 9:16 10:16 11:16 12:16 64:16 128:16
+W4 L= 5 t=2^L holds by ring n: 5:0 6:20 7:28 8:30 9:32 10:32 11:32 12:32 13:32 14:32 64:32 128:32
+W4 L= 6 t=2^L holds by ring n: 6:0 7:40 8:52 9:60 10:62 11:64 12:64 13:64 14:64 15:64 16:64 64:64 128:64
+W4 L= 7 t=2^L holds by ring n: 7:0 8:72 9:104 10:116 11:124 12:126 13:128 14:128 15:128 16:128 17:128 18:128 64:128 128:128
+W4 L= 8 t=2^L holds by ring n: 8:0 9:144 10:200 11:232 12:244 13:252 14:254 15:256 16:256 17:256 18:256 19:256 20:256 64:256 128:256
+W4 L= 9 t=2^L holds by ring n: 9:0 10:272 11:400 12:456 13:488 14:500 15:508 16:510 17:512 18:512 19:512 20:512 21:512 22:512 64:512 128:512
+W4 L=10 t=2^L holds by ring n: 10:0 11:544 12:784 13:912 14:968 15:1000 16:1012 17:1020 18:1022 19:1024 20:1024 21:1024 22:1024 23:1024 24:1024 64:1024 128:1024
+W4 L=11 t=2^L holds by ring n: 11:0 12:1056 13:1568 14:1808 15:1936 16:1992 17:2024 18:2036 19:2044 20:2046 21:2048 22:2048 23:2048 24:2048 25:2048 26:2048 64:2048 128:2048
+W4 L=12 t=2^L holds by ring n: 12:0 13:2112 14:3104 15:3616 16:3856 17:3984 18:4040 19:4072 20:4084 21:4092 22:4094 23:4096 24:4096 25:4096 26:4096 27:4096 28:4096 64:4096 128:4096
+W4b counter prefix ok True | ring 15 next 257 ring 16 next 257
+W6 L= 1 C=      2 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': True, 'rotation': 1}
+W6 L= 2 C=      8 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': True, 'rotation': 3, 'first_1L': 3, 'predicted': 3, 'landing': False}
+W6 L= 3 C=     24 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 19, 'predicted': 19, 'landing': False}
+W6 L= 4 C=     64 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 57, 'predicted': 57, 'landing': False}
+W6 L= 5 C=    160 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 151, 'predicted': 151, 'landing': True}
+W6 L= 6 C=    384 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 373, 'predicted': 373, 'landing': True}
+W6 L= 7 C=    896 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 883, 'predicted': 883, 'landing': True}
+W6 L= 8 C=   2048 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 2033, 'predicted': 2033, 'landing': True}
+W6 L= 9 C=   4608 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 4591, 'predicted': 4591, 'landing': True}
+W6 L=10 C=  10240 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 10221, 'predicted': 10221, 'landing': True}
+W6 L=11 C=  22528 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 22507, 'predicted': 22507, 'landing': True}
+W6 L=12 C=  49152 {'twist_zero_offset_all_widths': True, 'reversal_is_rotation': False, 'rotation': None, 'first_1L': 49129, 'predicted': 49129, 'landing': True}
+W6 L=13 C= 106496 {'reversal_is_rotation': False, 'rotation': None, 'first_1L': 106471, 'predicted': 106471, 'landing': True}
+W6 L=14 C= 229376 {'reversal_is_rotation': False, 'rotation': None, 'first_1L': 229349, 'predicted': 229349, 'landing': True}
+W7 cells compared 63521 mismatches 0
+workbook G vs true counter-clockwise window, share of rows agreeing by width:
+  Ring 2 2:1.000 3:1.000 4:1.000 5:1.000 6:1.000 7:1.000 8:1.000
+  Ring 3 2:0.500 3:0.333 4:0.250 5:0.167 6:0.083 7:0.042 8:0.000 9:0.000 10:0.000 11:0.000 12:0.000 13:0.000 14:0.000 15:0.000 16:0.000 17:0.000 18:0.000 19:0.000 20:0.000 21:0.000 22:0.000 23:0.000 24:0.000
+  Ring 4 2:0.469 3:0.312 4:0.188 5:0.109 6:0.062 7:0.047 8:0.031 9:0.016 10:0.000 11:0.000 12:0.000 13:0.000 14:0.000 15:0.000 16:0.000
+W8 exhaustive L=1..16 True
+W8 L=64 round trip True (0.1s for 2000)  path 0.031 ms  bisection 1.5 ms
+W8 L=256 round trip True (0.5s for 2000)  path 0.147 ms  bisection 25.6 ms
+W8 L=1024 round trip True (1.8s for 2000)  path 0.663 ms  bisection 393.6 ms
+W8 L=4096 round trip True (18.5s for 2000)  path 5.345 ms 
+ledger {'W1': True, 'W2': True, 'W3': True, 'W4': True, 'W4b': True, 'W5': True, 'W6': True, 'W7': True, 'W8': True} seconds 31.9
+EXIT 0

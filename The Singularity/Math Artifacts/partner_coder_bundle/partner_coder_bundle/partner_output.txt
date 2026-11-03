@@ -1,0 +1,18 @@
+seal verified 88618d13...0d10c0d
+NC_000932: 154,478 bases, record sha256 a8b5d8239001f56a...
+
+NC_000932: lzma raw 41,784 bytes (2.164 bits/base)
+  rc  pass: 34,752 bytes  ratio 0.8317  copies 1  coverage 0.1700  longest 26,264  exact True  (0.2s)
+  fwd pass: 41,736 bytes  ratio 0.9989  copies 2  coverage 0.0004  longest 33  exact True  (0.2s)
+     partner copy: [128,214, 154,478) = RC of [84,170, 110,434)  length 26,264
+
+RANDOM: lzma raw 43,264 bytes (2.241 bits/base)
+  rc  pass: 43,264 bytes  ratio 1.0000  copies 0  coverage 0.0000  longest 0  exact True  (0.2s)
+  fwd pass: 43,264 bytes  ratio 1.0000  copies 0  coverage 0.0000  longest 0  exact True  (0.1s)
+
+P1: RUNS
+P2: RUNS
+P3: RUNS
+P4: RUNS
+P5: RUNS
+(1.5s)

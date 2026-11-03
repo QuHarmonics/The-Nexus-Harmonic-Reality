@@ -1,0 +1,7 @@
+{
+  "policy": "SHA-256 over literal file bytes. No newline stripping or other normalization.",
+  "source_sha256": "90f5a9e79a22e43332750d276816af7d5e11b11284637b9931293ffe50268317",
+  "prediction_sha256": "5ba90e6fdcf1456bcf5033e85f4e43408680f0b406675fdb743d722c3b550219",
+  "superseded_pre_run_source_sha256": "19123b89fda6e10e2d5eaf805c10ecafa3a3711ea12143575e7036107780c782",
+  "pre_run_revision": "Center-word prediction now comes from the scalar formula, not from the materialized reference. No audit execution occurred before this revision."
+}

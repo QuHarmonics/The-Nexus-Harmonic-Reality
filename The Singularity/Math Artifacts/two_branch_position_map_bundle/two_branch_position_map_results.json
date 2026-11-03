@@ -1,0 +1,223 @@
+{
+  "scope": "Independent unsealed mathematical derivation; audit source checksum sealed before this execution. User-reported ab543c... seal not independently verified because its source file was not supplied.",
+  "coordinate": "Descending canonical representative offset q, then explicit physical center-swap conversion.",
+  "exhaustive": [
+    {
+      "source_width": 2,
+      "target_width": 4,
+      "canonical_parents": 2,
+      "E_G_outputs_checked": 8,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 4,
+      "target_width": 6,
+      "canonical_parents": 8,
+      "E_G_outputs_checked": 32,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 6,
+      "target_width": 8,
+      "canonical_parents": 32,
+      "E_G_outputs_checked": 128,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 8,
+      "target_width": 10,
+      "canonical_parents": 128,
+      "E_G_outputs_checked": 512,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 10,
+      "target_width": 12,
+      "canonical_parents": 512,
+      "E_G_outputs_checked": 2048,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 12,
+      "target_width": 14,
+      "canonical_parents": 2048,
+      "E_G_outputs_checked": 8192,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 14,
+      "target_width": 16,
+      "canonical_parents": 8192,
+      "E_G_outputs_checked": 32768,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 16,
+      "target_width": 18,
+      "canonical_parents": 32768,
+      "E_G_outputs_checked": 131072,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    },
+    {
+      "source_width": 18,
+      "target_width": 20,
+      "canonical_parents": 131072,
+      "E_G_outputs_checked": 524288,
+      "odd_middle_offset_formulas": true,
+      "E_G_offset_formulas": true,
+      "physical_seam_and_partner_positions": true,
+      "all_target_representatives_covered_once": true
+    }
+  ],
+  "wide_scalar_queries": [
+    {
+      "source_width": 64,
+      "scalar_parents": 8,
+      "target_offsets_checked": 32,
+      "no_ring_arrays_used": true
+    },
+    {
+      "source_width": 256,
+      "scalar_parents": 8,
+      "target_offsets_checked": 32,
+      "no_ring_arrays_used": true
+    },
+    {
+      "source_width": 512,
+      "scalar_parents": 8,
+      "target_offsets_checked": 32,
+      "no_ring_arrays_used": true
+    }
+  ],
+  "examples": [
+    {
+      "parent": "0000",
+      "parent_descending_offset": 7,
+      "targets": {
+        "E0": {
+          "word": "000000",
+          "descending_offset": 31,
+          "absolute_ring_position": 0
+        },
+        "G0": {
+          "word": "000001",
+          "descending_offset": 30,
+          "absolute_ring_position": 1
+        },
+        "E1": {
+          "word": "011110",
+          "descending_offset": 7,
+          "absolute_ring_position": 24
+        },
+        "G1": {
+          "word": "011111",
+          "descending_offset": 6,
+          "absolute_ring_position": 25
+        }
+      }
+    },
+    {
+      "parent": "0001",
+      "parent_descending_offset": 6,
+      "targets": {
+        "E0": {
+          "word": "000010",
+          "descending_offset": 29,
+          "absolute_ring_position": 2
+        },
+        "G0": {
+          "word": "000011",
+          "descending_offset": 28,
+          "absolute_ring_position": 3
+        },
+        "E1": {
+          "word": "100011",
+          "descending_offset": 5,
+          "absolute_ring_position": 26
+        },
+        "G1": {
+          "word": "010001",
+          "descending_offset": 16,
+          "absolute_ring_position": 15
+        }
+      }
+    },
+    {
+      "parent": "0110",
+      "parent_descending_offset": 2,
+      "targets": {
+        "E0": {
+          "word": "001100",
+          "descending_offset": 20,
+          "absolute_ring_position": 11
+        },
+        "G0": {
+          "word": "001101",
+          "descending_offset": 19,
+          "absolute_ring_position": 12
+        },
+        "E1": {
+          "word": "010010",
+          "descending_offset": 15,
+          "absolute_ring_position": 16
+        },
+        "G1": {
+          "word": "010011",
+          "descending_offset": 14,
+          "absolute_ring_position": 17
+        }
+      }
+    },
+    {
+      "parent": "1011",
+      "parent_descending_offset": 0,
+      "targets": {
+        "E0": {
+          "word": "010110",
+          "descending_offset": 12,
+          "absolute_ring_position": 19
+        },
+        "G0": {
+          "word": "010111",
+          "descending_offset": 11,
+          "absolute_ring_position": 20
+        },
+        "E1": {
+          "word": "110111",
+          "descending_offset": 0,
+          "absolute_ring_position": 32
+        },
+        "G1": {
+          "word": "011011",
+          "descending_offset": 9,
+          "absolute_ring_position": 22
+        }
+      }
+    }
+  ],
+  "seconds": 1.0774269049999958
+}

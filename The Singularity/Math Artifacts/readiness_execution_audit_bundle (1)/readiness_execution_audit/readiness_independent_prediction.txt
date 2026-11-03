@@ -1,0 +1,8 @@
+Independent readiness and workbook cross-check, prediction sealed before execution.
+
+1. The source script's declared source and prediction hashes should match the bytes supplied in the archive. The source itself should be unchanged by execution.
+2. The original R2 flattened orbit and the Ring 2/3/4 orbit strings in workbook cells B3 should match the same partner/grow ordering.
+3. For every tested stream, the online dyadic compiler's frontier widths should equal the descending powers of two in the binary expansion of the arrival count; each merge should occur at the arrival that completes its right dependency, with zero extra event wait.
+4. The transform of every closed power-of-two block should equal the direct subset-XOR (Boolean Möbius) transform of that block, and applying the same transform again should recover the source bits.
+5. Independent grouping by observed-prefix signatures should reproduce exact output-readiness times over all 65,536 8-bit operand pairs for LSB-first, MSB-first and center-out orders. In particular, LSB-first sum bit j settles at event 2j+2, and the MSB-first final carry settles at event 2 for exactly 32,768 pairs.
+6. This establishes exact semantic readiness on the tested finite domains. It does not establish physical gate latency or an efficient arbitrary-width readiness solver.

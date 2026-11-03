@@ -1,0 +1,11 @@
+NEXUS §126 — ASK THE RINGS: prediction seal for the WP5 lockstep link
+Date: 2026-10-17
+
+Starting point: §121 identifies 9 balanced partial lanes among k <= 2000 for which the reader-ring and field-ring periods share a factor. §124 already links the difference compiler to actual BBP lane contributions and SHA gate/round execution; this run does not reopen that link.
+
+Sealed predictions before this run:
+1. For each eligible lane, CRT projects the original rational-ring orbit y_t = a*16^t (mod o) into a reader coordinate alpha_t in the o1 ring and a field coordinate beta_t in the o2 ring. The simultaneous pair orbit has period lcm(h1,h2), where h1=ord_{o1}(16) and h2=ord_{o2}(16), and occupies lcm(h1,h2) phase-compatible points rather than the full h1*h2 product when gcd(h1,h2)>1.
+2. For every one of the nine balanced lockstep lanes, direct averaging along the paired orbit, mean_t[alpha_t - 1(beta_t < alpha_t)], will exactly equal mu - 1/2 computed from the original rational-ring orbit. Therefore the exact joint orbit will decide the link that the independent-ring factorization leaves OPEN.
+3. The balanced result in the lockstep cases need not follow from either ring separately or from the independent product formula; the route must retain the phase relation between the two rings. A correct account will distinguish the marginal ring periods from the joint orbit period and will keep the original lane identity as the route home.
+
+SHA-256 of this text is stored separately in NEXUS_ASK_THE_RINGS_lockstep_prediction_2026-10-17.sha256.

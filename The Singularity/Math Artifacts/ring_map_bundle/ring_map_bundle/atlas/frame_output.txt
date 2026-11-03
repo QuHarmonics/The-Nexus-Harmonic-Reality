@@ -1,0 +1,23 @@
+seal deea12785b7254d12f0414692e6c76a887a6206b23f59f880e9abacd36459775
+L= 2 seen  law holds  loss 0 0
+L= 3 seen  law holds  loss 0 0 2
+L= 4 seen  law holds  loss 0 0 2 2
+L= 5 seen  law holds  loss 0 0 2 2 6
+L= 6 seen  law holds  loss 0 0 0 6 2 6
+L= 7 seen  law holds  loss 0 0 0 10 10 6 14
+L= 8 seen  law holds  loss 0 0 0 8 14 10 6 14
+L= 9 seen  law holds  loss 0 0 0 16 26 26 22 14 30
+L=10 seen  law holds  loss 0 0 0 16 24 30 26 22 14 30
+L=11 seen  law holds  loss 0 0 0 32 48 58 58 54 46 30 62
+L=12 seen  law holds  loss 0 0 0 32 48 56 62 58 54 46 30 62
+L=13 seen  law holds  loss 0 0 0 64 96 112 122 122 118 110 94 62 126
+L=14 seen  law holds  loss 0 0 0 64 96 112 120 126 122 118 110 94 62 126
+L=15 seen  law holds  loss 0 0 0 128 192 224 240 250 250 246 238 222 190 126 254
+L=16 seen  law holds  loss 0 0 0 128 192 224 240 248 254 250 246 238 222 190 126 254
+L=17 fresh law holds  loss 0 0 0 256 384 448 480 496 506 506 502 494 478 446 382 254 510
+L=18 fresh law holds  loss 0 0 0 256 384 448 480 496 504 510 506 502 494 478 446 382 254 510
+L=19 fresh law holds  loss 0 0 0 512 768 896 960 992 1008 1018 1018 1014 1006 990 958 894 766 510 1022
+L=20 fresh law holds  loss 0 0 0 512 768 896 960 992 1008 1016 1022 1018 1014 1006 990 958 894 766 510 1022
+L=21 fresh law holds  loss 0 0 0 1024 1536 1792 1920 1984 2016 2032 2042 2042 2038 2030 2014 1982 1918 1790 1534 1022 2046
+L=22 fresh law holds  loss 0 0 0 1024 1536 1792 1920 1984 2016 2032 2040 2046 2042 2038 2030 2014 1982 1918 1790 1534 1022 2046
+seen widths 2-16: 135 cells, law True | fresh widths 17-22: 117 cells, law True | seconds 5.5 | seal unchanged True

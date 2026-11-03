@@ -1,0 +1,13 @@
+NEXUS Address Reader Extension — prediction seal
+Run target: widths n=13,14,15,16
+Prepared before calculating width-13..16 address-readiness profiles.
+
+Fixed rules (no substrate changes): P(x)=bit reversal of x when non-palindromic, complement when palindromic; sort representatives x<P(x), place partner face in reverse representative order, retain the native center swap, and use the resulting physical ring position as the n-bit address output.
+
+Readiness definition: an address output bit is ready after the first k input-bit arrivals iff that output bit is constant across every n-bit input consistent with the k observed positions. The score is the exact mean arrival index over all 2^n inputs and all n output address bits.
+
+Primary candidate family: for n odd retain a 3-bit center core; for n even retain a 4-bit center core. Read each outer pair in increasing pair depth, permitting either order within each pair; then apply a permutation of the remaining contiguous core bits. Exhaust all 2^p outer pair orientation choices and all c! core permutations for p=(n-c)/2, c=3 or 4. This family is finite and exhaustively searchable; it is not the set of all n! input orders.
+
+Comparators predeclared: full outside-in, MSB-first, LSB-first, center-out, and the specifically proposed hybrid with each pair low-index first and high-index second, followed by the remaining core in descending significance (ordinary MSB-first value order).
+
+Prediction: the structured outside-in-plus-core family has lower mean address readiness than full outside-in and MSB-first at all four target widths. The claim that the plain-value core itself is optimal is explicitly left to the data; all family minima and ties will be reported. No claim of global optimality over all n! schedules is made.

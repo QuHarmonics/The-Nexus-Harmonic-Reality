@@ -1,0 +1,57 @@
+{
+  "seal": "6b9a7d6549cd336c97a884fe85f087e6d67c542254a4c5f443a54df41cccd8b5",
+  "experiments": [
+    {
+      "target_digest": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260",
+      "message_width": 8,
+      "graph_nodes": 117250,
+      "unique_gate_nodes": 117240,
+      "reused_gate_requests": 3661,
+      "constant_or_identity_simplifications": 34491,
+      "gate_counts": {
+        "const": 2,
+        "var": 8,
+        "xor": 82321,
+        "and": 34919
+      },
+      "compile_seconds": 0.14301640700000462,
+      "propagation_and_replay_seconds": 0.13108851799999854,
+      "candidate_search_evaluations": 0,
+      "known_source_replay_checks": 1,
+      "replay_return_residual": "256 zeros",
+      "contradiction": false,
+      "forced_message_bits_LSB_index": {},
+      "unresolved_message_bits": 8,
+      "assigned_graph_nodes": 2717
+    },
+    {
+      "target_digest": "a0f949497a74dde0c63a35cd9ab147012ffa007b019557ea5cecb9a243d0c5de",
+      "message_width": 16,
+      "graph_nodes": 118312,
+      "unique_gate_nodes": 118294,
+      "reused_gate_requests": 3589,
+      "constant_or_identity_simplifications": 33509,
+      "gate_counts": {
+        "const": 2,
+        "var": 16,
+        "xor": 83087,
+        "and": 35207
+      },
+      "compile_seconds": 0.1395004809999989,
+      "propagation_and_replay_seconds": 0.11899804300000483,
+      "candidate_search_evaluations": 0,
+      "known_source_replay_checks": 1,
+      "replay_return_residual": "256 zeros",
+      "contradiction": false,
+      "forced_message_bits_LSB_index": {},
+      "unresolved_message_bits": 16,
+      "assigned_graph_nodes": 2247
+    }
+  ],
+  "coordinate_scope": "Unknown message-word bits; no symbolic ring-rank circuit is asserted.",
+  "status": "Exact shared relation compiled. Forced-only propagation audited. A direct address selector is OPEN.",
+  "independent_symbolic_arithmetic_checks": {
+    "random_32bit_pairs": 1000,
+    "sum_and_difference_both_correct": true
+  }
+}

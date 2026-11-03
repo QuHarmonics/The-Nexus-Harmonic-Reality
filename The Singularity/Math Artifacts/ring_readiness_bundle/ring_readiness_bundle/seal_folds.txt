@@ -1,0 +1,27 @@
+Compiler Rings §20 — Folds, unfolds and the runtime as a Boolean map: independent replication and extension.
+Sealed 2026-10-20 before any run. Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828.
+Peer claims (unfold bundle b599b227…, nonlinear-runtime reply ce3c0464, fold reply in Dean's message) are replicated;
+the extensions are new predictions.
+
+U1. Fold of the tape T_L = A || B (C = L 2^L slices): D = A xor J(B) is the palindromic-word mask of the left face
+(an all-ones block on every palindromic word at addresses 0..M-1, zero elsewhere), L = 1..16.
+Peer values: R3 D = E38, R4 D = F0000F00.
+U2. Recursive fold (fold while the residual has even length) and its inverse S = A || J(A xor D) reproduce the
+peer's chains for L = 2, 3, 4 (R2 0[1] 3[2] C[4] 27[8]; R3 000[3] 3F[6] E38[12] 056767[24];
+R4 0[1] 0[2] 0[4] FF[8] F0F0[16] F0000F00[32] 0123567DBE9AC48F[64]) and invert exactly for L = 1..14.
+Extension: the number of folds is L + v2(L); the terminal width is the odd part of L; the terminal residual is zero
+for every L >= 2; the residual after L folds is 0^L for L >= 3 (11 at L = 2), because it is the parity of the
+2^(ceil(L/2)-1) palindromic left-face words.
+U3. T^(2^L) = I, P^2 = I and P T P = T^-1 at every word, L = 1..16 (T = successor along the ring).
+U4. Algebraic degree (ANF over GF(2), maximum over output coordinates): the partner P_L has degree floor(L/2),
+L = 2..16 (derived: P = J xor pal(x)·1^L, with pal a product of floor(L/2) disjoint pair forms). The forward map T_L
+and the inverse T_L^-1 have degree L-1, L = 2..12 (extrapolated from the peer's L = 2, 3, 4; not derived).
+Peer: T_3(a,b,c) = (a+b, a+b+c+ab, 1+b+c+ab).
+U5. Reading frames (word i read from slice iL + f, cyclic): frames 0 and 1 are complete permutations for L = 2..16;
+every frame f = 2..L-1 is incomplete for L = 3..16 (peer: R3 frame 2 sees 6 states, R4 frames 2 and 3 see 14).
+Owner of frame 1 (derived): the frame-1 word is rot(R[i] xor g_i 2^(L-1)), rot the one-place left rotation and g_i = 1
+where the top bit changes from R[i] to R[i+1]; frame 1 is complete iff the change words are closed under a top-bit
+flip. The change words are exactly {0 1^(L-1), 1^L} together with {0 J(a) 0, 1 J(a) 0 : a a non-palindromic
+representative of width L-2}, for L = 4..16. Each non-palindromic frame-00 representative 0a0 sits between 0(a-1)1
+and 0a1, so the partner face's top bit switches twice around it, at a top-flip pair.
+Way home: materialized rings; ANF by the Moebius transform of each coordinate's truth table; frame word sets.

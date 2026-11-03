@@ -1,0 +1,7 @@
+Three-link audit prediction (2026-10-20)
+
+Hole 1: For widths n=2..12, the supplied corrected block-sum formulas for the Walsh-even body and palindrome carrier will match every coefficient of direct unnormalized Walsh transforms of the materialized original ring. For n=2..20, direct transforms will reproduce the previously reported degree-two/full-latitude-energy shares (n=6: 53.1250%; 8: 55.9937%; 10: 51.9287%; 12: 46.7403%; 16: 38.9498%; 20: 32.7503%), n=20 active full-spectrum masks 1,036,432, and n=12 degree-one share 0.0361125%. The block formula keeps the r=K palindrome slot present but zero-masked.
+
+Hole 2C: Exact Fraction replay of u_D = 1/2 + 2^-p + (2/3)2^-(D-1), p=floor(2D/3)+1, against the original ring reader will reveal whether the target profile q_D=1001^(D-5)00 is reproduced for all D=13..96 and L=1..D. The stated offset formula q_L=2^(L-p)+floor((2/3)2^(L-D+1)) is expected to be algebraically correct for L>=p, but it will not be treated as sufficient proof of the word/slice identity.
+
+Hole 3: The attached artifacts do not appear to include cofactor_inverse_bdd.py or its ROBDD API. I will name the exact conjunction interface and constraints, but mark execution OPEN unless a runnable provider is present. No SHA pruning RUNS claim will be made from a set definition alone.

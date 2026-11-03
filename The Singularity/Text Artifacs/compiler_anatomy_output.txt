@@ -1,0 +1,62 @@
+== 1  What it is: one representative per pair ascending, partners descending, centre pair swapped ==
+  LEN  1: grow(L) == closed form: True
+  LEN  2: grow(L) == closed form: True
+  LEN  3: grow(L) == closed form: True
+  LEN  8: grow(L) == closed form: True
+  LEN 12: grow(L) == closed form: True
+  LEN 16: grow(L) == closed form: True
+  centre insertion is a stack: each new pair goes to the middle and pushes the older pairs outward,
+  so the oldest pair (the poles 0..0 / 1..1) ends at the outer seam and the last pair at the centre.
+
+== 2  The partner rule is C1 in one line: reverse; if reversing would hold still, flip ==
+  LEN  4: fixed points 0; involution True; palindromes 4 = 2^ceil(L/2) True; anti-palindromes (reverse = flip) 4; pairs 8
+  LEN  5: fixed points 0; involution True; palindromes 8 = 2^ceil(L/2) True; anti-palindromes (reverse = flip) 0; pairs 16
+  LEN  8: fixed points 0; involution True; palindromes 16 = 2^ceil(L/2) True; anti-palindromes (reverse = flip) 16; pairs 128
+  LEN  9: fixed points 0; involution True; palindromes 32 = 2^ceil(L/2) True; anti-palindromes (reverse = flip) 0; pairs 256
+  LEN 12: fixed points 0; involution True; palindromes 64 = 2^ceil(L/2) True; anti-palindromes (reverse = flip) 64; pairs 2048
+  The four moves {stay, reverse, flip, reverse+flip} form one Klein group. A pair is half of a 4-orbit,
+  except palindromes (reverse stalls, so flip) and anti-palindromes (reverse and flip are the same move).
+
+== 3  The twist: it makes the two seams on the mirror axis read the same way ==
+  LEN  2: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  LEN  3: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  LEN  4: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  LEN  6: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  LEN  8: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  LEN 10: with twist outer/centre = ('partner->rep', 'partner->rep');  without = ('partner->rep', 'rep->partner')
+  Clockwise, both seams cross from a partner into its representative only when the centre pair is swapped.
+  LEN 2 without the twist is counting order 00011011 = 1B; with it, 00100111.
+
+== 4  Location is computable directly: route, not search ==
+  LEN  1: location(word) correct for every word True; word_at(position) correct True
+  LEN  2: location(word) correct for every word True; word_at(position) correct True
+  LEN  8: location(word) correct for every word True; word_at(position) correct True
+  LEN 12: location(word) correct for every word True; word_at(position) correct True
+  LEN 14: location(word) correct for every word True; word_at(position) correct True
+  LEN 16: 3000 sampled words, location correct True, word_at correct True
+  LEN 64 (2^64 words, never built): pi's first 64 bits sit at position 2,427,008,858,123,944,441 of 18,446,744,073,709,551,616
+    and word_at(2,427,008,858,123,944,441) returns 0x243f6a8885a308d3: round trip True; its partner sits at 16,019,735,215,585,607,174 = N-1-position: True
+  location costs one pass over L/2 mirrored bit pairs; word_at adds a binary search of L steps.
+
+== 5  The ring as a bit circle: L*2^L slices, mirror law at the slice level ==
+  LEN 2:     8 slices; mirrored slices that flip 4 = palindrome slices 4: True; rotation orbit 8 (primitive True); ones = half True
+  LEN 3:    24 slices; mirrored slices that flip 12 = palindrome slices 12: True; rotation orbit 24 (primitive True); ones = half True
+  LEN 4:    64 slices; mirrored slices that flip 16 = palindrome slices 16: True; rotation orbit 64 (primitive True); ones = half True
+  LEN 6:   384 slices; mirrored slices that flip 48 = palindrome slices 48: True; rotation orbit 384 (primitive True); ones = half True
+  LEN 8:  2048 slices; mirrored slices that flip 128 = palindrome slices 128: True; rotation orbit 2048 (primitive True); ones = half True
+  slices 2, 8, 24, 64, 160, 384, 896, 2048: the 2-bit ring is a byte, the 4-bit ring is a 64-bit word.
+
+== 6  How wide a reader must be to know where it is on the circle ==
+  LEN 1:     2 slices, address floor log2 =  1.00, shortest window that names every position: 1
+  LEN 2:     8 slices, address floor log2 =  3.00, shortest window that names every position: 5
+  LEN 3:    24 slices, address floor log2 =  4.58, shortest window that names every position: 11
+  LEN 4:    64 slices, address floor log2 =  6.00, shortest window that names every position: 13
+  LEN 5:   160 slices, address floor log2 =  7.32, shortest window that names every position: 16
+  LEN 6:   384 slices, address floor log2 =  8.58, shortest window that names every position: 25
+  LEN 7:   896 slices, address floor log2 =  9.81, shortest window that names every position: 27
+  LEN 8:  2048 slices, address floor log2 = 11.00, shortest window that names every position: 32
+
+== 7  The across read: one bit from each ring at one angle ==
+  rings 1..10: 15104 angular cells, 924 distinct profiles of 1024
+  minimal forbidden prefixes (inner ring first): ['10000', '1001000', '00100100', '00101000', '00101010', '10010100', '10100100', '10100110', '10101000', '001010110', '011010001', '011110000', '011110010', '100010000', '100010010', '100010100', '101000000', '101011100', '0001100000', '0010000010', '0010001000', '0111010000', '0111010100', '0111100010', '0111111100', '1001001010', '1001100000', '1001110011', '1010000111', '1010100100', '1010110010', '1010110100']
+  they account for 100 of the 100 absent profiles

@@ -1,0 +1,93 @@
+==============================================================================
+PART A.  THE TRICHOTOMY, EXECUTED IN so(3).
+==============================================================================
+   Legal motion = Ad_g, g in SO(3) (the anchor's rule-changes). Three kinds
+   of coordinate, three different fates under ALL legal motion:
+
+   FORCED   : bracket vs Ad_g, worst of 1000 random rule-changes
+              max || [A',B'] - Ad_g([A,B]) ||        = 5.11e-16
+              violating this is not 'another universe'. it is ILLEGAL motion.
+
+   SELECTOR : Casimir C(v) = |v|^2 under 20,000 random legal motions
+              max |C(gv) - C(v)|                     = 1.19e-13
+              max displacement of the POINT |gv - v| = 1.9994
+              the point flies everywhere; the LABEL never moves.
+              cross-orbit attempt, C=1 -> C=4 over 20,000 motions:
+              min |gv - w| measured = 1.000433   (exact floor: 1.0)
+              NO legal motion crosses orbits. selectors partition legality.
+
+   SELECTED : the orbit point. explicit legal motion v -> w, same Casimir:
+              |R v - w|                              = 1.54e-16
+              legal motion changes it freely. it is gauge. it is the CHOICE.
+
+   The trichotomy, as three executable tests on any coordinate X:
+     (i)   does violating X break legality itself?        yes -> FORCED
+     (ii)  is X invariant under ALL legal motion,
+           while multiple values of X are legal?          yes -> SELECTOR
+     (iii) can legal motion change X?                     yes -> SELECTED
+   Forced = the structure constants. Selected = the orbit point.
+   SELECTOR = the orbit LABEL: the conserved charge of the meta-flow.
+
+==============================================================================
+PART B.  THE SELECTOR INSIDE THE CASCADE'S OWN FLOW: E IS THE TOY H.
+==============================================================================
+   Two universes. Identical forced laws (same Hamiltonian FORM, same
+   integrator, same C1 checks). One coordinate differs: the orbit label E.
+   200,000 ticks each:
+
+   universe with selector E = 0.5:
+     min speed = 0.999987  (C1 holds: never stops)
+     |dE|/E max = 2.50e-05  (the selector is CONSERVED by the flow)
+   universe with selector E = 2.0:
+     min speed = 1.999975  (C1 holds: never stops)
+     |dE|/E max = 2.50e-05  (the selector is CONSERVED by the flow)
+
+   Same forced content, rung for rung. Different realization. And no legal
+   (autonomous, energy-conserving) evolution connects them -- the drift bound
+   above IS the wall between orbits, measured. E answers, for this toy, the
+   exact question Dean poses for the universe: not 'what are the laws' (forced,
+   identical in both runs) and not 'where on the orbit' (selected, changing
+   every tick) but WHICH ORBIT. That third question is the selector's.
+   The compiler already exists. E tells it which legal solution to instantiate.
+
+==============================================================================
+PART C.  H = pi/9: THE EXECUTED COORDINATES, AND THE HONEST BOUNDARY.
+==============================================================================
+   What is EXACT about H today (executed here, integer/rational arithmetic
+   where possible):
+
+   rotation by H = pi/9 on RP^1 (mod pi)  : closure order = 9   (exact)
+   rotation by H = pi/9 on S^1  (mod 2pi) : closure order = 18   (exact)
+   -> the 9-step word closes on the projective carrier; 18 is its
+      oriented lift. 9 = 3^2: a completion number of the query language.
+
+   nonagon cubic at cos(40 deg): 8c^3 - 6c + 1 = -4.44e-16
+   minimal polynomial degree 3 -> compass-straightedge unconstructible
+   (Wantzel 1837, credited): the trisection signature. H's word is not
+   reducible to the binary fold's tools.
+
+   H = pi/9 = 0.3490658504
+
+   And the boundary, stated in ink. The series' standing claim -- 'any stable
+   feedback system under recursive pressure converges near this ratio; it was
+   not placed there, everything else died' -- is a SURVIVAL claim about the
+   space of legal universes. Status today: Omega. This engine does NOT fake it:
+   a map cooked to converge to pi/9 would be recursive self-validation, which
+   the standards forbid. The non-circular test is specified instead:
+
+     RIGIDITY ENGINE (spec, not yet run):
+       1. define a FAMILY of recursive feedback maps from first principles
+          only -- no reference to H anywhere in the construction: loops that
+          must avoid resonance with their own harmonics under C1 pressure
+          (the Nyquist-pin logic, stated without the answer).
+       2. measure the surviving attractor ratio(s) across the family.
+       3. compare to pi/9 = 0.3490658504. pre-registered tolerance.
+       4. outcome A: unique survivor at H  -> selector ring is RIGID ->
+          the chain strengthens to  C1 -> H -> Universe.
+          outcome B: multiple survivors    -> H is a measured selector,
+          the chain stays          C1 -> Universe -> H (read off).
+       Either outcome is a result. Only running it is.
+
+==============================================================================
+TRICHOTOMY EXECUTED. THE THIRD CATEGORY IS REAL, AND IT HAS A LEDGER.
+==============================================================================

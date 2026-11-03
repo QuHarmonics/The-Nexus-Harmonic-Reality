@@ -1,0 +1,355 @@
+{
+  "core": [
+    {
+      "n": 3,
+      "vertices": 9,
+      "edges": 27,
+      "triangles": 27,
+      "rank_B1": 8,
+      "rank_B2": 19,
+      "rank_Z": 8,
+      "B1B2_zero": true,
+      "B2Z_zero": true,
+      "coboundary_square_zero": true,
+      "coboundaries_kill_generators": true,
+      "equivariant_actions_checked": 54,
+      "rational_types": [
+        {
+          "complex_indices": [
+            0
+          ],
+          "dimension": 1,
+          "norm": 1,
+          "projector_rank": 1,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            1,
+            5
+          ],
+          "dimension": 2,
+          "norm": 2,
+          "projector_rank": 0,
+          "multiplicity": 0
+        },
+        {
+          "complex_indices": [
+            2,
+            4
+          ],
+          "dimension": 2,
+          "norm": 2,
+          "projector_rank": 0,
+          "multiplicity": 0
+        },
+        {
+          "complex_indices": [
+            3
+          ],
+          "dimension": 1,
+          "norm": 1,
+          "projector_rank": 1,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            6
+          ],
+          "dimension": 6,
+          "norm": 1,
+          "projector_rank": 6,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            7
+          ],
+          "dimension": 2,
+          "norm": 1,
+          "projector_rank": 0,
+          "multiplicity": 0
+        },
+        {
+          "complex_indices": [
+            8,
+            9
+          ],
+          "dimension": 4,
+          "norm": 2,
+          "projector_rank": 0,
+          "multiplicity": 0
+        }
+      ],
+      "projectors_sum_identity": true,
+      "projectors_pairwise_orthogonal": true
+    },
+    {
+      "n": 4,
+      "vertices": 12,
+      "edges": 48,
+      "triangles": 64,
+      "rank_B1": 11,
+      "rank_B2": 37,
+      "rank_Z": 27,
+      "B1B2_zero": true,
+      "B2Z_zero": true,
+      "coboundary_square_zero": true,
+      "coboundaries_kill_generators": true,
+      "equivariant_actions_checked": 96,
+      "rational_types": [
+        {
+          "complex_indices": [
+            0
+          ],
+          "dimension": 1,
+          "norm": 1,
+          "projector_rank": 1,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            1,
+            5
+          ],
+          "dimension": 2,
+          "norm": 2,
+          "projector_rank": 0,
+          "multiplicity": 0
+        },
+        {
+          "complex_indices": [
+            2,
+            4
+          ],
+          "dimension": 2,
+          "norm": 2,
+          "projector_rank": 0,
+          "multiplicity": 0
+        },
+        {
+          "complex_indices": [
+            3
+          ],
+          "dimension": 1,
+          "norm": 1,
+          "projector_rank": 2,
+          "multiplicity": 2
+        },
+        {
+          "complex_indices": [
+            6
+          ],
+          "dimension": 6,
+          "norm": 1,
+          "projector_rank": 12,
+          "multiplicity": 2
+        },
+        {
+          "complex_indices": [
+            7
+          ],
+          "dimension": 3,
+          "norm": 1,
+          "projector_rank": 3,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            8
+          ],
+          "dimension": 3,
+          "norm": 1,
+          "projector_rank": 3,
+          "multiplicity": 1
+        },
+        {
+          "complex_indices": [
+            9
+          ],
+          "dimension": 6,
+          "norm": 1,
+          "projector_rank": 6,
+          "multiplicity": 1
+        }
+      ],
+      "projectors_sum_identity": true,
+      "projectors_pairwise_orthogonal": true
+    }
+  ],
+  "orbits": {
+    "3": [
+      [
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    ],
+    "4": [
+      [
+        [
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    ]
+  },
+  "smith": {
+    "matrix_shape": [
+      22,
+      18
+    ],
+    "diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "det_U": 1,
+    "det_V": 1,
+    "UBV_equals_D": true,
+    "transformed_exchange": [
+      0,
+      0,
+      1,
+      -1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "homology": "Z^4 + Z/2",
+    "scope": "two unlabelled tokens on K3,3, commuting-square cells"
+  }
+}

@@ -1,0 +1,10 @@
+Prediction seal SHA-256: e2b0bd63317796f8a24485c2b584b893ab971afbb3d63470b40d5d5aa713282d
+Domain traversed: 512/512
+Normalized relation law: d=0 if x=0; otherwise d=x+1 mod 8, where x=(a-b) mod 8 and d=(s'-2b) mod 8
+Surface image: 448
+Double-hit fibers: 64
+Missing surface symbols: 64
+Readout + route trace exact returns: 512/512
+Reverse ownership table: 8/8 positions
+Failures: 0
+Scope: re-addressing/ownership analysis on an already-seen domain; not a new landing claim.

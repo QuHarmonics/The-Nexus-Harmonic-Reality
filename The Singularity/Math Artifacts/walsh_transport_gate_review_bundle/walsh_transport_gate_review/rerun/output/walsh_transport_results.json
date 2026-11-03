@@ -1,0 +1,312 @@
+{
+  "scope": "Original-ring palindrome character transport; not a SHA inversion or a physical interpretation.",
+  "normalization": "C_st=sum_u (-1)^(s dot i_n(u)+t dot u). T=C/sqrt(2^n*2^m).",
+  "complete_matrix_checks": [
+    {
+      "n": 2,
+      "matrix_rows": 4,
+      "matrix_columns": 2,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 0,
+      "maximum_terms_per_pulled_back_character": 1
+    },
+    {
+      "n": 3,
+      "matrix_rows": 8,
+      "matrix_columns": 4,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 0,
+      "maximum_terms_per_pulled_back_character": 1
+    },
+    {
+      "n": 4,
+      "matrix_rows": 16,
+      "matrix_columns": 4,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 0,
+      "maximum_terms_per_pulled_back_character": 1
+    },
+    {
+      "n": 5,
+      "matrix_rows": 32,
+      "matrix_columns": 8,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 16,
+      "maximum_terms_per_pulled_back_character": 4
+    },
+    {
+      "n": 6,
+      "matrix_rows": 64,
+      "matrix_columns": 8,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 32,
+      "maximum_terms_per_pulled_back_character": 4
+    },
+    {
+      "n": 7,
+      "matrix_rows": 128,
+      "matrix_columns": 16,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 120,
+      "maximum_terms_per_pulled_back_character": 8
+    },
+    {
+      "n": 8,
+      "matrix_rows": 256,
+      "matrix_columns": 16,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 240,
+      "maximum_terms_per_pulled_back_character": 8
+    },
+    {
+      "n": 9,
+      "matrix_rows": 512,
+      "matrix_columns": 32,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 508,
+      "maximum_terms_per_pulled_back_character": 16
+    },
+    {
+      "n": 10,
+      "matrix_rows": 1024,
+      "matrix_columns": 32,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 1022,
+      "maximum_terms_per_pulled_back_character": 16
+    },
+    {
+      "n": 11,
+      "matrix_rows": 2048,
+      "matrix_columns": 64,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 2046,
+      "maximum_terms_per_pulled_back_character": 32
+    },
+    {
+      "n": 12,
+      "matrix_rows": 4096,
+      "matrix_columns": 64,
+      "all_parity_forbidden_entries_zero": true,
+      "exact_integer_gram_is_NM_identity": true,
+      "characters_with_multiple_compressed_terms": 4094,
+      "maximum_terms_per_pulled_back_character": 32
+    }
+  ],
+  "singleton_carrier_checks": [
+    {
+      "n": 2,
+      "half_width": 1,
+      "basis_columns_used": 1,
+      "all_carrier_coefficients_reconstructed": 4,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 2
+    },
+    {
+      "n": 3,
+      "half_width": 2,
+      "basis_columns_used": 2,
+      "all_carrier_coefficients_reconstructed": 8,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 4
+    },
+    {
+      "n": 4,
+      "half_width": 2,
+      "basis_columns_used": 2,
+      "all_carrier_coefficients_reconstructed": 16,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 8
+    },
+    {
+      "n": 5,
+      "half_width": 3,
+      "basis_columns_used": 3,
+      "all_carrier_coefficients_reconstructed": 32,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 14
+    },
+    {
+      "n": 6,
+      "half_width": 3,
+      "basis_columns_used": 3,
+      "all_carrier_coefficients_reconstructed": 64,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 28
+    },
+    {
+      "n": 7,
+      "half_width": 4,
+      "basis_columns_used": 4,
+      "all_carrier_coefficients_reconstructed": 128,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 62
+    },
+    {
+      "n": 8,
+      "half_width": 4,
+      "basis_columns_used": 4,
+      "all_carrier_coefficients_reconstructed": 256,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 96
+    },
+    {
+      "n": 9,
+      "half_width": 5,
+      "basis_columns_used": 5,
+      "all_carrier_coefficients_reconstructed": 512,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 243
+    },
+    {
+      "n": 10,
+      "half_width": 5,
+      "basis_columns_used": 5,
+      "all_carrier_coefficients_reconstructed": 1024,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 467
+    },
+    {
+      "n": 11,
+      "half_width": 6,
+      "basis_columns_used": 6,
+      "all_carrier_coefficients_reconstructed": 2048,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 988
+    },
+    {
+      "n": 12,
+      "half_width": 6,
+      "basis_columns_used": 6,
+      "all_carrier_coefficients_reconstructed": 4096,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 1800
+    },
+    {
+      "n": 13,
+      "half_width": 7,
+      "basis_columns_used": 7,
+      "all_carrier_coefficients_reconstructed": 8192,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 4015
+    },
+    {
+      "n": 14,
+      "half_width": 7,
+      "basis_columns_used": 7,
+      "all_carrier_coefficients_reconstructed": 16384,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 7887
+    },
+    {
+      "n": 15,
+      "half_width": 8,
+      "basis_columns_used": 8,
+      "all_carrier_coefficients_reconstructed": 32768,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 16159
+    },
+    {
+      "n": 16,
+      "half_width": 8,
+      "basis_columns_used": 8,
+      "all_carrier_coefficients_reconstructed": 65536,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 31181
+    },
+    {
+      "n": 17,
+      "half_width": 9,
+      "basis_columns_used": 9,
+      "all_carrier_coefficients_reconstructed": 131072,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 64948
+    },
+    {
+      "n": 18,
+      "half_width": 9,
+      "basis_columns_used": 9,
+      "all_carrier_coefficients_reconstructed": 262144,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 128879
+    },
+    {
+      "n": 19,
+      "half_width": 10,
+      "basis_columns_used": 10,
+      "all_carrier_coefficients_reconstructed": 524288,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 260553
+    },
+    {
+      "n": 20,
+      "half_width": 10,
+      "basis_columns_used": 10,
+      "all_carrier_coefficients_reconstructed": 1048576,
+      "exact_reconstruction": true,
+      "singleton_columns_orthogonal": true,
+      "direct_carrier_nonzero_coefficients": 512674
+    }
+  ],
+  "first_degree_mixing_example": {
+    "n": 5,
+    "half_width": 3,
+    "full_character_index": 1,
+    "full_character_bits": "00001",
+    "full_character_degree": 1,
+    "compressed_terms": [
+      {
+        "index": 1,
+        "bits": "001",
+        "degree": 1,
+        "coefficient": "-1/2"
+      },
+      {
+        "index": 2,
+        "bits": "010",
+        "degree": 1,
+        "coefficient": "1/2"
+      },
+      {
+        "index": 4,
+        "bits": "100",
+        "degree": 1,
+        "coefficient": "1/2"
+      },
+      {
+        "index": 7,
+        "bits": "111",
+        "degree": 3,
+        "coefficient": "1/2"
+      }
+    ]
+  },
+  "seconds": 1.8985981229998288
+}

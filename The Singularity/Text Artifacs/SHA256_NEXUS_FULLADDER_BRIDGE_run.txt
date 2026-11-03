@@ -1,0 +1,33 @@
+PASS: SHA-256 digest preserved while every semantic sum is checked
+  messages: 89; padded blocks: 1,111; semantic sum operations: 346,632
+PASS: every actual two-input ripple cell reads x=(a_i,b_i,c_i), emits q(x)=sum bit, and passes M(x)=majority to the next bit
+  full-adder cells profiled: 21,331,200; state counts (abc as 3-bit key): {0: 2897450, 1: 2488526, 2: 2819279, 3: 2470695, 4: 2880728, 5: 2489398, 6: 2818122, 7: 2467002}
+  sum-bit counts: {0: 10675665, 1: 10655535}; carry-out counts: {0: 11085983, 1: 10245217}
+PASS: exhaustive G_2 action check on all 8 bit triples and all 24 lane maps
+  signed sum readout epsilon_s=(-1)^q: orbit/stabilizer 2/12; exact span rank 1
+  signed carry readout epsilon_c=(-1)^M: orbit/stabilizer 8/3; exact span rank 4
+  epsilon_c = (chi_100 + chi_010 + chi_001 - chi_111)/2, checked exactly on all 8 states
+  rotation preserves q and M; all-ones flip toggles both; arbitrary even slide preserves q but may change M
+PASS: direct k-operand column recurrence equals serial two-word ripple sequence
+PASS: width descent 2^32 -> 2^31 -> 2^30 preserves each low-bit result and carry-trace prefix (693,264 checks)
+  round_T1_5: 71,104 operations; observed carry values [0, 1, 2, 3, 4]; max carry 4
+  round_T2_2: 71,104 operations; observed carry values [0, 1]; max carry 1
+  round_new_a_2: 71,104 operations; observed carry values [0, 1]; max carry 1
+  round_new_e_2: 71,104 operations; observed carry values [0, 1]; max carry 1
+  schedule_4: 53,328 operations; observed carry values [0, 1, 2, 3]; max carry 3
+  state_feedforward_2: 8,888 operations; observed carry values [0, 1]; max carry 1
+
+Carry-state support by number of jointly read operands k:
+  k=2: theoretical values=[0, 1]; observed values=[0, 1]; max observed=1; carry-outs={0: 111237, 1: 110963}
+  k=4: theoretical values=[0, 1, 2, 3]; observed values=[0, 1, 2, 3]; max observed=3; carry-outs={0: 2856, 1: 24478, 2: 23920, 3: 2074}
+  k=5: theoretical values=[0, 1, 2, 3, 4]; observed values=[0, 1, 2, 3, 4]; max observed=4; carry-outs={0: 660, 1: 16077, 2: 39545, 3: 14362, 4: 460}
+
+Per-bit observed carry support (bit positions grouped for compactness):
+  k=2: positions with all 2 carry values observed: 32/32; first positions lacking full support: []
+  k=4: positions with all 4 carry values observed: 31/32; first positions lacking full support: [(0, [0, 1, 2])]
+  k=5: positions with all 5 carry values observed: 30/32; first positions lacking full support: [(0, [0, 1, 2]), (1, [0, 1, 2, 3])]
+
+INTERPRETATION BOUNDARY:
+  This tests a k-operand column read inside actual SHA-256 arithmetic.
+  It does NOT instantiate the NEXUS k-token reader or prove the floor(log2 k) law transfers.
+  Operand count, carry-state range, token count, and one-bit width-descent depth remain separate variables.

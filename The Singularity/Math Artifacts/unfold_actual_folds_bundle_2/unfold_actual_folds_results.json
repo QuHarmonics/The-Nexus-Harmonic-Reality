@@ -1,0 +1,382 @@
+{
+  "scope": "Exact inverse of the recorded literal folds. Input to unfolding is terminal residual plus retained reference halves, not the original whole tape. This is not recovery of arbitrary lost information from zero alone.",
+  "rings": [
+    {
+      "n": 2,
+      "original_serialized_width": 8,
+      "terminal_residual_width": 1,
+      "terminal_residual_bits": "0",
+      "references_outer_to_inner": [
+        {
+          "width": 4,
+          "hex": "2"
+        },
+        {
+          "width": 2,
+          "hex": "3"
+        },
+        {
+          "width": 1,
+          "hex": "1"
+        }
+      ],
+      "packet_bits_total": 8,
+      "unfold_steps": [
+        {
+          "input_width": 1,
+          "reference_width": 1,
+          "reference_hex": "1",
+          "residual_hex": "0",
+          "reconstructed_width": 2,
+          "reconstructed_hex": "3"
+        },
+        {
+          "input_width": 2,
+          "reference_width": 2,
+          "reference_hex": "3",
+          "residual_hex": "3",
+          "reconstructed_width": 4,
+          "reconstructed_hex": "C"
+        },
+        {
+          "input_width": 4,
+          "reference_width": 4,
+          "reference_hex": "2",
+          "residual_hex": "C",
+          "reconstructed_width": 8,
+          "reconstructed_hex": "27"
+        }
+      ],
+      "restored_clockwise_hex": "27",
+      "restored_counterclockwise_same_anchor_hex": "72",
+      "whole_byte_or_tape_reverse_hex": "E4",
+      "original_tape_exact": true,
+      "all_words_and_order_exact": true,
+      "forward_inverse_runtime_exact": true,
+      "partner_conjugates_forward_to_inverse": true,
+      "unfolded_runtime_walk": [
+        {
+          "depth": 1,
+          "face": "L",
+          "word": "00",
+          "position": 0
+        },
+        {
+          "depth": 0,
+          "face": "L",
+          "word": "10",
+          "position": 1
+        },
+        {
+          "depth": 0,
+          "face": "R",
+          "word": "01",
+          "position": 2
+        },
+        {
+          "depth": 1,
+          "face": "R",
+          "word": "11",
+          "position": 3
+        }
+      ],
+      "all_positions_used_once": true
+    },
+    {
+      "n": 3,
+      "original_serialized_width": 24,
+      "terminal_residual_width": 3,
+      "terminal_residual_bits": "000",
+      "references_outer_to_inner": [
+        {
+          "width": 12,
+          "hex": "056"
+        },
+        {
+          "width": 6,
+          "hex": "38"
+        },
+        {
+          "width": 3,
+          "hex": "7"
+        }
+      ],
+      "packet_bits_total": 24,
+      "unfold_steps": [
+        {
+          "input_width": 3,
+          "reference_width": 3,
+          "reference_hex": "7",
+          "residual_hex": "0",
+          "reconstructed_width": 6,
+          "reconstructed_hex": "3F"
+        },
+        {
+          "input_width": 6,
+          "reference_width": 6,
+          "reference_hex": "38",
+          "residual_hex": "3F",
+          "reconstructed_width": 12,
+          "reconstructed_hex": "E38"
+        },
+        {
+          "input_width": 12,
+          "reference_width": 12,
+          "reference_hex": "056",
+          "residual_hex": "E38",
+          "reconstructed_width": 24,
+          "reconstructed_hex": "056767"
+        }
+      ],
+      "restored_clockwise_hex": "056767",
+      "restored_counterclockwise_same_anchor_hex": "737350",
+      "whole_byte_or_tape_reverse_hex": "E6E6A0",
+      "original_tape_exact": true,
+      "all_words_and_order_exact": true,
+      "forward_inverse_runtime_exact": true,
+      "partner_conjugates_forward_to_inverse": true,
+      "unfolded_runtime_walk": [
+        {
+          "depth": 3,
+          "face": "L",
+          "word": "000",
+          "position": 0
+        },
+        {
+          "depth": 2,
+          "face": "L",
+          "word": "001",
+          "position": 1
+        },
+        {
+          "depth": 1,
+          "face": "L",
+          "word": "010",
+          "position": 2
+        },
+        {
+          "depth": 0,
+          "face": "L",
+          "word": "110",
+          "position": 3
+        },
+        {
+          "depth": 0,
+          "face": "R",
+          "word": "011",
+          "position": 4
+        },
+        {
+          "depth": 1,
+          "face": "R",
+          "word": "101",
+          "position": 5
+        },
+        {
+          "depth": 2,
+          "face": "R",
+          "word": "100",
+          "position": 6
+        },
+        {
+          "depth": 3,
+          "face": "R",
+          "word": "111",
+          "position": 7
+        }
+      ],
+      "all_positions_used_once": true
+    },
+    {
+      "n": 4,
+      "original_serialized_width": 64,
+      "terminal_residual_width": 1,
+      "terminal_residual_bits": "0",
+      "references_outer_to_inner": [
+        {
+          "width": 32,
+          "hex": "0123567D"
+        },
+        {
+          "width": 16,
+          "hex": "F000"
+        },
+        {
+          "width": 8,
+          "hex": "F0"
+        },
+        {
+          "width": 4,
+          "hex": "F"
+        },
+        {
+          "width": 2,
+          "hex": "0"
+        },
+        {
+          "width": 1,
+          "hex": "0"
+        }
+      ],
+      "packet_bits_total": 64,
+      "unfold_steps": [
+        {
+          "input_width": 1,
+          "reference_width": 1,
+          "reference_hex": "0",
+          "residual_hex": "0",
+          "reconstructed_width": 2,
+          "reconstructed_hex": "0"
+        },
+        {
+          "input_width": 2,
+          "reference_width": 2,
+          "reference_hex": "0",
+          "residual_hex": "0",
+          "reconstructed_width": 4,
+          "reconstructed_hex": "0"
+        },
+        {
+          "input_width": 4,
+          "reference_width": 4,
+          "reference_hex": "F",
+          "residual_hex": "0",
+          "reconstructed_width": 8,
+          "reconstructed_hex": "FF"
+        },
+        {
+          "input_width": 8,
+          "reference_width": 8,
+          "reference_hex": "F0",
+          "residual_hex": "FF",
+          "reconstructed_width": 16,
+          "reconstructed_hex": "F0F0"
+        },
+        {
+          "input_width": 16,
+          "reference_width": 16,
+          "reference_hex": "F000",
+          "residual_hex": "F0F0",
+          "reconstructed_width": 32,
+          "reconstructed_hex": "F0000F00"
+        },
+        {
+          "input_width": 32,
+          "reference_width": 32,
+          "reference_hex": "0123567D",
+          "residual_hex": "F0000F00",
+          "reconstructed_width": 64,
+          "reconstructed_hex": "0123567DBE9AC48F"
+        }
+      ],
+      "restored_clockwise_hex": "0123567DBE9AC48F",
+      "restored_counterclockwise_same_anchor_hex": "7891ACBEDF356240",
+      "whole_byte_or_tape_reverse_hex": "F123597DBE6AC480",
+      "original_tape_exact": true,
+      "all_words_and_order_exact": true,
+      "forward_inverse_runtime_exact": true,
+      "partner_conjugates_forward_to_inverse": true,
+      "unfolded_runtime_walk": [
+        {
+          "depth": 7,
+          "face": "L",
+          "word": "0000",
+          "position": 0
+        },
+        {
+          "depth": 6,
+          "face": "L",
+          "word": "0001",
+          "position": 1
+        },
+        {
+          "depth": 5,
+          "face": "L",
+          "word": "0010",
+          "position": 2
+        },
+        {
+          "depth": 4,
+          "face": "L",
+          "word": "0011",
+          "position": 3
+        },
+        {
+          "depth": 3,
+          "face": "L",
+          "word": "0101",
+          "position": 4
+        },
+        {
+          "depth": 2,
+          "face": "L",
+          "word": "0110",
+          "position": 5
+        },
+        {
+          "depth": 1,
+          "face": "L",
+          "word": "0111",
+          "position": 6
+        },
+        {
+          "depth": 0,
+          "face": "L",
+          "word": "1101",
+          "position": 7
+        },
+        {
+          "depth": 0,
+          "face": "R",
+          "word": "1011",
+          "position": 8
+        },
+        {
+          "depth": 1,
+          "face": "R",
+          "word": "1110",
+          "position": 9
+        },
+        {
+          "depth": 2,
+          "face": "R",
+          "word": "1001",
+          "position": 10
+        },
+        {
+          "depth": 3,
+          "face": "R",
+          "word": "1010",
+          "position": 11
+        },
+        {
+          "depth": 4,
+          "face": "R",
+          "word": "1100",
+          "position": 12
+        },
+        {
+          "depth": 5,
+          "face": "R",
+          "word": "0100",
+          "position": 13
+        },
+        {
+          "depth": 6,
+          "face": "R",
+          "word": "1000",
+          "position": 14
+        },
+        {
+          "depth": 7,
+          "face": "R",
+          "word": "1111",
+          "position": 15
+        }
+      ],
+      "all_positions_used_once": true
+    }
+  ],
+  "all_single_packet_bit_perturbations_change_output": 96,
+  "seconds": 0.004899270999999317
+}

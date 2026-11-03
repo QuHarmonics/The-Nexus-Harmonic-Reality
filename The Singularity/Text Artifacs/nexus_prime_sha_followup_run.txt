@@ -1,0 +1,16 @@
+NEXUS prime/SHA follow-up
+{
+  "prediction_seal_sha256": "2d91c8a12600546b8ec2e9f4e95cdb2381d92df06f1325368efeac5689cf6321",
+  "six_opcode_routes_lengths_0_to_5": 9331,
+  "unique_codes": 9331,
+  "all_decode_exact": true,
+  "unshifted_zero_exponent_collision": true,
+  "full_sha256_64_round_chain_trials": 2000,
+  "full_chain_inverse_passes": 2000,
+  "message_block_change_changes_schedule": true,
+  "toy_E_bijective": true,
+  "toy_feedforward_image_size": 1,
+  "toy_feedforward_domain_size": 16,
+  "sha256_constants_count": 64,
+  "scope": "exact encoding and round algebra; not SHA-256 cryptanalysis"
+}

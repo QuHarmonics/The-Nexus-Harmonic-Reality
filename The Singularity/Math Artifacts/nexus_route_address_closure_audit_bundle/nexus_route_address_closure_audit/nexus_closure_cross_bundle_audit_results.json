@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "scope": "Cross-bundle combinatorial closure check; no physical-spin claim.",
+  "source_seals": {
+    "route_rank_script_sha256": "ee827844ba91d592c81cb1f6f22f42dc0a2ea97820a3d532e199d6e30803020b",
+    "route_rank_seal_match": true,
+    "reflection_lift_script_sha256": "4277c3f1b18df45ab669f00f75e33596458216d31573983dcec1e2269e607d8f",
+    "reflection_lift_seal_match": true
+  },
+  "route_to_physical_address": {
+    "widths": [
+      2,
+      12
+    ],
+    "words_checked": 8188,
+    "position_permutations_checked": 11,
+    "partner_reflection_checked_for_every_word": true,
+    "per_width": [
+      {
+        "width": 2,
+        "words": 4,
+        "all_positions_unique": true
+      },
+      {
+        "width": 3,
+        "words": 8,
+        "all_positions_unique": true
+      },
+      {
+        "width": 4,
+        "words": 16,
+        "all_positions_unique": true
+      },
+      {
+        "width": 5,
+        "words": 32,
+        "all_positions_unique": true
+      },
+      {
+        "width": 6,
+        "words": 64,
+        "all_positions_unique": true
+      },
+      {
+        "width": 7,
+        "words": 128,
+        "all_positions_unique": true
+      },
+      {
+        "width": 8,
+        "words": 256,
+        "all_positions_unique": true
+      },
+      {
+        "width": 9,
+        "words": 512,
+        "all_positions_unique": true
+      },
+      {
+        "width": 10,
+        "words": 1024,
+        "all_positions_unique": true
+      },
+      {
+        "width": 11,
+        "words": 2048,
+        "all_positions_unique": true
+      },
+      {
+        "width": 12,
+        "words": 4096,
+        "all_positions_unique": true
+      }
+    ]
+  },
+  "within_weight_band_rank": {
+    "widths": [
+      1,
+      10
+    ],
+    "words_checked": 2046,
+    "weight_bands_checked": 65,
+    "each_band_rank_set_exactly_zero_through_binomial_minus_one": true
+  },
+  "existing_bundle_scopes_reproduced_in_this_session": {
+    "reflection_lift_covariance_cases_per_identity": 699048,
+    "all_words_across_widths_2_through_20": 2097148,
+    "weight_bands_across_widths_2_through_20": 228,
+    "pole_source_widths_through": 4096,
+    "full_digest_route_steps_per_digest": 255,
+    "route_audit_even_EG_child_checks": 699048,
+    "route_audit_odd_child_checks": 349524
+  }
+}

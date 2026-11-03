@@ -1,0 +1,115 @@
+{
+  "modulus": 8,
+  "state_space": "(Z/8Z)^3",
+  "state_count": 512,
+  "fixed_generators": [
+    "A+B",
+    "A-B",
+    "B+C",
+    "B-C",
+    "SWAP_AB",
+    "NEG_C"
+  ],
+  "max_route_length": 4,
+  "route_count": 1555,
+  "unique_route_codes": 1555,
+  "distinct_canonical_operators": 446,
+  "distinct_extensional_operators_checked_on_all_states": 446,
+  "nonbijective_canonical_operators": 0,
+  "route_histories_beyond_first_per_groove": 1109,
+  "grooves_with_multiple_histories": 200,
+  "largest_groove_size": 83,
+  "sequential_vs_canonical_operator_mismatches": 0,
+  "route_inverse_failures": 0,
+  "primitive_frame_failures": 0,
+  "value_collision_witness": {
+    "inputs": [
+      [
+        3,
+        2,
+        5
+      ],
+      [
+        4,
+        1,
+        5
+      ]
+    ],
+    "projected_sums": [
+      5,
+      5
+    ],
+    "full_outputs": [
+      [
+        5,
+        2,
+        5
+      ],
+      [
+        5,
+        1,
+        5
+      ]
+    ],
+    "projected_collision": true,
+    "full_state_distinct": true
+  },
+  "logic_collision_witness": {
+    "routes": [
+      [],
+      [
+        "A+B",
+        "A-B"
+      ]
+    ],
+    "route_codes_distinct": true,
+    "same_canonical_operator": true,
+    "same_operator_on_all_states": true
+  },
+  "composite_route": [
+    "A+B",
+    "NEG_C"
+  ],
+  "composite_canonical_operator": {
+    "matrix": [
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        7
+      ]
+    ],
+    "offset": [
+      0,
+      0,
+      0
+    ]
+  },
+  "composite_exact_write_footprint": [
+    "a",
+    "c"
+  ],
+  "composite_output_dependencies": {
+    "a": [
+      "a",
+      "b"
+    ],
+    "b": [
+      "b"
+    ],
+    "c": [
+      "c"
+    ]
+  },
+  "no_hash_used_for_route_or_operator_encoding": true,
+  "all_assertions_pass": true
+}

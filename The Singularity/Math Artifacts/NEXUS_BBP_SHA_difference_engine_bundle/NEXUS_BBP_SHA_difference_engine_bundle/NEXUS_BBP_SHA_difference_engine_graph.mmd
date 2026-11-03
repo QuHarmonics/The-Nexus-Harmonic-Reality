@@ -1,0 +1,31 @@
+flowchart TD
+    A[Domain: finite word / state table] --> B[Equal-LEN stack: fuse A,B to A,A XOR B]
+    B --> C[Difference coefficients a_S]
+    C --> D[M again: exact value table]
+    C --> E[ANF evaluation at reader address]
+
+    subgraph BBP[BBP layer: rational-ring lanes]
+      R[Residue r = 16^m mod (8k+j)] --> Q[Digit q_j = floor(16*r / d)]
+      Q --> T[4 lane digits q1,q4,q5,q6]
+      E -->|compiled 16-bit lane fold| V[4q1 - 2q4 - q5 - q6]
+      T --> V
+      V --> COL[Accumulate contributions by global column]
+      COL --> GC[Global column carry: finite run -23..37]
+      GC --> PI[64 π hex digits]
+      J[Layer-local J_k(m)] --> JB[Bounded -4..3; H = w + 16J - J_next]
+    end
+
+    subgraph SHA[SHA-256: local difference operators composed through the round]
+      G1[Truth table Ch] --> M1[ANF Ch]
+      G2[Truth table Maj] --> M2[ANF Maj]
+      G3[Truth table full adder/subtractor] --> M3[ANF FA/FS]
+      M1 --> W[32-bit compiled word operators]
+      M2 --> W
+      M3 --> W
+      W --> RND[64 nested SHA rounds; W_t,K_t drive each round]
+      RND --> FF[Feed-forward H + E]
+      RND --> INV[Reverse rounds with known W_t,K_t]
+      INV --> HOME[Recover parent chaining state]
+      RND --> ST[Difference table after every round on LEN=8 reader slice]
+      ST --> SAT[Full monomial support round 3; max derivative entropy round 4]
+    end

@@ -1,0 +1,10 @@
+n | vertices | edges | |G| | core generators | trace rows | all checks
+3 | 72 | 171 | 54 | 8 | 54 | PASS
+4 | 120 | 300 | 96 | 27 | 96 | PASS
+5 | 180 | 465 | 150 | 64 | 150 | PASS
+6 | 252 | 666 | 216 | 125 | 216 | PASS
+7 | 336 | 903 | 294 | 216 | 294 | PASS
+8 | 432 | 1176 | 384 | 343 | 384 | PASS
+Integral proof object: the (n-1)^3 displayed cycles have zero boundary and
+are independent by their unique all-nonbase triangle; join homology proves completeness for all n.
+Finite checks verify the explicit action/trace formulas; they are not substitutes for the all-n proofs.

@@ -1,0 +1,12 @@
+{
+  "variable_order": [
+    3,
+    1,
+    4,
+    0,
+    2
+  ],
+  "random_composed_functions": 500,
+  "assignments_checked_per_function": 32,
+  "satcounts_and_evaluations": "all passed"
+}

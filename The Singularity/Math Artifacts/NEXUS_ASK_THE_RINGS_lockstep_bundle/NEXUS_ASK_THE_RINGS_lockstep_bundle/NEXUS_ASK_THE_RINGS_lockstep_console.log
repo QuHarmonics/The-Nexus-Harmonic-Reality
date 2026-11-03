@@ -1,0 +1,35 @@
+# NEXUS §126 — ASK THE RINGS: the WP5 lockstep link
+
+Prediction SHA-256: `b706f2ac615ca016ad985c7e513cc73d2e20139d1583d47ddeaed8db13ea8c8e`
+
+## Question
+§121 left nine balanced lanes OPEN because the reader-ring and field-ring periods share a factor. This run does not revisit §124. It reconstructs the two actual CRT parent rings and their phase-compatible joint orbit.
+
+## Result
+Exact reconstruction passes: 10/10 invariants.
+Eligible partial lanes: 804; balanced: 75; independent: 692; independent balanced: 66; lockstep of all kinds: 112; balanced lockstep: 9.
+The paired orbit has period `lcm(h1,h2)`, and reachable phase addresses satisfy `i ≡ j (mod gcd(h1,h2))`. Thus the joint orbit is a phase-constrained subset of the Cartesian product when the periods share a factor.
+All nine balanced lockstep cases have joint lean exactly zero and exactly reproduce their original rational-ring `mu - 1/2`: 9/9.
+Among the nine, Cartesian-product lean differs from the joint route in 5/9 cases. The joint phase is therefore needed for those cases; the marginal rings alone do not specify the realized pairing.
+
+## Nine cases
+| k | j | a | d | odd modulus o | o1 reader | o2 field | h1 | h2 | gcd | joint period | Cartesian lean | joint lean |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 313 | 5 | 1 | 2509 | 2509 | 13 | 193 | 3 | 24 | 3 | 24 | 1/36 | 0 |
+| 630 | 4 | 4 | 5044 | 1261 | 13 | 97 | 3 | 12 | 3 | 12 | 0 | 0 |
+| 703 | 5 | 1 | 5629 | 5629 | 13 | 433 | 3 | 18 | 3 | 18 | -1/18 | 0 |
+| 757 | 6 | 8 | 6062 | 3031 | 7 | 433 | 3 | 18 | 3 | 18 | 1/27 | 0 |
+| 824 | 4 | 4 | 6596 | 1649 | 17 | 97 | 2 | 12 | 2 | 12 | 0 | 0 |
+| 1009 | 6 | 8 | 8078 | 4039 | 7 | 577 | 3 | 36 | 3 | 36 | -1/27 | 0 |
+| 1297 | 1 | 1 | 10377 | 10377 | 9 | 1153 | 3 | 72 | 3 | 72 | 1/108 | 0 |
+| 1634 | 1 | 1 | 13073 | 13073 | 17 | 769 | 2 | 96 | 2 | 96 | 0 | 0 |
+| 1640 | 4 | 4 | 13124 | 3281 | 17 | 193 | 2 | 24 | 2 | 24 | 0 | 0 |
+
+## Route / ownership
+The original rational-ring orbit `y_t` is the route home. CRT projects each visited `y_t` into both parents at the same phase. For coprime periods, that synchronized walk covers every pair in the Cartesian product and the independent-ring factorization applies. For non-coprime periods, it visits only compatible phase pairs; replacing it with the full product changes the owner of the average.
+
+This is not an assertion that the two rings independently predict balance. The exact paired route accounts for it. The broader density-of-balance problem remains OPEN.
+
+## Reproduction
+Run `python nexus_ask_the_rings_lockstep.py` in a directory containing the two prediction seal files. Exact output is in `NEXUS_ASK_THE_RINGS_lockstep_results.json`.
+

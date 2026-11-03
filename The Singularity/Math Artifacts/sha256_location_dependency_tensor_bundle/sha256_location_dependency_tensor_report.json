@@ -1,0 +1,239 @@
+{
+  "scope": "single 512-bit compression block; the 16 initial message-schedule words are source locations; chaining state fixed",
+  "analysis_type": "word-level static may-dependence / taint propagation",
+  "L_definition": "L[j,t,r] = 1 when a dependency path from source word W[j], j=0..15, reaches register r after round t; t=-1 is the pre-round state",
+  "first_schedule_word_depending_on_all_16_sources": 26,
+  "first_round_each_register_depends_on_all_16_sources": {
+    "a": 15,
+    "b": 16,
+    "c": 17,
+    "d": 18,
+    "e": 15,
+    "f": 16,
+    "g": 17,
+    "h": 18
+  },
+  "first_round_every_register_depends_on_all_16_sources": 18,
+  "first_round_all_registers_depend_on_each_source_word": {
+    "0": 3,
+    "1": 4,
+    "2": 5,
+    "3": 6,
+    "4": 7,
+    "5": 8,
+    "6": 9,
+    "7": 10,
+    "8": 11,
+    "9": 12,
+    "10": 13,
+    "11": 14,
+    "12": 15,
+    "13": 16,
+    "14": 17,
+    "15": 18
+  },
+  "selected_round_counts": [
+    {
+      "after_round": -1,
+      "source_dependencies_by_register": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0,
+        "f": 0,
+        "g": 0,
+        "h": 0
+      },
+      "total_source_register_pairs": 0
+    },
+    {
+      "after_round": 0,
+      "source_dependencies_by_register": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 1,
+        "f": 0,
+        "g": 0,
+        "h": 0
+      },
+      "total_source_register_pairs": 2
+    },
+    {
+      "after_round": 1,
+      "source_dependencies_by_register": {
+        "a": 2,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 2,
+        "f": 1,
+        "g": 0,
+        "h": 0
+      },
+      "total_source_register_pairs": 6
+    },
+    {
+      "after_round": 2,
+      "source_dependencies_by_register": {
+        "a": 3,
+        "b": 2,
+        "c": 1,
+        "d": 0,
+        "e": 3,
+        "f": 2,
+        "g": 1,
+        "h": 0
+      },
+      "total_source_register_pairs": 12
+    },
+    {
+      "after_round": 3,
+      "source_dependencies_by_register": {
+        "a": 4,
+        "b": 3,
+        "c": 2,
+        "d": 1,
+        "e": 4,
+        "f": 3,
+        "g": 2,
+        "h": 1
+      },
+      "total_source_register_pairs": 20
+    },
+    {
+      "after_round": 7,
+      "source_dependencies_by_register": {
+        "a": 8,
+        "b": 7,
+        "c": 6,
+        "d": 5,
+        "e": 8,
+        "f": 7,
+        "g": 6,
+        "h": 5
+      },
+      "total_source_register_pairs": 52
+    },
+    {
+      "after_round": 15,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 15,
+        "c": 14,
+        "d": 13,
+        "e": 16,
+        "f": 15,
+        "g": 14,
+        "h": 13
+      },
+      "total_source_register_pairs": 116
+    },
+    {
+      "after_round": 16,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 15,
+        "d": 14,
+        "e": 16,
+        "f": 16,
+        "g": 15,
+        "h": 14
+      },
+      "total_source_register_pairs": 122
+    },
+    {
+      "after_round": 17,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 15,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 15
+      },
+      "total_source_register_pairs": 126
+    },
+    {
+      "after_round": 18,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 16,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 16
+      },
+      "total_source_register_pairs": 128
+    },
+    {
+      "after_round": 25,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 16,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 16
+      },
+      "total_source_register_pairs": 128
+    },
+    {
+      "after_round": 26,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 16,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 16
+      },
+      "total_source_register_pairs": 128
+    },
+    {
+      "after_round": 31,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 16,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 16
+      },
+      "total_source_register_pairs": 128
+    },
+    {
+      "after_round": 63,
+      "source_dependencies_by_register": {
+        "a": 16,
+        "b": 16,
+        "c": 16,
+        "d": 16,
+        "e": 16,
+        "f": 16,
+        "g": 16,
+        "h": 16
+      },
+      "total_source_register_pairs": 128
+    }
+  ],
+  "limitations": [
+    "This is word-level structural support, not a bit-level Boolean derivative.",
+    "A dependency edge means a source can influence a value through the code path; for a particular input, numeric differences can cancel or remain zero.",
+    "The source set is the 16 words entering one compression block. For later blocks, the incoming chaining state is another dependency source and must be included.",
+    "Padding and message-length encoding are outside this block-local tensor; their constructed words can be added as source classes in a full-message location model."
+  ]
+}

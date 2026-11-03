@@ -1,0 +1,238 @@
+{
+  "scope": "Independent original-ring and E/G checks; not execution of the unavailable /tmp/r3/sphere.py.",
+  "azimuth_convention": "phi=2*pi*(i+1/2)/2^n, so P sends phi to -phi modulo 2*pi.",
+  "sphere_embedding": "Z=2*z, transverse radius=sqrt(n*n-4*z*z), physical radius=n.",
+  "correct_partner_geometry": {
+    "nonpalindrome": "(X,Y,Z)->(X,-Y,Z)",
+    "palindrome": "(X,Y,Z)->(X,-Y,-Z); not generally the full antipode"
+  },
+  "partner_checks": [
+    {
+      "n": 2,
+      "all_words": 4,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 3,
+      "all_words": 8,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 4,
+      "all_words": 16,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 5,
+      "all_words": 32,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 6,
+      "all_words": 64,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 7,
+      "all_words": 128,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 8,
+      "all_words": 256,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 9,
+      "all_words": 512,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 10,
+      "all_words": 1024,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 11,
+      "all_words": 2048,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 12,
+      "all_words": 4096,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 13,
+      "all_words": 8192,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    },
+    {
+      "n": 14,
+      "all_words": 16384,
+      "partner_z_rule": true,
+      "partner_azimuth_reflection": true,
+      "partner_half_turn_matches": 0
+    }
+  ],
+  "lift_checks": [
+    {
+      "source_even_width": 2,
+      "target_even_width": 4,
+      "output_steps": 8,
+      "latitude_formula": true,
+      "sign_reflected_steps": 2,
+      "expected_from_target_width": 2
+    },
+    {
+      "source_even_width": 4,
+      "target_even_width": 6,
+      "output_steps": 32,
+      "latitude_formula": true,
+      "sign_reflected_steps": 4,
+      "expected_from_target_width": 4
+    },
+    {
+      "source_even_width": 6,
+      "target_even_width": 8,
+      "output_steps": 128,
+      "latitude_formula": true,
+      "sign_reflected_steps": 8,
+      "expected_from_target_width": 8
+    },
+    {
+      "source_even_width": 8,
+      "target_even_width": 10,
+      "output_steps": 512,
+      "latitude_formula": true,
+      "sign_reflected_steps": 16,
+      "expected_from_target_width": 16
+    },
+    {
+      "source_even_width": 10,
+      "target_even_width": 12,
+      "output_steps": 2048,
+      "latitude_formula": true,
+      "sign_reflected_steps": 32,
+      "expected_from_target_width": 32
+    },
+    {
+      "source_even_width": 12,
+      "target_even_width": 14,
+      "output_steps": 8192,
+      "latitude_formula": true,
+      "sign_reflected_steps": 64,
+      "expected_from_target_width": 64
+    },
+    {
+      "source_even_width": 14,
+      "target_even_width": 16,
+      "output_steps": 32768,
+      "latitude_formula": true,
+      "sign_reflected_steps": 128,
+      "expected_from_target_width": 128
+    },
+    {
+      "source_even_width": 16,
+      "target_even_width": 18,
+      "output_steps": 131072,
+      "latitude_formula": true,
+      "sign_reflected_steps": 256,
+      "expected_from_target_width": 256
+    },
+    {
+      "source_even_width": 18,
+      "target_even_width": 20,
+      "output_steps": 524288,
+      "latitude_formula": true,
+      "sign_reflected_steps": 512,
+      "expected_from_target_width": 512
+    }
+  ],
+  "exhaustive_route_to_band_rank_words": 2046,
+  "wide_scalar_checks": [
+    {
+      "n": 32,
+      "scalar_route_coordinate_checks": 4,
+      "no_full_ring_built": true
+    },
+    {
+      "n": 64,
+      "scalar_route_coordinate_checks": 4,
+      "no_full_ring_built": true
+    }
+  ],
+  "nonmonotone_full_band_example": {
+    "n": 6,
+    "weight": 3,
+    "absolute_positions": [
+      7,
+      10,
+      12,
+      13,
+      17,
+      18,
+      19,
+      21,
+      26,
+      27,
+      36,
+      37,
+      42,
+      44,
+      45,
+      46,
+      50,
+      51,
+      53,
+      56
+    ],
+    "K_along_full_azimuth": [
+      7,
+      6,
+      6,
+      6,
+      5,
+      5,
+      5,
+      4,
+      3,
+      3,
+      3,
+      3,
+      4,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      7
+    ]
+  },
+  "seconds": 0.5621844680000017
+}

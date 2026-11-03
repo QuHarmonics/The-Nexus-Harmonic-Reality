@@ -1,0 +1,50 @@
+== K1. The first-run stack with the mixer fuse is the difference engine ==
+every function on n = 1..4 bits (65812 functions): stack = nested-difference table, and the stack is its own inverse: 65812/65812
+random f, n = 5..12: a_S = (prod_(i in S) D_i f)(0) on 40 sampled S each, and involution: 8/8
+every partial stack, n = 8: block at context h holds b_T(h) = xor_(U subset h) a_(T u U): 32640/32640
+
+== K2. Difference depth is bounded by LEN ==
+n = 1: functions by depth {-1: 1, 0: 1, 1: 2}; cumulative = 2^(sum C(n,i)): True
+n = 2: functions by depth {-1: 1, 0: 1, 1: 6, 2: 8}; cumulative = 2^(sum C(n,i)): True
+n = 3: functions by depth {-1: 1, 0: 1, 1: 14, 2: 112, 3: 128}; cumulative = 2^(sum C(n,i)): True
+n = 4: functions by depth {-1: 1, 0: 1, 1: 30, 2: 2016, 3: 30720, 4: 32768}; cumulative = 2^(sum C(n,i)): True
+300 random (f, a): deg D_a f <= deg f - 1 and an (n+1)-fold difference vanishes: 300/300
+
+== K3. A write at latitude j reaches 2^(n-j) cells of the other side ==
+n = 6, all 64 cells, value side and difference side: exact True
+reach by latitude j = 0..6: [64, 32, 16, 8, 4, 2, 1]
+
+== K4. Leak: entropy of the output difference ==
+all maps 2->1 (16): leak = 0 exactly when affine: 16/16
+all maps 3->1 (256): leak = 0 exactly when affine: 256/256
+all maps 4->1 (65536): leak = 0 exactly when affine: 65536/65536
+all maps 2->2 (256): leak = 0 exactly when affine: 256/256
+pass / mixer (a, a^b)    degree 1  leak 0.0000 bits  (max possible 1)  largest DDT entry 4
+AND merge (a&b)          degree 2  leak 1.0000 bits  (max possible 1)  largest DDT entry 2
+half adder (a^b, a&b)    degree 2  leak 1.0000 bits  (max possible 1)  largest DDT entry 2
+Toffoli (a, b, c ^ ab)   degree 2  leak 0.8571 bits  (max possible 2)  largest DDT entry 8
+x^3 in GF(8)             degree 2  leak 2.0000 bits  (max possible 2)  largest DDT entry 2
+
+== K5. Permutations cannot use the top latitude ==
+n = 2: permutations by degree {1: 24}
+n = 3: permutations by degree {1: 1344, 2: 38976}
+n = 4, 20000 random permutations, by degree: {2: 1, 3: 19999}
+
+== K6. A saturated ring must carry the full-width merge ==
+Z(n) parity, n = 1..64: odd at n = [2] ; even everywhere else
+n = 2: cycles = Z(n) + wt(g) mod 2 for 4/4 feedbacks; single-cycle feedbacks 1 (2^(2^(n-1)-n) = 1); carrying the full monomial x2..x2: 0/1
+n = 3: cycles = Z(n) + wt(g) mod 2 for 16/16 feedbacks; single-cycle feedbacks 2 (2^(2^(n-1)-n) = 2); carrying the full monomial x2..x3: 2/2
+n = 4: cycles = Z(n) + wt(g) mod 2 for 256/256 feedbacks; single-cycle feedbacks 16 (2^(2^(n-1)-n) = 16); carrying the full monomial x2..x4: 16/16
+n = 5: cycles = Z(n) + wt(g) mod 2 for 65536/65536 feedbacks; single-cycle feedbacks 2048 (2^(2^(n-1)-n) = 2048); carrying the full monomial x2..x5: 2048/2048
+2000 random feedbacks, n = 6..12: parity law holds 2000/2000
+sign of the state map = (-1)^(cycles) = (-1)^(Z(n) + top coefficient of g): follows, since 2^n is even
+
+== K7. A prime-base digit holds p-1 nested differences ==
+p = 2: Delta^p vanishes on 200 random digit functions: True; Delta^(p-1) x^(p-1) = 1 (nonzero: True)
+p = 3: Delta^p vanishes on 200 random digit functions: True; Delta^(p-1) x^(p-1) = 2 (nonzero: True)
+p = 5: Delta^p vanishes on 200 random digit functions: True; Delta^(p-1) x^(p-1) = 4 (nonzero: True)
+p = 7: Delta^p vanishes on 200 random digit functions: True; Delta^(p-1) x^(p-1) = 6 (nonzero: True)
+
+== K8. One level up the engine is linear ==
+G -> F o G has degree deg F in G's 8 table bits: 256/256;  F -> F o G has degree <= 1 in F's table bits: 256/256
+D_a(f xor g) = D_a f xor D_a g on 200 random pairs: True

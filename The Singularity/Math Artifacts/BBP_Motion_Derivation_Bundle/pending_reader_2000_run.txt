@@ -1,0 +1,20 @@
+2000 emissions in 3.1s, from an empty field
+
+1  certified and correct:            2000/2000 digits match mpmath
+2  refinements keep the true value:  2003/2003 (OPEN 2000, WIDEN 3)
+3  emissions land on 16x mod 1:      2000/2000
+4  lanes retained, never dropped:    8000 lanes = 4 x 2000 layers; 64 opened ahead of the read point
+   every retained lane exact now:    8000/8000
+   carry register inside S matches the independent I_n: 400/400 steps
+5  unopened lanes evaluated anywhere in the machine? no  (only the closed-form bound in tail_ulps)
+6  trace.csv written: 2000 rows
+
+   frontier gap K - n: min 0, max 1, mean 0.01
+   precision P: 4 -> 7
+   OPENs per emission: 1.000
+   n=  250: lanes  1004, storage    30219 bits, bits / (n log2 n) = 15.17
+   n=  500: lanes  2004, storage    65753 bits, bits / (n log2 n) = 14.67
+   n= 1000: lanes  4004, storage   143633 bits, bits / (n log2 n) = 14.41
+   n= 1999: lanes  8000, storage   310209 bits, bits / (n log2 n) = 14.15
+
+   first 64 digits: 243F6A8885A308D313198A2E03707344A4093822299F31D0082EFA98EC4E6C89

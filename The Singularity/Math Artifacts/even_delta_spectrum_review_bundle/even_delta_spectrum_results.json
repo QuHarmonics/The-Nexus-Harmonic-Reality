@@ -1,0 +1,200 @@
+{
+  "status": "PASS",
+  "source_sha256_before": "982f6838dab82a3ff2a0c51ed4520f0abdadc7aabd096443d045b3d9251bebc2",
+  "source_sha256_after": "982f6838dab82a3ff2a0c51ed4520f0abdadc7aabd096443d045b3d9251bebc2",
+  "prediction_sha256": "2f7d21a88107b4147843d550cdd0689f22e197b5760a0fe1050787631fee01c7",
+  "scope": {
+    "direct_delta_walsh_widths": "2..12",
+    "direct_zero_mode_widths": "2..20",
+    "direct_kernel_widths": "2..8",
+    "direct_comparator_spectrum_widths": "2..12"
+  },
+  "counts": {
+    "zero_mode_checks": 19,
+    "nonzero_delta_walsh_coefficients_checked": 8177,
+    "comparator_walsh_coefficients_checked": 8188,
+    "kernel_pairs_checked": 86868
+  },
+  "zero_mode_values": {
+    "2": 1,
+    "3": 6,
+    "4": 32,
+    "5": 144,
+    "6": 624,
+    "7": 2592,
+    "8": 10624,
+    "9": 43008,
+    "10": 173312,
+    "11": 695808,
+    "12": 2789376,
+    "13": 11169792,
+    "14": 44707840,
+    "15": 178888704,
+    "16": 715685888,
+    "17": 2863005696,
+    "18": 11452612608,
+    "19": 45811630080,
+    "20": 183249141760
+  },
+  "width_rows": [
+    {
+      "n": 2,
+      "N": 4,
+      "zero_mode": 1,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 3,
+      "comparator_modes_checked": 4
+    },
+    {
+      "n": 3,
+      "N": 8,
+      "zero_mode": 6,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 7,
+      "comparator_modes_checked": 8
+    },
+    {
+      "n": 4,
+      "N": 16,
+      "zero_mode": 32,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 15,
+      "comparator_modes_checked": 16
+    },
+    {
+      "n": 5,
+      "N": 32,
+      "zero_mode": 144,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 31,
+      "comparator_modes_checked": 32
+    },
+    {
+      "n": 6,
+      "N": 64,
+      "zero_mode": 624,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 63,
+      "comparator_modes_checked": 64
+    },
+    {
+      "n": 7,
+      "N": 128,
+      "zero_mode": 2592,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 127,
+      "comparator_modes_checked": 128
+    },
+    {
+      "n": 8,
+      "N": 256,
+      "zero_mode": 10624,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 255,
+      "comparator_modes_checked": 256
+    },
+    {
+      "n": 9,
+      "N": 512,
+      "zero_mode": 43008,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 511,
+      "comparator_modes_checked": 512
+    },
+    {
+      "n": 10,
+      "N": 1024,
+      "zero_mode": 173312,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 1023,
+      "comparator_modes_checked": 1024
+    },
+    {
+      "n": 11,
+      "N": 2048,
+      "zero_mode": 695808,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 2047,
+      "comparator_modes_checked": 2048
+    },
+    {
+      "n": 12,
+      "N": 4096,
+      "zero_mode": 2789376,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 4095,
+      "comparator_modes_checked": 4096
+    },
+    {
+      "n": 13,
+      "N": 8192,
+      "zero_mode": 11169792,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 14,
+      "N": 16384,
+      "zero_mode": 44707840,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 15,
+      "N": 32768,
+      "zero_mode": 178888704,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 16,
+      "N": 65536,
+      "zero_mode": 715685888,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 17,
+      "N": 131072,
+      "zero_mode": 2863005696,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 18,
+      "N": 262144,
+      "zero_mode": 11452612608,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 19,
+      "N": 524288,
+      "zero_mode": 45811630080,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    },
+    {
+      "n": 20,
+      "N": 1048576,
+      "zero_mode": 183249141760,
+      "zero_mode_match": true,
+      "nonzero_walsh_modes_checked": 0,
+      "comparator_modes_checked": 0
+    }
+  ],
+  "max_abs_direct_delta_coefficient": 183249141760,
+  "notes": [
+    "All Walsh transforms are unnormalized exact integer transforms.",
+    "Nonzero Delta coefficient formula was checked against direct FWHT of Delta.",
+    "Zero-mode formula was checked against direct sum_p Delta(p) through n=20.",
+    "Sparse kernel was checked directly for every nonzero s and every t at n=2..8."
+  ]
+}

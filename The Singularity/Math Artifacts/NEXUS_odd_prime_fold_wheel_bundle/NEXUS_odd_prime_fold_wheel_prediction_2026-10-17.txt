@@ -1,0 +1,8 @@
+NEXUS prediction seal: odd-prime fold wheel classification
+Date: 2026-10-17
+Question: Under N(w)=1/p for prime p and finite rational nesting w^k in Q, does an odd-prime fold wheel exist in Q(sqrt(-d))? Separate the trivial half-turn from a nontrivial root-of-unity phase wheel.
+Prediction before run:
+1. A trivial solution exists for every prime p in Q(sqrt(-p)): w=sqrt(-p)/p, N(w)=1/p, w^2=-1/p. Therefore the literal condition w^k in Q does not rule out odd primes.
+2. A nontrivial phase wheel whose phase is pi/(2p) requires a primitive 2p-th root of unity in an imaginary quadratic field. Its cyclotomic degree phi(2p)=p-1 must be <=2; hence only p=2 or p=3 can occur. Exact candidates are (1+i)/2 for p=2 and (3+sqrt(-3))/6 for p=3.
+3. For p>3, the only nested solution in an arbitrary imaginary quadratic field is the pure-imaginary d=p half-turn; exceptional fields Q(i), Q(sqrt(-3)) do not admit norm 1/p nested solutions for p>3.
+Test with exact rational arithmetic and verify powers/norms and sample odd primes. This seal is a prediction, not a result.

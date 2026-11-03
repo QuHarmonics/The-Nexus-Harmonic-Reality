@@ -1,0 +1,5 @@
+NEXUS reverse-gap prediction — finite witness §109.4
+Source domain: the already-declared complete toy domain Z_8^3; no new dataset and no candidate generation.
+Forward law: q=0 iff a=b, else q=1; s'=(a+b+q) mod 8; surface readout is (s',b,c).
+Prediction before rerun: subtract the known baseline 2b and define x=(a-b) mod 8, d=(s'-2b) mod 8. Then d=0 when x=0, and d=x+1 mod 8 when x!=0. For each (b,c), the normalized image omits d=1 and d=0 has two owners x=0 (EQ route) and x=7 (NEQ route); the other six d values have one owner. Reversing the NEQ route gives x=d-1 mod 8, valid only when x!=0. At d=1 this lands on x=0, which belongs to the EQ route and maps to d=0: classify that attempted landing DEAD END by ownership, not as a missing candidate to search for. The route trace q is a distinct route-space coordinate, not a payload residual to append. Readout plus q has exact return on realized outputs; surface alone remains ambiguous at d=0.
+Way home in the seal: given (s',b,c,q), derive d=(s'-2b) mod 8; if q=0 require d=0 and set a=b; if q=1 set a=b+(d-1) mod 8 and require d!=1; return (a,b,c) and verify the forward law.

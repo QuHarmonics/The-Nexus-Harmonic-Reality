@@ -1,0 +1,20 @@
+seal verified 60a2aad0...12fd65fd
+
+SEALED RESIDUE-2 LAW and its control (f = 2/3 without the 1/(6D) term)
+  D= 14  p= 11  RUNS   control differs at ring(s) [14]   log2|K_D|=  -19.19  (0s)
+  D= 17  p= 13  RUNS   control differs at ring(s) [17]   log2|K_D|=  -22.50  (0s)
+  D= 20  p= 15  RUNS   control differs at ring(s) [20]   log2|K_D|=  -25.76  (0s)
+  D= 23  p= 17  RUNS   control differs at ring(s) [23]   log2|K_D|=  -28.98  (0s)
+  D= 26  p= 19  RUNS   control differs at ring(s) [26]   log2|K_D|=  -32.17  (0s)
+  D= 29  p= 21  RUNS   control differs at ring(s) [29]   log2|K_D|=  -35.34  (0s)
+  D= 32  p= 23  RUNS   control differs at ring(s) [32]   log2|K_D|=  -38.49  (0s)
+  D= 47  p= 33  RUNS   control differs at ring(s) [47]   log2|K_D|=  -54.08  (1s)
+  D= 62  p= 43  RUNS   control differs at ring(s) [62]   log2|K_D|=  -69.49  (4s)
+  D= 77  p= 53  RUNS   control differs at ring(s) [77]   log2|K_D|=  -84.81  (8s)
+  D= 92  p= 63  RUNS   control differs at ring(s) [92]   log2|K_D|= -100.08  (17s)
+  D=107  p= 73  RUNS   control differs at ring(s) [107]   log2|K_D|= -115.30  (31s)
+  residue 2: 36/36 RUNS;  control fails exactly at ring D in 36/36
+
+UNIFIED LAW, every D from 13 to 119
+  107/107 RUNS   failures: none   (114s)
+wrote unified_certificate.json

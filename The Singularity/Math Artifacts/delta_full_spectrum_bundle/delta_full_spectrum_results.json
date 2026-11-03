@@ -1,0 +1,296 @@
+{
+  "scope": "Exact unnormalized Walsh spectrum of the reversal comparator prefix sum. No claim about physical spectra or SHA inversion.",
+  "normalization": "hat f(s)=sum_x f(x)(-1)^(s dot x).",
+  "records": [
+    {
+      "n": 2,
+      "all_Delta_modes_checked": 4,
+      "nonzero_Delta_modes": 4,
+      "DC": 1,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 4,
+      "nonzero_comparator_modes": 2
+    },
+    {
+      "n": 3,
+      "all_Delta_modes_checked": 8,
+      "nonzero_Delta_modes": 5,
+      "DC": 6,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 8,
+      "nonzero_comparator_modes": 2
+    },
+    {
+      "n": 4,
+      "all_Delta_modes_checked": 16,
+      "nonzero_Delta_modes": 13,
+      "DC": 32,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 16,
+      "nonzero_comparator_modes": 6
+    },
+    {
+      "n": 5,
+      "all_Delta_modes_checked": 32,
+      "nonzero_Delta_modes": 15,
+      "DC": 144,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 32,
+      "nonzero_comparator_modes": 6
+    },
+    {
+      "n": 6,
+      "all_Delta_modes_checked": 64,
+      "nonzero_Delta_modes": 34,
+      "DC": 624,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 64,
+      "nonzero_comparator_modes": 14
+    },
+    {
+      "n": 7,
+      "all_Delta_modes_checked": 128,
+      "nonzero_Delta_modes": 37,
+      "DC": 2592,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 128,
+      "nonzero_comparator_modes": 14
+    },
+    {
+      "n": 8,
+      "all_Delta_modes_checked": 256,
+      "nonzero_Delta_modes": 79,
+      "DC": 10624,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 256,
+      "nonzero_comparator_modes": 30
+    },
+    {
+      "n": 9,
+      "all_Delta_modes_checked": 512,
+      "nonzero_Delta_modes": 83,
+      "DC": 43008,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 512,
+      "nonzero_comparator_modes": 30
+    },
+    {
+      "n": 10,
+      "all_Delta_modes_checked": 1024,
+      "nonzero_Delta_modes": 172,
+      "DC": 173312,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 1024,
+      "nonzero_comparator_modes": 62
+    },
+    {
+      "n": 11,
+      "all_Delta_modes_checked": 2048,
+      "nonzero_Delta_modes": 177,
+      "DC": 695808,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 2048,
+      "nonzero_comparator_modes": 62
+    },
+    {
+      "n": 12,
+      "all_Delta_modes_checked": 4096,
+      "nonzero_Delta_modes": 361,
+      "DC": 2789376,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 4096,
+      "nonzero_comparator_modes": 126
+    },
+    {
+      "n": 13,
+      "all_Delta_modes_checked": 8192,
+      "nonzero_Delta_modes": 367,
+      "DC": 11169792,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 126
+    },
+    {
+      "n": 14,
+      "all_Delta_modes_checked": 16384,
+      "nonzero_Delta_modes": 742,
+      "DC": 44707840,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 254
+    },
+    {
+      "n": 15,
+      "all_Delta_modes_checked": 32768,
+      "nonzero_Delta_modes": 749,
+      "DC": 178888704,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 254
+    },
+    {
+      "n": 16,
+      "all_Delta_modes_checked": 65536,
+      "nonzero_Delta_modes": 1507,
+      "DC": 715685888,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 510
+    },
+    {
+      "n": 17,
+      "all_Delta_modes_checked": 131072,
+      "nonzero_Delta_modes": 1515,
+      "DC": 2863005696,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 510
+    },
+    {
+      "n": 18,
+      "all_Delta_modes_checked": 262144,
+      "nonzero_Delta_modes": 3040,
+      "DC": 11452612608,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 1022
+    },
+    {
+      "n": 19,
+      "all_Delta_modes_checked": 524288,
+      "nonzero_Delta_modes": 3049,
+      "DC": 45811630080,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 1022
+    },
+    {
+      "n": 20,
+      "all_Delta_modes_checked": 1048576,
+      "nonzero_Delta_modes": 6109,
+      "DC": 183249141760,
+      "DC_four_forms_agree": true,
+      "scalar_modes_checked": 38,
+      "nonzero_comparator_modes": 2046
+    }
+  ],
+  "complete_Delta_modes": 2097148,
+  "complete_nonzero_kernel_rows": 2035,
+  "kernel_row_widths": [
+    2,
+    10
+  ],
+  "small_spectra": [
+    {
+      "n": 2,
+      "comparator_spectrum": [
+        0,
+        -2,
+        2,
+        0
+      ],
+      "Delta_spectrum": [
+        1,
+        1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "n": 3,
+      "comparator_spectrum": [
+        0,
+        -4,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      "Delta_spectrum": [
+        6,
+        2,
+        0,
+        0,
+        -2,
+        -2,
+        -4,
+        0
+      ]
+    },
+    {
+      "n": 4,
+      "comparator_spectrum": [
+        0,
+        -8,
+        -4,
+        0,
+        4,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        -4,
+        0,
+        4,
+        0,
+        0
+      ],
+      "Delta_spectrum": [
+        32,
+        4,
+        2,
+        2,
+        -2,
+        -2,
+        -4,
+        0,
+        -4,
+        -4,
+        -10,
+        2,
+        -14,
+        -2,
+        0,
+        0
+      ]
+    }
+  ],
+  "wide_scalar_checks": [
+    {
+      "n": 32,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    },
+    {
+      "n": 64,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    },
+    {
+      "n": 128,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    },
+    {
+      "n": 256,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    },
+    {
+      "n": 512,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    },
+    {
+      "n": 1024,
+      "constructed_nonzero_odd_modes": 12,
+      "no_full_array": true
+    }
+  ],
+  "independent_tent_mode_checks": 50,
+  "seconds": 0.8692485170000026
+}

@@ -1,0 +1,14 @@
+(* Whitespace is allowed between tokens. *)
+program       = "ring", name, "width", uint, "{", description, "}" ;
+description   = cycle | fold ;
+cycle         = "cycle", ":", bits, { "->", bits }, ";" ;
+fold          = "fold", "{",
+                "root", ":", bits, ";",
+                "refs_inner_to_outer", ":", "[",
+                [ bits, { ",", bits } ], "]", ";", "}" ;
+bits          = ("0" | "1"), { "0" | "1" } ;
+name          = (letter | "_"), { letter | digit | "_" } ;
+uint          = digit, { digit } ;
+(* Semantic constraints: positive width, all 2^width distinct states,
+   exact state widths, fixed original ordering and center swap,
+   valid fold widths and decoded tape length. Reference implementation cap: 12. *)

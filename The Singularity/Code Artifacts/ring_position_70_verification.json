@@ -1,0 +1,41 @@
+{
+  "width": 8,
+  "position": 70,
+  "word": "01010001",
+  "byte_hex": "51",
+  "byte_ascii": "Q",
+  "reflected_position": 185,
+  "partner": "10001010",
+  "partner_hex": "8a",
+  "starting_slice": 560,
+  "word_sector_left": "35/128",
+  "neighbors": [
+    {
+      "position": 68,
+      "word": "01001110",
+      "hex": "4e"
+    },
+    {
+      "position": 69,
+      "word": "01001111",
+      "hex": "4f"
+    },
+    {
+      "position": 70,
+      "word": "01010001",
+      "hex": "51"
+    },
+    {
+      "position": 71,
+      "word": "01010011",
+      "hex": "53"
+    },
+    {
+      "position": 72,
+      "word": "01010101",
+      "hex": "55"
+    }
+  ],
+  "forward_digest_matches": true,
+  "generator": "original notebook partner/grow, executed verbatim"
+}

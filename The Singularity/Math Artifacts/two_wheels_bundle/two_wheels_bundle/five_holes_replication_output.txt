@@ -1,0 +1,22 @@
+seal bf6fd7b3f11d1713b703c92bba9ffe058dbed96470ea227f4c2f5407baf6c18d
+R1 {'address': 6, 'slice': 0, 'word': '0111', 'bit': 0, 'tau_first_digit': 1, 'ok': True}
+R2 {'class0': [28, 28], 'class1': [28, 28], 'class2': [6, 28], 'class2_passing_D': [26, 32, 35, 65, 83, 89], 'D14': {'L': 12, 'address': 2052, 'slice': 4, 'word': '111101001111', 'read': 0, 'need': 1}, 'first_fail': {'D': 14, 'L': 12, 'address': 2052, 'slice': 4, 'word': '111101001111', 'read': 0, 'need': 1}, 'ok': True}
+R3 {4: {'all_modes_match': True, 'mismatched_modes': 0}, 5: {'all_modes_match': True, 'mismatched_modes': 0}, 6: {'all_modes_match': True, 'mismatched_modes': 0}, 'n6_mode_000011': {'direct': 0, 'corrected': 0, 'compressed': 8}, 7: {'all_modes_match': True, 'mismatched_modes': 0}, 8: {'all_modes_match': True, 'mismatched_modes': 0}, 9: {'all_modes_match': True, 'mismatched_modes': 0}, 10: {'all_modes_match': True, 'mismatched_modes': 0}, 11: {'all_modes_match': True, 'mismatched_modes': 0}, 12: {'all_modes_match': True, 'mismatched_modes': 0}}
+R4 n= 4 degree-2 share 43.7500%  degree-1 25.0000000%  largest bin 2  active 13  PR 9.1429
+R4 n= 5 degree-2 share 45.0000%  degree-1 19.0625000%  largest bin 2  active 27  PR 11.5523
+R4 n= 6 degree-2 share 53.1250%  degree-1 4.6875000%  largest bin 2  active 53  PR 8.1055
+R4 n= 7 degree-2 share 53.5993%  degree-1 3.4319196%  largest bin 2  active 121  PR 10.9511
+R4 n= 8 degree-2 share 55.9937%  degree-1 0.7812500%  largest bin 2  active 211  PR 9.4993
+R4 n= 9 degree-2 share 50.5398%  degree-1 0.8897569%  largest bin 2  active 490  PR 11.5419
+R4 n=10 degree-2 share 51.9287%  degree-1 0.1635742%  largest bin 2  active 954  PR 11.1945
+R4 n=11 degree-2 share 48.0213%  degree-1 0.1450279%  largest bin 2  active 1997  PR 13.4239
+R4 n=12 degree-2 share 46.7403%  degree-1 0.0361125%  largest bin 2  active 3808  PR 14.2499
+R4 n=13 degree-2 share 43.4473%  degree-1 0.0331402%  largest bin 2  active 8081  PR 16.6675
+R4 n=14 degree-2 share 42.7727%  degree-1 0.0080023%  largest bin 2  active 16002  PR 18.0407
+R4 n=15 degree-2 share 39.9641%  degree-1 0.0072784%  largest bin 2  active 32485  PR 20.6823
+R4 n=16 degree-2 share 38.9498%  degree-1 0.0016417%  largest bin 2  active 63806  PR 22.7873
+R4 n=17 degree-2 share 36.6648%  degree-1 0.0014931%  largest bin 2  active 130394  PR 25.7131
+R4 n=18 degree-2 share 35.6264%  degree-1 0.0003399%  largest bin 2  active 259690  PR 28.3052
+R4 n=19 degree-2 share 33.7542%  degree-1 0.0003347%  largest bin 2  active 522485  PR 31.5367
+R4 n=20 degree-2 share 32.7503%  degree-1 0.0000822%  largest bin 2  active 1036432  PR 34.5728
+ledger {'R1': True, 'R2': True, 'R3': True, 'R4': True} seconds 1.1

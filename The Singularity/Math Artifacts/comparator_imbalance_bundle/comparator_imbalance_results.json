@@ -1,0 +1,260 @@
+{
+  "scope": "Independent sealed comparator/imbalance audit. User-reported seals and external /tmp scripts are not independently verified. SHA remains parked.",
+  "width_checks": [
+    {
+      "n": 2,
+      "prefix_thresholds_checked": 5,
+      "nonzero_comparator_Walsh_coefficients": 2,
+      "comparator_spectral_energy": "1/2",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 2,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 3,
+      "prefix_thresholds_checked": 9,
+      "nonzero_comparator_Walsh_coefficients": 2,
+      "comparator_spectral_energy": "1/2",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 4,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 4,
+      "prefix_thresholds_checked": 17,
+      "nonzero_comparator_Walsh_coefficients": 6,
+      "comparator_spectral_energy": "3/4",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 4,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 5,
+      "prefix_thresholds_checked": 33,
+      "nonzero_comparator_Walsh_coefficients": 6,
+      "comparator_spectral_energy": "3/4",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 8,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 6,
+      "prefix_thresholds_checked": 65,
+      "nonzero_comparator_Walsh_coefficients": 14,
+      "comparator_spectral_energy": "7/8",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 8,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 7,
+      "prefix_thresholds_checked": 129,
+      "nonzero_comparator_Walsh_coefficients": 14,
+      "comparator_spectral_energy": "7/8",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 16,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 8,
+      "prefix_thresholds_checked": 257,
+      "nonzero_comparator_Walsh_coefficients": 30,
+      "comparator_spectral_energy": "15/16",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 16,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 9,
+      "prefix_thresholds_checked": 513,
+      "nonzero_comparator_Walsh_coefficients": 30,
+      "comparator_spectral_energy": "15/16",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 32,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 10,
+      "prefix_thresholds_checked": 1025,
+      "nonzero_comparator_Walsh_coefficients": 62,
+      "comparator_spectral_energy": "31/32",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 32,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 11,
+      "prefix_thresholds_checked": 2049,
+      "nonzero_comparator_Walsh_coefficients": 62,
+      "comparator_spectral_energy": "31/32",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 64,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 12,
+      "prefix_thresholds_checked": 4097,
+      "nonzero_comparator_Walsh_coefficients": 126,
+      "comparator_spectral_energy": "63/64",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 64,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": true
+    },
+    {
+      "n": 13,
+      "prefix_thresholds_checked": 8193,
+      "nonzero_comparator_Walsh_coefficients": 126,
+      "comparator_spectral_energy": "63/64",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 128,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": false
+    },
+    {
+      "n": 14,
+      "prefix_thresholds_checked": 16385,
+      "nonzero_comparator_Walsh_coefficients": 254,
+      "comparator_spectral_energy": "127/128",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 128,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": false
+    },
+    {
+      "n": 15,
+      "prefix_thresholds_checked": 32769,
+      "nonzero_comparator_Walsh_coefficients": 254,
+      "comparator_spectral_energy": "127/128",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 256,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": false
+    },
+    {
+      "n": 16,
+      "prefix_thresholds_checked": 65537,
+      "nonzero_comparator_Walsh_coefficients": 510,
+      "comparator_spectral_energy": "255/256",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 256,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": true,
+      "full_tent_check": false
+    },
+    {
+      "n": 17,
+      "prefix_thresholds_checked": 131073,
+      "nonzero_comparator_Walsh_coefficients": 510,
+      "comparator_spectral_energy": "255/256",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 512,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": false,
+      "full_tent_check": false
+    },
+    {
+      "n": 18,
+      "prefix_thresholds_checked": 262145,
+      "nonzero_comparator_Walsh_coefficients": 1022,
+      "comparator_spectral_energy": "511/512",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 512,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": false,
+      "full_tent_check": false
+    },
+    {
+      "n": 19,
+      "prefix_thresholds_checked": 524289,
+      "nonzero_comparator_Walsh_coefficients": 1022,
+      "comparator_spectral_energy": "511/512",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 1024,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": false,
+      "full_tent_check": false
+    },
+    {
+      "n": 20,
+      "prefix_thresholds_checked": 1048577,
+      "nonzero_comparator_Walsh_coefficients": 2046,
+      "comparator_spectral_energy": "1023/1024",
+      "closed_delta_matches_direct_prefix_sum": true,
+      "palindrome_addresses": 1024,
+      "odd_Delta_spectrum_is_minus_half_comparator": true,
+      "borrow_gate_check": false,
+      "full_tent_check": false
+    }
+  ],
+  "total_finite_thresholds": 2097167,
+  "palindrome_address_checks": 4090,
+  "wide_scalar_checks": [
+    {
+      "n": 63,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 64,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 127,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 128,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 255,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 256,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 511,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 512,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 1023,
+      "scalar_thresholds_checked": 9
+    },
+    {
+      "n": 1024,
+      "scalar_thresholds_checked": 9
+    }
+  ],
+  "n20_scalar_tent_checks": 64,
+  "seconds": 1.3180594239999976
+}

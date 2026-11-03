@@ -1,0 +1,17 @@
+{
+  "test": "ring-addressed SHA-256 inverse search over the complete declared 3-byte domain",
+  "target_digest": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+  "domain": "all 16,777,216 three-byte messages, padded as one-block SHA-256 inputs",
+  "ring_addresses_visited": 16777216,
+  "ring_order_matches_rank_unrank": "all 256 positions at L=8; sampled center/edge positions at L=16",
+  "matches": [
+    {
+      "hex": "414243",
+      "ascii": "ABC",
+      "ring_position": 3732208
+    }
+  ],
+  "inverse_round_route_closes_for_match": true,
+  "elapsed_seconds": 27.521,
+  "interpretation": "Exact recovery within the declared three-byte domain. The search is digest-driven and streams ring order without a stored candidate table. Candidate selection is still exhaustive; a non-enumerative ring selector for large source domains remains unproved."
+}

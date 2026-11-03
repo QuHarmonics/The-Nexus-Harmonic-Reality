@@ -1,0 +1,30 @@
+SEALED PREDICTION - One angle for every depth: the q_D witness closed across all residues (W2C)
+Dean A. Kulik, QuHarmonics Research Group, ORCID 0009-0003-3128-8828. 2026-10-20.
+
+Hole (Algebraic Routing / The Geometry of a Readout, open problem 1): a witness angle for the radial profile
+q_D = 1 || 00 || 1^(D-5) || 00 at every depth D = 3m + 2. The Geometry of a Readout proves D = 0, 1 (mod 3)
+with one angle and D = 3m+2, m >= 8, m = 0, 1 (mod 4) with two offsets; m = 4-7 and m = 2, 3 (mod 4) are open.
+
+Gap named by what must be there. Ring D-1 must read the zero L-1-t of the two-zero word (law 4.1) and ring D
+the zero t+1 of its adjacent word (law 4.2). Both laws need p = 2t+3 odd. At D = 3m+2 the single angle of
+section 4.3 takes p = floor(2D/3)+1 = 2m+2, which is even; the last two slices are then forced to
+(2m, m) by the period-two tail 2/3, and no odd p fits both. Subtract: with p odd the slices must be
+(D-2-t, t+1). Solving floor((D-1) tau) = D-2-t and floor(D (2 tau - 1)) = t+1 for the tail tau gives
+t = floor((D-2)/3) and a window for tau just above 2/3. Nothing is searched.
+
+Claim. For every D >= 13 put
+    t_D = floor((D-2)/3),   p_D = 2 t_D + 3 (odd),
+    u_D(tau) = 1/2 + 2^(-p_D) + tau * 2^(-(D-1)).
+For every tau in [2/3 + 1/(6D), 2/3 + 1/(3D)) the radial reader (address floor(2^L u), slice
+floor(L {2^L u}), bit of R_L[address], MSB first) reads exactly q_D on rings 1..D.
+Residues: D = 3m and 3m+1 give p_D = 2m+1 (the published single angle's p) and D = 3m+2 gives p_D = 2m+3.
+The last two slices are floor((D-1) tau) = D-2-t_D and floor(D(2 tau - 1)) = floor((D+1)/3) = t_D + 1.
+Proof route: law 4.1 on rings p_D..D-1 (offset 2^(L-p_D)), law 4.2 on ring D (offset 2^(D-p_D) + 1, needs
+p_D >= 9 and D - p_D >= 4), the seam word below p_D. D = 14 has D - p_D = 3 and is checked directly.
+Negative control, sealed too: tau = 2/3 with the same p_D fails at every D = 3m+2 (ring D reads bit m = 1),
+and passes at D = 3m, 3m+1.
+
+Way home: atlas/witness_run.py verifies this file's SHA-256 and reads the full profile in exact rational
+arithmetic with wheels.word for every D = 13..400 at three tails: tau = 2/3 + 1/(6D) (left end),
+2/3 + 1/(4D) (centre), 2/3 + 1/(3D) - 2^-(D+20) (inside the right end); plus the negative control, and the
+certificate interval width at the centre tail for D = 13..120.

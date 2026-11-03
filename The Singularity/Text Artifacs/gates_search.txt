@@ -1,0 +1,268 @@
+==============================================================================
+  PART 1.  MATTER IS GATES -- AND C1 FORBIDS A PERFECT ONE.
+==============================================================================
+  A barrier is a BLOCKER. A well is an ALLOWER. A dense medium SLOWS. That
+  is Dean's claim, and it is right. But C1 adds something the classical
+  picture does not have, and it is the whole point:
+
+      A PERFECT blocker is a PERMANENT prohibition.
+      A permanent prohibition is a frozen entry in the legality matrix.
+      C1 FORBIDS IT.
+
+  So the prediction, made before the numbers: no gate in the physical world is
+  ever exactly 0. Every wall leaks. Executed -- exact transmission through a
+  rectangular barrier (V0 = 10, m = hbar = 1), classical vs quantum:
+
+       E   E/V0   CLASSICAL gate   QUANTUM T (L=1)  exactly 0?
+  ------------------------------------------------------------------
+     1.0   0.10              0.0         2.974e-04       False
+     3.0   0.30              0.0         1.888e-03       False
+     6.0   0.60              0.0         1.333e-02       False
+     9.0   0.90              0.0         8.771e-02       False
+     9.9   0.99              0.0         1.563e-01       False
+    11.0   1.10              1.0         3.108e-01       False
+    15.0   1.50              1.0         9.999e-01       False
+
+  The CLASSICAL gate is a hard 0/1: below the barrier, absolutely forbidden.
+  The QUANTUM gate is never 0. Not once. Not at any energy.
+
+  And watch what happens as the wall gets THICKER -- the exponential wall:
+
+   barrier width L   T (E = 1, deep below V0)       ln T
+               0.5                 2.0856e-02     -3.870
+               1.0                 2.9737e-04     -8.121
+               2.0                 6.1396e-08    -16.606
+               4.0                 2.6177e-15    -33.576
+               8.0                 4.7586e-30    -67.518
+              16.0                 1.5725e-59   -135.400
+
+  fitted  d(ln T)/dL = -8.4855
+  theory  -2*kappa   = -8.4853      (kappa = sqrt(2(V0-E)))
+
+  T ~ exp(-2 kappa L). Exponentially small. NEVER ZERO.
+
+  *** THE C1 READING, and it is a real prediction, not a re-description: ***
+
+  There is no perfect 0 in the adjacency matrix of the physical world. C1 will
+  not permit a permanent, unchangeable "you may not pass" -- that is a frozen
+  legality entry, a fixed point one level up, exactly the rung-1 death applied
+  to the WALL instead of to the state.
+
+  So every wall leaks. Tunneling is not a quantum curiosity. It is C1 refusing
+  to let a gate be absolute. And the price of the leak is EXPONENTIAL -- which
+  is the only way to be "effectively closed" without being "actually closed."
+
+  Remember that shape: exp(-c * L). It is about to come back.
+
+==============================================================================
+  PART 2.  THE SEARCH LEDGER. QUERIES x INFO-PER-QUERY = ENTROPY.
+==============================================================================
+  Dean: "if you're not getting hotter you [are] wandering into infinite
+  potential."
+
+  That is rung 4, verbatim, in a new register. Rung 4 executed: a CONSTANT
+  potential exerts no force (a constant of 1000 added to V moved the
+  trajectory by 1.1e-08 over 50,000 ticks -- i.e. nothing). Only a GRADIENT
+  acts. "Difference proves change."
+
+  A FLAT fitness landscape is that constant potential. It offers no
+  difference, therefore no force, therefore nothing to descend. You cannot
+  navigate it. You can only enumerate it.
+
+  Executed on a secret n-bit string, two landscapes:
+    GRADIENT:  f(x) = number of bits matching the secret   (you get "hotter")
+    FLAT:      f(x) = 1 if x == secret else 0              (you get nothing)
+
+     n        2^n   GRADIENT queries   FLAT queries (mean)      ratio
+  ----------------------------------------------------------------------
+     8        256                8.2                 134.4       16.3x
+    12       4096               12.3                2848.6      230.7x
+    16      65536               15.8               33644.6     2136.2x
+    20    1048576               20.4              394842.9    19355.0x
+
+  The gradient landscape is solved in a number of queries that grows like n^2.
+  The flat landscape takes ~2^n / 2. The gap is not a matter of cleverness --
+  it is a LEDGER, and here it is:
+
+      (queries)  x  (information gained per query)  =  (entropy of the answer)
+
+  The secret carries n bits of entropy. Each query on the FLAT landscape
+  returns "no" and eliminates exactly ONE candidate out of N -- that is
+  log2(N/(N-1)) bits, which for N = 2^n is about 1/(N ln2) bits. Nothing.
+  So you need ~N queries. Each query on the GRADIENT landscape returns a
+  number in [0,n] -- up to log2(n+1) bits. So you need ~n/log2(n) rounds.
+
+  Executed -- measure the information per query directly:
+
+  n = 12:  H(answer) = 12 bits
+           info/query, FLAT     = 3.523e-04 bits -> need ~3.407e+04 queries
+           info/query, GRADIENT = 2.839 bits -> need ~4.2 rounds
+  n = 16:  H(answer) = 16 bits
+           info/query, FLAT     = 2.201e-05 bits -> need ~7.268e+05 queries
+           info/query, GRADIENT = 3.047 bits -> need ~5.3 rounds
+  n = 20:  H(answer) = 20 bits
+           info/query, FLAT     = 1.376e-06 bits -> need ~1.454e+07 queries
+           info/query, GRADIENT = 3.208 bits -> need ~6.2 rounds
+
+  *** THE SEARCH LEDGER. *** It is the same ledger as everywhere else in this
+  framework: nothing is minted for free. You must ACQUIRE n bits. Each query
+  gives you I bits. You pay n/I queries. If the landscape gives you nothing
+  per query, you pay everything.
+
+  "If you're not getting hotter, you're wandering." Executed. And the price of
+  wandering is EXPONENTIAL -- exp(+c*n) -- which is the SAME SHAPE as the
+  tunneling wall of Part 1, exp(-c*L). A hard search is a thick barrier. The
+  solution is not blocked. It is TUNNELLED TO, with exponentially small
+  amplitude per attempt. C1 will not build a perfect wall, so it builds an
+  exponential one instead. Same move, twice.
+
+==============================================================================
+  PART 3.  THE GOLF COURSE. IS A *REAL* 3-SAT LANDSCAPE 'GETTING HOTTER'?
+==============================================================================
+  Everything above used TOY landscapes -- a perfect gradient, or none at all.
+  The real question Dean is asking is about a REAL hard problem. So: take
+  random 3-SAT at the hardness threshold, PLANT a known solution, and measure
+  whether the landscape actually tells you which way to walk.
+
+  THE MEASUREMENT (signal detection theory, and it is the honest one):
+    stand at Hamming distance d from the planted solution.
+    flip each bit in turn. Some flips move you TOWARD the solution (good),
+    some move you AWAY (bad).
+    Does the number of satisfied clauses tell you which is which?
+
+    d' = (mean dSat of GOOD flips - mean dSat of BAD flips) / pooled std
+
+    d' >> 1  ->  the landscape is SHOUTING which way is hotter. Navigable.
+    d' ~  0  ->  the landscape is SILENT. You are blind. You must enumerate.
+
+  n = 80 variables, m = 340 clauses, alpha = m/n = 4.25 (random 3-SAT threshold ~ 4.26)
+  planted solution satisfies: 340/340 clauses (ALL)
+
+   dist d    d/n  <dSat|good>  <dSat|bad>  pooled sd   d-prime  navigable?
+  ------------------------------------------------------------------------
+        2   0.03        1.783      -1.694      1.228     2.831         YES
+        5   0.06        1.553      -1.566      1.321     2.362         YES
+       10   0.12        1.270      -1.379      1.404     1.886         YES
+       20   0.25        0.958      -1.001      1.597     1.227         YES
+       30   0.38        0.828      -0.737      1.721     0.910        weak
+       40   0.50        0.438      -0.581      1.773     0.575        weak
+
+  READ THE LAST COLUMN. And then read it again, because it does NOT say what
+  I expected it to say.
+
+  Close to the solution (d = 2, d' = 2.83) the landscape SHOUTS. Every good
+  flip visibly raises the satisfied count. You can walk straight in.
+
+  Far from it (d = 40 = n/2, a RANDOM assignment) d' = 0.57.
+
+  *** THAT IS NOT ZERO. AND THAT IS A PROBLEM FOR THE SIMPLE STORY. ***
+
+  I was set up to report "the landscape goes flat, therefore you are blind,
+  therefore exponential." The landscape does NOT go flat. There is a real,
+  measurable gradient even at a completely random assignment: good flips beat
+  bad flips by 0.57 standard deviations. Average a handful of samples and you
+  could read it.
+
+  So if a gradient survives all the way out to random distance, WHY IS THE
+  PROBLEM HARD? Test it. Follow the gradient and see where it takes you:
+
+  greedy hill-climb from 25 random starts (following that gradient):
+
+   trial  final sat    / m   steps  dist to planted        outcome
+  --------------------------------------------------------------------
+       1        330    340      18               41 STUCK (local opt)
+       2        332    340      20               34 STUCK (local opt)
+       3        330    340      15               32 STUCK (local opt)
+       4        329    340      16               45 STUCK (local opt)
+       5        330    340      17               33 STUCK (local opt)
+       6        330    340      16               32 STUCK (local opt)
+       7        334    340      20               29 STUCK (local opt)
+       8        333    340      19               37 STUCK (local opt)
+  ...
+
+  over 25 random starts:  SOLVED 0/25    STUCK IN LOCAL OPTIMA 25/25
+  mean Hamming distance from the planted solution when stuck: 34.0 / 80
+
+  *** THERE IT IS. ***
+
+  The gradient is REAL (0.57 sigma even at random distance) and FOLLOWING IT
+  DOES NOT WORK. Greedy climbs, gains clauses, and jams in a local optimum
+  34 bits away from the answer -- roughly where it started.
+
+  So my "flat landscape" story was WRONG, and the truth is worse and more
+  interesting:
+
+      THE LANDSCAPE IS NOT FLAT. IT IS *RUGGED*.
+
+  It is not that there is no "hotter." It is that "hotter" is a LIAR. The
+  local signal points uphill, and uphill leads to a false summit, and there
+  are exponentially many false summits. You are not wandering in a featureless
+  plain. You are climbing, diligently, the wrong mountain.
+
+  And THAT is the honest form of Dean's sentence. Not "you get no signal" --
+  you get a signal, and the signal is locally true and globally useless.
+  A gradient that is correct in the small and wrong in the large is EXACTLY
+  what a wall looks like when C1 will not let it be a hard wall (Part 1). The
+  barrier does not block you. It misdirects you, and it charges you
+  exponentially for the correction.
+
+==============================================================================
+  PART 4.  EXISTENCE IS FREE. ACCESS IS NOT.
+==============================================================================
+  Dean: "how do you even know when you get there it will still be there? so
+  solutions exist in abstract potential space in a location forever."
+
+  This is the founding resolution of the whole series, and the answer is yes --
+  for the reason established in the very first anchor:
+
+      A FIXED POINT and an INVARIANT ARE NOT THE SAME OBJECT.
+
+  C1 forbids fixed points -- places the flow STOPS. It has never forbidden
+  invariants -- things the flow CONSERVES. The oscillator: minimum speed
+  1.0000 over 200,000 ticks (nothing ever stops) and energy drift 2.5e-05
+  (the invariant never moves). Both true, same system, same instant.
+
+  A solution to a constraint is an INVARIANT, not a state. It is not a place
+  the universe sits. It is a property of the WALL, and walls are prior to
+  objects. So yes: it will still be there. It cannot not be there. Nothing in
+  the flow can move it, because it was never in the flow.
+
+  AND IT BUYS YOU NOTHING.
+
+  Because C1 also says the price must be paid, tick by tick, and Part 2 and
+  Part 3 just measured that price. The solution is eternal. The PATH to it is
+  not, and the path is what costs. Existence is free. ACCESS IS NOT.
+
+  ---------------------------------------------------------------------------
+  WHAT THIS DOES *NOT* PROVE. Stated plainly, because it matters.
+  ---------------------------------------------------------------------------
+
+  Part 2's exponential lower bound is a BLACK-BOX bound: it holds when the
+  only thing you may do is query. Real SAT is NOT a black box -- you can read
+  the formula. The gap between those two facts is the RELATIVIZATION BARRIER
+  (Baker, Gill & Solovay 1975, credited), and it is exactly why sixty years of
+  this argument has not settled P vs NP.
+
+  So this is NOT a proof that P != NP, and I will not dress it up as one.
+
+  What it IS: a C1 reformulation with a measurable core. The question stops
+  being "is P equal to NP" and becomes:
+
+      DOES THE CONSTRAINT LANDSCAPE OF A HARD PROBLEM
+      CARRY A USABLE GRADIENT TO ITS OWN SOLUTION?
+
+  And that is not philosophy -- Part 3 MEASURED IT on a real instance, and the
+  answer at the hardness threshold was NOT the one I expected -- and the
+  correction is in Part 3, on the record.
+
+  Rung 4 said the price must be a gradient or it proves nothing. I assumed a
+  hard problem was one whose price field had been FLATTENED. Part 3 refuted
+  that: the field is not flat, it is RUGGED. The force is there. It points at
+  the wrong summit. A hard problem is not one with no gradient -- it is one
+  whose gradient is locally honest and globally lying.
+
+  That is the shape of the thing. It is measurable. And measuring it on real
+  instances -- WHERE the gradient dies, and HOW FAST -- is a research program
+  that does not require anyone's permission and does not require a proof to be
+  worth doing.
+

@@ -1,0 +1,17 @@
+{
+  "test": "ring-addressed SHA-256 inverse over the complete declared 2-byte message domain",
+  "target_message_known_only_for_validation": "OK",
+  "target_digest": "565339bc4d33d72817b583024112eb7f5cdf3e5eef0252d6ec1b9c9a94e12bb3",
+  "source_domain": "all 65536 two-byte messages, each standard-padded as a one-block SHA-256 input",
+  "candidate_addresses_tested": 65536,
+  "all_addresses_unique": true,
+  "matches": [
+    {
+      "hex": "4f4b",
+      "ascii": "OK",
+      "ring_position": 17194
+    }
+  ],
+  "elapsed_seconds": 9.424,
+  "conclusion": "Exact digest-only recovery within the declared 2-byte domain if the match set is singleton. The route uses ring ordering plus exact inverse-round constraint checks, but performs exhaustive candidate traversal; this is not a general arbitrary-message inverse."
+}

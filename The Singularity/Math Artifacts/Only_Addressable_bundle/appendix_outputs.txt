@@ -1,0 +1,144 @@
+== Lemma A and block law (top_block_law.py) ==
+LEMMA A  #reps with left half l  ==  mu*(2^h-1-l)   for all l >= 2^(h-1)
+  L= 3  left halves checked      1   holds
+  L= 4  left halves checked      2   holds
+  L= 9  left halves checked      8   holds
+  L=10  left halves checked     16   holds
+  L=15  left halves checked     64   holds
+  L=16  left halves checked    128   holds
+  L=19  left halves checked    256   holds
+  L=20  left halves checked    512   holds
+  Lemma A, L = 3..20 exhaustive: holds   (1s)
+
+BLOCK LAW  word(M+j) from blocks == word_at(M+j)  (exhaustive top region, L = 4..18)
+  L= 4  offsets 1..     0  (12.5% of the half-ring)  match
+  L= 5  offsets 1..     1  (12.5% of the half-ring)  match
+  L=10  offsets 1..   119  (23.4% of the half-ring)  match
+  L=11  offsets 1..   239  (23.4% of the half-ring)  match
+  L=17  offsets 1.. 16255  (24.8% of the half-ring)  match
+  L=18  offsets 1.. 32639  (24.9% of the half-ring)  match
+  block law: matches   (75s)
+
+
+== Theorem C, first run, and pad law (theorem_C_D.py) ==
+THEOREM C  zero sets at seam offsets 2^s and 2^s+1 (s != L mod 2)
+  1579/1619 zero sets exact  (L = 6..80 every admissible s; L = 128,129,160,161,200,201 sampled s)  fails: [(7, 0, '2^s+1'), (9, 0, '2^s+1'), (11, 0, '2^s+1'), (13, 0, '2^s+1'), (15, 0, '2^s+1'), (17, 0, '2^s+1')]   (38s)
+
+THEOREM D  word(M+j, L+2) == 1 + word(M+j, L) + 1  across the top quarter of ring L
+  L= 4 ->  6: offsets 1..     0  holds
+  L= 5 ->  7: offsets 1..     1  holds
+  L= 6 ->  8: offsets 1..     5  holds
+  L= 7 ->  9: offsets 1..    11  holds
+  L= 8 -> 10: offsets 1..    27  holds
+  L= 9 -> 11: offsets 1..    55  holds
+  L=10 -> 12: offsets 1..   119  holds
+  L=11 -> 13: offsets 1..   239  holds
+  L=12 -> 14: offsets 1..   495  holds
+  L=13 -> 15: offsets 1..   991  holds
+  L=14 -> 16: offsets 1..  2015  holds
+  L=15 -> 17: offsets 1..  4031  holds
+  L=16 -> 18: offsets 1..  8127  holds
+  pad law: holds   (66s)
+
+== Theorem C with corrected hypothesis; pi and 512-bit round trips (recheck_C_and_512.py) ==
+THEOREM C (s>=2 for 2^s+1): 1579/1579 exact   (35s)
+pi first 64 bits 0x243F6A8885A308D3 at position 2,427,008,858,123,944,441;  word_at(pos)==x: True;  partner at N-1-pos: True
+512-bit word (seeded 20261019): location computed; word_at(location)==x: True;  partner at N-1-pos: True;  (1.1s)
+  sha256(x) 90d7971001a5d534...   position has 511 bits
+
+== Excluded zone and near-seam closed forms (obstruction_check.py) ==
+closed forms word(M+j), j=0..3, L=7..40: all hold
+  L=6: holds
+
+obstruction: A_{q_D} within 2^-(D-2) of the seam (both sides)
+  D= 8: components in (1/2 - 2^-6, 1/2 + 2^-6) = 0
+  D= 9: components in (1/2 - 2^-7, 1/2 + 2^-7) = 0
+  D=10: components in (1/2 - 2^-8, 1/2 + 2^-8) = 0
+  D=11: components in (1/2 - 2^-9, 1/2 + 2^-9) = 0
+  D=12: components in (1/2 - 2^-10, 1/2 + 2^-10) = 0
+  D=13: components in (1/2 - 2^-11, 1/2 + 2^-11) = 0
+  D=14: components in (1/2 - 2^-12, 1/2 + 2^-12) = 0
+  D=15: components in (1/2 - 2^-13, 1/2 + 2^-13) = 0
+  D=16: components in (1/2 - 2^-14, 1/2 + 2^-14) = 0
+  D=17: components in (1/2 - 2^-15, 1/2 + 2^-15) = 0
+  D=18: components in (1/2 - 2^-16, 1/2 + 2^-16) = 0
+  D=19: components in (1/2 - 2^-17, 1/2 + 2^-17) = 0
+  D=20: components in (1/2 - 2^-18, 1/2 + 2^-18) = 0
+  D=21: components in (1/2 - 2^-19, 1/2 + 2^-19) = 0
+  D=22: components in (1/2 - 2^-20, 1/2 + 2^-20) = 0
+
+
+== The language through depth 16 (across_language.py) ==
+Dmax=16: Q=47233105920  atoms=1825792  (1.5s)
+profiles read (1.7s)
+
+ d   R_d     E_d=2R_{d-1}-R_d
+ 1       2       0
+ 2       4       0
+ 3       8       0
+ 4      16       0
+ 5      31       1
+ 6      62       0
+ 7     123       1
+ 8     239       7
+ 9     469       9
+10     924      14
+11    1827      21
+12    3606      48
+13    7122      90
+14   14087     157
+15   27819     355
+16   55122     516
+
+ H   minimal DFA states of L_<=H
+ 8  29
+ 9  49
+10  76
+11  111
+12  186
+13  322
+14  519
+15  914
+16  1451
+
+ H   distinct continuation classes among depth-11 prefixes (continuations to depth H)
+11  1
+12  3
+13  14
+14  51
+15  175
+16  311
+
+(2.0s)
+
+== Sealed residue-2 law and unified law (residue2_run.py) ==
+seal verified 60a2aad0...12fd65fd
+
+SEALED RESIDUE-2 LAW and its control (f = 2/3 without the 1/(6D) term)
+  D= 14  p= 11  RUNS   control differs at ring(s) [14]   log2|K_D|=  -19.19  (0s)
+  D= 17  p= 13  RUNS   control differs at ring(s) [17]   log2|K_D|=  -22.50  (0s)
+  D= 20  p= 15  RUNS   control differs at ring(s) [20]   log2|K_D|=  -25.76  (0s)
+  D= 23  p= 17  RUNS   control differs at ring(s) [23]   log2|K_D|=  -28.98  (0s)
+  D= 26  p= 19  RUNS   control differs at ring(s) [26]   log2|K_D|=  -32.17  (0s)
+  D= 29  p= 21  RUNS   control differs at ring(s) [29]   log2|K_D|=  -35.34  (0s)
+  D= 32  p= 23  RUNS   control differs at ring(s) [32]   log2|K_D|=  -38.49  (0s)
+  D= 47  p= 33  RUNS   control differs at ring(s) [47]   log2|K_D|=  -54.08  (1s)
+  D= 62  p= 43  RUNS   control differs at ring(s) [62]   log2|K_D|=  -69.49  (4s)
+  D= 77  p= 53  RUNS   control differs at ring(s) [77]   log2|K_D|=  -84.81  (8s)
+  D= 92  p= 63  RUNS   control differs at ring(s) [92]   log2|K_D|= -100.08  (17s)
+  D=107  p= 73  RUNS   control differs at ring(s) [107]   log2|K_D|= -115.30  (31s)
+  residue 2: 36/36 RUNS;  control fails exactly at ring D in 36/36
+
+UNIFIED LAW, every D from 13 to 119
+  107/107 RUNS   failures: none   (114s)
+wrote unified_certificate.json
+
+== Tilted-section reader example (section_check.py) ==
+alpha=0.0000: longitude u=0.000000 prefix 0000  ->  after quarter-turn u=0.113593 prefix 0001
+alpha=3.1416: longitude u=0.000000 prefix 0000  ->  after quarter-turn u=0.886407 prefix 1110
+same class before, different classes after: True
+
+== Runs met by the parents of unreadable extensions (parent_runs.py) ==
+minimal unreadable extensions through depth 12: 101
+parents meeting 1/2/3/... runs of the surviving bit: {1: 76, 2: 19, 3: 6}
+meeting more than one run: 25

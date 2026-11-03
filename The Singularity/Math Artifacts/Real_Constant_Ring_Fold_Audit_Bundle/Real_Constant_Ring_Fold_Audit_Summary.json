@@ -1,0 +1,221 @@
+{
+  "constants": [
+    "pi",
+    "phi",
+    "e"
+  ],
+  "widths": [
+    8,
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "prefix_rows": 18,
+  "all_reflection_checks_pass": true,
+  "max_fold_count_absolute_error": "0.01044901687515772769311974845154282341953623029135570679682706594210930577164632543918919371591329377",
+  "max_error_by_width": {
+    "8": "0.0104490168751577276931197484515",
+    "16": "0.000729168242345227693119748451543",
+    "32": "0.00000291358543433139185021720154282",
+    "64": "4.44666959000983535048794740183e-11",
+    "128": "1.03532094803246658017495686759e-20",
+    "256": "5.61248610538276152951259852439e-40"
+  },
+  "empty_anchor": "E3B0C442",
+  "empty_anchor_address": 3328695580,
+  "all_empty_anchor_offset_sign_reversal_checks_pass": true,
+  "offsets": [
+    {
+      "constant": "pi",
+      "prefix_hex": "243F6A88",
+      "ring_address": 4013904055,
+      "empty_anchor_hex": "E3B0C442",
+      "empty_anchor_address": 3328695580,
+      "signed_address_delta": 685208475,
+      "reflected_constant_address": 281063240,
+      "reflected_empty_anchor_address": 966271715,
+      "reflected_signed_delta": -685208475,
+      "offset_sign_reversal_pass": true
+    },
+    {
+      "constant": "phi",
+      "prefix_hex": "9E3779B9",
+      "ring_address": 2464615091,
+      "empty_anchor_hex": "E3B0C442",
+      "empty_anchor_address": 3328695580,
+      "signed_address_delta": -864080489,
+      "reflected_constant_address": 1830352204,
+      "reflected_empty_anchor_address": 966271715,
+      "reflected_signed_delta": 864080489,
+      "offset_sign_reversal_pass": true
+    },
+    {
+      "constant": "e",
+      "prefix_hex": "B7E15162",
+      "ring_address": 3274529653,
+      "empty_anchor_hex": "E3B0C442",
+      "empty_anchor_address": 3328695580,
+      "signed_address_delta": -54165927,
+      "reflected_constant_address": 1020437642,
+      "reflected_empty_anchor_address": 966271715,
+      "reflected_signed_delta": 54165927,
+      "offset_sign_reversal_pass": true
+    }
+  ],
+  "R4_seam_check": {
+    "R4_sequence_decimal": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      13,
+      11,
+      14,
+      9,
+      10,
+      12,
+      4,
+      8,
+      15
+    ],
+    "R4_position_7": 13,
+    "R4_position_8": 11,
+    "partner_pair_is_11_13": true,
+    "reflection_address_law": true,
+    "positions_1_and_2": [
+      1,
+      2
+    ]
+  },
+  "interpretation": "This verifies the real-prefix fold-count limit and exact ring address/reflection coordinates at the listed finite widths. It does not establish a generator for SHA round constants from pi, phi, e, or from two endpoints.",
+  "prefix_agreement_120_vs_200_decimal_digits": {
+    "pi": {
+      "all_widths_match_120_vs_200_decimal_digits": true,
+      "width_checks": [
+        {
+          "width": 8,
+          "prefix_120dp": "24",
+          "prefix_200dp": "24",
+          "match": true
+        },
+        {
+          "width": 16,
+          "prefix_120dp": "243F",
+          "prefix_200dp": "243F",
+          "match": true
+        },
+        {
+          "width": 32,
+          "prefix_120dp": "243F6A88",
+          "prefix_200dp": "243F6A88",
+          "match": true
+        },
+        {
+          "width": 64,
+          "prefix_120dp": "243F6A8885A308D3",
+          "prefix_200dp": "243F6A8885A308D3",
+          "match": true
+        },
+        {
+          "width": 128,
+          "prefix_120dp": "243F6A8885A308D313198A2E03707344",
+          "prefix_200dp": "243F6A8885A308D313198A2E03707344",
+          "match": true
+        },
+        {
+          "width": 256,
+          "prefix_120dp": "243F6A8885A308D313198A2E03707344A4093822299F31D0082EFA98EC4E6C89",
+          "prefix_200dp": "243F6A8885A308D313198A2E03707344A4093822299F31D0082EFA98EC4E6C89",
+          "match": true
+        }
+      ]
+    },
+    "phi": {
+      "all_widths_match_120_vs_200_decimal_digits": true,
+      "width_checks": [
+        {
+          "width": 8,
+          "prefix_120dp": "9E",
+          "prefix_200dp": "9E",
+          "match": true
+        },
+        {
+          "width": 16,
+          "prefix_120dp": "9E37",
+          "prefix_200dp": "9E37",
+          "match": true
+        },
+        {
+          "width": 32,
+          "prefix_120dp": "9E3779B9",
+          "prefix_200dp": "9E3779B9",
+          "match": true
+        },
+        {
+          "width": 64,
+          "prefix_120dp": "9E3779B97F4A7C15",
+          "prefix_200dp": "9E3779B97F4A7C15",
+          "match": true
+        },
+        {
+          "width": 128,
+          "prefix_120dp": "9E3779B97F4A7C15F39CC0605CEDC834",
+          "prefix_200dp": "9E3779B97F4A7C15F39CC0605CEDC834",
+          "match": true
+        },
+        {
+          "width": 256,
+          "prefix_120dp": "9E3779B97F4A7C15F39CC0605CEDC8341082276BF3A27251F86C6A11D0C18E95",
+          "prefix_200dp": "9E3779B97F4A7C15F39CC0605CEDC8341082276BF3A27251F86C6A11D0C18E95",
+          "match": true
+        }
+      ]
+    },
+    "e": {
+      "all_widths_match_120_vs_200_decimal_digits": true,
+      "width_checks": [
+        {
+          "width": 8,
+          "prefix_120dp": "B7",
+          "prefix_200dp": "B7",
+          "match": true
+        },
+        {
+          "width": 16,
+          "prefix_120dp": "B7E1",
+          "prefix_200dp": "B7E1",
+          "match": true
+        },
+        {
+          "width": 32,
+          "prefix_120dp": "B7E15162",
+          "prefix_200dp": "B7E15162",
+          "match": true
+        },
+        {
+          "width": 64,
+          "prefix_120dp": "B7E151628AED2A6A",
+          "prefix_200dp": "B7E151628AED2A6A",
+          "match": true
+        },
+        {
+          "width": 128,
+          "prefix_120dp": "B7E151628AED2A6ABF7158809CF4F3C7",
+          "prefix_200dp": "B7E151628AED2A6ABF7158809CF4F3C7",
+          "match": true
+        },
+        {
+          "width": 256,
+          "prefix_120dp": "B7E151628AED2A6ABF7158809CF4F3C762E7160F38B4DA56A784D9045190CFEF",
+          "prefix_200dp": "B7E151628AED2A6ABF7158809CF4F3C762E7160F38B4DA56A784D9045190CFEF",
+          "match": true
+        }
+      ]
+    }
+  }
+}
