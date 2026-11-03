@@ -1,4 +1,0 @@
-D_mod_3,D_count,fully_matching_D,total_slice_tests,slice_matches,first_failure
-1,28,28,1498,1498,
-2,28,6,1526,1499,"{'D': 14, 'L': 12, 'address': 2052, 'slice': 4, 'word': '111101001111', 'got': '0', 'expected': '1'}"
-0,28,28,1554,1554,

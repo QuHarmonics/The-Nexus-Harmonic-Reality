@@ -1,2 +1,0 @@
-2f7d21a88107b4147843d550cdd0689f22e197b5760a0fe1050787631fee01c7  even_delta_spectrum_prediction.txt
-982f6838dab82a3ff2a0c51ed4520f0abdadc7aabd096443d045b3d9251bebc2  even_delta_spectrum_audit.py

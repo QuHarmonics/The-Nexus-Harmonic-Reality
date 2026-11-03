@@ -1,4 +1,0 @@
-THEOREM C (s>=2 for 2^s+1): 1579/1579 exact   (35s)
-pi first 64 bits 0x243F6A8885A308D3 at position 2,427,008,858,123,944,441;  word_at(pos)==x: True;  partner at N-1-pos: True
-512-bit word (seeded 20261019): location computed; word_at(location)==x: True;  partner at N-1-pos: True;  (1.1s)
-  sha256(x) 90d7971001a5d534...   position has 511 bits

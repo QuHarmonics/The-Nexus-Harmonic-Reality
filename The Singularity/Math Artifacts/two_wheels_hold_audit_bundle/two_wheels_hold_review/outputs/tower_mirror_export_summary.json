@@ -1,9 +1,0 @@
-{
-  "file": "tower_mirror_full_profile.csv.gz",
-  "rows": 1966215,
-  "mismatches": 0,
-  "L": "2..16",
-  "k": "1..L",
-  "t": "every integer 0..2^L",
-  "seconds": 23.034064707000198
-}

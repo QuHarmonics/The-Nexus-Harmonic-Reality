@@ -1,6 +1,0 @@
-SEALED PREDICTION - the palindrome address is a comparator count. Dean A. Kulik, QuHarmonics Research Group, 2026-10-20.
-Ring R_n (grow/partner, centre pair swapped). For a canonical palindrome p (first bit 0) with half-word u, i_n(u) = location of p.
-Derivation: p is on the left face away from the seam, so its address is its rank among representatives. Words below p: u palindromes (palindromes ascend with their half-words) and p-u non-palindromes, split into x<J(x) (representatives) and x>J(x). Let Delta(p) = #{x<p: x<J(x)} - #{x<p: x>J(x)}.
-P1: i_n(u) = (p + u + Delta(p)) / 2 for every canonical palindrome, every n >= 2. Upper half by i_n(u) = 2^n-1-i_n(2^m-1-u).
-P2: the nonlinear part of the address is Delta, a running sum of the comparator sign c(x) = sgn(J(x)-x). c is decided at the outermost unequal mirrored pair, i.e. it is the output of an outside-in ripple-borrow comparator of x against its reverse, whose cell is Maj(not a, b, borrow). The n=5 majority Maj(1-u0,u1,u2) is the first such cell.
-Way home: address_comparator.py checks P1 against the materialized ring for n=2..20 (all palindromes), and checks c(x) against an explicit ripple-borrow Maj chain on all x, n=2..16.

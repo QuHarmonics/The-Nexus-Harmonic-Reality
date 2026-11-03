@@ -1,9 +1,0 @@
-NEXUS REVERSE-GAP PREDICTION — SEALED BEFORE THE ALGEBRAIC RUN
-Date: 2026-10-16
-Scope: compiler-side shell route only; no external dataset linked.
-
-WHAT (prediction): For H_so = kappa L·S, if the compiler's top-j route means the aligned branch j=l+1/2 is lowered in energy, then kappa < 0. The shell-copy and no-way-home routes determine the identity and capacity of that branch, but do not determine |kappa|: multiplying all energies and kappa by the same positive scale preserves every ordering and shell count. The missing provider for magnitude is the signed map from compiler orientation to a specified central-field energy gap/radial matrix element.
-
-WAY HOME (readout that would test this prediction): With a declared nuclear Hamiltonian and central field, read the aligned/anti-aligned branch ordering before using magic-number closures. For any named competitor a,b, return the pair E_a-E_b = (epsilon_a-epsilon_b) + kappa(c_a-c_b), where c=<L·S>, so the sign prediction is independently evaluated and a threshold magnitude is identifiable only if the competing energy gap and radial normalization are independently supplied. Closure counts alone are not the readout for the magnitude.
-
-Predicted ledger landing: sign BOUND conditional on the stated Hamiltonian convention and the compiled direction; magnitude UNBOUND from count/order structure alone; missing link OPEN: compiler orientation -> physical signed radial energy operator and its competitor gap.

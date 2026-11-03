@@ -1,3 +1,0 @@
-alpha=0.0000: longitude u=0.000000 prefix 0000  ->  after quarter-turn u=0.113593 prefix 0001
-alpha=3.1416: longitude u=0.000000 prefix 0000  ->  after quarter-turn u=0.886407 prefix 1110
-same class before, different classes after: True

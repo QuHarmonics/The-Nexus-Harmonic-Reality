@@ -1,7 +1,0 @@
-SEALED PREDICTION - Walsh parity split of the ring latitude waveform. Dean A. Kulik, QuHarmonics Research Group, 2026-10-20.
-Ring R_n (grow/partner, centre pair swapped), N=2^n, address i in [0,N). z(i) = wt(R_n[i]) - n/2.
-Derivation: partner address N-1-i = i XOR (N-1) (address complement). Non-palindromes: z(i XOR (N-1)) = z(i). Palindromes: z(i XOR (N-1)) = -z(i); palindrome addresses are closed under complement.
-Walsh-Hadamard transform zhat(s) = sum_i z(i)(-1)^{popcount(i&s)}.
-P1: every odd-degree coefficient (popcount(s) odd) of z equals the transform of z restricted to palindrome addresses; every even-degree coefficient equals the transform of z restricted to non-palindrome addresses. Exact, every n.
-P2: odd-degree energy fraction sum_{|s| odd} zhat^2 / sum_s zhat^2 = 2^(1-n/2) for even n, and (4h+1)/((2h+1) 2^h) for n = 2h+1.
-Way home: walsh_split.py computes both from the ring built by the closed form, n = 2..20, and compares exactly (Fractions).

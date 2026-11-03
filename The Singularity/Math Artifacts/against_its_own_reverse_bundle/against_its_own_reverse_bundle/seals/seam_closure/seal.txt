@@ -1,8 +1,0 @@
-SEALED PREDICTION - seam and closure profile of the ring latitude waveform. Dean A. Kulik, QuHarmonics Research Group, 2026-10-20.
-Ring R_n (grow/partner, centre pair swapped), N=2^n, M=N/2, h=floor(n/2), H=2^h, z(i)=wt(R_n[i])-n/2.
-S1 (closure is a digit sum, not smooth): every x < H is a representative (x=0 is the canonical palindrome; for 0<x<H the first h bits of J(x) are nonzero so J(x)>x), so R_n[i]=i and z(i)=s_2(i)-n/2 for 0<=i<H. By reflection (these are non-palindromes for i>=1) z(N-1-i)=z(i) for 1<=i<H, and z(N-1)=+n/2.
-S2 (seam is a log cusp with a digit-sum ripple): the j-th largest representative (j=0 at address M, j>=1 at M-1-j, its partner at M+j with equal weight) lies in block K (Lemma A), block K holding mu*K reps for K<H/2. Write K=2^g+v, 0<=v<2^g, v's g bits v_0..v_{g-1} from the most significant, o_k = number of ones of v among v_0..v_{k-1}. Total zeros over block K:
-  Zsum(K) = mu*[ K*s_2(K) + g*2^(g-1) + sum_{k: v_k=1} 2^(g-1-k)*(1 + o_k + (g-1-k)/2) ] + (mu-1)*K
-  (mu=1 even n, mu=2 odd n; the last term is the middle zero, present in half the completions).
-Block-mean latitude zbar_K = n/2 - Zsum(K)/(mu*K): depth below the north pole grows as s_2(K) + (log2 K)/2 + O(1), K ~ sqrt(2j/mu): a logarithmic cusp at the seam modulated by the binary digit sum of the block index.
-Way home: seam_closure.py builds R_n by the closed form, n=4..20, checks S1 at every i<H on both ends and S2 for every block K<H/2, exactly (Fractions).

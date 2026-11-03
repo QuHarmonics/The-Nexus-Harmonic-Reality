@@ -1,2 +1,0 @@
-symmetric  AHIMOTUVWXY08    479,232 px  lzma  1,988 B  template     1005 B  +mirror      882 B  ratio 0.878  rows exactly mirror-symmetric (best axis): 0.937
-asymmetric BCDEFGJKLNPQRSZ  552,960 px  lzma  2,136 B  template      961 B  +mirror     1015 B  ratio 1.055  rows exactly mirror-symmetric (best axis): 0.106
