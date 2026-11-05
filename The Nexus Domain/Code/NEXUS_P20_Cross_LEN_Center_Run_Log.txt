@@ -1,0 +1,36 @@
+P20 Prediction seal SHA256: 79b50cf7a2e1d4570d97bc366d89e278797666f4b09619777c8b4add96ba8048
+P20.1 and P20.2, all words and both center bits
+ k= 1, LEN= 3, states=     8, exact lift and inverse
+ k= 2, LEN= 5, states=    32, exact lift and inverse
+ k= 3, LEN= 7, states=   128, exact lift and inverse
+ k= 4, LEN= 9, states=   512, exact lift and inverse
+ k= 5, LEN=11, states=  2048, exact lift and inverse
+ k= 6, LEN=13, states=  8192, exact lift and inverse
+ k= 7, LEN=15, states= 32768, exact lift and inverse
+ Total odd-width states: 43688
+P20.3 temporal reader all words and return
+ m= 2, words=     4, XOR trace parity=1, mirror selector and full return
+ m= 4, words=    16, XOR trace parity=1, mirror selector and full return
+ m= 6, words=    64, XOR trace parity=1, mirror selector and full return
+ m= 8, words=   256, XOR trace parity=1, mirror selector and full return
+ m=10, words=  1024, XOR trace parity=1, mirror selector and full return
+ m=12, words=  4096, XOR trace parity=1, mirror selector and full return
+ m=14, words= 16384, XOR trace parity=1, mirror selector and full return
+ Total even-width words: 21844
+P20.4 comparison of plus and minus response (signed vectors)
+ k= 1, sectors=  2, Uminus Uplus^-1 and reverse= D_s
+ k= 2, sectors=  4, Uminus Uplus^-1 and reverse= D_s
+ k= 3, sectors=  8, Uminus Uplus^-1 and reverse= D_s
+ k= 4, sectors= 16, Uminus Uplus^-1 and reverse= D_s
+ k= 5, sectors= 32, Uminus Uplus^-1 and reverse= D_s
+ complex-superposition relative readers agree through k=5
+P20.5 Walsh projection and k=2 entanglement
+ k= 1, Fourier DC=+0.00000000, each non-DC=-1.00000000, inverse exact
+ k= 2, Fourier DC=+0.50000000, each non-DC=-0.50000000, inverse exact
+ k= 3, Fourier DC=+0.75000000, each non-DC=-0.25000000, inverse exact
+ k= 4, Fourier DC=+0.87500000, each non-DC=-0.12500000, inverse exact
+ k= 5, Fourier DC=+0.93750000, each non-DC=-0.06250000, inverse exact
+ k= 6, Fourier DC=+0.96875000, each non-DC=-0.03125000, inverse exact
+ k= 7, Fourier DC=+0.98437500, each non-DC=-0.01562500, inverse exact
+ k=2 reduced density= [[0.5, 0.0], [0.0, 0.5]] maximally entangled; relative-phase readout
+STANDS algebraically; RUNS within the above exhaustive scopes; no physical dataset linked.

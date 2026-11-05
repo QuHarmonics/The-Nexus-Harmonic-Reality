@@ -1,0 +1,18 @@
+NEXUS P21 -- twisted clock versus native center phase; moving seam
+Author: Dean A. Kulik | QuHarmonics Research Group
+Date: 2026-11-05
+Status BEFORE independent computation: OPEN, sealed mathematical predictions.
+Source laws supplied before seal: P_n, tau_n, and center palindrome selector. No physical data linked.
+
+For every odd n=2k+1>=3, define S_n={w in {0,1}^n : J_n(w)=w}; tau_n(w) = w[1:] | (1 XOR w[0]).
+
+P21.1: The intersection S_n cap tau_n^-1(S_n) is precisely the two alternating words A_n={0101...0,1010...1}; so its cardinality is exactly 2 at every odd n.
+WAY HOME: Verify both alternating words are palindromes, tau_n exchanges them, and prove any word in the intersection must have period two and opposite adjacent symbols.
+
+P21.2: Let D_n|w> = (-1)^[w in S_n]|w>. For the signed linear extension of tau_n, define clock-reader commutator K_n=tau_n D_n tau_n^-1 D_n. Then K_n|w> = (-1)^([w in S_n] XOR [tau_n^-1(w) in S_n])|w>, and exactly (2^(k+2)-4) of its 2^(2k+1) basis states receive a minus sign. This is the symmetric difference between the palindrome sector and its one-tick shifted image.
+WAY HOME: K_n^2=I; inverse uses the same marked-sector phase; all bases outside the symmetric difference get +1.
+
+P21.3: For odd n>=3, tau_n and D_n do not commute. Their mismatch is a boundary effect, and its density is (2^(k+2)-4)/2^(2k+1), decaying asymptotically as 2^(1-k). At n=1 the phase is global and the commutator identity.
+WAY HOME: Verify the exact count and fractions on every word for odd n=1..17.
+
+Scope: formal permutation and signed/complex linear readout; no claim here of experimental quantum-gravity coupling.

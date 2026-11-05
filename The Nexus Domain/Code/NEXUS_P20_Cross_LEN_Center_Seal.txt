@@ -1,0 +1,26 @@
+NEXUS P20 -- cross-LEN native center-reader predictions
+Author: Dean A. Kulik | QuHarmonics Research Group
+Date: 2026-11-05
+Status BEFORE independent computation: OPEN, sealed mathematical predictions.
+Sources known before seal: published native partner P, twisted clock tau, One Inverter center lamp, and A12-A15.
+No new physical data will be linked.
+
+Definitions: k>=1, even outside word o of length 2k, center b, insertion I_b(o)=o[:k] | b | o[k:]. Let g_j=o_j XOR o_(2k-1-j), a_j=o_j, s(o)=PRODUCT_j (1 XOR g_j), in GF(2).
+
+P20.1 (cross-LEN lift): P_(2k+1)(I_b(o)) = I_(b XOR s(o))(P_(2k)(o)) for ALL o,b. This is a strict commutation with a center cocycle, not direct commutation with the plain insertion.
+WAY HOME: applying this lifted transformation twice returns o,b.
+
+P20.2 (difference-coordinate normal form): In coordinates (a,g,b), odd native facing is
+(a,g,b) -> (a XOR g XOR s(g)*1^k, g, b XOR s(g)), s(g)=1 iff g=0.
+WAY HOME: same update twice returns starting triple; g is unchanged.
+
+P20.3 (temporal center-reader): for even width m=2k, y_t = r(tau_m^t(o)), r(x)=x_(k-1) XOR x_k, t=0..m-1; XOR_t y_t = 1. Each y_t reads exactly the adjacent difference d_i=o_i XOR o_(i+1) at i=(k-1+t) mod m, XOR one additional 1 iff i=m-1. The k mirror differences g_j are XOR_{i=j}^{m-2-j} d_i. Accordingly, all g and the odd-center selector s are reconstructable from center readings without knowing the face. The entire o is reconstructable from the y bits and the native face bit.
+WAY HOME: reconstruct the exact o for all words; verify forward readings identical.
+
+P20.4 (two center-response comparison): quantum linear extension, center |+> induces Q and |-> induces Q*D_s, with Q: a->a XOR g XOR s*1^k, g fixed, and D_s|a,g>=(-1)^s |a,g>. U_- U_+^{-1}=D_s. D_s is a single marked-sector phase flip of g=0.
+WAY HOME: D_s^2=I and U_+^{-1}U_- = D_s; test both orders.
+
+P20.5 (Fourier projection): normalized Walsh coefficients of f(g)=(-1)^[g=0] are 1-2^(1-k) at Fourier address 0 and -2^(1-k) at every nonzero address. At k=2 it entangles two difference bits of |+>|+> into a maximally entangled two-qubit state. At k=1 it does not entangle two independent difference bits (only one exists).
+WAY HOME: inverse Walsh reconstructs f(g) exactly; D_s^2=I; the k=2 state's reduced density matrix equals I/2.
+
+Qualification fixed before test: these are algebraic operations and their complex-linear extension; the seal does not assert uniqueness of Born probabilities or physical black-hole identification.

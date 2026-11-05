@@ -1,0 +1,11 @@
+seal SHA-256 6e3b3595ae1e44df711c2c8f4e793f5044a73265b4120391bf009251fb40d353
+n= 1 states=      2 palindrome=    2 joint=2 alternating=(0,1) commutator_MINUS=     0 fraction=0.00000000
+n= 3 states=      8 palindrome=    4 joint=2 alternating=(010,101) commutator_MINUS=     4 fraction=0.50000000
+n= 5 states=     32 palindrome=    8 joint=2 alternating=(01010,10101) commutator_MINUS=    12 fraction=0.37500000
+n= 7 states=    128 palindrome=   16 joint=2 alternating=(0101010,1010101) commutator_MINUS=    28 fraction=0.21875000
+n= 9 states=    512 palindrome=   32 joint=2 alternating=(010101010,101010101) commutator_MINUS=    60 fraction=0.11718750
+n=11 states=   2048 palindrome=   64 joint=2 alternating=(01010101010,10101010101) commutator_MINUS=   124 fraction=0.06054688
+n=13 states=   8192 palindrome=  128 joint=2 alternating=(0101010101010,1010101010101) commutator_MINUS=   252 fraction=0.03076172
+n=15 states=  32768 palindrome=  256 joint=2 alternating=(010101010101010,101010101010101) commutator_MINUS=   508 fraction=0.01550293
+n=17 states= 131072 palindrome=  512 joint=2 alternating=(01010101010101010,10101010101010101) commutator_MINUS=  1020 fraction=0.00778198
+STANDS algebraically, RUNS exhaustively through n=17.
