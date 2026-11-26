@@ -16,7 +16,7 @@
 
 This is the **foundation of NEXUS**. It contains the ring as fixed model, the One Inverter clock, the reversible reader–field step, the three closure classes, multi-reader collision rules, and the ports through which external systems may read or write. The domain is defined by its own binary operations; physical comparisons are downstream readings, not assumptions of the machine.
 
-**Read this domain first.** It supplies the native operations that other research areas may use as tools or comparators.
+**Read this domain first.** See the [reader's guide](../START_HERE.md) for direct paper and executable routes, and the [method contract](../METHODS.md) for the planned operation registry. It supplies the native operations that other research areas may use as tools or comparators.
 
 ## Navigate this area
 
@@ -52,7 +52,7 @@ These are a **suggested dependency path**, not a claim that all other published 
 
 ## Other research domains
 
-[Artificial Inteligence](../Artificial%20Inteligence/) · [Computation](../Computation/) · [Cryptography](../Cryptography/) · [Physics](../Physics/) · [Quantum Computation](../Quantum%20Computation/) · [Biology](../Biology/) · [Chemistry](../Chemistry/) · [Material Science](../Material%20Science/)
+[Artificial Intelligence](../Artificial%20Inteligence/) · [Computation](../Computation/) · [Cryptography](../Cryptography/) · [Physics](../Physics/) · [Quantum Computation](../Quantum%20Computation/) · [Biology](../Biology/) · [Chemistry](../Chemistry/) · [Material Science](../Material%20Science/)
 
 ---
 

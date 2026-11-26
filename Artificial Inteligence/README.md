@@ -2,7 +2,7 @@
 
 <sub>QUHARMONICS RESEARCH GROUP · NEXUS RESEARCH DOMAINS</sub>
 
-# ◈ Artificial Inteligence
+# ◈ Artificial Intelligence
 
 **AI as an interface to a deterministic, auditable compiler.**
 
@@ -26,6 +26,10 @@ This area covers AI systems used to operate, test, and explain NEXUS—especiall
 | **[Code](./Code/)** | AI/agent gateways, NEXUS compiler notebooks, deterministic Python kernels, tool schemas, certificates, and regression runners. |
 | **[Markdown](./Markdown/)** | Architecture notes on agents, reversible execution, BIND contracts, and failures that informed the current system. |
 | **[Transcripts](./Transcripts/)** | Development conversations and audit traces that document model behavior, tool-call failures, and architecture changes. |
+
+## Runnable starting points
+
+The [Code index](./Code/) links the public v5.8 notebook with its documented run instructions, v5.9, and the switch-kernel audit bundle. Earlier notebook versions remain in the same folder.
 
 ## How to read the work
 

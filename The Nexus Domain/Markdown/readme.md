@@ -12,7 +12,15 @@
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited Markdown research files. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** Public working sources, conversation exports, compiler documentation and audit records are present. They are retained with their original filenames.
+
+## Entry points
+
+- [Domain core](NEXUS_Domain_Core_20261103.md)
+- [Ring instruction-set stack, widths 1–64](NEXUS_ring_ISA_stack_1_to_64.md)
+- [Fixed-ring compiler documentation](ring_compiler_README.md)
+- [Ledger and audit 1–168](NEXUS_ledger_and_audit_1-168.md)
+- [Transformation map](NEXUS_Transformation_Map_Consolidated.md)
 
 ## Purpose
 
