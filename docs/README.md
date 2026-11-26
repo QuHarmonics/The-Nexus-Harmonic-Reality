@@ -33,3 +33,5 @@ Open the standalone archive search locally, or serve the entire `docs/` folder u
 [The NEXUS Ring Atlas](ATLAS.md) is the full executable observatory. The public portal links the original and a generated browser edition.
 
 [Interactive Observatory](observatory/GUIDE.md) — eight browser-native research instruments with mathematical contracts and automated source-equivalence checks.
+
+The public site now opens directly into the interactive laboratory at [the main URL](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/). The original `/observatory/` entrance redirects there. The old `#explorer` link opens the nested reader; the Atlas and archive are in the Research & downloads section.

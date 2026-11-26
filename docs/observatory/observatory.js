@@ -125,6 +125,18 @@ function wrapping(){
  }
  $("reset").onclick=()=>{$("tape").value="00011011";$("flip").value="none";setRange("offset",0);safe(render)};listen(["tape","width","flip"],render);listen(["offset"],render,"input");safe(render)
 }
-const instruments=[["Address codec",codec],["Nested reader",nested],["Inverter clock",clock],["Retained field",retained],["Collision port",port],["Contract compiler",compiler],["Clause boundary",boundary],["Wrapping square",wrapping]];
-instruments.forEach(([name,fn],i)=>{const b=document.createElement("button");b.type="button";b.textContent=String(i+1).padStart(2,"0")+" / "+name;b.onclick=()=>{stop();for(const x of nav.children){x.classList.remove("active");x.setAttribute("aria-pressed","false")}b.classList.add("active");b.setAttribute("aria-pressed","true");fn()};nav.appendChild(b)});nav.children[0].click();
+const instruments=[
+ ["nested","Nested rings","Read one ray through many rings",nested],
+ ["address","64-bit addresses","Locate a word and recover it",codec],
+ ["clock","One-inverter clock","Watch the register cycle",clock],
+ ["field","Reversible field","Step forward and back",retained],
+ ["port","Collision port","Derive a reader from a target",port],
+ ["carry","Carry compiler","Build a larger adder",compiler],
+ ["clauses","Clause boundary","Retain the local interface",boundary],
+ ["square","Wrapping square","Move the reader or change the bits",wrapping]
+];
+function activate(i,writeHash){stop();for(const x of nav.children){x.classList.remove("active");x.setAttribute("aria-pressed","false")}const b=nav.children[i];b.classList.add("active");b.setAttribute("aria-pressed","true");if(writeHash)history.replaceState(null,"","#"+instruments[i][0]);instruments[i][3]()}
+instruments.forEach(([key,name,desc],i)=>{const b=document.createElement("button");b.type="button";b.innerHTML='<span class="tabno">'+String(i+1).padStart(2,"0")+'</span><span><strong>'+name+'</strong><small>'+desc+'</small></span>';b.onclick=()=>activate(i,true);nav.appendChild(b)});
+function route(){const h=location.hash.slice(1);if(h==="research")return;const i=instruments.findIndex(x=>x[0]===h);activate(i<0?0:i,false)}
+if(location.hash==="#research")activate(0,false);else route();window.addEventListener("hashchange",route);
 })();

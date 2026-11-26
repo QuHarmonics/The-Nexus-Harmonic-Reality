@@ -6,13 +6,13 @@ The original repository address is retained. The curated checkout contains the p
 
 1. Open Settings → Pages → Build and deployment.
 2. Choose Deploy from a branch, main, /docs.
-3. Save. This publishes the ring explorer and historical catalog.
+3. Save. This publishes the eight interactive instruments and historical catalog.
 
 ## Option B — portal plus executable Python laboratory
 
 1. Open Settings → Pages and choose GitHub Actions as the publishing source.
 2. In Actions select **Publish public portal and Python laboratory** → Run workflow on main.
-3. Once the deployment succeeds, visit the published Pages URL. The main portal links to JupyterLite.
+3. Once the deployment succeeds, visit the published Pages URL. The main portal opens directly into the interactive instruments. The full JupyterLite Atlas is an optional research resource below them.
 4. Repeat the workflow after changes that should be published. This workflow is deliberately manual to avoid rebuilding the browser runtime on every documentation edit.
 
 The build uses a standard public GitHub runner and a temporary Pages artifact. Python executes on the visitor's computer. The small reference notebook and a generated, output-cleared browser edition of the Ring Atlas are included. The original Atlas is retained unchanged; only its setup and presentation metadata are adapted. Other archived notebooks, local model gateways and bulk research are not copied. No paid runner or AI service is configured. The base JupyterLite deployment previously passed; the Atlas edition requires its own deployment and browser check.

@@ -10,7 +10,7 @@
 
 [Website](https://quharmonics.com/) · [ORCID](https://orcid.org/0009-0003-3128-8828) · [ResearchGate](https://www.researchgate.net/profile/Dean-Kulik) · [Academia](https://independent.academia.edu/ClaudReins)
 
-**[Live observatory](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/observatory/)** · **[Interactive portal source](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
+**[Interactive laboratory](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/)** · **[Interactive portal source](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
 
 </div>
 

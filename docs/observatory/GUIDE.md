@@ -1,6 +1,6 @@
 # NEXUS Interactive Observatory
 
-[Live portal](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/observatory/) · [Original Ring Atlas](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/979ee0ee2fc971d622848aba7fc2fbd2fcedb2b5/The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb) · [Atlas guide](../ATLAS.md) · [Research-first licensing](../../LICENSE.md)
+[Live portal](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/) · [Original Ring Atlas](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/979ee0ee2fc971d622848aba7fc2fbd2fcedb2b5/The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb) · [Atlas guide](../ATLAS.md) · [Research-first licensing](../../LICENSE.md)
 
 Dean A. Kulik · QuHarmonics Research Group · ORCID 0009-0003-3128-8828.
 
