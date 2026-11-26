@@ -15,7 +15,6 @@ This is a dependency-free JavaScript implementation of selected mathematical ins
 | Directed port | Chapter 12, joint old-field read then XOR writes | Derived third-reader initial state for target and fixed tick 3; forward landing may fail if the added reader changes the base trace. Full inverse is always checked. |
 | Contract compiler | Arithmetic contract split and carry composition | Three monotone R2 carry words; balanced decomposition is an implementation choice. Not a general synthesis theorem. |
 | Clause boundary | Local three-variable clauses, two-variable interfaces | Four exact persistent counts; generated deterministic examples, not the historical Entry 136 instance or a general SAT result. |
-
 | Wrapping square | Circular tape `00011011`, exact window extension, nibble exchange and reversal | The tape is the observed concatenation `00|01|10|11`, not the Atlas's seam-exchanged R2 ordering. The four-word relation and transport/perturbation contrast are demonstrated on the specified source; arbitrary nonlinear computations do not follow from it. |
 
 ## Verification scope
@@ -23,3 +22,7 @@ This is a dependency-free JavaScript implementation of selected mathematical ins
 Run `node tools/verify_observatory.mjs` in the repository. The audit checks the exact ring order digest from the original Atlas, every address and inverse at widths 1–9, selected 64-bit source vectors, the width-nine orbit census, the target-5 port witness and joint inverse/charge laws, complete small reader states, small carry composition trees and generated local clauses against exhaustive counts. These are source-equivalence and finite execution checks, not independently sealed new predictions.
 
 The original Atlas is unmodified. The current compiler instruments are independent, scoped implementations of the mathematical interfaces discussed in current work; complete general method-to-ring synthesis and unrestricted SAT remain OPEN. No public claim about prior scientific priority is established by this observatory.
+
+## Direct-manipulation workbench
+
+The main site opens on the wrapping tape. Click inner source bits, outer read positions, or an aperture; the square and readout update together. The native ring has clickable words and editable bits. The nested diagram accepts pointer dragging, the clock accepts register edits, the field accepts arbitrary cell and reader edits, the collision port accepts target cells, the adder accepts operand bits, and the clause chain accepts literal-sign edits. Editing a retained field establishes a new initial state; return is computed by inverse transitions, not a saved-state restore. Tabs initialize their own experiments. At widths above eight the ring is schematic; exact addresses use the same audited BigInt core. The deployment workflow exercises each instrument with a real headless browser before publishing. The notebook and all original engines are preserved.

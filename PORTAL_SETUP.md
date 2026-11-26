@@ -30,3 +30,5 @@ GitHub Actions, Pages, public Issues/Discussions, and repository security settin
 - Security settings: enable available free secret scanning and push protection for this public repository; do not enroll in paid products.
 - Releases: create a versioned release when the maintainer designates a curated research milestone. The public roadmap and citation metadata already identify the research interface.
 - Sponsorships, Projects and custom DNS require separate account or administrator configuration; no enrollment or payment changes are made here.
+
+The Pages workflow automatically publishes changes to the workbench and runs a headless browser interaction test before deployment. No notebook kernel is required for the workbench; the complete Atlas remains an optional Jupyter resource.

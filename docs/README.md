@@ -35,3 +35,5 @@ Open the standalone archive search locally, or serve the entire `docs/` folder u
 [Interactive Observatory](observatory/GUIDE.md) — eight browser-native research instruments with mathematical contracts and automated source-equivalence checks.
 
 The public site now opens directly into the interactive laboratory at [the main URL](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/). The original `/observatory/` entrance redirects there. The old `#explorer` link opens the nested reader; the Atlas and archive are in the Research & downloads section.
+
+The current homepage is a direct-manipulation workbench. The wrapping tape is the initial experiment, and the old `#explorer` URL opens the native ring. Research files are available under the expandable Research & downloads section.

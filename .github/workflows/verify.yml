@@ -27,5 +27,7 @@ jobs:
           cat verification-report.json >> "$GITHUB_STEP_SUMMARY"
       - name: Verify browser-native observatory
         run: |
+          set -o pipefail
           node --check docs/observatory/observatory.js
+          node --check docs/observatory/workbench.js
           node tools/verify_observatory.mjs | tee -a "$GITHUB_STEP_SUMMARY"

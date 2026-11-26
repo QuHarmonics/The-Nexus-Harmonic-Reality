@@ -76,7 +76,7 @@ function native(){
  bind("width",()=>{n=+$("width").value;x&=C.mask(n);render()},"change");bind("locate",()=>{x=parse($("word").value,n);render()});bind("decode",()=>{x=C.wordAt(parse($("addr").value,n),n);render()});bind("partner",()=>{x=C.partner(x,n);render()});bind("word",()=>{x=parse($("word").value,n);render()},"change");bind("addr",()=>{x=C.wordAt(parse($("addr").value,n),n);render()},"change");render()
 }
 function nested(){
- let depth=6,u=0.14,n=6,offset=2;const rings=new Map();
+ let depth=6,u=Math.floor(0.14*4096)/4096,n=6,offset=2;const rings=new Map();
  const R=k=>{if(!rings.has(k))rings.set(k,C.ring(k));return rings.get(k)};
  function render(){
  let g="",rows=[],profile="";const cx=230,cy=230,rmax=205;
@@ -90,9 +90,9 @@ function nested(){
  drag=e=>{const v=angle(e,"nested",230,230);if(v!==null){u=Math.floor(v*4096)/4096;render()}};bind("depth",()=>{depth=+$("depth").value;render()},"change");bind("angle",()=>{u=+$("angle").value/4096;render()},"input");bind("width",()=>{n=+$("width").value;offset=Math.min(n-1,offset);render()},"change");bind("offset",()=>{offset=+$("offset").value;render()},"input");render()
 }
 function clock(){
- let n=9,x=0n,t=0;
+ let n=9,x=0n,t=0;const censusCache=new Map();
  function tick(dir){x=dir>0?C.tau(x,n):C.untau(x,n);t+=dir;render()}
- function render(){const o=C.orbit(x,n),cs=C.census(n),pts=range(n).map(i=>pos(220,182,128,i/n));let g=circ(220,182,128,"none");
+ function render(){if(!censusCache.has(n))censusCache.set(n,C.census(n));const o=C.orbit(x,n),cs=censusCache.get(n),pts=range(n).map(i=>pos(220,182,128,i/n));let g=circ(220,182,128,"none");
  pts.forEach((q,i)=>{const b=Number((x>>BigInt(n-1-i))&1n),next=pts[(i+1)%n];g+=ln(...q,...next,i===n-1?gold:lineColor,2)+group("bit",i,"Flip register bit "+i,circ(...q,Math.min(21,90/n),b?"#226f65":"#1b3544")+txt(q[0],q[1]+4,b,fg,14))});g+=txt(220,177,"t = "+t,cyan,23)+txt(220,202,"period "+o.length,muted,12);
  const points=o.map(y=>{let re=0,im=0;for(let i=0;i<n;i++){const s=1-2*C.bit(y,i);re+=s*Math.cos(Math.PI*i/n);im+=s*Math.sin(Math.PI*i/n)}return [re,im]}),scale=Math.max(1e-12,...points.map(q=>Math.hypot(...q)));let s=circ(190,150,117,"none")+ln(60,150,320,150)+ln(190,20,190,280);points.forEach((q,i)=>{const r=points[(i+1)%points.length];s+=ln(190+q[0]/scale*110,150-q[1]/scale*110,190+r[0]/scale*110,150-r[1]/scale*110,cyan,1.5)});s+=circ(190+points[0][0]/scale*110,150-points[0][1]/scale*110,6,gold);
  show(grid(panel("Click register bits · step the inverter",svg(g,440,366)+bits("Current register",x,n,"bit")+metrics(m("Least period",o.length),m("Tick",t))+note("One complemented return. Atlas convention: rotate left, XOR 1.")),panel("Live fundamental spin projection",svg(s,380,300)+metrics(m("Mode angle",(180/n).toFixed(2)+"°"),m("Inverse",C.untau(C.tau(x,n),n)===x?"exact":"error"))+tab(["Period","Orbits","States"],Object.entries(cs).map(([k,v])=>row([k,v,+k*v])))+note("Discrete spectral projection, not a physical frequency."))))}

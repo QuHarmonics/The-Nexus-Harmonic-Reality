@@ -6,6 +6,7 @@ on:
     paths:
       - 'docs/observatory/**'
       - 'docs/index.html'
+      - 'tools/smoke_workbench.mjs'
       - '.github/workflows/pages.yml'
 permissions:
   contents: read
@@ -18,13 +19,20 @@ jobs:
   build:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 1
           persist-credentials: false
       - uses: actions/configure-pages@v5
+      - name: Exercise the workbench in headless Chromium
+        run: |
+          npm install --prefix /tmp/nexus-ui --no-audit --no-fund playwright@1.56.1
+          export PLAYWRIGHT_MODULE=/tmp/nexus-ui/node_modules/playwright/index.mjs
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium || true)"
+          if [ -z "$CHROME_BIN" ]; then /tmp/nexus-ui/node_modules/.bin/playwright install chromium; fi
+          node tools/smoke_workbench.mjs
       - name: Build static site and JupyterLite laboratory
         run: |
           python3 -m venv /tmp/nexus-lite
