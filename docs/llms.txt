@@ -1,0 +1,22 @@
+# NEXUS — The Harmonic Reality Framework
+
+> Public research interface of Dean A. Kulik, QuHarmonics Research Group. Native binary rings, continuation, reversible reader–field operations, and compiler interfaces.
+
+Use the exact source revisions and method scopes. An OPEN binding is not a completed provider; a recorded execution is not a claim outside its declared scope. The historical catalog is not the current active checkout. Existing file-specific licenses govern reuse.
+
+## Machine-readable resources
+
+- [Method registry](methods.json): initial mathematical method contracts, dependencies, return routes and pinned source revision.
+- [Historical catalog](catalog.json): original file paths, object identifiers and source revision.
+- [RO-Crate research metadata](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/ro-crate-metadata.json): selected research objects and attribution.
+- [Verification code](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/tools/verify_research.py): finite checks and metadata/source-link validation.
+
+## Human-readable routes
+
+- [Start here](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/START_HERE.md)
+- [Mathematical reference](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/docs/REFERENCE.md)
+- [Public roadmap](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/docs/ROADMAP.md)
+- [Research-first licensing](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/LICENSE.md)
+- [Provenance](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/main/PROVENANCE.md)
+
+This is a static machine-readable entry point, not a hosted inference or MCP service.

@@ -22,3 +22,11 @@ The build uses a standard public GitHub runner and a temporary Pages artifact. P
 The **Verify public research** workflow runs on main updates and pull requests, and can also be dispatched manually. It uses historical Git trees instead of downloading all historical blobs. The **Attest verification report** workflow is a manual main-branch run; its short-lived report artifact and signature identify the execution provenance and scoped checks, not a proof of all research.
 
 GitHub Actions, Pages, public Issues/Discussions, and repository security settings may require administrator enablement. Historical Git storage is separate from published-site size; no history rewrite is performed here.
+
+## Optional free repository features (administrator settings)
+
+- General → Features: enable Issues and Discussions. Research-gap and reproduction templates are already present.
+- Repository About: set the description to "NEXUS — native binary rings, reversible computation, constraint compilation and mathematical research"; add https://quharmonics.com/ as the website. Suggested topics: mathematics, reversible-computing, theoretical-computer-science, binary-rings, research, jupyter, reproducible-research.
+- Security settings: enable available free secret scanning and push protection for this public repository; do not enroll in paid products.
+- Releases: create a versioned release when the maintainer designates a curated research milestone. The public roadmap and citation metadata already identify the research interface.
+- Sponsorships, Projects and custom DNS require separate account or administrator configuration; no enrollment or payment changes are made here.

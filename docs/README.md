@@ -27,3 +27,5 @@ Open the standalone archive search locally, or serve the entire `docs/` folder u
 ## Research infrastructure
 
 [Native operations laboratory notebook](../lab/Nexus_Native_Operations.ipynb) · [Public roadmap](ROADMAP.md) · [RO-Crate metadata](../ro-crate-metadata.json) · [Verification instructions](MAINTAINERS.md).
+
+[AI-readable source entry point](llms.txt) provides a static route into the public registry and catalog without an AI API or hosted model.
