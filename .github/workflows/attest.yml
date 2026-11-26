@@ -1,0 +1,32 @@
+name: Attest verification report
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+jobs:
+  attest:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch historical trees only
+        run: git fetch --no-tags --depth=1 --filter=blob:none origin df0d09f8c430bce44660e4986209afdb20395e04 462e8e558eafb9f333b7726eddf0e7a527ee93e1
+      - name: Generate scoped verification report
+        run: |
+          python3 tools/verify_research.py
+          cat verification-report.json >> "$GITHUB_STEP_SUMMARY"
+          sha256sum verification-report.json >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: verification-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verification-report
+          path: verification-report.json
+          retention-days: 1

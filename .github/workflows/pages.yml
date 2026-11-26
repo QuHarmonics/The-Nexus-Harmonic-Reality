@@ -1,0 +1,53 @@
+name: Publish public portal and Python laboratory
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/configure-pages@v5
+      - name: Build static site and JupyterLite laboratory
+        run: |
+          python3 -m venv /tmp/nexus-lite
+          /tmp/nexus-lite/bin/python -m pip install 'jupyterlite-core==0.8.7' jupyterlite-pyodide-kernel
+          mkdir -p _site
+          cp -a docs/. _site/
+          /tmp/nexus-lite/bin/jupyter lite build --lite-dir "$PWD" --contents "$PWD/lab" --output-dir "$PWD/_site/lab"
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("_site/index.html")
+          s = p.read_text(encoding="utf-8")
+          s = s.replace('<a href="archive-search.html">Archive search</a>', '<a href="archive-search.html">Archive search</a><a href="lab/lab/index.html">Run Python in your browser</a>', 1)
+          p.write_text(s, encoding="utf-8")
+          PY
+          test -f _site/lab/lab/index.html
+          du -sh _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+          retention-days: 1
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

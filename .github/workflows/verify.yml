@@ -1,0 +1,27 @@
+name: Verify public research
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Fetch historical trees without their bulk file contents
+        run: |
+          git fetch --no-tags --depth=1 --filter=blob:none origin df0d09f8c430bce44660e4986209afdb20395e04 462e8e558eafb9f333b7726eddf0e7a527ee93e1
+      - name: Verify source routes and execute finite reference audit
+        run: |
+          python3 tools/verify_research.py
+          cat verification-report.json >> "$GITHUB_STEP_SUMMARY"
