@@ -15,7 +15,7 @@ A living research program exploring computation as a self-organizing, reversible
 [![Academia](https://img.shields.io/badge/Academia-Research_Profile-414141?style=for-the-badge)](https://independent.academia.edu/ClaudReins)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0003--3128--8828-A6CE39?style=for-the-badge)](https://orcid.org/0009-0003-3128-8828)
 
-**[Start with the core](The%20Nexus%20Domain/)** · **[Explore research areas](#browse-the-research-areas)** · **[Public Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing)**
+**[Start here](START_HERE.md)** · **[Native domain](The%20Nexus%20Domain/)** · **[Research archive](Audit%20Trail/)** · **[Public Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing)**
 
 </div>
 
@@ -64,9 +64,11 @@ Predictions, source code, correction logs, and execution traces are retained whe
 
 ## Where to start
 
+For a first visit, follow the [reader's guide](START_HERE.md). It links directly to the public papers, runnable examples, and historical collections. For the planned mathematical method documentation, see the [method contract](METHODS.md).
+
 **Start with the native machine, not the archive.** The [NEXUS Domain](The%20Nexus%20Domain/) contains the rings-forward research path. Its [published papers](The%20Nexus%20Domain/Published%20Papers/) include *Only Addressable*, *Against Its Own Reverse*, *One Inverter*, *Retained Continuation*, and *Exact Algebra of Retained Continuation*.
 
-Explore the [nine research areas](#browse-the-research-areas) by subject. Each area is organized the same way—**Published Papers, Code, Markdown, Transcripts**—so papers, working sources, implementations and research history have clear roles.
+Explore the [nine research areas](#browse-the-research-areas) by subject. The nine subject areas provide **Published Papers, Code, Markdown, and Transcripts** entry points. Dedicated transcript directories are navigation indexes until their sources are deposited. The historical paper archive is separate.
 
 For the broader historical corpus and earlier investigations, use the [public Google Drive archive](https://drive.google.com/drive/folders/1MQePNhpBUV-9UVLTq1CIOixxYLg3RgLq?usp=sharing). The current GitHub tree is a curated structure, not a complete copy of every old working file.
 
@@ -87,12 +89,12 @@ The native step is the core operation. Adapters observe it through declared inte
 
 ## Browse the research areas
 
-The repository is now organized by **research domain**, not file age or format. Each area has dedicated sections for **Published Papers · Code · Markdown · Transcripts**. Sections may begin as empty, documented entry points; content is added deliberately.
+The curated research areas are organized by **research domain**, not file age or format. The historical archive retains earlier publications independently of that organization. Each area has dedicated sections for **Published Papers · Code · Markdown · Transcripts**. Sections may begin as empty, documented entry points; content is added deliberately.
 
 | Research area | Scope |
 |:--|:--|
 | [**The Nexus Domain**](The%20Nexus%20Domain/) | The native machine: structure, continuation, memory, closure, and return. |
-| [**Artificial Inteligence**](Artificial%20Inteligence/) | AI as an interface to a deterministic, auditable compiler. |
+| [**Artificial Intelligence**](Artificial%20Inteligence/) | AI as an interface to a deterministic, auditable compiler. |
 | [**Computation**](Computation/) | Algorithms read as reversible transformations and constrained routes. |
 | [**Cryptography**](Cryptography/) | SHA-256 and related systems studied through algebra, carries, and geometry. |
 | [**Physics**](Physics/) | Physical comparators for a domain defined without physical constants. |
@@ -101,9 +103,14 @@ The repository is now organized by **research domain**, not file age or format. 
 | [**Chemistry**](Chemistry/) | Patterns of transformation in molecular and reaction systems. |
 | [**Material Science**](Material%20Science/) | Structure, defects, phases, and the cost of transformation. |
 
+| [**Clay Prizes**](Clay%20Prizes/) | Research programs and related historical material; open problem boundaries. |
+| [**Audit Trail**](Audit%20Trail/) | Historical published-paper archive and the developmental record. |
+
 **Start here:** [The Nexus Domain](The%20Nexus%20Domain/) is the foundational layer. The other subjects are related constructions and applications; they should not be mistaken for the core's proof obligations.
 
 ## Publications, notebooks, and raw history
+
+The [Audit Trail](Audit%20Trail/) contains the historical [Published Paper Archive](Audit%20Trail/Published%20Paper%20Archive/). For an exact snapshot of the public tree and its collection counts, see the [repository map](START_HERE.md#repository-map).
 
 NEXUS was developed through iterative, high-velocity exploration. The papers are milestones of that unfolding, not a claim that every earlier draft is the current formulation. Earlier work, failed routes, correction logs, code, notebooks, and AI-assisted research dialogue are part of the traceable record; some remain in Git history or the linked Drive archive rather than the current curated tree.
 
@@ -125,7 +132,6 @@ NEXUS was developed through iterative, high-velocity exploration. The papers are
 | Research profile | [ResearchGate — Dean Kulik](https://www.researchgate.net/profile/Dean-Kulik) |
 | Author identity | [ORCID](https://orcid.org/0009-0003-3128-8828) |
 | Source repository | [GitHub — QuHarmonics](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality) |
-<!-- Add official QuHarmonics Facebook page here once the exact URL has been supplied/verified. -->
 
 ## Attribution and reuse
 
