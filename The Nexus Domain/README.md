@@ -40,13 +40,13 @@ This is the **foundation of NEXUS**. It contains the ring as fixed model, the On
 
 ## Recommended rings-forward path
 
-1. [Only Addressable](./Published%20Papers/Only%20Addressable.pdf) — ring structure and addressing.
-2. [Against Its Own Reverse](./Published%20Papers/Against%20Its%20Own%20Reverse.pdf) — the comparison that locates a word.
-3. [Decompiling Addressable Binary Rings](./Published%20Papers/Decompiling%20Addressable%20Binary%20Rings.pdf) — involutions and reconstructed structure.
-4. [Mapping the Nested Partner Ring](./Published%20Papers/Mapping%20the%20Nested%20Partner%20Ring.pdf) — nested reading geometry.
-5. [One Inverter](./Published%20Papers/One%20Innverter.pdf) — continuation as a clock.
-6. [Retained Continuation](./Published%20Papers/Retained%20Continuation.pdf) — reader, field, and closure.
-7. [Exact Algebra of Retained Continuation](./Published%20Papers/Exact%20Algebra%20of%20Retained%20Continuation.pdf) — reversible multi-reader algebra.
+1. [Only Addressable](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Only%20Addressable.pdf) — ring structure and addressing.
+2. [Against Its Own Reverse](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Against%20Its%20Own%20Reverse.pdf) — the comparison that locates a word.
+3. [Decompiling Addressable Binary Rings](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Decompiling%20Addressable%20Binary%20Rings.pdf) — involutions and reconstructed structure.
+4. [Mapping the Nested Partner Ring](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Mapping%20the%20Nested%20Partner%20Ring.pdf) — nested reading geometry.
+5. [One Inverter](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/One%20Innverter.pdf) — continuation as a clock.
+6. [Retained Continuation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Retained%20Continuation.pdf) — reader, field, and closure.
+7. [Exact Algebra of Retained Continuation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Exact%20Algebra%20of%20Retained%20Continuation.pdf) — reversible multi-reader algebra.
 
 These are a **suggested dependency path**, not a claim that all other published work is obsolete. The [paper directory](./Published%20Papers/) contains additional material.
 

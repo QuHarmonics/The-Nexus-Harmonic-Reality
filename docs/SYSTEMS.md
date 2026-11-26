@@ -6,8 +6,8 @@ The native domain is the shared structural entrance. A system may be an operator
 
 | Area | Entry |
 | --- | --- |
-| Native rings and retained continuation | [Domain core](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) |
-| Ring compiler and instruction space | [Compiler](../The%20Nexus%20Domain/Markdown/ring_compiler_README.md) · [LEN 1–64 stack](../The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md) |
+| Native rings and retained continuation | [Domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) |
+| Ring compiler and instruction space | [Compiler](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md) · [LEN 1–64 stack](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md) |
 | NEXUS AI | [Versioned notebooks](../Artificial%20Inteligence/Code) |
 | Computation | [Domain](../Computation/) |
 | Cryptography | [Domain](../Cryptography/) |

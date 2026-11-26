@@ -12,13 +12,13 @@
 
 ---
 
-> **Collection status:** Public code, notebooks, archives, seals and execution logs are present. Consult the companion records for the scope and dependencies of each experiment.
+> **Collection status:** The lightweight checkout retains this index; original research artifacts are available at the preserved source links.
 
 ## Public entry points
 
-- [NEXUS Ring Atlas notebook](NEXUS_Ring_Atlas.ipynb) and [bundle](NEXUS_Ring_Atlas.zip).
-- P20: [audit script](NEXUS_P20_Cross_LEN_Center_Audit.py), [prediction seal](NEXUS_P20_Cross_LEN_Center_Seal.txt), [recorded run](NEXUS_P20_Cross_LEN_Center_Run_Log.txt).
-- P21: [audit script](NEXUS_P21_Moving_Seam_Audit.py), [prediction seal](NEXUS_P21_Moving_Seam_Seal.txt), [recorded run](NEXUS_P21_Moving_Seam_Run_Log.txt).
+- [NEXUS Ring Atlas notebook](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb) and [bundle](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.zip).
+- P20: [audit script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py), [prediction seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Seal.txt), [recorded run](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Run_Log.txt).
+- P21: [audit script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Audit.py), [prediction seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Seal.txt), [recorded run](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Run_Log.txt).
 
 The links identify deposited artifacts; no new execution is implied by this index.
 

@@ -10,7 +10,7 @@
 
 [Website](https://quharmonics.com/) · [ORCID](https://orcid.org/0009-0003-3128-8828) · [ResearchGate](https://www.researchgate.net/profile/Dean-Kulik) · [Academia](https://independent.academia.edu/ClaudReins)
 
-**[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
+**[Interactive portal](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
 
 </div>
 
@@ -27,9 +27,9 @@ NEXUS is an independent research program investigating the growth of computation
 | Programmer | [Executable examples](docs/REPRODUCE.md) — native audits and notebooks |
 | Systems researcher | [Systems and domains](docs/SYSTEMS.md) |
 | Historian | [History and provenance](docs/HISTORY.md) · [Audit Trail](Audit%20Trail/) |
-| Specific source | [Complete catalog](docs/catalog/) · [Standalone search page](docs/index.html) · [JSON](docs/catalog.json) |
+| Specific source | [Complete catalog](docs/catalog/) · [Standalone archive search](docs/archive-search.html) · [JSON](docs/catalog.json) |
 
-The catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. This is a file count, not a count of unique publications. Download the HTML search page to open it locally, or browse the Markdown indexes directly on GitHub.
+The historical catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. This active checkout is a lightweight documentation and portal tree; the original research files are linked through their preserved revision. This is a file count, not a count of unique publications. Download the HTML search page to open it locally, or browse the Markdown indexes directly on GitHub.
 
 ## Native architecture
 

@@ -12,13 +12,13 @@
 
 ---
 
-> **Collection status:** Public Jupyter notebooks and a kernel audit bundle are present. The versioned notebooks are preserved as separate artifacts.
+> **Collection status:** The lightweight checkout retains this index; original research artifacts are available at the preserved source links.
 
 ## Public entry points
 
-- [v5.8 notebook](NEXUS_AI_v5_8_Unified.ipynb) · [run instructions and scope](NEXUS_AI_v5_8_README.md).
-- [v5.9 Transit Atlas notebook](NEXUS_AI_v5_9_Transit_Atlas.ipynb).
-- [26-family switch kernel audit](NEXUS_26_Family_Switch_Kernel_Audit.zip).
+- [v5.8 notebook](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/Artificial%20Inteligence/Code/NEXUS_AI_v5_8_Unified.ipynb) · [run instructions and scope](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/Artificial%20Inteligence/Code/NEXUS_AI_v5_8_README.md).
+- [v5.9 Transit Atlas notebook](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/Artificial%20Inteligence/Code/NEXUS_AI_v5_9_Transit_Atlas.ipynb).
+- [26-family switch kernel audit](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/Artificial%20Inteligence/Code/NEXUS_26_Family_Switch_Kernel_Audit.zip).
 
 The v5.8 instructions document its dependencies and known open boundaries. The v5.9 notebook is present; no new execution or compatibility claim is made here.
 

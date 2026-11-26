@@ -12,7 +12,7 @@
 
 ---
 
-> **Collection status:** The PDFs listed below are present in this directory. Additional material can be added without changing the reading contract.
+> **Collection status:** The lightweight checkout retains this index; original research artifacts are available at the preserved source links.
 
 ## Purpose
 
@@ -24,15 +24,15 @@ The PDFs below are already in this folder. Follow them in dependency order befor
 
 | Stage | Paper | What it establishes in the reading path |
 |:--|:--|:--|
-| 01 · Ring | [Only Addressable](./Only%20Addressable.pdf) | Addressable word structure |
-| 02 · Comparator | [Against Its Own Reverse](./Against%20Its%20Own%20Reverse.pdf) | Relative location and reversal |
-| 03 · Involutions | [Decompiling Addressable Binary Rings](./Decompiling%20Addressable%20Binary%20Rings.pdf) | Native partner maps |
-| 04 · Nesting | [Mapping the Nested Partner Ring](./Mapping%20the%20Nested%20Partner%20Ring.pdf) | Nested ring geometry |
-| 05 · Clock | [One Inverter](./One%20Innverter.pdf) | The continuing loop |
-| 06 · Memory | [Retained Continuation](./Retained%20Continuation.pdf) | Reader–field operation and closure |
-| 07 · Composition | [Exact Algebra of Retained Continuation](./Exact%20Algebra%20of%20Retained%20Continuation.pdf) | Multi-reader and collision algebra |
+| 01 · Ring | [Only Addressable](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Only%20Addressable.pdf) | Addressable word structure |
+| 02 · Comparator | [Against Its Own Reverse](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Against%20Its%20Own%20Reverse.pdf) | Relative location and reversal |
+| 03 · Involutions | [Decompiling Addressable Binary Rings](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Decompiling%20Addressable%20Binary%20Rings.pdf) | Native partner maps |
+| 04 · Nesting | [Mapping the Nested Partner Ring](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Mapping%20the%20Nested%20Partner%20Ring.pdf) | Nested ring geometry |
+| 05 · Clock | [One Inverter](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/One%20Innverter.pdf) | The continuing loop |
+| 06 · Memory | [Retained Continuation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Retained%20Continuation.pdf) | Reader–field operation and closure |
+| 07 · Composition | [Exact Algebra of Retained Continuation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Exact%20Algebra%20of%20Retained%20Continuation.pdf) | Multi-reader and collision algebra |
 
-Other useful records in this folder include [Bicomplex Difference Calculus on Native Binary Rings](./Bicomplex%20Difference%20Calculus%20on%20Native%20Binary%20Rings.pdf), [Two Laps Home](./Two%20Laps%20Home.pdf), [The Way Home in a Finite Scope](./The%20Way%20Home%20in%20a%20Finite%20Scope.pdf), and [The NEXUS Reference Record](./The%20NEXUS%20Reference%20Record.pdf).
+Other useful records in this folder include [Bicomplex Difference Calculus on Native Binary Rings](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Bicomplex%20Difference%20Calculus%20on%20Native%20Binary%20Rings.pdf), [Two Laps Home](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/Two%20Laps%20Home.pdf), [The Way Home in a Finite Scope](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/The%20Way%20Home%20in%20a%20Finite%20Scope.pdf), and [The NEXUS Reference Record](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers/The%20NEXUS%20Reference%20Record.pdf).
 
 The ordering is a **reader's route**, not an assertion that every listed text has identical status or publication date. Refer to each file's own title page and permanent publication entry for its exact version and citation.
 
