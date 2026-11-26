@@ -1,6 +1,12 @@
 name: Publish public portal and Python laboratory
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/observatory/**'
+      - 'docs/index.html'
+      - '.github/workflows/pages.yml'
 permissions:
   contents: read
   pages: write

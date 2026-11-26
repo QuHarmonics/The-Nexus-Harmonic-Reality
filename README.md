@@ -10,7 +10,7 @@
 
 [Website](https://quharmonics.com/) · [ORCID](https://orcid.org/0009-0003-3128-8828) · [ResearchGate](https://www.researchgate.net/profile/Dean-Kulik) · [Academia](https://independent.academia.edu/ClaudReins)
 
-**[Interactive portal source](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
+**[Live observatory](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/observatory/)** · **[Interactive portal source](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
 
 </div>
 
@@ -48,6 +48,8 @@ The [native domain](The%20Nexus%20Domain/) supplies the foundational mathematica
 **WHAT → WHERE → ROUTE → INVERSE.** Begin at the required distinction, resolve existing providers and identify the missing link. The [method contract](METHODS.md) records what an operation requires, returns and preserves.
 
 ## Research tools
+
+[Interactive Observatory source and verification scope](docs/observatory/GUIDE.md) — eight standalone research instruments executing directly in the browser.
 
 **[The NEXUS Ring Atlas](docs/ATLAS.md)** — the full fifteen-chapter executable observatory. [Public research portal](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/) · [Original Atlas](The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb).
 

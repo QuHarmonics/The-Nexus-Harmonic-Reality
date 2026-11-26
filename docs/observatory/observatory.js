@@ -105,6 +105,26 @@ function boundary(){
  }
  $("run").onclick=()=>safe(render);listen(["n","seed"],render);safe(render)
 }
-const instruments=[["Address codec",codec],["Nested reader",nested],["Inverter clock",clock],["Retained field",retained],["Collision port",port],["Contract compiler",compiler],["Clause boundary",boundary]];
+function wrapping(){
+ shell("08","Wrapping square · one source, many readings","Read the same eight-bit circular source at different offsets and apertures. Separate transport of a reader from a perturbation of the source. The default tape is the observed 00 | 01 | 10 | 11 concatenation, not the seam-exchanged Atlas R2 word order.",field("tape","Circular source (8 bits)","00011011")+range("offset","Reader offset",0,7,0)+sel("width","Aperture in bits",[2,4,6,7,8,16,32,64],8)+sel("flip","Source bit to flip",["none",0,1,2,3,4,5,6,7],"none")+btn("reset","Restore original tape"),"Current wrapping research · exact readout");
+ const read=(s,i,n)=>{let x=0n;for(let k=0;k<n;k++)x=(x<<1n)|BigInt(s[(i+k)%8]);return x};
+ const weight=x=>[...x.toString(2)].filter(b=>b==="1").length;
+ function render(){
+ const orig=$("tape").value.trim();if(!/^[01]{8}$/.test(orig))throw Error("Enter exactly eight binary digits.");
+ const s=[...orig].map(Number),flip=$("flip").value;if(flip!=="none")s[+flip]^=1;
+ const i=+$("offset").value,n=+$("width").value;setRange("offset",i);
+ const w=read(s,i,n),moved=read(s,(i+1)%8,n),before=read([...orig].map(Number),i,n),dist=weight(w^moved),change=weight(w^before);
+ let g=circle(220,200,136);const nodes=s.map((b,k)=>point(220,200,136,k*Math.PI/4));for(let k=0;k<8;k++){const P=nodes[k],Q=nodes[(k+1)%8];g+=line(...P,...Q,s[k]===s[(k+1)%8]?"#294350":amber,2);g+=dot(...P,20,k===i?amber:s[k]?cyan:"#294350")+text(P[0],P[1]+5,String(s[k]),k===i||s[k]?"#07121b":"#e0edf0",15,"middle")+text(P[0],P[1]-28,k,muted,11,"middle")}
+ g+=text(220,195,"OFFSET "+i,cyan,20,"middle")+text(220,220,n+"-bit aperture",muted,12,"middle");
+ const pairs=[0,2,4,6].map(k=>(read(s,k,8)<<8n)|read(s,k+1,8));const [A,B0,D0,E]=pairs;
+ const H=x=>((x&0x0f0fn)<<4n)|((x&0xf0f0n)>>4n),J=x=>C.reverse(x,16),square=J(A)===B0&&J(D0)===E&&H(A)===D0&&H(B0)===E;
+ const vals=[A,B0,D0,E],coords=[[130,80],[450,80],[130,240],[450,240]];
+ let sq=line(130,80,450,80,cyan,2)+line(130,240,450,240,cyan,2)+line(130,80,130,240,amber,2)+line(450,80,450,240,amber,2)+text(290,66,"J · reverse",cyan,13,"middle")+text(290,226,"J · reverse",cyan,13,"middle")+text(118,160,"H",amber,13,"end")+text(462,160,"H",amber,13);
+ vals.forEach((v,k)=>{const [X,Y]=coords[k];sq+=`<rect x="${X-78}" y="${Y-30}" width="156" height="60" rx="8" fill="#142d38" stroke="#3d676e"/>`+text(X,Y-3,["A","B","C","D"][k]+" · "+v.toString(16).toUpperCase().padStart(4,"0"),cyan,20,"middle")+text(X,Y+17,"R16["+C.address(v,16).toString(16).toUpperCase().padStart(4,"0")+"]",muted,12,"middle")});
+ show(`<div class="layout"><div class="panel"><h3>Fixed circular source</h3>${svg(g,440,400)}${bitrow("Current window",w,n)}${bitrow("Window one offset later",moved,n)}<div class="readout">${metric("Reader displacement · changed bits",dist+" / "+n)}${metric("Source perturbation · changed bits",change+" / "+n)}</div><p class="note">These are different operations. A large Hamming distance caused by transport is not evidence of nonlinear avalanche.</p></div><div class="panel"><h3>Wrapped 16-bit square</h3>${svg(sq,580,320)}<span class="pill">${square?"RUNS · J and H close the four readings":"Square relation absent in this perturbed source"}</span>${metric("A XOR C",hex(A^D0))}${metric("B XOR D",hex(B0^E))}${metric("Four-word XOR closure",hex(A^B0^D0^E))}<p class="note">H exchanges the nibbles inside each byte; J reverses all sixteen bits. Their algebra is involutive, but the observed four-reading square depends on the tape. Address reflection of a native partner is a complement. An interface/implementation interpretation remains a research binding, not a consequence of the square alone.</p></div><div class="panel wide"><h3>Eight offsets · widths 6, 7, 8</h3>${table(["Offset","6-bit","7-bit","8-bit","Hex","Adjacent Hamming"],Array.from({length:8},(_,k)=>[k,read(s,k,6),read(s,k,7),read(s,k,8),hex(read(s,k,8)),weight(read(s,k,8)^read(s,k+1,8))]))}</div></div>`)
+ }
+ $("reset").onclick=()=>{$("tape").value="00011011";$("flip").value="none";setRange("offset",0);safe(render)};listen(["tape","width","flip"],render);listen(["offset"],render,"input");safe(render)
+}
+const instruments=[["Address codec",codec],["Nested reader",nested],["Inverter clock",clock],["Retained field",retained],["Collision port",port],["Contract compiler",compiler],["Clause boundary",boundary],["Wrapping square",wrapping]];
 instruments.forEach(([name,fn],i)=>{const b=document.createElement("button");b.type="button";b.textContent=String(i+1).padStart(2,"0")+" / "+name;b.onclick=()=>{stop();for(const x of nav.children){x.classList.remove("active");x.setAttribute("aria-pressed","false")}b.classList.add("active");b.setAttribute("aria-pressed","true");fn()};nav.appendChild(b)});nav.children[0].click();
 })();

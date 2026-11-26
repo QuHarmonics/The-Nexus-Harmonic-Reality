@@ -31,3 +31,5 @@ Open the standalone archive search locally, or serve the entire `docs/` folder u
 [AI-readable source entry point](llms.txt) provides a static route into the public registry and catalog without an AI API or hosted model.
 
 [The NEXUS Ring Atlas](ATLAS.md) is the full executable observatory. The public portal links the original and a generated browser edition.
+
+[Interactive Observatory](observatory/GUIDE.md) — eight browser-native research instruments with mathematical contracts and automated source-equivalence checks.

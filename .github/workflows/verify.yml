@@ -25,3 +25,7 @@ jobs:
         run: |
           python3 tools/verify_research.py
           cat verification-report.json >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify browser-native observatory
+        run: |
+          node --check docs/observatory/observatory.js
+          node tools/verify_observatory.mjs | tee -a "$GITHUB_STEP_SUMMARY"

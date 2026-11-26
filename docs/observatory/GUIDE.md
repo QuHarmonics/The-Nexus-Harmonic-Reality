@@ -16,6 +16,8 @@ This is a dependency-free JavaScript implementation of selected mathematical ins
 | Contract compiler | Arithmetic contract split and carry composition | Three monotone R2 carry words; balanced decomposition is an implementation choice. Not a general synthesis theorem. |
 | Clause boundary | Local three-variable clauses, two-variable interfaces | Four exact persistent counts; generated deterministic examples, not the historical Entry 136 instance or a general SAT result. |
 
+| Wrapping square | Circular tape `00011011`, exact window extension, nibble exchange and reversal | The tape is the observed concatenation `00|01|10|11`, not the Atlas's seam-exchanged R2 ordering. The four-word relation and transport/perturbation contrast are demonstrated on the specified source; arbitrary nonlinear computations do not follow from it. |
+
 ## Verification scope
 
 Run `node tools/verify_observatory.mjs` in the repository. The audit checks the exact ring order digest from the original Atlas, every address and inverse at widths 1–9, selected 64-bit source vectors, the width-nine orbit census, the target-5 port witness and joint inverse/charge laws, complete small reader states, small carry composition trees and generated local clauses against exhaustive counts. These are source-equivalence and finite execution checks, not independently sealed new predictions.
