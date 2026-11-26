@@ -8,6 +8,10 @@
 
 Multiple entrances, shared source addresses.
 
+[Interactive portal](index.html) · [Historical research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1)
+
+The historical catalog describes its original pinned source snapshot, not the current checkout.
+
 | Reader | Route |
 | --- | --- |
 | First visit | [Native dependency path](../START_HERE.md) |
@@ -15,7 +19,7 @@ Multiple entrances, shared source addresses.
 | Programming | [Executable examples](REPRODUCE.md) |
 | Systems research | [Systems and domain map](SYSTEMS.md) |
 | History | [History and provenance](HISTORY.md) · [Audit Trail](../Audit%20Trail/) |
-| Specific source | [Complete catalog](catalog/README.md) · [Browser search](index.html) · [JSON](catalog.json) |
+| Specific source | [Complete catalog](catalog/README.md) · [Archive search](archive-search.html) · [JSON](catalog.json) |
 | Maintenance | [Curation and verification](MAINTAINERS.md) |
 
-Download the HTML catalog and open it in a modern browser. It is self-contained; GitHub Pages is not required for local use. Its source links are revision-pinned. The file catalog is structural metadata; the method reference is a starter registry, not a completed ring binding.
+Download the HTML archive search and open it in a modern browser. It is self-contained; GitHub Pages is not required for local use. Its source links are revision-pinned. The file catalog is structural metadata; the method reference is a starter registry, not a completed ring binding.

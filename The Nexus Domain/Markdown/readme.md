@@ -6,21 +6,21 @@
 
 **Working mathematical specifications, numbered formulas, dependency chains, ledgers, and manuscript sources.**
 
-[← The Nexus Domain](../) · [NEXUS home](../../README.md) · [Papers](../Published%20Papers/) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
+[← The Nexus Domain](../) · [NEXUS home](../../README.md) · [Papers](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
 
 </div>
 
 ---
 
-> **Collection status:** Public working sources, conversation exports, compiler documentation and audit records are present. They are retained with their original filenames.
+> **Collection status:** This navigation document links the historical working sources at the preserved revision.
 
 ## Entry points
 
-- [Domain core](NEXUS_Domain_Core_20261103.md)
-- [Ring instruction-set stack, widths 1–64](NEXUS_ring_ISA_stack_1_to_64.md)
-- [Fixed-ring compiler documentation](ring_compiler_README.md)
-- [Ledger and audit 1–168](NEXUS_ledger_and_audit_1-168.md)
-- [Transformation map](NEXUS_Transformation_Map_Consolidated.md)
+- [Domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md)
+- [Ring instruction-set stack, widths 1–64](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md)
+- [Fixed-ring compiler documentation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md)
+- [Ledger and audit 1–168](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ledger_and_audit_1-168.md)
+- [Transformation map](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Transformation_Map_Consolidated.md)
 
 ## Purpose
 

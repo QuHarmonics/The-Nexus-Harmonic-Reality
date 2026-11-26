@@ -8,15 +8,15 @@ These scripts specify Python standard-library dependencies. Download each script
 
 | Audit | Source | Seal | Recorded run |
 | --- | --- | --- | --- |
-| P20 cross-LEN center | [Script](../The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py) | [Seal](../The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Seal.txt) | [Log](../The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Run_Log.txt) |
-| P21 moving seam | [Script](../The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Audit.py) | [Seal](../The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Seal.txt) | [Log](../The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Run_Log.txt) |
+| P20 cross-LEN center | [Script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py) | [Seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Seal.txt) | [Log](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Run_Log.txt) |
+| P21 moving seam | [Script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Audit.py) | [Seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Seal.txt) | [Log](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Run_Log.txt) |
 
 ```bash
 python NEXUS_P20_Cross_LEN_Center_Audit.py
 python NEXUS_P21_Moving_Seam_Audit.py
 ```
 
-Also available: [Ring Atlas notebook](../The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb), [Ring Atlas bundle](../The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.zip), [fixed-ring compiler documentation](../The%20Nexus%20Domain/Markdown/ring_compiler_README.md). The compiler document references original bundle files whose separate availability is not established here.
+Also available: [Ring Atlas notebook](../The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb), [Ring Atlas bundle](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.zip), [fixed-ring compiler documentation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md). The compiler document references original bundle files whose separate availability is not established here.
 
 ## NEXUS AI
 

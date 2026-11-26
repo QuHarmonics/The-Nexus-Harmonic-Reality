@@ -1,6 +1,6 @@
-# Public source catalog
+# Historical public source catalog
 
-[Documentation](../README.md) · [Browser search](../index.html) · [Machine-readable data](../catalog.json)
+[Documentation](../README.md) · [Browser search](../archive-search.html) · [Machine-readable data](../catalog.json)
 
 **1,140 files** at [source revision df0d09f](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/commit/df0d09f8c430bce44660e4986209afdb20395e04). Counts include navigation files, revisions, and companion artifacts; they are not counts of independent publications or discoveries. File metadata only; no inferred subjects or dates.
 

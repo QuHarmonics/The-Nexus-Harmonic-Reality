@@ -36,9 +36,9 @@ The same contract can describe Python, C#, a notebook, or a native circuit imple
 
 ## Existing public source routes
 
-- [Ring ISA stack](The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md)
-- [Fixed-ring compiler](The%20Nexus%20Domain/Markdown/ring_compiler_README.md)
-- [Domain core](The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md)
+- [Ring ISA stack](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md)
+- [Fixed-ring compiler](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md)
+- [Domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md)
 - [AI v5.8 documentation](Artificial%20Inteligence/Code/NEXUS_AI_v5_8_README.md)
 
 These source records are starting points for extraction; the complete formula census, dependency graph and method-to-ring mapping remain OPEN.

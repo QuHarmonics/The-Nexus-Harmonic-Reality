@@ -2,7 +2,7 @@
 
 [Documentation](README.md) · [Method contract](../METHODS.md) · [Machine-readable registry](methods.json)
 
-This initial software-style reader uses equations in the [native domain core](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) and [ring ISA stack](../The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md). Method names are documentation identifiers, not claims that an existing library exports these functions. A word width, first nontrivial operation and minimal implementation address are distinct; missing bindings remain OPEN. No new experiments were executed.
+This initial software-style reader uses equations in the [native domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) and [ring ISA stack](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md). Method names are documentation identifiers, not claims that an existing library exports these functions. A word width, first nontrivial operation and minimal implementation address are distinct; missing bindings remain OPEN. No new experiments were executed.
 
 | Method | Dependencies |
 | --- | --- |
@@ -26,7 +26,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: R1 for single-bit NOT; general width n
 - Return route: C_n(C_n(x)) = x
 - Scope: Fixed-width involution
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1; 2.
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1; 2.
 
 ## word-reverse
 
@@ -39,7 +39,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Width n; earliest nonidentity ISA binding OPEN
 - Return route: J_n(J_n(x)) = x
 - Scope: Commutes with complement
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1.
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1.
 
 ## ring-partner
 
@@ -52,7 +52,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Source-defined family at width n
 - Return route: P_n(P_n(x)) = x
 - Scope: Fixed-point-free involution
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1, equation (1.1).
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1, equation (1.1).
 
 ## ring-read
 
@@ -65,7 +65,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Width n; ordering supplied by source
 - Return route: R_n(READ(x)) = x
 - Scope: Fixed ring permutation, not arbitrary permutation search
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1, equation (1.2).
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1, equation (1.2).
 
 ## clock-tick
 
@@ -78,7 +78,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: R1 for NOT; register width r
 - Return route: tau^(-1)(y0,...,y[r-1]) = (y1,...,y[r-1],NOT y0); tau^r = C_r; tau^(2r) = I
 - Scope: The 2r identity does not imply every state has least period 2r
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 2, equations (2.1)–(2.2).
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 2, equations (2.1)–(2.2).
 
 ## reader-step
 
@@ -91,7 +91,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Width n; minimal instruction composition OPEN
 - Return route: x = P_n(w'); p = p' XOR x; D[p] = D'[p] XOR w'; w = x XOR D[p]; other cells unchanged
 - Scope: Bijection on complete states; not inversion from an incomplete observation
-- Source: [NEXUS_Domain_Core_20261103.md](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 3.1, equations (3.1)–(3.2).
+- Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 3.1, equations (3.1)–(3.2).
 
 ## ring-state-count
 
@@ -104,7 +104,7 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Width n; count rather than gate binding
 - Return route: For an exact power of two, n = log2(count)
 - Scope: Counts words, not maps
-- Source: [NEXUS_ring_ISA_stack_1_to_64.md](../The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md), The flip: the state is not the whole instruction space.
+- Source: [NEXUS_ring_ISA_stack_1_to_64.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md), The flip: the state is not the whole instruction space.
 
 ## ring-map-count
 
@@ -117,9 +117,9 @@ This initial software-style reader uses equations in the [native domain core](..
 - Address: Transformation meta-layer, not gate binding
 - Return route: A count does not encode a particular transformation
 - Scope: The native ISA is a structured subfamily
-- Source: [NEXUS_ring_ISA_stack_1_to_64.md](../The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md), The flip; What the stack forces.
+- Source: [NEXUS_ring_ISA_stack_1_to_64.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md), The flip; What the stack forces.
 
 
 ## Next binding
 
-Derive minimal provider chains and connect actual implementations, seals, execution and corrections. See the [fixed-ring compiler](../The%20Nexus%20Domain/Markdown/ring_compiler_README.md) and [native code](../The%20Nexus%20Domain/Code). The full formula census and method-to-ring dependency graph remain OPEN.
+Derive minimal provider chains and connect actual implementations, seals, execution and corrections. See the [fixed-ring compiler](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md) and [native code](../The%20Nexus%20Domain/Code). The full formula census and method-to-ring dependency graph remain OPEN.

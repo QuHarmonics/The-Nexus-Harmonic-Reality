@@ -8,8 +8,8 @@ The historical reader follows introductions, transformations, corrections and im
 
 | Date | Record | Date meaning |
 | --- | --- | --- |
-| 2026-11-03 | [Native domain core](../The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) | Manuscript front matter |
-| 2026-11-05 | [P20 audit](../The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py) | Script opening documentation |
+| 2026-11-03 | [Native domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md) | Manuscript front matter |
+| 2026-11-05 | [P20 audit](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py) | Script opening documentation |
 
 These are source-stated dates, not earliest discovery claims. The full chronology remains OPEN.
 
@@ -19,6 +19,6 @@ Retain stable source address, original time where supplied, precision, timestamp
 
 Event types: introduction, derivation, prediction, execution, correction, transfer, generalization, publication, supersession and open dependency. Retain message order even where timestamps are absent; merge event streams without replacing local order.
 
-[Historical papers](../Audit%20Trail/Published%20Paper%20Archive/) · [Native working sources and public conversations](../The%20Nexus%20Domain/Markdown/) · [Transcript index](../The%20Nexus%20Domain/Transcripts/).
+[Historical papers](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1/Audit%20Trail/Published%20Paper%20Archive) · [Native working sources and public conversations](../The%20Nexus%20Domain/Markdown/) · [Transcript index](../The%20Nexus%20Domain/Transcripts/).
 
 No new private conversations or unpublished research were imported.
