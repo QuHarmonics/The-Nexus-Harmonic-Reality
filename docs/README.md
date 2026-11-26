@@ -23,3 +23,7 @@ The historical catalog describes its original pinned source snapshot, not the cu
 | Maintenance | [Curation and verification](MAINTAINERS.md) |
 
 Open the standalone archive search locally, or serve the entire `docs/` folder using the [portal setup guide](../PORTAL_SETUP.md). The main portal requires its accompanying CSS and JavaScript files. It is self-contained; GitHub Pages is not required for local use. Its source links are revision-pinned. The file catalog is structural metadata; the method reference is a starter registry, not a completed ring binding.
+
+## Research infrastructure
+
+[Native operations laboratory notebook](../lab/Nexus_Native_Operations.ipynb) · [Public roadmap](ROADMAP.md) · [RO-Crate metadata](../ro-crate-metadata.json) · [Verification instructions](MAINTAINERS.md).

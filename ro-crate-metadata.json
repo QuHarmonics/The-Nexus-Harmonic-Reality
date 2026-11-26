@@ -1,0 +1,127 @@
+{
+  "@context": "https://w3id.org/ro/crate/1.2/context",
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.2"
+      },
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "name": "NEXUS public research interface",
+      "description": "Curated public documentation, mathematical methods, executable examples and revision-pinned historical source catalog. This is a selected metadata inventory, not a complete rights or research audit.",
+      "datePublished": "2026-11-26",
+      "creator": {
+        "@id": "https://orcid.org/0009-0003-3128-8828"
+      },
+      "publisher": {
+        "@id": "#quharmonics"
+      },
+      "license": {
+        "@id": "LICENSE.md"
+      },
+      "url": "https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality",
+      "hasPart": [
+        {
+          "@id": "README.md"
+        },
+        {
+          "@id": "LICENSE.md"
+        },
+        {
+          "@id": "CITATION.cff"
+        },
+        {
+          "@id": "docs/methods.json"
+        },
+        {
+          "@id": "docs/catalog.json"
+        },
+        {
+          "@id": "docs/index.html"
+        },
+        {
+          "@id": "tools/native_reference.py"
+        },
+        {
+          "@id": "lab/Nexus_Native_Operations.ipynb"
+        },
+        {
+          "@id": "PROVENANCE.md"
+        }
+      ]
+    },
+    {
+      "@id": "https://orcid.org/0009-0003-3128-8828",
+      "@type": "Person",
+      "name": "Dean A. Kulik",
+      "affiliation": {
+        "@id": "#quharmonics"
+      }
+    },
+    {
+      "@id": "#quharmonics",
+      "@type": "Organization",
+      "name": "QuHarmonics Research Group",
+      "url": "https://quharmonics.com/"
+    },
+    {
+      "@id": "README.md",
+      "@type": "File",
+      "name": "Public research introduction"
+    },
+    {
+      "@id": "LICENSE.md",
+      "@type": [
+        "File",
+        "CreativeWork"
+      ],
+      "name": "Research-first licensing policy; not a blanket license",
+      "description": "Describes mixed licensing and future designation; no blanket grant."
+    },
+    {
+      "@id": "CITATION.cff",
+      "@type": "File",
+      "name": "Repository citation metadata"
+    },
+    {
+      "@id": "docs/methods.json",
+      "@type": "File",
+      "name": "Machine-readable mathematical method registry"
+    },
+    {
+      "@id": "docs/catalog.json",
+      "@type": "File",
+      "name": "Historical source catalog"
+    },
+    {
+      "@id": "docs/index.html",
+      "@type": "File",
+      "name": "Public interactive portal"
+    },
+    {
+      "@id": "tools/native_reference.py",
+      "@type": [
+        "File",
+        "SoftwareSourceCode"
+      ],
+      "name": "Native reference operations and finite checks"
+    },
+    {
+      "@id": "lab/Nexus_Native_Operations.ipynb",
+      "@type": "File",
+      "name": "Browser-compatible native operations notebook"
+    },
+    {
+      "@id": "PROVENANCE.md",
+      "@type": "File",
+      "name": "Research provenance policy"
+    }
+  ]
+}

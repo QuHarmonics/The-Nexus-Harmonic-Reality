@@ -1,0 +1,25 @@
+name: Research gap or dependency
+description: Record a precise OPEN link in the research ledger
+title: "[OPEN] "
+body:
+  - type: textarea
+    id: required
+    attributes:
+      label: Required result or interface
+      description: Name what must be supplied, its domain, constraints and return route.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source addresses and current providers
+      description: Include immutable source links, methods and evidence where available.
+    validations:
+      required: true
+  - type: textarea
+    id: missing
+    attributes:
+      label: Missing link and proposed resolution
+      description: Separate derivation, prediction and already observed data.
+    validations:
+      required: true

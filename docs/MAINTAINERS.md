@@ -11,3 +11,7 @@ python tools/verify_public_catalog.py
 Run from a Git checkout with the snapshot commit available. The checker compares paths, object IDs and byte counts to the exact revision. It does not execute research code. Refresh against an explicit immutable revision.
 
 Keep historical source addresses intact. Link formulas to implementations, dates and evidence. Preserve licenses and attribution. Review publication intent and unrelated material before adding new sources; private working archives are not automatic public inputs.
+
+## Lightweight verification
+
+Run `python tools/verify_research.py` from a Git checkout with the pinned source commits available. It checks source path/blob identity, method dependencies, internal README/catalog destinations, selected RO-Crate references and finite native operations. It writes `verification-report.json`. The check is not a new research theorem or a comprehensive external-link audit.

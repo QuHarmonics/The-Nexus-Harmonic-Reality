@@ -47,6 +47,10 @@ The [native domain](The%20Nexus%20Domain/) supplies the foundational mathematica
 
 **WHAT → WHERE → ROUTE → INVERSE.** Begin at the required distinction, resolve existing providers and identify the missing link. The [method contract](METHODS.md) records what an operation requires, returns and preserves.
 
+## Research tools
+
+[Native operations notebook](lab/Nexus_Native_Operations.ipynb) · [Public roadmap](docs/ROADMAP.md) · [Machine-readable research metadata](ro-crate-metadata.json) · [Verification guide](docs/MAINTAINERS.md)
+
 ## Browse the research areas
 
 | Research area | Scope |
