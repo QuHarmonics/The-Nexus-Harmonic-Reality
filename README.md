@@ -88,7 +88,9 @@ This living record was developed with AI systems as collaborators in analysis, i
 **Dean A. Kulik · QuHarmonics Research Group**  
 ORCID [0009-0003-3128-8828](https://orcid.org/0009-0003-3128-8828)
 
-Many manuscripts carry CC BY-NC 4.0 notices. Check each file's terms. No blanket software license is established by this documentation.
+**Research first.** Independent researchers, students, educators and noncommercial builders are the intended first beneficiaries of NEXUS. The [QuHarmonics Research-First Licensing Policy](LICENSE.md) explains the planned licensing model, existing grants and commercial permission route. Existing file-specific terms remain in force; a public file without a license notice is not automatically licensed for reuse.
+
+[Copyright and attribution](COPYRIGHT.md) · [AI research disclosure](AI_DISCLOSURE.md) · [Research provenance](PROVENANCE.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Research disclaimer](DISCLAIMER.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
 
 ---
 
