@@ -22,7 +22,8 @@ jobs:
       - name: Build static site and JupyterLite laboratory
         run: |
           python3 -m venv /tmp/nexus-lite
-          /tmp/nexus-lite/bin/python -m pip install 'jupyterlite-core==0.8.7' jupyterlite-pyodide-kernel
+          /tmp/nexus-lite/bin/python -m pip install 'jupyterlite-core==0.8.7' jupyterlite-pyodide-kernel 'jupyter-server>=2,<3'
+          /tmp/nexus-lite/bin/python -c 'import jupyter_server; print("Jupyter Server", jupyter_server.__version__)'
           mkdir -p _site
           cp -a docs/. _site/
           /tmp/nexus-lite/bin/jupyter lite build --lite-dir "$PWD" --contents "$PWD/lab" --output-dir "$PWD/_site/lab"
