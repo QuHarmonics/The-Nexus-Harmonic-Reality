@@ -29,7 +29,7 @@ NEXUS is an independent research program investigating the growth of computation
 | Historian | [History and provenance](docs/HISTORY.md) · [Audit Trail](Audit%20Trail/) |
 | Specific source | [Complete catalog](docs/catalog/) · [Standalone archive search](docs/archive-search.html) · [JSON](docs/catalog.json) |
 
-The historical catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. The active checkout contains 21 curated notebooks (including the Ring Atlas), the AI kernel audit bundle, documentation and the portal. The bulk historical material remains at the [preserved research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1). The historical count is not a count of unique publications. Browse the Markdown indexes directly on GitHub, or follow [portal setup](PORTAL_SETUP.md) to serve the interactive site.
+The historical catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. The active checkout contains 22 notebooks (including the Ring Atlas and reference laboratory), the AI kernel audit bundle, documentation and the portal. The bulk historical material remains at the [preserved research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1). The historical count is not a count of unique publications. Browse the Markdown indexes directly on GitHub, or follow [portal setup](PORTAL_SETUP.md) to serve the interactive site.
 
 ## Native architecture
 
@@ -48,6 +48,8 @@ The [native domain](The%20Nexus%20Domain/) supplies the foundational mathematica
 **WHAT → WHERE → ROUTE → INVERSE.** Begin at the required distinction, resolve existing providers and identify the missing link. The [method contract](METHODS.md) records what an operation requires, returns and preserves.
 
 ## Research tools
+
+**[The NEXUS Ring Atlas](docs/ATLAS.md)** — the full fifteen-chapter executable observatory. [Public research portal](https://quharmonics.github.io/The-Nexus-Harmonic-Reality/) · [Original Atlas](The%20Nexus%20Domain/Code/NEXUS_Ring_Atlas.ipynb).
 
 [Native operations notebook](lab/Nexus_Native_Operations.ipynb) · [Public roadmap](docs/ROADMAP.md) · [Machine-readable research metadata](ro-crate-metadata.json) · [Verification guide](docs/MAINTAINERS.md)
 

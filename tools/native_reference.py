@@ -28,7 +28,11 @@ def partner(x, n):
 
 def ring(n):
     reps = [x for x in range(mask(n) + 1) if x < partner(x, n)]
-    return tuple(reps + [partner(x, n) for x in reversed(reps)])
+    r = reps + [partner(x, n) for x in reversed(reps)]
+    if n >= 2:
+        m = len(r) // 2
+        r[m - 1], r[m] = r[m], r[m - 1]
+    return tuple(r)
 
 def tick(x, n):
     # MSB-first register: complement last bit, prepend, shift remaining bits.
@@ -63,11 +67,17 @@ def unstep(s, n):
     return p, x ^ d[p], tuple(d)
 
 def audit():
+    assert ring(2) == (0, 2, 1, 3), "Atlas seam order"
     counts = {"ring_words": 0, "clock_words": 0, "reader_states": 0}
     for n in range(1, 7):
         r = ring(n)
         N = 1 << n
         assert len(set(r)) == len(r) == N
+        if n >= 2:
+            m = N // 2
+            assert r[m - 1] > r[m] and partner(r[m - 1], n) == r[m]
+            reps = [x for x in range(N) if x < partner(x, n)]
+            assert list(r[:m - 1]) == reps[:-1] and r[m] == reps[-1]
         for i, x in enumerate(r):
             p = partner(x, n)
             assert p != x and partner(p, n) == x and r[N - 1 - i] == p

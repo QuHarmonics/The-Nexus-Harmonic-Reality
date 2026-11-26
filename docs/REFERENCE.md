@@ -64,7 +64,7 @@ This initial software-style reader uses equations in the [native domain core](ht
 - Dependencies: ring-partner
 - Address: Width n; ordering supplied by source
 - Return route: R_n(READ(x)) = x
-- Scope: Fixed ring permutation, not arbitrary permutation search
+- Scope: Fixed native ring permutation, including the exchange of the two central seam words for n >= 2. The facing law alone cannot distinguish this exchange. See [Atlas chapter 3 and correction record](ATLAS.md).
 - Source: [NEXUS_Domain_Core_20261103.md](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md), 1.1, equation (1.2).
 
 ## clock-tick

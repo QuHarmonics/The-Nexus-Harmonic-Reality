@@ -15,7 +15,7 @@ The original repository address is retained. The curated checkout contains the p
 3. Once the deployment succeeds, visit the published Pages URL. The main portal links to JupyterLite.
 4. Repeat the workflow after changes that should be published. This workflow is deliberately manual to avoid rebuilding the browser runtime on every documentation edit.
 
-The build uses a standard public GitHub runner and a temporary Pages artifact. Python executes on the visitor's computer. Only the small, standalone laboratory notebook is included; the archived notebooks, local model gateways, and bulk research corpus are not copied to the site. No paid runner or AI service is configured. Pages deployment and the JupyterLite build still require a successful first workflow run.
+The build uses a standard public GitHub runner and a temporary Pages artifact. Python executes on the visitor's computer. The small reference notebook and a generated, output-cleared browser edition of the Ring Atlas are included. The original Atlas is retained unchanged; only its setup and presentation metadata are adapted. Other archived notebooks, local model gateways and bulk research are not copied. No paid runner or AI service is configured. The base JupyterLite deployment previously passed; the Atlas edition requires its own deployment and browser check.
 
 ## Research verification
 

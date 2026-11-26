@@ -59,10 +59,12 @@
       ],
       "address": "Width n; ordering supplied by source",
       "return_route": "R_n(READ(x)) = x",
-      "scope": "Fixed ring permutation, not arbitrary permutation search",
+      "scope": "Fixed native ring permutation including exchange of the two central seam words for n >= 2; facing law alone does not distinguish this exchange.",
       "source": "The Nexus Domain/Markdown/NEXUS_Domain_Core_20261103.md",
-      "section": "1.1, equation (1.2)",
-      "ledger": "STANDS"
+      "section": "1.1 equation (1.2), 1.2; Ring Atlas chapter 3",
+      "ledger": "STANDS",
+      "implementation_source": "The Nexus Domain/Code/NEXUS_Ring_Atlas.ipynb",
+      "implementation_revision": "979ee0ee2fc971d622848aba7fc2fbd2fcedb2b5"
     },
     {
       "id": "clock-tick",

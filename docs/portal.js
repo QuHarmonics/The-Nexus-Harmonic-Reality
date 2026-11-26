@@ -2,8 +2,8 @@
 const reverse=(x,n)=>{let y=0;for(let i=0;i<n;i++)y=(y<<1)|((x>>i)&1);return y};
 const complement=(x,n)=>x^((1<<n)-1);
 const partner=(x,n)=>{const r=reverse(x,n);return r===x?complement(x,n):r};
-const ring=n=>{const reps=[];for(let x=0;x<(1<<n);x++)if(x<partner(x,n))reps.push(x);return reps.concat([...reps].reverse().map(x=>partner(x,n)))};
-const verify=n=>{const r=ring(n),N=1<<n;return r.length===N&&new Set(r).size===N&&r.every((x,i)=>partner(x,n)!==x&&partner(partner(x,n),n)===x&&r[N-1-i]===partner(x,n))};
+const ring=n=>{const reps=[];for(let x=0;x<(1<<n);x++)if(x<partner(x,n))reps.push(x);const r=reps.concat([...reps].reverse().map(x=>partner(x,n)));if(n>=2){const m=r.length/2;[r[m-1],r[m]]=[r[m],r[m-1]]}return r};
+const verify=n=>{const r=ring(n),N=1<<n;return r.length===N&&new Set(r).size===N&&(n===1||r[N/2-1]>r[N/2])&&r.every((x,i)=>partner(x,n)!==x&&partner(partner(x,n),n)===x&&r[N-1-i]===partner(x,n))};
 const $=id=>document.getElementById(id),ns="http://www.w3.org/2000/svg";
 function node(tag,attrs,txt){const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(txt!==undefined)e.textContent=txt;return e}
 const pos=(i,N,r=151)=>[210+r*Math.sin(2*Math.PI*i/N),210-r*Math.cos(2*Math.PI*i/N)];
