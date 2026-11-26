@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Cite the exact paper and its DOI or version where available. For repository-level citation, use this record."
+title: "NEXUS: The Harmonic Reality Framework"
+authors:
+  - family-names: Kulik
+    given-names: "Dean A."
+    orcid: "https://orcid.org/0009-0003-3128-8828"
+repository-code: "https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality"
+url: "https://quharmonics.com/"

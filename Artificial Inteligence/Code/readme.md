@@ -1,22 +1,30 @@
 <div align="center">
 
-<sub>QUHARMONICS · ARTIFICIAL INTELIGENCE</sub>
+<sub>QUHARMONICS · ARTIFICIAL INTELLIGENCE</sub>
 
 # Executable work
 
 **AI/agent gateways, NEXUS compiler notebooks, deterministic Python kernels, tool schemas, certificates, and regression runners.**
 
-[← Artificial Inteligence](../) · [NEXUS home](../../README.md) · [Papers](../Published%20Papers/) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
+[← Artificial Intelligence](../) · [NEXUS home](../../README.md) · [Papers](../Published%20Papers/) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
 
 </div>
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited implementation files. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** Public Jupyter notebooks and a kernel audit bundle are present. The versioned notebooks are preserved as separate artifacts.
+
+## Public entry points
+
+- [v5.8 notebook](NEXUS_AI_v5_8_Unified.ipynb) · [run instructions and scope](NEXUS_AI_v5_8_README.md).
+- [v5.9 Transit Atlas notebook](NEXUS_AI_v5_9_Transit_Atlas.ipynb).
+- [26-family switch kernel audit](NEXUS_26_Family_Switch_Kernel_Audit.zip).
+
+The v5.8 instructions document its dependencies and known open boundaries. The v5.9 notebook is present; no new execution or compatibility claim is made here.
 
 ## Purpose
 
-AI/agent gateways, NEXUS compiler notebooks, deterministic Python kernels, tool schemas, certificates, and regression runners. This collection belongs to the **Artificial Inteligence** research area and should remain identifiable as that area develops.
+AI/agent gateways, NEXUS compiler notebooks, deterministic Python kernels, tool schemas, certificates, and regression runners. This collection belongs to the **Artificial Intelligence** research area and should remain identifiable as that area develops.
 
 ## Reproducibility contract
 
