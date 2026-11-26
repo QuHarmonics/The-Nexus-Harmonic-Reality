@@ -16,6 +16,8 @@
 
 ## Entry points
 
+[Browse all historical native working sources](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown) · [Mathematical reference](../../docs/REFERENCE.md)
+
 - [Domain core](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_Domain_Core_20261103.md)
 - [Ring instruction-set stack, widths 1–64](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/NEXUS_ring_ISA_stack_1_to_64.md)
 - [Fixed-ring compiler documentation](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Markdown/ring_compiler_README.md)

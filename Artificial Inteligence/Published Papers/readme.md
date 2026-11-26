@@ -1,22 +1,22 @@
 <div align="center">
 
-<sub>QUHARMONICS · ARTIFICIAL INTELIGENCE</sub>
+<sub>QUHARMONICS · ARTIFICIAL INTELLIGENCE</sub>
 
 # Published research
 
 **Research papers addressing AI architecture, inference, agent control, proof providers, and the relationship of AI to the NEXUS runtime.**
 
-[← Artificial Inteligence](../) · [NEXUS home](../../README.md) · [Papers](../Published%20Papers/) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
+[← Artificial Intelligence](../) · [NEXUS home](../../README.md) · [Papers](../Published%20Papers/) · [Code](../Code/) · [Markdown](../Markdown/) · [Transcripts](../Transcripts/)
 
 </div>
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited research papers. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** This active collection currently contains its navigation README only. Its purpose below describes planned curated deposits; browse the [historical catalog](../../docs/catalog/) for earlier research.
 
 ## Purpose
 
-Research papers addressing AI architecture, inference, agent control, proof providers, and the relationship of AI to the NEXUS runtime. This collection belongs to the **Artificial Inteligence** research area and should remain identifiable as that area develops.
+Research papers addressing AI architecture, inference, agent control, proof providers, and the relationship of AI to the NEXUS runtime. This collection belongs to the **Artificial Intelligence** research area and should remain identifiable as that area develops.
 
 ## Publication record
 
@@ -36,6 +36,8 @@ A file in this folder is a research publication or publication copy, not a blank
 - Keep tool contracts, input schemas, and certificates with their implementations.
 - Preserve complete tests, version changes, and correction records.
 - Describe an executed route as RUNS only within its documented test scope.
+
+See [research-first licensing](../../LICENSE.md) and [provenance](../../PROVENANCE.md) for reuse and source-tracing requirements.
 
 ---
 

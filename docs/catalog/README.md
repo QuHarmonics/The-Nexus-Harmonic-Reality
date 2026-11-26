@@ -2,7 +2,7 @@
 
 [Documentation](../README.md) · [Browser search](../archive-search.html) · [Machine-readable data](../catalog.json)
 
-**1,140 files** at [source revision df0d09f](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/commit/df0d09f8c430bce44660e4986209afdb20395e04). Counts include navigation files, revisions, and companion artifacts; they are not counts of independent publications or discoveries. File metadata only; no inferred subjects or dates.
+**Historical snapshot — 1,140 files** at [source revision df0d09f](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/commit/df0d09f8c430bce44660e4986209afdb20395e04). Counts include navigation files, revisions, and companion artifacts; they are not counts of independent publications or discoveries. File metadata only; no inferred subjects or dates. This is intentionally not an inventory of the current lightweight checkout. For curated executable material, see the [AI code](../../Artificial%20Inteligence/Code/) and [native code](../../The%20Nexus%20Domain/Code/).
 
 | Collection | Files |
 | --- | ---: |

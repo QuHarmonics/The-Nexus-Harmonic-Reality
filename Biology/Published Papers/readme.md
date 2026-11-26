@@ -12,7 +12,7 @@
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited research papers. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** This active collection currently contains its navigation README only. Its purpose below describes planned curated deposits; browse the [historical catalog](../../docs/catalog/) for earlier research.
 
 ## Purpose
 
@@ -36,6 +36,8 @@ A file in this folder is a research publication or publication copy, not a blank
 - Keep sequence, structure, and experimental provenance attached.
 - Report training/fit data separately from independent tests.
 - Treat an interesting structural analogy as a hypothesis until measured.
+
+See [research-first licensing](../../LICENSE.md) and [provenance](../../PROVENANCE.md) for reuse and source-tracing requirements.
 
 ---
 

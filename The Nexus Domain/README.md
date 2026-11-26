@@ -20,11 +20,13 @@ This is the **foundation of NEXUS**. It contains the ring as fixed model, the On
 
 ## Navigate this area
 
+The active domain contains the Ring Atlas notebook and navigation indexes. Historical papers, working records and audits are linked at their preserved revision; they are not duplicated in the current tree.
+
 | Collection | What belongs here |
 |:--|:--|
 | **[Published Papers](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Published%20Papers)** | The rings-forward published corpus, including the native binary ring papers, One Inverter, Retained Continuation, and the Exact Algebra. |
-| **[Code](./Code/)** | Reference implementations of partner maps, reversible steps, closure traces, switch-tape replay, collision laws, and executable assertions. |
-| **[Markdown](./Markdown/)** | Working mathematical specifications, numbered formulas, dependency chains, ledgers, and manuscript sources. |
+| **[Code](./Code/)** | Current Ring Atlas and links to historical reference implementations of partner maps, reversible steps, closure traces and collision laws. |
+| **[Markdown](./Markdown/)** | Index of historical mathematical specifications, numbered formulas, dependency chains, ledgers and manuscript sources. |
 | **[Transcripts](./Transcripts/)** | The decisions, corrections, seals, and reasoning history that make the core's evolution auditable. |
 
 ## How to read the work

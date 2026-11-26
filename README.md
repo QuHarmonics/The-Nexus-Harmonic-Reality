@@ -10,7 +10,7 @@
 
 [Website](https://quharmonics.com/) · [ORCID](https://orcid.org/0009-0003-3128-8828) · [ResearchGate](https://www.researchgate.net/profile/Dean-Kulik) · [Academia](https://independent.academia.edu/ClaudReins)
 
-**[Interactive portal (HTML)](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
+**[Interactive portal source](docs/index.html)** · **[Start here](START_HERE.md)** · **[Documentation](docs/)** · **[Mathematical reference](docs/REFERENCE.md)** · **[Research catalog](docs/catalog/)**
 
 </div>
 
@@ -29,7 +29,7 @@ NEXUS is an independent research program investigating the growth of computation
 | Historian | [History and provenance](docs/HISTORY.md) · [Audit Trail](Audit%20Trail/) |
 | Specific source | [Complete catalog](docs/catalog/) · [Standalone archive search](docs/archive-search.html) · [JSON](docs/catalog.json) |
 
-The historical catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. This active checkout contains curated AI notebooks, the Ring Atlas, documentation and portal. The bulk historical material is linked through its preserved revision. This is a file count, not a count of unique publications. Download the HTML search page to open it locally, or browse the Markdown indexes directly on GitHub.
+The historical catalog indexes **1,140 files** in its pinned source snapshot, including **806 PDFs and 21 notebooks**. The active checkout contains 21 curated notebooks (including the Ring Atlas), the AI kernel audit bundle, documentation and the portal. The bulk historical material remains at the [preserved research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1). The historical count is not a count of unique publications. Browse the Markdown indexes directly on GitHub, or follow [portal setup](PORTAL_SETUP.md) to serve the interactive site.
 
 ## Native architecture
 
@@ -61,7 +61,7 @@ The [native domain](The%20Nexus%20Domain/) supplies the foundational mathematica
 | [Chemistry](Chemistry/) | Molecular and reaction systems |
 | [Material Science](Material%20Science/) | Material structure and transformation |
 | [Clay Prizes](Clay%20Prizes/) | Mathematical research programs |
-| [Audit Trail](Audit%20Trail/) | Historical published-paper archive |
+| [Audit Trail](Audit%20Trail/) | Historical papers, transcript provenance and corrections |
 
 Some collections are navigation-only pending curation. Earlier papers, notebooks, working sources and corrections remain in their historical addresses rather than being rewritten into one retrospective account.
 

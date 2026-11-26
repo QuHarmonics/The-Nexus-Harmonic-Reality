@@ -12,7 +12,7 @@
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited research papers. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** This active collection currently contains its navigation README only. Its purpose below describes planned curated deposits; browse the [historical catalog](../../docs/catalog/) for earlier research.
 
 ## Purpose
 
@@ -36,6 +36,8 @@ A file in this folder is a research publication or publication copy, not a blank
 - State units, calibration, parameter choices, and the dataset or theorem used.
 - Distinguish mathematical analogy from a physical derivation or prediction.
 - Keep corrections and independent measurements alongside the interpretation.
+
+See [research-first licensing](../../LICENSE.md) and [provenance](../../PROVENANCE.md) for reuse and source-tracing requirements.
 
 ---
 

@@ -18,6 +18,10 @@ This area covers AI systems used to operate, test, and explain NEXUS—especiall
 
 **Relationship to the foundation:** the [NEXUS Domain](../The%20Nexus%20Domain/) defines the native machine. Research here explores particular constructions, applications, or comparators without changing that domain by assumption.
 
+## Current collection
+
+The active Code collection contains 20 versioned Jupyter notebooks, one switch-kernel audit bundle and the v5.8 companion guide. The other three collections currently contain navigation indexes only. See the [historical catalog](../docs/catalog/) for preserved research files and the [research-first licensing policy](../LICENSE.md) for reuse terms.
+
 ## Navigate this area
 
 | Collection | What belongs here |

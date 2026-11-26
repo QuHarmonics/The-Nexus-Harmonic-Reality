@@ -12,7 +12,7 @@
 
 ---
 
-> **Collection status:** Public Jupyter notebooks and a kernel audit bundle are present. The versioned notebooks are preserved as separate artifacts.
+> **Collection status:** 20 versioned notebooks, one switch-kernel audit bundle and the v5.8 companion guide are present in this active collection.
 
 ## Public entry points
 
@@ -28,7 +28,7 @@ AI/agent gateways, NEXUS compiler notebooks, deterministic Python kernels, tool 
 
 ## Reproducibility contract
 
-When implementations are added, each project should identify its inputs, environment and dependencies, a runnable entry point, an expected readout, and its scope of testing. A notebook cell output is evidence of the run recorded in that file, not automatically evidence that another machine reproduced it.
+Each deposited implementation should identify its inputs, environment and dependencies, a runnable entry point, an expected readout, and its scope of testing. A notebook cell output is evidence of the run recorded in that file, not automatically evidence that another machine reproduced it.
 
 Suggested file companions: `README.md`, `requirements.txt` or environment details, tests, prediction seal, execution trace, and correction log. Never quietly repair a mismatch in the reported output. Source code and the published result must remain traceable to one another.
 
@@ -44,6 +44,8 @@ Suggested file companions: `README.md`, `requirements.txt` or environment detail
 - Keep tool contracts, input schemas, and certificates with their implementations.
 - Preserve complete tests, version changes, and correction records.
 - Describe an executed route as RUNS only within its documented test scope.
+
+See [research-first licensing](../../LICENSE.md) and [provenance](../../PROVENANCE.md) for reuse and source-tracing requirements.
 
 ---
 

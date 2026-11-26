@@ -8,7 +8,7 @@
 
 Multiple entrances, shared source addresses.
 
-[Interactive portal](index.html) · [Historical research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1)
+[Interactive portal source](index.html) · [Historical research revision](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/tree/462e8e558eafb9f333b7726eddf0e7a527ee93e1)
 
 The historical catalog describes its original pinned source snapshot, not the current checkout.
 
@@ -22,4 +22,4 @@ The historical catalog describes its original pinned source snapshot, not the cu
 | Specific source | [Complete catalog](catalog/README.md) · [Archive search](archive-search.html) · [JSON](catalog.json) |
 | Maintenance | [Curation and verification](MAINTAINERS.md) |
 
-Download the HTML archive search and open it in a modern browser. It is self-contained; GitHub Pages is not required for local use. Its source links are revision-pinned. The file catalog is structural metadata; the method reference is a starter registry, not a completed ring binding.
+Open the standalone archive search locally, or serve the entire `docs/` folder using the [portal setup guide](../PORTAL_SETUP.md). The main portal requires its accompanying CSS and JavaScript files. It is self-contained; GitHub Pages is not required for local use. Its source links are revision-pinned. The file catalog is structural metadata; the method reference is a starter registry, not a completed ring binding.

@@ -18,6 +18,10 @@ This section investigates connections between native binary transformations and 
 
 **Relationship to the foundation:** the [NEXUS Domain](../The%20Nexus%20Domain/) defines the native machine. Research here explores particular constructions, applications, or comparators without changing that domain by assumption.
 
+## Current collection
+
+The four collections currently contain navigation indexes only. Relevant historical research remains in the public source archive; new curated deposits will be linked here. See the [historical catalog](../docs/catalog/) for preserved research files and the [research-first licensing policy](../LICENSE.md) for reuse terms.
+
 ## Navigate this area
 
 | Collection | What belongs here |
@@ -40,7 +44,7 @@ This section investigates connections between native binary transformations and 
 
 ## Other research domains
 
-[The Nexus Domain](../The%20Nexus%20Domain/) · [Artificial Inteligence](../Artificial%20Inteligence/) · [Computation](../Computation/) · [Cryptography](../Cryptography/) · [Physics](../Physics/) · [Biology](../Biology/) · [Chemistry](../Chemistry/) · [Material Science](../Material%20Science/)
+[The Nexus Domain](../The%20Nexus%20Domain/) · [Artificial Intelligence](../Artificial%20Inteligence/) · [Computation](../Computation/) · [Cryptography](../Cryptography/) · [Physics](../Physics/) · [Biology](../Biology/) · [Chemistry](../Chemistry/) · [Material Science](../Material%20Science/)
 
 ---
 

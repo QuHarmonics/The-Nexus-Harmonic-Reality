@@ -12,7 +12,7 @@
 
 ---
 
-> **Collection status:** This directory currently contains its navigation README but no deposited implementation files. The guidance below describes where new material belongs; it does not claim it is already here.
+> **Collection status:** This active collection currently contains its navigation README only. Its purpose below describes planned curated deposits; browse the [historical catalog](../../docs/catalog/) for earlier research.
 
 ## Purpose
 
@@ -36,6 +36,8 @@ Suggested file companions: `README.md`, `requirements.txt` or environment detail
 - Define the measurement or simulation readout.
 - Keep structural arguments separate from validated property predictions.
 - Record uncertainty, boundary effects, and the source of measurements.
+
+See [research-first licensing](../../LICENSE.md) and [provenance](../../PROVENANCE.md) for reuse and source-tracing requirements.
 
 ---
 

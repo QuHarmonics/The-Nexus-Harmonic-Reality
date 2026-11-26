@@ -20,7 +20,7 @@
 - P20: [audit script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Audit.py), [prediction seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Seal.txt), [recorded run](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P20_Cross_LEN_Center_Run_Log.txt).
 - P21: [audit script](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Audit.py), [prediction seal](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Seal.txt), [recorded run](https://github.com/QuHarmonics/The-Nexus-Harmonic-Reality/blob/462e8e558eafb9f333b7726eddf0e7a527ee93e1/The%20Nexus%20Domain/Code/NEXUS_P21_Moving_Seam_Run_Log.txt).
 
-The links identify deposited artifacts; no new execution is implied by this index.
+The Ring Atlas is a current file; the bundle, scripts, seals and logs link to the archived source revision. No new execution is implied by this index.
 
 ## Purpose
 
@@ -28,7 +28,7 @@ Reference implementations of partner maps, reversible steps, closure traces, swi
 
 ## Reproducibility contract
 
-When implementations are added, each project should identify its inputs, environment and dependencies, a runnable entry point, an expected readout, and its scope of testing. A notebook cell output is evidence of the run recorded in that file, not automatically evidence that another machine reproduced it.
+Each deposited implementation should identify its inputs, environment and dependencies, a runnable entry point, an expected readout, and its scope of testing. A notebook cell output is evidence of the run recorded in that file, not automatically evidence that another machine reproduced it.
 
 Suggested file companions: `README.md`, `requirements.txt` or environment details, tests, prediction seal, execution trace, and correction log. Never quietly repair a mismatch in the reported output. Source code and the published result must remain traceable to one another.
 
